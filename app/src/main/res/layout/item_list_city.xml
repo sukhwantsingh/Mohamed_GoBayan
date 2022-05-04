@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/dimen_1x"
+        android:layout_gravity="center_horizontal"
+        tools:text="title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_normal" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"
+        android:layout_below="@id/tv_title"/>
+
+</RelativeLayout>

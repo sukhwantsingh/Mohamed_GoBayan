@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cl_department_category"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="4dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/bg_red_button_with_border"
+    android:clickable="true"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/iv_department_thumbnail"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/content_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars"/>
+
+    <com.libyasolutions.libyamarketplace.widget.CustomCheckbox
+        android:id="@+id/cb_department"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:checked="false"
+        android:clickable="true"
+        android:focusable="true"
+        android:button="@drawable/checkbox_selector_department"
+        android:textColor="@color/white"
+        android:paddingRight="8dp"
+        android:gravity="center_vertical|right"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="@id/iv_department_thumbnail"
+        app:layout_constraintTop_toBottomOf="@id/iv_department_thumbnail"
+        app:layout_constraintRight_toRightOf="@id/iv_department_thumbnail"
+        tools:text="Cars"/>
+
+</android.support.constraint.ConstraintLayout>

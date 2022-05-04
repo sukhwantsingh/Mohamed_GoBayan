@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/dimen_1x"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:layout_marginRight="@dimen/dimen_2x"
+        android:background="@drawable/bg_red_border"
+        android:id="@+id/tvOptionsItem"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:minWidth="@dimen/dimen50"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dimen50"
+        tools:text="hello"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen120"
+    android:padding="@dimen/dimen8">
+
+    <ImageView
+        android:id="@+id/imgShop"
+        android:layout_width="@dimen/dimen120"
+        android:layout_height="@dimen/dimen120"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_foood_details"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/text_small_size_16"
+        android:background="@color/black_tranper70"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/cl_white"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imgShop">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblShopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_small_size_16"
+                android:text="Autem Vel"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size_16"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblFoodNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen24"
+                android:layout_margin="@dimen/text_small_size_16"
+                android:text="2 items"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_small_size_16"
+                android:text="$20"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintBottom_toBottomOf="@id/lblFoodNumber"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="@dimen/dimen24"
+                android:layout_height="@dimen/dimen24"
+                android:layout_margin="@dimen/text_small_size_16"
+                android:src="@drawable/ic_delete_huy"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblVAT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VAT 10%"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintBottom_toTopOf="@id/lblFoodNumber"
+                app:layout_constraintRight_toRightOf="@id/lblShopName"
+                app:layout_constraintTop_toBottomOf="@id/lblShopName" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblShipping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen16"
+                android:text="Ship 11$"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintBottom_toTopOf="@id/lblFoodNumber"
+                app:layout_constraintRight_toLeftOf="@id/lblVAT"
+                app:layout_constraintTop_toBottomOf="@id/lblShopName" />
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

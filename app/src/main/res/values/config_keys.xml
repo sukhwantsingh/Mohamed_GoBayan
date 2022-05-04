@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<string name="google_api_key">AIzaSyATmWHp02IttH_oqgdL0GYfEpwMeFDFAJE</string>-->
+    <!--<string name="google_api_key">AIzaSyD75CpR0FA9xaOhnCIGDU7O1kIuXJ2-jis</string> &lt;!&ndash;hicom.solutions@gmail.com&ndash;&gt;-->
+    <!--string name="google_api_key">AIzaSyACaTBENQWu0PSqj5WWqaVubZnGiyOL1bk</string>-->
+    <string name="app_id">581720238943597</string>
+    <string name="api_key">AIzaSyD75CpR0FA9xaOhnCIGDU7O1kIuXJ2-jis</string>
+
+</resources>

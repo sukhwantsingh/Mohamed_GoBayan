@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/apptheme_scrubber_track_holo_light" />
+
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="line">
+                <stroke
+                    android:width="2dp"
+                    android:color="#9feb102f" />
+                <corners android:radius="1dp" />
+
+                <gradient
+                    android:angle="180"
+                    android:endColor="#9feb102f"
+                    android:startColor="#9feb102f" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen200"
+    android:gravity="bottom"
+    android:background="@drawable/menu_profile"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_margin="@dimen/dimen8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_delete_huy"
+        android:layout_width="@dimen/dimen32"
+        android:layout_height="@dimen/dimen32" />
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        android:id="@+id/tvName"
+        app:layout_constraintLeft_toLeftOf="@+id/tvAdmin"
+        app:layout_constraintBottom_toTopOf="@+id/tvAdmin"
+        android:textSize="24sp"
+        android:textColor="@color/cl_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:textSize="@dimen/text_size_normal"
+        android:textColor="@color/cl_white"
+        android:id="@+id/tvAdmin"
+        android:layout_margin="@dimen/text_small_size_16"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cl_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen50"
+        android:orientation="horizontal">
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/chat"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dimen24"
+            android:layout_height="@dimen/dimen24"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/text_small_size_16"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/red" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_1x">
+
+        <ListView
+            android:id="@+id/lsvAgent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/gray"
+            android:dividerHeight="0.5dp"
+            android:fadingEdge="none"
+            android:fastScrollEnabled="false"
+            android:smoothScrollbar="true" />
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+            android:id="@+id/tvNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/no_convertation"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_size_large"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+</LinearLayout>

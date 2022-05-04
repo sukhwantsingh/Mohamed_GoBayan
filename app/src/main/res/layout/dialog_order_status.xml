@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical">
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/order_all"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/order_waiting"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_reject_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/reject_information_not_enough"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_reject_available"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/reject_quantity_not_available"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/order_accept"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_in_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/in_progress"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_ready_collect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/ready_for_collect"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_on_the_way"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/on_the_way"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_failed_delivery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/fail_delivery"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_delivered"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/delivered"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"/>
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tv_order_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="@string/order_cancel"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+</LinearLayout>

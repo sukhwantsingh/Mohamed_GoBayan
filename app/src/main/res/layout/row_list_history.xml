@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_x1x"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/dimen_3x"
+            android:layout_height="@dimen/dimen_3x"
+            android:background="@drawable/ic_history_grey600_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:layout_marginLeft="@dimen/dimen_1x"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblSTT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#12345678"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal_2x" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblOrderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/gray_dark" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="right|center_vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="right|center_vertical"
+            android:orientation="vertical">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblTotalH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_small"
+                android:text="TextView"
+                android:textSize="@dimen/text_size_normal_2x"
+                android:textColor="@color/primary_dark" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/lblStatusOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_small"
+                android:text="TextView" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imgContinue"
+            android:layout_width="@dimen/dimen_x3x"
+            android:layout_height="@dimen/dimen_x3x"
+            android:layout_marginRight="@dimen/dimen_x1x"
+            android:layout_marginLeft="@dimen/dimen_1x"
+            android:background="@drawable/ic_chevron_right_grey600_36dp" />
+    </LinearLayout>
+
+</LinearLayout>

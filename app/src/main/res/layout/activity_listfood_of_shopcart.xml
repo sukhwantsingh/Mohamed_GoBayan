@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/main_color_gray"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_7x"
+        android:background="@color/cl_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/dimen24"
+            android:layout_height="@dimen/dimen24"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dimen16"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/red" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lsvShop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen_1x"
+        app:layout_constraintBottom_toTopOf="@id/llbottom"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/llbottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen150"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_3x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <ImageView
+            android:id="@+id/imgShop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:padding="@dimen/dimen_1x"
+            android:src="@drawable/shop0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblShopName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/my_cart_upper_case"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal" />
+
+            <LinearLayout
+                android:id="@+id/llCategory"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen24"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_category" />
+                <TextView
+                    android:id="@+id/tvCate"
+                    android:layout_marginRight="@dimen/dimen16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imgMap"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="@dimen/dimen24"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_map_marker" />
+                <TextView
+                    android:id="@+id/tvDesciption"
+                    android:layout_marginRight="@dimen/dimen16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    android:id="@+id/lblTotalPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="5.7"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_large"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:background="@color/red" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="4"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/lblShipping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dimen_1x"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/lblVAT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="@dimen/dimen_1x"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
+
+

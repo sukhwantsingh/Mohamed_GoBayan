@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_item_category"
+    android:padding="4dp"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.libyasolutions.libyamarketplace.widget.CustomCheckbox
+        android:id="@+id/cb_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right|center_vertical"
+        android:button="@drawable/checkbox_selector_category"
+        android:textColor="@color/red"
+        android:textSize="22sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingRight="8dp"
+        android:clickable="false"
+        android:focusable="false"
+        tools:text="Car" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray_dark"/>
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutRowShopCart"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/layoutOffers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cl_white"
+        app:cardCornerRadius="@dimen/dimen_025x">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="@dimen/row_shop_height"
+                android:layout_height="@dimen/row_shop_height"
+                android:layout_margin="@dimen/dimen_1x">
+
+                <ProgressBar
+                    android:id="@+id/progess"
+                    style="@android:style/Widget.ProgressBar.Small.Inverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true" />
+
+                <ImageView
+                    android:id="@+id/imgFood"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    android:id="@+id/lblFoodName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dimen_1x"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:maxLines="2"
+                    android:text="Shop 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_large_1x" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:orientation="horizontal">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/lblFoodNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingRight="@dimen/margin_normal"
+                        android:text="x2"
+                        android:textColor="@color/main_button_color"
+                        android:textSize="@dimen/text_size_large" />
+
+                    <RelativeLayout
+                        android:id="@+id/layoutSum"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dimen_x4x"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                            android:id="@+id/lblCurrency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/dimen_025x"
+                            android:layout_marginTop="@dimen/dimen_05x"
+                            android:layout_toLeftOf="@+id/lblPrice"
+                            android:text="@string/currency"
+                            android:textColor="@color/star_selected_color"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                            android:id="@+id/lblPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginRight="@dimen/dimen_1x"
+                            android:text="1000"
+                            android:textColor="@color/star_selected_color"
+                            android:textSize="@dimen/text_size_large" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

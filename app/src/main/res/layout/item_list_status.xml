@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_1x">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/tv_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/inprocess"
+            android:textSize="@dimen/text_size_normal" />
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="@dimen/dimen_2x"
+            android:layout_height="@dimen/dimen_2x"
+            android:src="@drawable/ic_check_green"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"
+        android:visibility="gone" />
+</LinearLayout>

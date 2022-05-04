@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dimen_1x"
+    android:paddingTop="@dimen/dimen_1x"
+    android:paddingRight="@dimen/dimen_1x"
+    android:paddingBottom="@dimen/dimen_05x">
+
+    <RelativeLayout
+        android:id="@+id/chatLeftContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/rlAvatarRight"
+            android:orientation="vertical">
+
+            <me.himanshusoni.chatmessageview.ChatMessageView
+                android:id="@+id/chatLeft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen_05x"
+                android:gravity="right"
+                app:cmv_backgroundColor="@color/message"
+                app:cmv_cornerRadius="8dp"
+                app:cmv_showArrow="false">
+
+                <ImageView
+                    android:id="@+id/imgLeft"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                    android:id="@+id/txtMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Hello Word"
+                    android:textColor="@color/cl_white"
+                    android:textSize="@dimen/sp_17"
+                    app:cmv_cornerRadius="8dp" />
+
+
+            </me.himanshusoni.chatmessageview.ChatMessageView>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                android:id="@+id/txtDateLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chatLeft"
+                android:layout_alignParentStart="true"
+                android:layout_marginRight="@dimen/dimen_1x"
+                android:text="5/2/2017"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/sp_10"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rlAvatarRight"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:visibility="gone">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAvatarLeft"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/avatar_default" />
+
+            <ImageView
+                android:id="@+id/imgStatusLeft"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_offline"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chatRightContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="48dp">
+
+        <RelativeLayout
+            android:id="@+id/rlAvatarLeft"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAvatarRigt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/avatar_default" />
+
+            <ImageView
+                android:id="@+id/imgStatusRight"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_offline"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/rlAvatarLeft">
+
+            <me.himanshusoni.chatmessageview.ChatMessageView
+                android:id="@+id/chatRight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                app:cmv_backgroundColor="@color/bgGuest"
+                app:cmv_cornerRadius="8dp"
+                app:cmv_showArrow="false">
+
+                <ImageView
+                    android:id="@+id/imgRight"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                    android:id="@+id/txtMessageRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Hello Word"
+                    android:textColor="@color/bgGuestText"
+                    android:textSize="@dimen/sp_17" />
+
+
+            </me.himanshusoni.chatmessageview.ChatMessageView>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                android:id="@+id/txtDateRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chatRight"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/dimen_1x"
+                android:text="5/2/2017"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/sp_10"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F1F1F1">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="@dimen/dimen16"
+        android:background="@color/red"
+        app:layout_constraintTop_toBottomOf="@id/btnBack" />
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="@dimen/dimen24"
+        android:layout_height="@dimen/dimen24"
+        android:layout_margin="@dimen/text_small_size_16"
+        android:src="@drawable/ic_chevron_right_black_24dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        android:id="@+id/tvNameShop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/dimen_05x"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        tools:text="Shop Name"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen220"
+        android:background="@color/main_background_color"
+        app:layout_constraintTop_toBottomOf="@id/view">
+
+    </android.support.v4.view.ViewPager>
+
+    <com.libyasolutions.libyamarketplace.widget.CirclePageIndicator
+        android:id="@+id/indicatorBannerImages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_1x"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPager" />
+
+    <ImageView
+        android:id="@+id/imgShop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen220"
+        android:background="@color/cl_white"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+
+    <LinearLayout
+        android:id="@+id/lnlLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen50"
+        android:layout_margin="@dimen/dimen16"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@color/black_tranper80"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen16">
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/rtbRating"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen20"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/text_small_size_16"
+                android:clickable="false"
+                android:isIndicator="true"
+                android:max="5"
+                android:numStars="5"
+                android:progress="0"
+                android:backgroundTint="@color/orange"
+                app:mrb_progressTint="@color/orange"/>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tvTotalComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:text="@string/review"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen75"
+        android:layout_marginLeft="@dimen/dimen16"
+        android:layout_marginRight="@dimen/dimen16"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/indicatorBannerImages">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="#DDDDDD"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/btnHotLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                    android:id="@+id/lblPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_large" />
+
+                <ImageView
+                    android:layout_width="@dimen/dimen24"
+                    android:layout_height="@dimen/dimen24"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_phone0"
+                    android:visibility="gone" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextView7Stroke
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_05x"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/ic_phone"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_large_3x" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen24"
+                    android:layout_height="@dimen/dimen24"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_time0"
+                    android:visibility="gone" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextView7Stroke
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/ic_clock"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_large_3x" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                    android:id="@+id/tvTime"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_large" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnMap"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dimen8"
+            android:layout_weight="1"
+            android:background="#DDDDDD"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dimen32"
+                android:layout_height="@dimen/dimen32"
+                android:scaleType="center"
+                android:src="@drawable/ic_location0"
+                android:visibility="gone" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextView7Stroke
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ic_map"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_large_3x" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnProduct"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dimen8"
+            android:layout_weight="1"
+            android:background="#DDDDDD"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen16">
+
+            <ImageView
+                android:layout_width="@dimen/dimen32"
+                android:layout_height="@dimen/dimen32"
+                android:src="@drawable/ic_menu0" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLayout3"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen75"
+        android:layout_marginTop="@dimen/dimen16"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="@id/lnlLayout2"
+        app:layout_constraintRight_toRightOf="@id/lnlLayout2"
+        app:layout_constraintTop_toBottomOf="@id/lnlLayout2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <ImageView
+                android:id="@+id/iv_chat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#DDDDDD"
+                android:padding="@dimen/dimen_1x"
+                android:src="@drawable/ic_add_chat" />
+
+            <!--doannd website xml-->
+            <ImageView
+                android:id="@+id/iv_website"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="#DDDDDD"
+                android:padding="12dp"
+                android:src="@drawable/ic_website" />
+
+            <ImageView
+                android:id="@+id/iv_instagram"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="8dp"
+                android:background="#DDDDDD"
+                android:padding="@dimen/dimen8"
+                android:src="@drawable/ic_instagram" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_twitter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:background="#DDDDDD"
+            android:padding="@dimen/dimen8"
+            android:src="@drawable/ic_twitterrrr" />
+
+        <ImageView
+            android:id="@+id/iv_facebook"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="#DDDDDD"
+            android:padding="@dimen/dimen8"
+            android:src="@drawable/ic_facebooook" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/dimen16"
+        android:background="@color/cl_white"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llLayout3">
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen16"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:minHeight="@dimen/dimen50"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintTop_toBottomOf="@id/llLayout3" />
+    </LinearLayout>
+
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:id="@+id/tvPromotions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_small_size_16"
+        android:text="@string/_3_deals_available"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/llLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/llLayout4" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rclViewShop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/text_small_size_16"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPromotions"/>
+
+
+</android.support.constraint.ConstraintLayout>

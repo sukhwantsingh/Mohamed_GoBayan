@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen200">
+
+        <ProgressBar
+            android:id="@+id/progess"
+            style="@android:style/Widget.ProgressBar.Small.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/imgCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+        android:background="@color/categorie_color"
+        android:text="Food Ngon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/lblCategoryName"
+        android:layout_width="@dimen/dimen150"
+        android:layout_height="@dimen/dimen50"
+        android:gravity="center"
+        android:textColor="@color/cl_white"
+        android:textSize="@dimen/text_size_large" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:ptr="http://schemas.android.com/apk/res-auto"
+android:id="@+id/gone"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/cl_white">
+
+<LinearLayout
+    android:id="@+id/layoutUser"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_7x"
+        android:background="@color/primary_dark"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:contentDescription="@string/app_name"
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/dimen_3x"
+            android:layout_height="@dimen/dimen_x3x"
+            android:layout_marginLeft="@dimen/dimen_1x"
+            android:layout_marginRight="@dimen/dimen_1x"
+            android:background="@drawable/ic_backs" />
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+            android:id="@+id/lblShopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/history"
+            android:textColor="@color/cl_white"
+            android:textSize="@dimen/text_size_normal_3x" />
+    </LinearLayout>
+
+    <com.libyasolutions.libyamarketplace.pulltorefresh.PullToRefreshListView
+        android:id="@+id/lvOrder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/line"
+        android:dividerHeight="0.2dp"
+        ptr:ptrMode="both" />
+</LinearLayout>
+
+<WebView
+    android:id="@+id/wbChef"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone" />
+
+</FrameLayout>

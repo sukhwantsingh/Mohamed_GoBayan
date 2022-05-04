@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="cl_GreenText">#128e00</color>
+    <color name="cl_BlueNumber">#2c8ab3</color>
+    <color name="cl_normalText">#515151</color>
+    <color name="cl_white">#ffffff</color>
+    <!-- <color name="green">#009900</color> -->
+    <!-- <color name="orange">#ffb533</color> -->
+    <color name="cl_orange">#f0de13</color>
+    <color name="cl_bottom">#e8ebec</color>
+    <color name="purple">#204365</color>
+    <color name="blue_facebook">#3b579d</color>
+    <color name="blue_search">#0a85c2</color>
+    <color name="blue_type_stop_result">#0db4ef</color>
+    <color name="gray_search">#999999</color>
+    <color name="gray_light">#e1e1e1</color>
+    <color name="green">#23a400</color>
+    <color name="red">#ed2a2c</color>
+    <color name="transparent">#00000000</color>
+    <color name="orange">#ed8305</color>
+    <color name="text_shadow_2">#7F000000</color>
+    <color name="text_shadow_1">#3F000000</color>
+    <color name="brown">#946146</color>
+    <color name="gray">#e9e9e9</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="yellow_gray">#FFD700</color>
+    <color name="black">#000000</color>
+    <color name="processorder">#ae09c7</color>
+    <color name="neworder">#0d4aca</color>
+    <color name="cancelorder">#cf2c16</color>
+    <color name="readyorder">#23a400</color>
+    <color name="closeorder">#ffffff</color>
+    <color name="cl_tabmain">#303b52</color>
+    <color name="red_button">#eb102f</color>
+    <color name="color_red">#FE0000</color>
+    <color name="blackl">#cccccc</color>
+    <color name="gray_dark">#999999</color>
+
+    <!-- Material palette -->
+    <color name="gray_home_bottom">#B6B6B6</color>
+    <color name="primary">#00BCD4</color>
+    <color name="primary_dark">#860000</color>
+    <color name="tab_selected_color">#3068c7</color>
+    <color name="tab_unselected_color">#212121</color>
+    <color name="main_button_color">#ffaa40</color>
+    <color name="main_background_color">#e0e0e0</color>
+    <color name="star_selected_color">#fe5a27</color>
+    <color name="star_un_selected_color">#b8b8b8</color>
+    <color name="price_color">#f7571d</color>
+    <color name="primary_light">#B2EBF2</color>
+    <color name="accent">#FF9800</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+
+    <!--HUY -->
+
+    <color name="white_tranper30">#abffffff</color>
+    <color name="black_tranper50">#7e000000</color>
+    <color name="black_tranper70">#51000000</color>
+    <color name="black_tranper80">#11000000</color>
+    <color name="categorie_color">#75524d40</color>
+    <color name="categorie_color_red">#7cff1f2a</color>
+    <color name="background_new">#666666</color>
+    <color name="main_color_gray">#EDEDED</color>
+    <color name="lite_blue">#359ff2</color>
+    <color name="message">#148BFD</color>
+    <color name="bgGuest">#f1f0f0</color>
+    <color name="bgGuestText">#212121</color>
+    <color name="black_overlay_367c7c7c">#367c7c7c</color>
+    
+    <color name="bg_awaiting_approval_convert_to_shop_owner_account">#FECCCB</color>
+    <color name="color_text_awaiting_approval">#B40A08</color>
+    <color name="bg_button_second">#329900</color>
+    <color name="bg_container">#F6F6F6</color>
+    <color name="color_border_edit_text">#8C8C8C</color>
+    <color name="color_payment">#81D4FA</color>
+    <color name="color_new_order">#e0f0ff</color>
+    <color name="color_blue_dark">#0002f8</color>
+
+</resources>

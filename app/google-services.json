@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "890372114047",
+    "firebase_url": "https://libyamarketplace-19aa0.firebaseio.com",
+    "project_id": "libyamarketplace-19aa0",
+    "storage_bucket": "libyamarketplace-19aa0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890372114047:android:0d342aadc0d915fc",
+        "android_client_info": {
+          "package_name": "com.libyasolutions.libyamarketplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890372114047-5ubt6u5khtj624p6q3lo6rujcammpr1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU-hk682nSN7D8z20vCgsBIFvj5wmLLeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890372114047-5ubt6u5khtj624p6q3lo6rujcammpr1i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

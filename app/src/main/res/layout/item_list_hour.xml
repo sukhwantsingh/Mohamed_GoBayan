@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_1x">
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        android:id="@+id/tv_day_of_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:text="Monday" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open_close_am"
+            android:textSize="@dimen/text_size_normal" />
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/tv_close_am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_2x"
+            android:text="08:00 AM"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="@dimen/text_size_normal" />
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/tv_open_am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_05x"
+            android:text="08:00 AM"
+            android:textSize="@dimen/text_size_normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/open_close_pm"
+            android:textSize="@dimen/text_size_normal" />
+
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/tv_close_pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_2x"
+            android:text="08:00 AM"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textSize="@dimen/text_size_normal" />
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/tv_open_pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dimen_05x"
+            android:text="08:00 AM"
+            android:textSize="@dimen/text_size_normal" />
+    </LinearLayout>
+</LinearLayout>

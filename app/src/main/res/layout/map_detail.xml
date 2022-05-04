@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="@dimen/image_width_map_detail"
+        android:layout_height="wrap_content"
+        android:background="@color/cl_white"
+        app:cardCornerRadius="@dimen/dimen_05x">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_05x"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/dimen_x1x"
+            android:paddingLeft="@dimen/dimen_1x"
+            android:paddingRight="@dimen/dimen_1x"
+            android:paddingTop="@dimen/dimen_x1x">
+
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblShopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="Lee lee"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal_3x" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_x2x"
+                    android:layout_height="@dimen/dimen_x2x"
+                    android:src="@drawable/ic_category" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    android:id="@+id/lblCategoryName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_05x"
+                    android:layout_marginTop="@dimen/app_margin_tiny"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="Lee lee"
+                    android:textColor="@color/gray_search"
+                    android:textSize="@dimen/text_size_normal" />
+            </LinearLayout>
+
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/app_margin_tiny"
+                android:singleLine="true"
+                android:text="Lee lee"
+                android:textColor="@color/gray_search"
+                android:textSize="@dimen/text_size_normal" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

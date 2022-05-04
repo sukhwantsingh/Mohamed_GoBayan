@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_confirm">
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen16"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen16"
+        android:text="@string/app_name"
+        android:textColor="@color/gray_dark"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_marginTop="@dimen/dimen16"
+        app:layout_constraintTop_toBottomOf="@id/tvContent"
+        android:background="@color/gray"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <View
+        android:id="@+id/view2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        android:background="@color/gray"
+        android:layout_width="1dp"
+        android:layout_height="@dimen/dimen50"/>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:textColor="@color/green"
+        android:textSize="@dimen/text_size_large"
+        app:layout_constraintBottom_toBottomOf="@id/view2"
+        app:layout_constraintTop_toTopOf="@id/view2"
+        android:text="@string/cancel"
+        app:layout_constraintRight_toLeftOf="@id/view2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tvConfirm"
+        android:textSize="@dimen/text_size_large"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="@id/view2"
+        app:layout_constraintTop_toTopOf="@id/view2"
+        android:text="@string/yes"
+        app:layout_constraintLeft_toRightOf="@id/view2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"/>
+
+</android.support.constraint.ConstraintLayout>

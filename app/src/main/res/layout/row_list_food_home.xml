@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutRowOffer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:id="@+id/progess"
+        style="@android:style/Widget.ProgressBar.Small.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/app_list_offer_height"
+        android:layout_height="@dimen/app_list_offer_height"
+        android:layout_margin="@dimen/app_margin_small">
+
+        <ImageView
+            android:id="@+id/imgFood"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/no_image_available" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|right"
+            android:background="@color/text_shadow_1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dimen_05x"
+            android:paddingRight="@dimen/dimen_05x">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblRateNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/cl_white"
+                android:textSize="@dimen/dimen_2x" />
+
+            <ImageView
+                android:layout_width="@dimen/dimen_2x"
+                android:layout_height="@dimen/dimen_2x"
+                android:background="@drawable/ic_star_selected_small"
+                android:layout_marginLeft="@dimen/dimen_05x" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRowOffer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/app_margin"
+        android:background="@drawable/bg_custom_spinner"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimen_1x">
+
+        <RelativeLayout
+            android:layout_width="@dimen/width_image_map"
+            android:layout_height="@dimen/width_image_map">
+
+            <ProgressBar
+                android:id="@+id/progess"
+                style="@android:style/Widget.ProgressBar.Small.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_1x"
+            android:orientation="vertical">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|left"
+                android:maxLines="2"
+                android:text="Shop 1"
+                android:textSize="@dimen/dimen_x2x" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgShop"
+                        android:layout_width="@dimen/dimen_x1x"
+                        android:layout_height="@dimen/dimen_x1x"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_category" />
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/lblShopName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/dimen_05x"
+                        android:layout_marginTop="@dimen/app_margin_tiny"
+                        android:singleLine="true"
+                        android:text="Lee lee"
+                        android:textColor="@color/gray_search"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_x1x"
+                        android:layout_height="@dimen/dimen_x1x"
+                        android:src="@drawable/ic_map_marker" />
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/dimen_05x"
+                        android:layout_marginTop="@dimen/app_margin_tiny"
+                        android:singleLine="true"
+                        android:text="Lee lee"
+                        android:textColor="@color/gray_search"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                        android:id="@+id/rtbRating"
+                        style="@style/Widget.AppCompat.RatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/min_height_rating_bar"
+                        android:clickable="false"
+                        android:isIndicator="true"
+                        android:max="10"
+                        android:numStars="5"
+                        android:progress="5"
+                        android:backgroundTint="@color/orange"
+                        app:mrb_progressTint="@color/orange"/>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible" />
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/lblDiscountPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/app_margin_small"
+                        android:text="50 $"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/dimen_x2x" />
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/lblPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="80 $"
+                        android:textColor="@color/cl_normalText"
+                        android:textSize="@dimen/dimen_2x" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

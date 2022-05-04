@@ -1,0 +1,166 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen150"
+        android:background="#f6f6f6"
+        android:scaleType="fitXY"
+        android:visibility="gone" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/layout_bottom"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/cl_white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_layout_bottom_height">
+
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="@dimen/dimen24"
+                    android:layout_height="@dimen/dimen24"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/dimen16"
+                    android:src="@drawable/ic_chevron_right_black_24dp"
+                    app:layout_constraintBottom_toTopOf="@+id/vieww"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/vieww"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/dimen16"
+                    android:background="@color/red"
+                    app:layout_constraintTop_toBottomOf="@id/btnBack" />
+            </RelativeLayout>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                android:id="@+id/tvFoodQuality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/dimen_05x"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal_3x"
+                app:layout_constraintBottom_toBottomOf="@id/bg"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bg" />
+        </android.support.design.widget.AppBarLayout>
+
+        <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toBottomOf="@+id/bg"
+            app:srl_direction="both">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rclViewShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_7x"
+        android:background="@color/background_new"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:id="@+id/tab_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_3x"
+                android:layout_height="@dimen/dimen_3x"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_hom0e" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_3x"
+                android:layout_height="@dimen/dimen_3x"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_sear8ch" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_cart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_3x"
+                android:layout_height="@dimen/dimen_3x"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_cart_6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_3x"
+                android:layout_height="@dimen/dimen_3x"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_profile5" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/iv_show_more"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginLeft="@dimen/dimen_2x"
+        android:layout_marginBottom="@dimen/dimen_4x"
+        android:src="@drawable/ic_arrow_down"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/layout_bottom"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</android.support.constraint.ConstraintLayout>

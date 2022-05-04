@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cl_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlt_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen50"
+        android:layout_alignParentTop="true"
+        android:background="@color/cl_white">
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+            android:id="@+id/lblTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="@string/chat"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:paddingLeft="8dp"
+            android:layout_toLeftOf="@id/iv_back"/>
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/dimen24"
+            android:layout_height="@dimen/dimen24"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/text_small_size_16"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/rlt_header"
+        android:background="@color/red" />
+
+    <com.libyasolutions.libyamarketplace.pulltorefresh.PullToRefreshListView
+        android:id="@+id/lsvProperties"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rlBottom"
+        android:layout_below="@+id/view"
+        android:divider="@color/transparent"
+        android:stackFromBottom="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/rlBottom"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:id="@+id/rlBottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@color/cl_white">
+        <ImageView
+            android:id="@+id/imgSend"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_send"
+            android:visibility="visible" />
+        <com.libyasolutions.libyamarketplace.widget.MyEditText
+            android:gravity="right"
+            android:id="@+id/edComment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_toLeftOf="@id/imgSend"
+            android:layout_weight="1"
+            android:background="@color/cl_white"
+            android:hint="@string/write_message_here"
+            android:padding="@dimen/dimen_1x"
+            android:textSize="@dimen/text_size_normal" />
+
+        <ImageView
+            android:id="@+id/imgSendFiles"
+            android:layout_width="@dimen/dimen_4x"
+            android:layout_height="@dimen/dimen_4x"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:src="@drawable/ic_send"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="banner_height">320dp</dimen>
+    <dimen name="app_margin_large">28dp</dimen>
+    <dimen name="app_margin">14dp</dimen>
+    <dimen name="app_margin_small">8dp</dimen>
+    <dimen name="app_margin_tiny">5dp</dimen>
+    <dimen name="app_layout_bottom_height">65dp</dimen>
+    <dimen name="app_list_offer_height">150dp</dimen>
+    <dimen name="app_button_delete_in_row_width_height">30dp</dimen>
+    <dimen name="app_button_top_width_height">60dp</dimen>
+    <dimen name="app_button_top_width_height1">50dp</dimen>
+    <dimen name="app_button_top_search_width_height">32dp</dimen>
+    <dimen name="app_image_width_height_in_row">150dp</dimen>
+    <dimen name="row_image_category_height">180dp</dimen>
+    <dimen name="row_shop_height">150dp</dimen>
+    <dimen name="text_title_size">28sp</dimen>
+    <dimen name="text_normal_size">24sp</dimen>
+    <dimen name="text_small_size_16">20sp</dimen>
+    <dimen name="text_small_size">18sp</dimen>
+    <dimen name="dialog_open_time_height">550dp</dimen>
+    <dimen name="width_image_map">150dp</dimen>
+    <dimen name="height_image_map">150dp</dimen>
+    <dimen name="image_detail_height">320dp</dimen>
+    <dimen name="image_width_map_detail">340dp</dimen>
+    <dimen name="width_title_account_text">120dp</dimen>
+    <dimen name="dialog_margin_top_bottom">10dp</dimen>
+    <dimen name="dialog_margin_left_right">15dp</dimen>
+    <dimen name="app_button_small">30dp</dimen>
+    <dimen name="app_button_normal">40dp</dimen>
+    <dimen name="btn_login_width">170dp</dimen>
+    <dimen name="btn_login_height">60dp</dimen>
+    <dimen name="btn_login_width1">170dp</dimen>
+    <dimen name="min_height_rating_bar">36dip</dimen>
+    <dimen name="max_height_rating_bar">36dip</dimen>
+
+</resources>

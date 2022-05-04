@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen120"
+    android:padding="4dp">
+
+    <ImageView
+        android:id="@+id/imgFood"
+        android:layout_width="@dimen/dimen120"
+        android:layout_height="@dimen/dimen120"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_foood_details"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.CardView
+        app:cardUseCompatPadding="false"
+        android:elevation="4dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="@dimen/text_small_size_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imgFood"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/lblFoodName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_small_size_16"
+                android:text="Autem Vel"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_small_size_16"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnSubtractNumber"
+                android:layout_width="@dimen/dimen24"
+                android:layout_height="@dimen/dimen24"
+                android:layout_margin="@dimen/text_small_size_16"
+                android:src="@drawable/ic_remove_circle_gray_128dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblNumberFood"
+                android:layout_width="@dimen/dimen24"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSubtractNumber"
+                app:layout_constraintRight_toLeftOf="@+id/btnSubtractNumber"
+                app:layout_constraintTop_toTopOf="@+id/btnSubtractNumber" />
+
+            <ImageView
+                android:id="@+id/btnAddNumber"
+                android:layout_width="@dimen/dimen24"
+                android:layout_height="@dimen/dimen24"
+                android:src="@drawable/ic_add_circle_orange_128dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSubtractNumber"
+                app:layout_constraintRight_toLeftOf="@+id/lblNumberFood"
+                app:layout_constraintTop_toTopOf="@+id/btnSubtractNumber" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblTotalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_small_size_16"
+                android:text="$20"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSubtractNumber"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="@dimen/dimen24"
+                android:layout_height="@dimen/dimen24"
+                android:layout_margin="@dimen/text_small_size_16"
+                android:src="@drawable/ic_delete_huy"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$20 /1item1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/btnSubtractNumber"
+                app:layout_constraintRight_toRightOf="@+id/lblFoodName"
+                app:layout_constraintTop_toBottomOf="@+id/lblFoodName" />
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lblOptions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/btnSubtractNumber"
+                app:layout_constraintLeft_toLeftOf="@+id/btnDelete"
+                app:layout_constraintTop_toBottomOf="@+id/lblFoodName" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_comment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_1x"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/lbl_user"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_size_normal_3x" />
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/rtb_user"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginLeft="@dimen/dimen_05x"
+                android:layout_marginRight="@dimen/dimen_05x"
+                android:clickable="false"
+                android:isIndicator="true"
+                android:max="5"
+                android:numStars="5"
+                android:progress="0"
+                android:backgroundTint="@color/orange"
+                app:mrb_progressTint="@color/orange"/>
+        </LinearLayout>
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/lbl_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_1x"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:text="Lorem Ipsum is simply dummy text of the printing and type setting industry."
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_size_normal" />
+
+        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            android:id="@+id/lbl_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="3 days ago"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_size_small_2x" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_dark" />
+</LinearLayout>

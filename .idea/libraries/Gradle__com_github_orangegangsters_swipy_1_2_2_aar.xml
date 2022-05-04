@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.orangegangsters:swipy:1.2.2@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/b1978c88df8bf9f12c713b725ec3a1e6/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/794eb9bf23a549b8b4506e22f0850f7c/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/b1978c88df8bf9f12c713b725ec3a1e6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/b1978c88df8bf9f12c713b725ec3a1e6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/794eb9bf23a549b8b4506e22f0850f7c/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/794eb9bf23a549b8b4506e22f0850f7c/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/794eb9bf23a549b8b4506e22f0850f7c/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.orangegangsters/swipy/1.2.2/ea2a55f3ea14778cdc8e25546f042575b8b513f7/swipy-1.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_white_corner_10">
+
+    <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        android:id="@+id/tv_dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/convert_to_shop_owner"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dialog_message" />
+
+    <com.libyasolutions.libyamarketplace.widget.MyButton
+        android:id="@+id/btn_no"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:text="@string/button_text_no"
+        android:textAllCaps="false"
+        android:textColor="@color/blue_search"
+        android:textSize="22sp"
+        app:layout_constraintRight_toLeftOf="@+id/view"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view1" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="1dp"
+        android:layout_height="44dp"
+        android:background="@color/gray"
+        app:layout_constraintRight_toLeftOf="@+id/btn_yes"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toRightOf="@+id/btn_no"
+        app:layout_constraintTop_toBottomOf="@id/view1" />
+
+    <com.libyasolutions.libyamarketplace.widget.MyButton
+        android:id="@+id/btn_yes"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:text="@string/button_text_yes"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="@color/blue_search"
+        android:textSize="22sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toRightOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@id/view1" />
+
+</android.support.constraint.ConstraintLayout>

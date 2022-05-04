@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.libyasolutions.libyamarketplace">
+
+    <permission
+        android:name="com.libyasolutions.libyamarketplace.googlemapv2.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission
+        android:name="android.permission.READ_CONTACTS"
+        tools:node="remove" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_CONTACTS"
+        tools:node="remove" />
+
+    <uses-permission
+        android:name="android.permission.GET_ACCOUNTS"
+        tools:node="remove" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name="com.libyasolutions.libyamarketplace.network.ControllerRequest"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id"
+            tools:replace="android:value" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/api_key" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.SplashActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainTabActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.HomeActivity" />
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.ListHomeShopActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.ListHomeFoodActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.ShopDetailsNew"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchProductResuiltActivityNew"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchShopResultActivityNew"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.ProductDetailsNewActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.RegisterActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.cart.ShopCartDetailActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainCartActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainUserActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.SearchShopResultActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.SearchProductResultActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.DetailShopOrderActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.DetailFoodOfShopOrderActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.tabs.ViewImageActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.FeedBackActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.AddReviewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.PreferencesActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.EditProfileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ListCategoryActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ShopDetailActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ShopsCommentActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ProductCommentActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ListFoodActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.FavoriteActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ProductDetailActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.MapDetailActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
+        <!-- start Paypal activity -->
+        <service
+            android:name="com.paypal.android.sdk.payments.PayPalService"
+            android:exported="false" />
+
+        <activity android:name="com.paypal.android.sdk.payments.PaymentActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.LoginActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity" />
+        <activity
+            android:name="io.card.payment.CardIOActivity"
+            android:configChanges="keyboardHidden|orientation" />
+        <activity android:name="io.card.payment.DataEntryActivity" />
+        <!--end paypal-->
+
+        <activity android:name="com.libyasolutions.libyamarketplace.activity.AboutUsActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.ListChatActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ChatDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.FullImageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ShopManagementActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity
+            android:name=".activity.ProductManagementActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity
+            android:name=".activity.ChooseExtraLocationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity
+            android:name=".activity.ChooseTimeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ManageOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity
+            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="false" />
+
+        <activity android:name=".activity.tabs.ConvertShopOwnerActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".activity.AddNewShopActivityV2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity android:name=".activity.AddNewProductActivityV2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <activity android:name=".activity.ManageOrderDetailActivityV2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".activity.tabs.OrderHistoryActivityV2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".activity.tabs.OrderHistoryDetailV2"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <!--start services-->
+        <receiver
+            android:name=".service.MessageReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="NEW_MESSAGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="READ_MESSAGE" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.MessageService" />
+
+        <service android:name=".fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--end services-->
+
+        <!--start provider-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.libyasolutions.libyamarketplace.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <!--end provider-->
+
+    </application>
+
+</manifest>

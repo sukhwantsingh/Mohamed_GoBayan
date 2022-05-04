@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/create_new_shop"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_chevron_right_black_24dp"
+                android:contentDescription="@string/content_description"/>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/red" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:translationY="25dp"
+                    android:background="@drawable/bg_edit_text_normal">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:gravity="center"
+                        android:text="@string/add_banner"
+                        android:textColor="@color/black"
+                        android:textSize="22sp" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_banner_shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"/>
+
+                </FrameLayout>
+
+                <ImageView
+                    android:id="@+id/iv_add_banner"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/content_description"
+                    android:src="@drawable/ic_add_banner"
+                    android:layout_gravity="left|top"/>
+
+            </FrameLayout>
+
+            <me.relex.circleindicator.CircleIndicator2
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:ci_height="10dp"
+                app:ci_width="10dp"
+                app:ci_animator="@anim/no_indicator"
+                app:ci_drawable="@drawable/red_radius"
+                app:ci_drawable_unselected="@drawable/gray_radius" />
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="25dp">
+
+                <FrameLayout
+                    android:id="@+id/layout_add_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_logo_shop"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:scaleType="centerCrop"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:translationY="-12dp"
+                        android:translationX="-12dp"
+                        app:riv_corner_radius="6dip"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="@color/gray_light"/>
+
+                    <ImageView
+                        android:id="@+id/iv_add_logo"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/content_description"
+                        android:src="@drawable/ic_add_logo"
+                        android:layout_gravity="bottom|right"/>
+
+                </FrameLayout>
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    android:id="@+id/tv_add_photo"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_logo"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    app:layout_constraintTop_toTopOf="@id/layout_add_logo"
+                    app:layout_constraintLeft_toRightOf="@id/layout_add_logo" />
+
+                <com.libyasolutions.libyamarketplace.widget.MyButton
+                    android:id="@+id/btn_save_shop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_green_corner_6"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:textSize="22sp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_shop_management"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:background="@drawable/bg_red_button_with_border">
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_and_add_products"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_manage"
+                    android:contentDescription="@string/content_description"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <FrameLayout
+                android:id="@+id/container_shop_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_shop_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/bg_container_info"
+                    android:paddingBottom="20dp">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_shop_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="*Shop Name"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_shop_name"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_shop_name"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:contentDescription="@string/content_description"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_name"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_name"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_name"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_shop_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_name"
+                        tools:text="*Shop Phone"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="phone"
+                        android:padding="10dp"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_shop_phone"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_shop_phone"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_phone"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_phone"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_phone"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_shop_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_phone"
+                        tools:text="*Shop description"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text|textMultiLine"
+                        android:gravity="top|right"
+                        android:lines="5"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_shop_description"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_shop_description"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_description"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_description"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_description"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_save_shop_info"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="@string/save_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_description"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_cancel_shop_info"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/cancel_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toRightOf="@id/tv_save_shop_info"
+                        app:layout_constraintTop_toTopOf="@id/tv_save_shop_info"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/btn_shop_info"
+                    android:layout_width="170dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/bg_red_button_with_border">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_text_shop_information"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_shop_info_show"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_show_layout"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_shop_info_hide"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_hide_layout"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/container_address_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_address_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_container_info"
+                    android:paddingBottom="20dp">
+
+                    <FrameLayout
+                        android:id="@+id/layout_choose_shop_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                            android:id="@+id/tv_shop_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/choose_city"
+                            android:textSize="22sp"
+                            android:textColor="@color/black"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_2x"
+                            android:layout_height="@dimen/dimen_2x"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginLeft="@dimen/dimen_05x"
+                            android:src="@drawable/ic_dropdown"
+                            android:contentDescription="@string/content_description"/>
+                    </FrameLayout>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        android:enabled="false"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_choose_shop_city"/>
+
+
+                    <ImageView
+                        android:id="@+id/iv_empty_city"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_city"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_city"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_city"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_shop_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_city"
+                        tools:text="*Shop address"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_shop_address"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_shop_address"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_address"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_address"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_address"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyButton
+                        android:id="@+id/btn_location_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_button_location"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:textSize="22sp"
+                        android:text="@string/location_button_text"
+                        android:textColor="@color/white"
+                        android:textAllCaps="false"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_address"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_location_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        android:enabled="false"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/btn_location_address"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_shop_location"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintRight_toLeftOf="@id/edt_location_address"
+                        app:layout_constraintTop_toTopOf="@id/edt_location_address"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_location_address"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_save_address_info"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="@string/save_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_location_address"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_cancel_address_info"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/cancel_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toRightOf="@id/tv_save_address_info"
+                        app:layout_constraintTop_toTopOf="@id/tv_save_address_info"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/btn_address_info"
+                    android:layout_width="170dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/bg_red_button_with_border">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/button_text_shop_address"
+                        android:textColor="@color/white"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:textSize="22sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_address_info_show"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_show_layout"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_address_info_hide"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_hide_layout"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/container_shop_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_shop_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_container_info"
+                    android:paddingBottom="20dp">
+
+                    <FrameLayout
+                        android:id="@+id/layout_choose_categories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                            android:id="@+id/tv_shop_categories"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/choose_categories"
+                            android:textSize="22sp"
+                            android:textColor="@color/black"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_2x"
+                            android:layout_height="@dimen/dimen_2x"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginLeft="@dimen/dimen_05x"
+                            android:src="@drawable/ic_dropdown"
+                            android:contentDescription="@string/content_description"/>
+                    </FrameLayout>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_categories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        android:enabled="false"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_choose_categories"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_categories"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_categories"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_categories"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_categories"/>
+
+                    <FrameLayout
+                        android:id="@+id/layout_choose_hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_categories">
+
+                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                            android:id="@+id/tv_shop_hour"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:text="@string/choose_hour"
+                            android:textSize="22sp"
+                            android:textColor="@color/black"/>
+
+                        <ImageView
+                            android:layout_width="@dimen/dimen_2x"
+                            android:layout_height="@dimen/dimen_2x"
+                            android:layout_gravity="left|center_vertical"
+                            android:layout_marginLeft="@dimen/dimen_05x"
+                            android:src="@drawable/ic_dropdown"
+                            android:contentDescription="@string/content_description"/>
+
+                    </FrameLayout>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_shop_hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        android:enabled="false"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/layout_choose_hour"/>
+
+                    <ImageView
+                        android:id="@+id/iv_empty_shop_hour"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_warning_empty"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintTop_toTopOf="@id/edt_shop_hour"
+                        app:layout_constraintBottom_toBottomOf="@id/edt_shop_hour"
+                        app:layout_constraintRight_toLeftOf="@id/edt_shop_hour"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_save_categories_info"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="@string/save_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_shop_hour"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_cancel_categories_info"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/cancel_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toRightOf="@id/tv_save_categories_info"
+                        app:layout_constraintTop_toTopOf="@id/tv_save_categories_info"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/btn_shop_categories"
+                    android:layout_width="170dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/bg_red_button_with_border">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/categories_button_text"
+                        android:textColor="@color/white"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:textSize="22sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_shop_categories_show"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_show_layout"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_shop_categories_hide"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_hide_layout"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/container_website_links"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/layout_website_links"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bg_container_info"
+                    android:paddingBottom="20dp">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_facebook_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="*Facebook link"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_facebook_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_facebook_link"/>
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_empty_facebook_link"-->
+<!--                        android:layout_width="32dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginRight="8dp"-->
+<!--                        android:src="@drawable/ic_warning_empty"-->
+<!--                        android:visibility="gone"-->
+<!--                        tools:visibility="visible"-->
+<!--                        android:contentDescription="@string/content_description"-->
+<!--                        app:layout_constraintRight_toLeftOf="@id/edt_facebook_link"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/edt_facebook_link"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@id/edt_facebook_link"/>-->
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_instagram_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_facebook_link"
+                        tools:text="*Instagram link"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_instagram_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_instagram_link"/>
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_empty_instagram_link"-->
+<!--                        android:layout_width="32dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginRight="8dp"-->
+<!--                        android:src="@drawable/ic_warning_empty"-->
+<!--                        android:visibility="gone"-->
+<!--                        tools:visibility="visible"-->
+<!--                        android:contentDescription="@string/content_description"-->
+<!--                        app:layout_constraintRight_toLeftOf="@id/edt_instagram_link"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/edt_instagram_link"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@id/edt_instagram_link"/>-->
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_twitter_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_instagram_link"
+                        tools:text="*Twitter link"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_twitter_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_twitter_link"/>
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_empty_twitter_link"-->
+<!--                        android:layout_width="32dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginRight="8dp"-->
+<!--                        android:src="@drawable/ic_warning_empty"-->
+<!--                        android:visibility="gone"-->
+<!--                        tools:visibility="visible"-->
+<!--                        android:contentDescription="@string/content_description"-->
+<!--                        app:layout_constraintRight_toLeftOf="@id/edt_twitter_link"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/edt_twitter_link"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@id/edt_twitter_link"/>-->
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_website_link"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_twitter_link"
+                        tools:text="*Website link"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                        android:id="@+id/edt_website_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:background="@drawable/bg_edit_text_normal"
+                        android:padding="6dp"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:inputType="text"
+                        android:gravity="center_vertical|right"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_website_link"/>
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/iv_empty_website_link"-->
+<!--                        android:layout_width="32dp"-->
+<!--                        android:layout_height="32dp"-->
+<!--                        android:layout_marginRight="8dp"-->
+<!--                        android:src="@drawable/ic_warning_empty"-->
+<!--                        android:visibility="gone"-->
+<!--                        tools:visibility="visible"-->
+<!--                        android:contentDescription="@string/content_description"-->
+<!--                        app:layout_constraintRight_toLeftOf="@id/edt_website_link"-->
+<!--                        app:layout_constraintTop_toTopOf="@id/edt_website_link"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@id/edt_website_link"/>-->
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_save_website_link"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="60dp"
+                        android:text="@string/save_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/edt_website_link"/>
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:id="@+id/tv_cancel_website_link"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="@string/cancel_button_text"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        android:background="@drawable/bg_red_button_with_border"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        app:layout_constraintLeft_toRightOf="@id/tv_save_website_link"
+                        app:layout_constraintTop_toTopOf="@id/tv_save_website_link"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/btn_website_links"
+                    android:layout_width="170dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/bg_red_button_with_border">
+
+                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/website_links_button_text"
+                        android:textColor="@color/white"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:textSize="22sp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_website_link_show"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_show_layout"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/iv_website_link_hide"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_hide_layout"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:contentDescription="@string/content_description"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </FrameLayout>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tv_status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/status_text"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tv_status"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@drawable/bg_edit_text_normal"
+                android:visibility="gone"
+                tools:text="Active"
+                tools:visibility="visible"/>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tv_featured_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/featured_text"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tv_featured"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@drawable/bg_edit_text_normal"
+                tools:text="not Featured"
+                tools:visibility="visible"
+                android:visibility="gone"/>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tv_verified_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/verified_text"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tv_verified"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@drawable/bg_edit_text_normal"
+                tools:text="not Verified"
+                tools:visibility="visible"
+                android:visibility="gone"/>
+
+            <com.libyasolutions.libyamarketplace.widget.MyButton
+                android:id="@+id/btn_create_shop"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_gravity="left"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_green_corner_6"
+                android:text="@string/create_shop_button_text"
+                android:textSize="22sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg_foood_details">
+
+    <fragment
+        android:id="@+id/fragmentRegister"
+        android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.RegisterFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <fragment
+        android:id="@+id/fragmentMyAcc"
+        android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.AccountFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <fragment
+        android:id="@+id/fragmentHistory"
+        android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.HistoryFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.LoginFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+
+</RelativeLayout>

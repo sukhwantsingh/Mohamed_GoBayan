@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/bg_awaiting_approval_convert_to_shop_owner_account" />
+    <stroke
+        android:color="@color/color_text_awaiting_approval"
+        android:width="1dp" />
+</shape>
