@@ -1,2 +1,9 @@
 # Project exclude paths
-/.gradle/
+.idea/
+app/build/
+EBS/
+mPaySDK_2.0/
+app/release/output.json
+app/release/output-metadata.json
+.gradle/
+*.apk
