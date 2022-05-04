@@ -2,12 +2,11 @@ package com.libyasolutions.libyamarketplace.activity.tabs.cart;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +16,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.libyasolutions.libyamarketplace.BaseFragment;
 import com.libyasolutions.libyamarketplace.R;
-import com.libyasolutions.libyamarketplace.activity.tabs.LoginActivity;
 import com.libyasolutions.libyamarketplace.activity.tabs.MainCartActivity;
-import com.libyasolutions.libyamarketplace.adapter.ShopCartAdapter;
 import com.libyasolutions.libyamarketplace.adapter.ShopCartAdapterNew;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.object.Shop;
 import com.libyasolutions.libyamarketplace.util.CustomToast;
-import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
 import com.libyasolutions.libyamarketplace.util.StringUtility;
 
 @SuppressLint("NewApi")

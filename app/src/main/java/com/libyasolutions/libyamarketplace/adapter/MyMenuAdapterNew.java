@@ -1,7 +1,7 @@
 package com.libyasolutions.libyamarketplace.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.libyasolutions.libyamarketplace.R;
-import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.object.ExtraOptions;
 import com.libyasolutions.libyamarketplace.object.Menu;
 import com.libyasolutions.libyamarketplace.object.OptionsItem;

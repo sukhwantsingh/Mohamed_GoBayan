@@ -3,9 +3,9 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/9871fc9b0cae7494c9491dfb1d96cc82/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/9871fc9b0cae7494c9491dfb1d96cc82/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/9c48929696965383969c15d6080d5ad4/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/9c48929696965383969c15d6080d5ad4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/9c48929696965383969c15d6080d5ad4/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-recyclerviewfastscroller-0.1.3.aar/5d6d0c88a65ecaddd90b3ba3f7ea0c65/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-recyclerviewfastscroller-0.1.3.aar/5d6d0c88a65ecaddd90b3ba3f7ea0c65/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-recyclerviewfastscroller-0.1.3.aar/5d6d0c88a65ecaddd90b3ba3f7ea0c65/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

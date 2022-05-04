@@ -3,9 +3,9 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiple-images-selector-1.1.5.aar/5d5a4e58d86e39232bed014ca3b85d0e/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiple-images-selector-1.1.5.aar/5d5a4e58d86e39232bed014ca3b85d0e/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiple-images-selector-1.1.5.aar/8a2544189c96f547c01844b4178d55d3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiple-images-selector-1.1.5.aar/8a2544189c96f547c01844b4178d55d3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/multiple-images-selector-1.1.5.aar/8a2544189c96f547c01844b4178d55d3/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multiple-images-selector-1.1.5.aar/5ca30d08802ee32ca9ad1790c3971849/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multiple-images-selector-1.1.5.aar/5ca30d08802ee32ca9ad1790c3971849/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-multiple-images-selector-1.1.5.aar/5ca30d08802ee32ca9ad1790c3971849/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

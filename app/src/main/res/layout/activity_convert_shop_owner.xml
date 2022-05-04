@@ -8,7 +8,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -50,7 +50,7 @@
 
         </RelativeLayout>
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:textColor="@color/black"
                 android:textSize="22sp" />
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_waiting_approval"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -109,14 +109,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_shop_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -248,9 +248,9 @@
                         app:layout_constraintTop_toTopOf="@id/edt_city"
                         tools:visibility="visible" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btn_shop_info"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
@@ -289,7 +289,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:visibility="visible" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
             <FrameLayout
@@ -297,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_shop_owner_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -387,9 +387,9 @@
                         app:layout_constraintTop_toTopOf="@id/edt_shop_phone"
                         tools:visibility="visible" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btn_shop_owner_info"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
@@ -428,7 +428,7 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         tools:visibility="visible" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
             <com.libyasolutions.libyamarketplace.widget.MyButton

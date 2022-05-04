@@ -5,7 +5,7 @@
     android:layout_marginTop="20dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -166,7 +166,7 @@
             app:layout_constraintTop_toTopOf="@id/tv_value_product_total"
             app:layout_constraintBottom_toBottomOf="@id/tv_value_product_total"/>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.libyasolutions.libyamarketplace.widget.MyButton
         android:layout_width="170dp"

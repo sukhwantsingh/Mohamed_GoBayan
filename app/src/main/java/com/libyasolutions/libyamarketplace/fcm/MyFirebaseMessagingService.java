@@ -1,6 +1,5 @@
 package com.libyasolutions.libyamarketplace.fcm;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,8 +10,8 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Vibrator;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.core.app.NotificationCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -23,10 +22,6 @@ import com.libyasolutions.libyamarketplace.activity.tabs.ConvertShopOwnerActivit
 import com.libyasolutions.libyamarketplace.activity.tabs.MainTabActivity;
 import com.libyasolutions.libyamarketplace.activity.tabs.OrderHistoryDetailV2;
 import com.libyasolutions.libyamarketplace.config.Constant;
-import com.libyasolutions.libyamarketplace.config.GlobalValue;
-import com.libyasolutions.libyamarketplace.object.MessageEvent;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.Map;
 

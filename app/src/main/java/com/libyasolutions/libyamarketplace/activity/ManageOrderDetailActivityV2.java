@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -36,8 +36,6 @@ import com.libyasolutions.libyamarketplace.object.StatusObj;
 import com.libyasolutions.libyamarketplace.util.Logger;
 import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
 import com.libyasolutions.libyamarketplace.util.NetworkUtil;
-
-import org.xml.sax.ErrorHandler;
 
 import java.util.ArrayList;
 

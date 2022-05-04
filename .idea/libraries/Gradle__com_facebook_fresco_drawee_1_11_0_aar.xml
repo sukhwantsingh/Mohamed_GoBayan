@@ -3,9 +3,9 @@
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/drawee-1.11.0.aar/25bd0e721ac14ab0c5fdb96bac4c1ec8/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/drawee-1.11.0.aar/25bd0e721ac14ab0c5fdb96bac4c1ec8/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/drawee-1.11.0.aar/feffd65c30071e5cc92c4ae78b100a1d/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/drawee-1.11.0.aar/feffd65c30071e5cc92c4ae78b100a1d/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/drawee-1.11.0.aar/feffd65c30071e5cc92c4ae78b100a1d/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-drawee-1.11.0.aar/f4836a71d3c3c953e63aab98d3d1e188/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-drawee-1.11.0.aar/f4836a71d3c3c953e63aab98d3d1e188/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-drawee-1.11.0.aar/f4836a71d3c3c953e63aab98d3d1e188/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

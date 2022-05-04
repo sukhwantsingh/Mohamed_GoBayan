@@ -1,10 +1,6 @@
 package com.libyasolutions.libyamarketplace.dialog;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.libyasolutions.libyamarketplace.BaseDialog;
@@ -12,9 +8,7 @@ import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.config.Constant;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class OrderStatusDialog extends BaseDialog {
 

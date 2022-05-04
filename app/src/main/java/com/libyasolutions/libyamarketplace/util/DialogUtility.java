@@ -3,7 +3,7 @@ package com.libyasolutions.libyamarketplace.util;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.view.ContextThemeWrapper;
+import androidx.appcompat.view.ContextThemeWrapper;
 import android.widget.EditText;
 import android.widget.Toast;
 

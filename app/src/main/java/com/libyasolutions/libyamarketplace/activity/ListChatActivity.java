@@ -2,7 +2,7 @@ package com.libyasolutions.libyamarketplace.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,10 +19,8 @@ import com.libyasolutions.libyamarketplace.BaseActivity;
 import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.adapter.ListChatAdapter;
 import com.libyasolutions.libyamarketplace.config.Constant;
-import com.libyasolutions.libyamarketplace.config.PreferencesManager;
 import com.libyasolutions.libyamarketplace.object.Account;
 import com.libyasolutions.libyamarketplace.object.Conversation;
-import com.libyasolutions.libyamarketplace.object.UserObj;
 import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
 import com.libyasolutions.libyamarketplace.util.NetworkUtil;
 

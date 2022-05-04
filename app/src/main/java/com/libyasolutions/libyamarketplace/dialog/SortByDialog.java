@@ -1,7 +1,7 @@
 package com.libyasolutions.libyamarketplace.dialog;
 
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.widget.TextView;
 
 import com.libyasolutions.libyamarketplace.BaseDialog;

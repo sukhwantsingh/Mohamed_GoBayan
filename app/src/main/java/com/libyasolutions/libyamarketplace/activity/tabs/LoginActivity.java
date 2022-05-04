@@ -1,7 +1,6 @@
 package com.libyasolutions.libyamarketplace.activity.tabs;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
@@ -9,8 +8,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.view.ContextThemeWrapper;
+import androidx.core.app.ActivityCompat;
+import androidx.appcompat.view.ContextThemeWrapper;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;

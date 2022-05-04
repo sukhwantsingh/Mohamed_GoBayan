@@ -28,7 +28,7 @@
         android:background="@color/red" />
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_option"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

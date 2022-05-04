@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 
-public class MyButton extends android.support.v7.widget.AppCompatButton {
+public class MyButton extends androidx.appcompat.widget.AppCompatButton {
     public MyButton(Context context) {
         super(context);
         initTypeface();

@@ -16,16 +16,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
@@ -584,7 +584,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
     private void showConfirmDialog(String message, int position) {
         View view = getLayoutInflater().inflate(R.layout.dialog_confirm, null);
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
         builder.setView(view);
         builder.setCancelable(false);
 
@@ -778,7 +778,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
         dialog.show();
 
-        TextView dialogTitle = dialog.findViewById(android.support.v7.appcompat.R.id.alertTitle);
+        TextView dialogTitle = dialog.findViewById(androidx.appcompat.R.id.alertTitle);
         Typeface typefaceTitle = Typeface.createFromAsset(getAssets(), "fonts/Nawar_Font_Regular.ttf");
         if (dialogTitle != null) {
             dialogTitle.setTypeface(typefaceTitle);

@@ -2,25 +2,22 @@ package com.libyasolutions.libyamarketplace.activity.tabs;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.libyasolutions.libyamarketplace.BaseActivityV2;
 import com.libyasolutions.libyamarketplace.R;
-import com.libyasolutions.libyamarketplace.activity.SplashActivity;
 import com.libyasolutions.libyamarketplace.adapter.ProductOrderAdapterV2;
 import com.libyasolutions.libyamarketplace.config.Constant;
-import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.modelmanager.ErrorNetworkHandler;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManager;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManagerListener;
