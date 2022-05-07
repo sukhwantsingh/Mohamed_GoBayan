@@ -1,0 +1,529 @@
+<resources>
+    <!--Common String-->
+    <string name="app_name">Libya Marketplace</string>
+    <string name="near_by">near by</string>
+    <string name="action_settings">settings</string>
+    <string name="message_loading_data">loading data&#8230;</string>
+    <string name="message_network_is_unavailable">network is unavailable</string>
+    <string name="message_server_error">Server error, error try again later.</string>
+    <string name="message_error_cant_extract_server_response">Error. No response from the server</string>
+    <string name="tel">Phone</string>
+    <string name="message_please_wait">Please wait&#8230;</string>
+    <string name="loading">Loading</string>
+    <string name="Setting">Settings</string>
+    <string name="finding_service">Find the network</string>
+    <!--String-->
+    <string name="administrator">Management</string>
+    <string name="order_no">Order no</string>
+    <string name="date_creator">Order date</string>
+    <string name="total_amountnew">Total amount</string>
+    <string name="status_new">status</string>
+    <string name="lbl_new">New</string>
+    <string name="test_string">Now we must provide some necessary XML files to define layouts. Because of we will set a ProgressBar at the bottom of RecyclerView when data is loading, it will have two item types. The normal item that to show info of user and loading item that place at bottom to show progress bar.</string>
+    <string name="_3_deals_available">3 Offers Available</string>
+    <string name="off_20">%20 Discount</string>
+    <string name="emailnew">Email</string>
+    <string name="call_restaurant">Contact the store to confirm the order or for delivery</string>
+    <string name="about">About</string>
+    <string name="aboutus">About us</string>
+    <string name="no_more_data">No more data</string>
+    <string name="title_bank_info">Bank account information:</string>
+    <string name="products">Products</string>
+    <string name="restaurant_found">Existing stores</string>
+    <string name="ok">Ok</string>
+    <string name="all_cities">All cities</string>
+    <string name="all_categories">All categories</string>
+    <string name="lbl_id">Definition</string>
+    <string name="you_had_all_of_comments_already">You have all the comments.</string>
+    <string name="item_is_existed_my_cart">This order is in the cart</string>
+    <string name="item_is_added_my_cart">This order is added to the cart</string>
+    <string name="have_error">Error Try again please</string>
+    <string name="processing">Processing</string>
+    <!--Restaurant String-->
+    <string name="currency">D.L </string>
+    <string name="home">Home</string>
+    <string name="home_upper_case">Home page</string>
+    <string name="search">Search</string>
+    <string name="search_upper_case">Search</string>
+    <string name="searchShop">Find a shop</string>
+    <string name="searchMenu">Search for a product</string>
+    <string name="categories">Categories</string>
+    <string name="myMenu">My Menu</string>
+    <string name="my_cart_upper_case">Cart</string>
+    <string name="orderDetails">Order Details</string>
+    <string name="payment_information">Payment Information</string>
+    <string name="payment_methods">Payment methods</string>
+    <string name="payment_methods_select">Select payment methods</string>
+    <string name="payment_successfully">Payment successfully</string>
+    <string name="total">Total</string>
+    <string name="buyer_information">Buyer information</string>
+    <string name="name">Name</string>
+    <string name="email_info">Email</string>
+    <string name="phone_info">Phone</string>
+    <string name="phone_info_about">Phone</string>
+    <string name="address_info">Address</string>
+    <string name="city">City</string>
+    <string name="zip_code">zip code</string>
+    <string name="deliveryInfo">Delivery Information</string>
+    <string name="same_as_buyer">Same as buyer</string>
+    <string name="continue_upper_case">Done</string>
+    <string name="account">Account</string>
+    <string name="account_upper_case">Account settings</string>
+    <string name="login_upper_case">Sign in</string>
+    <string name="history">History</string>
+    <string name="register_shop_owner">Register shop owner</string>
+    <string name="myAccount">myAccount</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="preferences">Favorites</string>
+    <string name="my_favourites">My Favorites</string>
+    <string name="feedBack">FeedBack</string>
+    <string name="feedBack_text">Send message to the management</string>
+    <string name="detail">Details</string>
+    <string name="setting">Settings</string>
+    <string name="timeable">جدول مواعيد</string>
+    <string name="menu">Products</string>
+    <string name="product_upper_case">Products List Settings</string>
+    <string name="shops">Shops</string>
+    <string name="shops_upper_case">Shops</string>
+    <string name="all">All</string>
+    <string name="map">Map</string>
+    <string name="map_upper_case">Map</string>
+    <string name="direction">Direction</string>
+    <string name="phoneNumber">Phone</string>
+    <string name="bestDeals">Best Deals</string>
+    <string name="menus">Products</string>
+    <string name="open">Open</string>
+    <string name="closed">Closed</string>
+    <string name="OpenHour">Open Hours</string>
+    <string name="titleDialogOpenHour">34 hours</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="lblNoteTime">Note: The green timing is working hours for the next day</string>
+    <string name="login">Login</string>
+    <string name="login_facebook">Register with a Facebook account</string>
+    <string name="forget_password">Forgot your password</string>
+    <string name="forget_password_title">Forgot your password</string>
+    <string name="forget_password_content">Please fill in your email in the form and send it to us. We will reset your password and send it back to your email</string>
+    <string name="register">Register</string>
+    <string name="account_information">Account information</string>
+    <string name="personal_information">Personal information</string>
+    <string name="address_information">Address information</string>
+    <string name="report">Report</string>
+    <string name="logout">Logout</string>
+    <string name="save_changes">Save changes</string>
+    <string name="updateInfor">Update profile</string>
+    <string name="update">Update</string>
+    <string name="updatePass">Update password</string>
+    <string name="myInfo">my Info</string>
+    <string name="userHint">User name</string>
+    <string name="password">password</string>
+    <string name="repassword">Confirm password</string>
+    <string name="mail">Email</string>
+    <string name="fullName">Full name</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="cancel">Cancel</string>
+    <string name="Ok">Ok</string>
+    <string name="Des">Description</string>
+    <string name="SearchFor">Search</string>
+    <string name="shop">Shops</string>
+    <string name="title">title</string>
+    <string name="price">price</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="add_upper_case">Add</string>
+    <string name="to_cart">To cart</string>
+    <string name="add_review">Add review</string>
+    <string name="order">Order</string>
+    <string name="order_upper_case">Order</string>
+    <string name="send">Send</string>
+    <string name="back">Back</string>
+    <string name="sum">Total</string>
+    <string name="btn_send">Send</string>
+    <string name="search_key">Search</string>
+    <string name="add">add</string>
+    <string name="vat">vat</string>
+    <string name="ship">shipping</string>
+    <string name="item">item</string>
+    <string name="items">items</string>
+    <string name="home_menu_title">Products within 10 km</string>
+    <string name="home_shop_title">Shops within 10 km</string>
+    <string name="rating">rating</string>
+    <string name="rate">rate</string>
+    <string name="fullname">اFull name</string>
+    <string name="content">content</string>
+    <string name="your_review">your review</string>
+    <string name="reviews">reviews</string>
+    <string name="review">reviews</string>
+    <string name="add_your_review">Add review</string>
+    <string name="load_more">load more</string>
+    <string name="distance">distance</string>
+    <string name="max_distance">10Km</string>
+    <string name="minutes_ago">minutes ago</string>
+    <string name="hours_ago">hours ago</string>
+    <string name="hour_ago">hour ago</string>
+    <string name="just_now">just now</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="two_days_ago">two days ago</string>
+    <string name="three_days_ago">3 days ago</string>
+    <string name="forward_slash_item">item</string>
+
+    <!-- account info -->
+
+    <string name="lblPassword">Password</string>
+    <string name="lblPasswordNew">New Password</string>
+    <string name="lblPasswordOld">Old Password</string>
+    <string name="lblfullname">Full name</string>
+    <string name="lblPassAgain">confirm password</string>
+    <string name="lblEmail">Email</string>
+    <string name="lblphone">Phone</string>
+    <string name="lblAddress">Address</string>
+    <string name="orders_in_histories">orders histories</string>
+    <!-- ERRORS MESSAGE -->
+    <string name="error_UserName_empty">Please enter a username</string>
+    <string name="error_title_empty">Please enter title </string>
+    <string name="error_des_empty">Please enter a description</string>
+    <string name="error_Password_empty">Please enter password</string>
+    <string name="error_PasswordNew_empty">Please enter new passwordة</string>
+    <string name="error_Password_Wrong">Password is wrong</string>
+    <string name="error_RePassword_empty">confirm password</string>
+    <string name="error_RePassword_wrong">Confirm Password Wrong</string>
+    <string name="error_Email_empty">The email is wrong</string>
+    <string name="error_Email_wrong">Email format is wrong</string>
+    <string name="error_FullName">Please enter the full name</string>
+    <string name="error_Phone">Please enter the full number</string>
+    <string name="error_Address">Please enter the address</string>
+    <string name="error_city">Please enter the city</string>
+    <string name="error_zip_code">Zip Code</string>
+    <string name="error_adding_new_comment">Error, please try again</string>
+    <string name="message_adding_new_comment_successfully">Comment added successfully</string>
+    <string name="message_success">Done successfully</string>
+    <string name="message_order_false">Error, please try again</string>
+    <string name="message_no_item_menu">There are no orders in the cart</string>
+    <string name="message_no_login">please Login</string>
+    <string name="message_input_user_pass">Please enter the username and the password</string>
+    <string name="message_login_false">An error while logging in, please try again</string>
+    <string name="remind_entering_user_name">Login Please</string>
+    <string name="please_enter_your_name">Login Please</string>
+    <string name="please_leave_your_messages">please leave your message</string>
+    <string name="wait_for_getting_location">please wait</string>
+    <string name="message_permission_register_shop_owner">You must be a user to access the service</string>
+    <string name="message_send_request_successfully">Your request has been successfully completed, Please wait</string>
+    <string name="message_error_undefined">Sorry, Unexpected error, please try again</string>
+    <string name="message_empty_delivery_information">Delivery information</string>
+    <string name="message_nothing_changed_for_updating">No changes, please check again</string>
+    <string name="message_quit_app">log out</string>
+    <string name="message_log_out">Do you want to log out</string>
+    <string name="yes">yes</string>
+    <string name="no">لNo</string>
+    <string name="cart_empty">Your cart is empty</string>
+    <string name="have_no_date">no date</string>
+    <string name="have_no_more_date">no more date</string>
+    <string name="no_result_is_found">No results, please try again</string>
+    <string name="type">type</string>
+    <string name="contact">contact</string>
+    <string name="contact_information">contact information</string>
+    <string name="message_demo_location">..</string>
+
+    <string name="address_two">Address</string>
+    <string name="facebook">Facebook:</string>
+    <string name="twitter">Twitter:</string>
+    <string name="email">Email:</string>
+    <string name="livechat">Live chat:</string>
+
+    <string-array name="arr_sort_by">
+        <item>Sort by rating</item>
+        <item>Sort by name</item>
+        <item>Sort by date</item>
+    </string-array>
+    <string-array name="arr_sort_type">
+        <item>Progressive</item>
+        <item>descending</item>
+    </string-array>
+    <string-array name="arr_feedback_type">
+        <item>رأيك</item>
+        <item>Bug</item>
+    </string-array>
+    <string-array name="arr_payment_methods">
+        <item>Pay on delivery</item>
+        <!--<item>Paypal</item>-->
+        <item>Pay at collocation</item>
+    </string-array>
+    <!--Pull to String-->
+    <string name="pull_to_refresh_pull_label">swipe to update</string>
+    <string name="pull_to_refresh_release_label">Leave to update</string>
+    <string name="pull_to_refresh_refreshing_label">Loading</string>
+    <!--About String-->
+    <string name="lblAbout">عن الشركة</string>
+    <string name="about_facebook">https://www.facebook.com/Libya.Solutions</string>
+    <string name="about_email">info@libyasolutions.com</string>
+    <string name="about_phone">..</string>
+    <string name="passHint">password</string>
+    <string name="my_info">my info</string>
+    <string name="order_history">Order history</string>
+    <string name="menu_found">Existing products</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="lbl_shops">Shops</string>
+
+    <string name="ic_profile">&#xe6a9;</string>
+    <string name="ic_order">&#xe69d;</string>
+    <string name="ic_feedback">&#xe66d;</string>
+    <string name="ic_about">&#xe647;</string>
+    <string name="ic_logout">&#xe63f;</string>
+    <string name="ic_map">&#xe638;</string>
+    <string name="ic_phone">&#xe627;</string>
+    <string name="ic_clock">&#xe66b;</string>
+
+    <string name="about1">Line</string>
+    <string name="about2">Line</string>
+    <string name="about3">Line </string>
+    <string name="about4">Line</string>
+    <string name="content1">Libya Solutions</string>
+    <string name="content2">Mobile Apps for smart marketing and shopping</string>
+    <string name="call">Call</string>
+    <string name="done">Done</string>
+    <string name="just_can_order_from_one_restaurant">Sorry, it is not possible to order from more than one store at the same time</string>
+    <string name="msg_confirm_delete">Are you sure you want to delete</string>
+    <string name="reset_password">Forgot your password</string>
+    <string name="please_relogin_to_use_this_function">Please login</string>
+    <string name="no_connection">No internet connection</string>
+    <string name="write_message_here">Write a message here</string>
+    <string name="no_message">No messages</string>
+    <string name="sending">Send</string>
+    <string name="install_chrome">Your device does not support this browser to open this file, please install the browser</string>
+    <string name="wait_tp_load_image">wait for loading the image</string>
+    <string name="please_enter_message">Please enter the message</string>
+    <string name="no_more_message">No more message</string>
+    <string name="take_photo">Take photo</string>
+    <string name="choose_from_library">Choose from library</string>
+    <string name="cancel_photo">Cancel photo</string>
+    <string name="add_photo">Add image</string>
+    <string name="send_success">Sent success</string>
+    <string name="files_size">Please choose again, the maximum file size is 25MB</string>
+    <string name="no_convertation">No convertation</string>
+    <string name="login_user_function">Please Login</string>
+    <string name="chat">Chat</string>
+    <string name="have_no_option_for_this_product">this product has no more option</string>
+    <string name="message_from">Message from</string>
+    <string name="choose_option">Options</string>
+
+    <string name="shops_management">Shop Management</string>
+    <string name="product_management">Product Management</string>
+    <string name="add_new_shop">Create a new Shop</string>
+    <string name="add_thumbnail">Add image</string>
+    <string name="shop_name">Shop name</string>
+    <string name="pick_on_map">Locate the map</string>
+    <string name="active">active</string>
+    <string name="inactive">inactive</string>
+    <string name="delete">delete</string>
+    <string name="lat_long">Lat/Long</string>
+    <string name="category">category</string>
+    <string name="open_close_hour">Open hours</string>
+    <string name="description">Description</string>
+    <string name="instagram">Instagram</string>
+    <string name="add_new_product">Add new product</string>
+    <string name="product_name">Product name</string>
+    <string name="product_code">Product code</string>
+    <string name="message_wait_for_location">Waiting for your site service</string>
+    <string name="maps">Map</string>
+    <string name="search_location">Search for location</string>
+    <string name="save">Save</string>
+    <string name="can_not_find_location">Can not find location</string>
+    <string name="select_photo_from">Select photo from</string>
+    <string name="gallery">gallery</string>
+    <string name="camera">Camera</string>Camera
+    <string name="select_category">Select category</string>
+    <string name="lat">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="select_city">Select city</string>
+    <string name="main_image">Main image</string>
+    <string name="open_close_am">Open/close</string>
+    <string name="open_close_pm">Open/close</string>
+    <string name="remove_from_gallery">do you want to remove it from the gallery?</string>
+    <string name="gmt">GMT</string>
+    <string name="select_time_zone">Select time zone</string>
+    <string name="edit_shop">Edit shop</string>
+    <string name="select_hour">Select hour</string>
+    <string name="please_select_shop_image">Please select shop imageر</string>
+    <string name="please_select_thumbnail">Please select shop logo</string>
+    <string name="please_enter_shop_name">Please enter shop name</string>
+    <string name="please_enter_phone_number">Please enter phone number</string>
+    <string name="please_enter_address">Please enter address</string>
+    <string name="please_enter_city">Please enter cityة</string>
+    <string name="please_select_category">Please select category</string>
+    <string name="please_select_open_close_hour">please select open close hours</string>
+    <string name="please_enter_description">please enter description</string>
+    <string name="please_select_gmt">please select gmt</string>
+    <string name="please_select_product_image">please select product image </string>
+    <string name="please_enter_product_name">please enter product name</string>
+    <string name="please_enter_product_code">please enter product code</string>
+    <string name="please_enter_price">please enter price</string>
+    <string name="edit_product">edit product</string>
+    <string name="lbl_twitter">Twitter</string>
+    <string name="lbl_facebook">Facebook</string>
+    <string name="manage_order">manage order</string>
+    <string name="buyer">Buyer</string>
+    <string name="order_detail">Order detail</string>
+    <string name="update_status">update status</string>
+    <string name="inprocess">inprocess</string>
+    <string name="ready">ready</string>
+    <string name="on_the_way">on the way</string>
+    <string name="delivered">delivered</string>
+    <string name="fail_delivery">fail delivery</string>
+    <string name="please_choose_your_gmt">please choose your gmt</string>
+    <string name="content_description">description</string>
+    <string name="list_shop_home_hint_search">Search</string>
+    <string name="list_shop_home_text_choose_cities">Choose_city </string>
+    <string name="list_shop_home_all_cities">All cities</string>
+    <string name="list_shop_home_my_location">My location</string>
+    <string name="list_shop_home_choose_department">Choose department</string>
+    <string name="list_shop_home_all_department">All department</string>
+    <string name="list_shop_home_button_text_search">Search</string>
+    <string name="sort_by_rating">Sort by rating</string>
+    <string name="sort_by_name">Sort by name</string>
+    <string name="sort_by_date">Sort by date</string>
+    <string name="text_distance">distanc</string>
+    <string name="value_distance">distanc: %s Km</string>
+    <string name="text_0_km">0 Km</string>
+    <string name="text_45_km">45 Km</string>
+    <string name="value_distance_all">distanc: %s</string>
+    <string name="sort_by">Sort_by</string>
+    <string name="the_departments">Departments</string>
+    <string name="choose_category">Choose_category</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_search">Search</string>
+    <string name="product_code_number">Product code:</string>
+    <string name="shop_cannot_website_address">there is no website for this shop</string>
+    <string name="text_category">category</string>
+    <string name="noti_should_choose_department">You must choose the section first</string>
+    <string name="shops_owner">Upgrade to a shop owner account</string>
+    <string name="convert_to_shop_owner">Do you want to upgrade your account to a shop owner account</string>
+    <string name="button_text_no">No</string>
+    <string name="button_text_yes">Yes</string>
+    <string name="convert_to_shop_owner_request">Please fill in the information</string>
+    <string name="convert_to_shop_owner_title">Upgrade to shop owner account </string>
+    <string name="message_waiting_approval">Your account is awaiting approval to register as a shop owner, we will notify you of a response as soon as possible, we will send a response to your email, please wait.</string>
+    <string name="button_text_done">done</string>
+
+    <string name="shop_name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Shop name</string>
+    <string name="category_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>category</string>
+    <string name="city_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>city</string>
+    <string name="name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Name</string>
+    <string name="phone_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Phone</string>
+    <string name="shop_phone_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Shop phone</string>
+    <string name="shop_description_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Shop Description</string>
+    <string name="shop_address_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Shop address</string>
+    <string name="shop_open_close_hour_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>shop open close hours</string>
+    <string name="facebook_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Facebook link</string>
+    <string name="instagram_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Instagram link</string>
+    <string name="twitter_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Twitter link</string>
+    <string name="website_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Website link</string>
+    <string name="product_code_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Product Code</string>
+    <string name="product_name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Product name</string>
+    <string name="product_price_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Product price</string>
+    <string name="product_description_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Product description</string>
+
+    <string name="button_text_shop_owner_info">Shop owner info</string>
+    <string name="button_text_send_the_request">Send request</string>
+    <string name="watch_shop">See shop</string>
+    <string name="create_new_shop">create new shop</string>
+    <string name="add_banner">Add banner image here</string>
+    <string name="add_logo">Add the shop logo in the list here</string>
+    <string name="button_text_shop_address">مAddress</string>
+    <string name="choose_city">Choose city</string>
+    <string name="location_button_text">sellect the location on the map</string>
+    <string name="categories_button_text">categories</string>
+    <string name="choose_categories">Choose categorie</string>
+    <string name="website_links_button_text">Websites Links</string>
+    <string name="create_shop_button_text">Create</string>
+    <string name="manage_and_add_products">manage and add products</string>
+    <string name="choose_hour">Choose hour</string>
+    <string name="status_text">Active</string>
+    <string name="featured_text">featured</string>
+    <string name="verified_text">verified</string>
+    <string name="location_shop">Lat: %s - Long: %s</string>
+    <string name="validated_hour">verified</string>
+    <string name="save_button_text">Save</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="not_featured_text">No featured</string>
+    <string name="not_verified_text">Not verified</string>
+    <string name="not_status_text">inactive</string>
+    <string name="update_product">update</string>
+    <string name="delete_product">delete</string>
+    <string name="add_product_banner">Add product image</string>
+    <string name="add_logo_product">Add product image here</string>
+    <string name="product_info_button_text">product info</string>
+    <string name="extra_options_button_text">extra options</string>
+    <string name="please_enter_name">please enter name</string>
+
+    <string name="available_button_text">available</string>
+    <string name="out_of_stock_button_text">out of stock</string>
+    <string name="active_button_text">active</string>
+    <string name="inactive_button_text">inactive</string>
+    <string name="order_number">Order number</string>
+    <string name="order_total">Total</string>
+    <string name="order_buyer">buyer</string>
+    <string name="order_status">status</string>
+    <string name="product_price">price</string>
+    <string name="product_number">number</string>
+    <string name="product_total">Total</string>
+    <string name="buyer_info_button_text">buyer info</string>
+    <string name="buyer_name">name</string>
+    <string name="buyer_phone">phone</string>
+    <string name="buyer_email">email</string>
+    <string name="order_requirement_button_text">order requirement</string>
+    <string name="payment_method_button_text">payment method</string>
+    <string name="shipping_info_button_text">shipping info</string>
+    <string name="shipping_address">Address</string>
+    <string name="shipping_name">Name</string>
+    <string name="shipping_phone">Phone</string>
+    <string name="order_grand_total">Total</string>
+    <string name="order_tax">Tax</string>
+    <string name="order_shipping">shipping</string>
+
+    <string name="update_status_button_text">Update status</string>
+    <string name="delivery_method">Pay at delivery</string>
+    <string name="paypal_method">Paypal</string>
+    <string name="pay_at_collection">pay at collection</string>
+    <string name="phone_number_empty">رقم الهاتف فارغ</string>
+    <string name="order_history_detail">Order history</string>
+    <string name="no_data">no more date</string>
+    <string name="add_requirement">Add requirement</string>
+    <string name="order_accept">Order accepted</string>
+    <string name="reject_information_not_enough">rejected information not enough</string>
+    <string name="reject_quantity_not_available">rejected quantity not available</string>
+    <string name="order_number_1">Order number</string>
+    <string name="order_shop">Shop</string>
+    <string name="order_message">can not update this order </string>
+    <string name="select_extra_options">select extra options</string>
+    <string name="you_want_delete_this_product">Do you want to delete the product</string>
+    <string name="in_progress">in progress</string>
+    <string name="ready_for_collect">ready for collect</string>
+    <string name="order_done">Done</string>
+    <string name="order_cancel">cancel</string>
+    <string name="order_new">New order</string>
+    <string name="order_all">All the orders</string>
+    <string name="order_history_v2">order history</string>
+    <string name="delete_product_success">delete product success</string>
+    <string name="reject_convert_to_shop_owner">Sorry, your request has been rejected, we can\'t upgrade your account to a store owner account, please contact the application management to solve the problem and fix the issue</string>
+    <string name="shop_address">shop address</string>
+
+    <string name="order_waiting">order_waiting</string>
+    <string name="order_status_not_selected">Did not select the status</string>
+    <string name="please_select_lat_long">Please select lat long</string>
+    <string name="shop_found">%s Shop</string>
+    <string name="order_sub_total">partial total</string>
+    <string name="banking_method">Bank transfer</string>
+    <string name="order_found">%s Order</string>
+    <string name="product_found">%s product</string>
+    <string name="order_date">Order date</string>
+
+    <string name="button_text_shop_information">Shop information</string>
+    <string name="lblUserName">Username or Email Address </string>
+
+</resources>

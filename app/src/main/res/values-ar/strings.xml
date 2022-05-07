@@ -1,0 +1,529 @@
+<resources>
+    <!--Common String-->
+    <string name="app_name">Libya Marketplace</string>
+    <string name="near_by">قريب مني</string>
+    <string name="action_settings">ضبط الإعدادت</string>
+    <string name="message_loading_data">تحميل الإعدادت&#8230;</string>
+    <string name="message_network_is_unavailable">شبكة الإنترنت غير متاحه!</string>
+    <string name="message_server_error">خطأ في الخادم ، يرجى المحاولة مرة أخرى في وقت لاحق.</string>
+    <string name="message_error_cant_extract_server_response">خطأ. لايوجد استجابة من الخادم</string>
+    <string name="tel">الهاتف</string>
+    <string name="message_please_wait">يرجى الانتظار&#8230;</string>
+    <string name="loading">تحميل</string>
+    <string name="Setting">الإعدادت</string>
+    <string name="finding_service">البحث عن الشبكة</string>
+    <!--String-->
+    <string name="administrator">الإدارة</string>
+    <string name="order_no">رقم الطلب</string>
+    <string name="date_creator">تاريخ الطلب</string>
+    <string name="total_amountnew">إجمالي المبلغ</string>
+    <string name="status_new">الحالة</string>
+    <string name="lbl_new">جديد</string>
+    <string name="test_string">Now we must provide some necessary XML files to define layouts. Because of we will set a ProgressBar at the bottom of RecyclerView when data is loading, it will have two item types. The normal item that to show info of user and loading item that place at bottom to show progress bar.</string>
+    <string name="_3_deals_available">3عروض متاحة</string>
+    <string name="off_20">%20 تخفيض</string>
+    <string name="emailnew">البريد الإلكتروني</string>
+    <string name="call_restaurant">إتصل بالمحل لتأكيد الطلب أو لخدمة التوصيل</string>
+    <string name="about">معلومات</string>
+    <string name="aboutus">عن الشركه</string>
+    <string name="no_more_data">لا مزيد من البيانات</string>
+    <string name="title_bank_info">معلومات الحساب البنكي :</string>
+    <string name="products">المنتجات</string>
+    <string name="restaurant_found"> %s المحلات الموجوده حاليا</string>
+    <string name="ok">تم</string>
+    <string name="all_cities">جميع المدن</string>
+    <string name="all_categories">جميع الفئات</string>
+    <string name="lbl_id">التعريف</string>
+    <string name="you_had_all_of_comments_already">لديك جميع التعليقات.</string>
+    <string name="item_is_existed_my_cart">هذا الطلب موجود في سلة الشراء</string>
+    <string name="item_is_added_my_cart">يضاف هذا الطلب في سلة الشراء</string>
+    <string name="have_error">يوجد خطاء .يرجى المحاوله مرة أخرى</string>
+    <string name="processing">يتم المعالجه</string>
+    <!--Restaurant String-->
+    <string name="currency">D.L </string>
+    <string name="home">الرئيسية</string>
+    <string name="home_upper_case">الصفحه الرئيسية</string>
+    <string name="search">بحث</string>
+    <string name="search_upper_case">بحث</string>
+    <string name="searchShop">البحث عن محل</string>
+    <string name="searchMenu">البحث عن منتج</string>
+    <string name="categories">الفئات</string>
+    <string name="myMenu">قائمتي</string>
+    <string name="my_cart_upper_case">سلة مشتريات</string>
+    <string name="orderDetails">معلومات الطلب</string>
+    <string name="payment_information">معلومات الدفع</string>
+    <string name="payment_methods">طريقة الدفع</string>
+    <string name="payment_methods_select">اختار طريقة الدفع</string>
+    <string name="payment_successfully">تم الدفع بنجاح</string>
+    <string name="total">الإجمالي</string>
+    <string name="buyer_information">معلومات المشتري</string>
+    <string name="name">الأسم</string>
+    <string name="email_info">البريد الالكتروني</string>
+    <string name="phone_info">الهاتف</string>
+    <string name="phone_info_about">الهاتف</string>
+    <string name="address_info">العنوان</string>
+    <string name="city">المدينه</string>
+    <string name="zip_code">zip code</string>
+    <string name="deliveryInfo">معلومات التوصيل</string>
+    <string name="same_as_buyer">نفس المشتري</string>
+    <string name="continue_upper_case">تم</string>
+    <string name="account">الحساب</string>
+    <string name="account_upper_case">إعدادات الحساب</string>
+    <string name="login_upper_case">تسجيل الدخول</string>
+    <string name="history">السجل</string>
+    <string name="register_shop_owner">تسجيل صاحب المحل</string>
+    <string name="myAccount">حسابي</string>
+    <string name="edit_profile">تعديل الملف الشخصي</string>
+    <string name="preferences">المفضلات</string>
+    <string name="my_favourites">المضله لدي</string>
+    <string name="feedBack">رأيك</string>
+    <string name="feedBack_text">إرسال رساله إلي الإدارة</string>
+    <string name="detail">التفاصيل</string>
+    <string name="setting">الإعدادات</string>
+    <string name="timeable">جدول مواعيد</string>
+    <string name="menu">المنتجات</string>
+    <string name="product_upper_case">إعدادات قائمة المنتجات</string>
+    <string name="shops">المحلات</string>
+    <string name="shops_upper_case">المحلات</string>
+    <string name="all">الكل</string>
+    <string name="map">الخريطه</string>
+    <string name="map_upper_case">الخريطه</string>
+    <string name="direction">وصف الاتجاه</string>
+    <string name="phoneNumber">رقم الهاتف</string>
+    <string name="bestDeals">افضل العروض</string>
+    <string name="menus">المنتجات</string>
+    <string name="open">مفتوح</string>
+    <string name="closed">مغلق</string>
+    <string name="OpenHour">ساعات العمل</string>
+    <string name="titleDialogOpenHour">24 ساعه</string>
+    <string name="monday">الأثنين</string>
+    <string name="tuesday">الثلاثاء</string>
+    <string name="wednesday">الإربعاء</string>
+    <string name="thursday">الخميس</string>
+    <string name="friday">الجمعه</string>
+    <string name="saturday">السبت</string>
+    <string name="sunday">الأحد</string>
+    <string name="lblNoteTime">ملاحظة: التوقيت باللون الأخضر ساعات العمل لليوم التالي</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="login_facebook">التسجيل عن طريق حساب Facebook</string>
+    <string name="forget_password">نسيت كلمة المرور</string>
+    <string name="forget_password_title">نسيت كلمة المرور</string>
+    <string name="forget_password_content">يرجى ملء البريد الإلكتروني الخاص بك في النموذج وإرسالها إلينا. سنقوم بإعادة تعيين كلمة المرور الخاصة بك وإرسالها مرة أخرى إلى بريدك الإلكتروني</string>
+    <string name="register">تسجيل</string>
+    <string name="account_information">معلومات الحساب</string>
+    <string name="personal_information">المعلومات الشخصية</string>
+    <string name="address_information">معلومات العنوان</string>
+    <string name="report">أبلغ عن</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="save_changes">حفظ التغيرات</string>
+    <string name="updateInfor">تحديث الملف الشخصي</string>
+    <string name="update">تحديث</string>
+    <string name="updatePass">تحديث كلمة المرور</string>
+    <string name="myInfo">معلوماتي</string>
+    <string name="userHint">اسم المستخدم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="repassword">تأكيد كلمة المرور</string>
+    <string name="mail">البريد الالكتروني</string>
+    <string name="fullName">الأسم بالكامل</string>
+    <string name="phone">الهاتف</string>
+    <string name="address">العنوان</string>
+    <string name="cancel">إلغاء</string>
+    <string name="Ok">تم</string>
+    <string name="Des">الوصف</string>
+    <string name="SearchFor">البحث عن</string>
+    <string name="shop">المحلات</string>
+    <string name="title">الصفه</string>
+    <string name="price">السعر</string>
+    <string name="add_to_cart">أضف إلى السلة</string>
+    <string name="add_upper_case">إضافة</string>
+    <string name="to_cart">إلى السلة</string>
+    <string name="add_review">أضف ملاحظات</string>
+    <string name="order">أطلب</string>
+    <string name="order_upper_case">أطلب</string>
+    <string name="send">إرسال</string>
+    <string name="back">رجوع</string>
+    <string name="sum">المجموع</string>
+    <string name="btn_send">إرسال</string>
+    <string name="search_key">طريقة البحث</string>
+    <string name="add">أضف</string>
+    <string name="vat">الضريبه</string>
+    <string name="ship">التوصيل</string>
+    <string name="item">البند</string>
+    <string name="items">البنود</string>
+    <string name="home_menu_title">المنتجات على بعد 10كم</string>
+    <string name="home_shop_title">المحلات على بعد 10كم</string>
+    <string name="rating">قيم</string>
+    <string name="rate">تقييم</string>
+    <string name="fullname">الإسم بالكامل</string>
+    <string name="content">المحتوي</string>
+    <string name="your_review">ملاحظاتك</string>
+    <string name="reviews">الملاحظات</string>
+    <string name="review">أراء الزبائن</string>
+    <string name="add_your_review">اضف ملاحظاتك</string>
+    <string name="load_more">تحميل المزيد</string>
+    <string name="distance">بعد المسافة  </string>
+    <string name="max_distance">10 كم</string>
+    <string name="minutes_ago">دقائق مضت</string>
+    <string name="hours_ago">ساعات مضت</string>
+    <string name="hour_ago">ساعة مضت</string>
+    <string name="just_now">فقط الأن</string>
+    <string name="today">اليوم</string>
+    <string name="yesterday">أمس</string>
+    <string name="two_days_ago">يومين مضت</string>
+    <string name="three_days_ago">3 أيام مضت</string>
+    <string name="forward_slash_item">بند</string>
+
+    <!-- account info -->
+
+    <string name="lblPassword">كلمة المرور</string>
+    <string name="lblPasswordNew">كلمة مرور جديده</string>
+    <string name="lblPasswordOld">كلمة المرور القديمه</string>
+    <string name="lblfullname">الأسم بالكامل</string>
+    <string name="lblPassAgain">تأكيد كلمة المرور</string>
+    <string name="lblEmail">البريد الألكتروني</string>
+    <string name="lblphone">الهاتف</string>
+    <string name="lblAddress">العنوان</string>
+    <string name="orders_in_histories"> سجل الطلبات</string>
+    <!-- ERRORS MESSAGE -->
+    <string name="error_UserName_empty">الرجاء إدخال اسم المستخدم</string>
+    <string name="error_title_empty">الرجاء إدخال اسم الصفه</string>
+    <string name="error_des_empty">الرجاء إدخال الوصف</string>
+    <string name="error_Password_empty">الرجاء إدخال كلمة المرور</string>
+    <string name="error_PasswordNew_empty">الرجاء إدخال كلمة المرور جديدة</string>
+    <string name="error_Password_Wrong">كلمة المرور خطأ</string>
+    <string name="error_RePassword_empty">تأكيد كلمة المرور</string>
+    <string name="error_RePassword_wrong">تأكيد كلمة المرور خطأ</string>
+    <string name="error_Email_empty">البريد الإلكتروني خطأ</string>
+    <string name="error_Email_wrong">صيغة البريد الإلكتروني خطأ</string>
+    <string name="error_FullName">الرجاء إدخال الإسم بالكامل</string>
+    <string name="error_Phone">الرجاء إدخال الإسم بالكامل</string>
+    <string name="error_Address">الرجاء إدخال العنوان</string>
+    <string name="error_city">الرجاء إدخال إسم المدينة</string>
+    <string name="error_zip_code">الرجاء إدخال Zip Code</string>
+    <string name="error_adding_new_comment">حدث خطأ عند ادخال التعليق, الرجاء المحاولة مرة أخري</string>
+    <string name="message_adding_new_comment_successfully">تم إضافة التعليق بنجاح</string>
+    <string name="message_success">تم بنجاح</string>
+    <string name="message_order_false">حدث خطأ فالطلب الرجاء المحاولة مرى أخري</string>
+    <string name="message_no_item_menu">لا يوجد طلبات بسلة المشتريات</string>
+    <string name="message_no_login">الرجاء تسجيل الدخول</string>
+    <string name="message_input_user_pass">الرجاء ادخال إسم المستخدم وكلمة السر</string>
+    <string name="message_login_false">حدث خطأ أثناء الدخول الرجاء إعادة المحاولة</string>
+    <string name="remind_entering_user_name">إذا لم تقم بتسجيل الدخول, ادخل الاسم</string>
+    <string name="please_enter_your_name">الرجاء تسجيل الدخول أو ادخل الاسم</string>
+    <string name="please_leave_your_messages">الرجاء ترك رسالتك </string>
+    <string name="wait_for_getting_location">الرجاء الانتظار</string>
+    <string name="message_permission_register_shop_owner">لابد أن تكون مستخدم للحصول علي الخدمة</string>
+    <string name="message_send_request_successfully">لقد تم الطلب بنجاح الرجاء الإنتظار</string>
+    <string name="message_error_undefined">عفو! خطأ غير متوقع, الرجاء المحاولة مرة أخرى</string>
+    <string name="message_empty_delivery_information">الرجاء ملء معلومات التوصيل</string>
+    <string name="message_nothing_changed_for_updating">لم يحدث تغير, الرجاء التأكيد</string>
+    <string name="message_quit_app">هل تريد الخروج</string>
+    <string name="message_log_out">هل تريد تسجيل الخروج</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="cart_empty">سلة المشتريات فارغة</string>
+    <string name="have_no_date">لا يوجد بيانات</string>
+    <string name="have_no_more_date">لايوجد المزيد من البيانات</string>
+    <string name="no_result_is_found">لا يوجد نتائج الرجاء المحاولة مرة اخرى</string>
+    <string name="type">نوع</string>
+    <string name="contact">إتصال</string>
+    <string name="contact_information">معلومات الإتصال</string>
+    <string name="message_demo_location">..</string>
+
+    <string name="address_two">العنوان</string>
+    <string name="facebook">Facebook:</string>
+    <string name="twitter">Twitter:</string>
+    <string name="email">Email:</string>
+    <string name="livechat">Live chat:</string>
+
+    <string-array name="arr_sort_by">
+        <item>الترتيب حسب التقييم</item>
+        <item>الترتيب حسب الأسم</item>
+        <item>الترتيب حسب التاريخ</item>
+    </string-array>
+    <string-array name="arr_sort_type">
+        <item>تصاعدي</item>
+        <item>تنازلي</item>
+    </string-array>
+    <string-array name="arr_feedback_type">
+        <item>رأيك</item>
+        <item>Bug</item>
+    </string-array>
+    <string-array name="arr_payment_methods">
+        <item>الدفع عند التوصيل</item>
+        <!--<item>Paypal</item>-->
+        <item>الدفع عند الإستلام</item>
+    </string-array>
+    <!--Pull to String-->
+    <string name="pull_to_refresh_pull_label">اسحب للتحديث</string>
+    <string name="pull_to_refresh_release_label">اترك للتحديث</string>
+    <string name="pull_to_refresh_refreshing_label">تحميل</string>
+    <!--About String-->
+    <string name="lblAbout">عن الشركة</string>
+    <string name="about_facebook">https://www.facebook.com/Libya.Solutions</string>
+    <string name="about_email">info@libyasolutions.com</string>
+    <string name="about_phone">..</string>
+    <string name="passHint">كلمة المرور</string>
+    <string name="my_info">معلوماتي</string>
+    <string name="order_history">سجل الطلبات</string>
+    <string name="menu_found">المنتجات الموجوده حاليا</string>
+    <string name="confirm_password">تأكيد كلمة المرور</string>
+    <string name="lbl_shops">المحلات</string>
+
+    <string name="ic_profile">&#xe6a9;</string>
+    <string name="ic_order">&#xe69d;</string>
+    <string name="ic_feedback">&#xe66d;</string>
+    <string name="ic_about">&#xe647;</string>
+    <string name="ic_logout">&#xe63f;</string>
+    <string name="ic_map">&#xe638;</string>
+    <string name="ic_phone">&#xe627;</string>
+    <string name="ic_clock">&#xe66b;</string>
+
+    <string name="about1">شركة ليبيا للحلول</string>
+    <string name="about2">تطبيقات الموبايل للتسويق والتسوق الذكي</string>
+    <string name="about3">نقدم حلول عن طريق التطبيقات الإلكترونية الذكية لإيجاد طرق سلسة في التعامل بين الأفراد والأنشطة التجارية</string>
+    <string name="about4">للتواصل والأستفسار أو يمكنكم التواصل معنا عبر البريد الإلكتروني او صفحة الفيس بوك</string>
+    <string name="content1">Libya Solutions</string>
+    <string name="content2">Mobile Apps for smart marketing and shopping</string>
+    <string name="call">أﺗﺻﺎل</string>
+    <string name="done">إنهاء</string>
+    <string name="just_can_order_from_one_restaurant">عفوا.. لايمكن الطلب من أكثر من محل في نفس الوقت</string>
+    <string name="msg_confirm_delete">هل أنت متأكد أنك تريد الحذف</string>
+    <string name="reset_password">نسيت كلمة المرور</string>
+    <string name="please_relogin_to_use_this_function">يرجى تسجيل الدخول</string>
+    <string name="no_connection">لا يوجد اتصال بالإنترنت</string>
+    <string name="write_message_here">اكتب رسالة هنا</string>
+    <string name="no_message">لا يوجد رسائل</string>
+    <string name="sending">إرسل</string>
+    <string name="install_chrome">لا يدعم جهازك هذا المتصفح لفتح هذا الملف ، يرجى تثبيت المتصفح</string>
+    <string name="wait_tp_load_image">انتظر لتحميل الصورة</string>
+    <string name="please_enter_message">يرجى ادخال الرسالة </string>
+    <string name="no_more_message">لا مزيل من الرسائل</string>
+    <string name="take_photo">تصوير</string>
+    <string name="choose_from_library">أختار من المكتبة </string>
+    <string name="cancel_photo">إلغاء الصورة</string>
+    <string name="add_photo">أضافة صورة</string>
+    <string name="send_success">تم الإرسال بنجاح</string>
+    <string name="files_size">يرجى اختيار مرة أخرى ، الحد الأقصى لحجم الملف هو 25 ميغابايت</string>
+    <string name="no_convertation">لا يوجد محادثات</string>
+    <string name="login_user_function">يرجى تسجيل الدخول</string>
+    <string name="chat">المحادثات</string>
+    <string name="have_no_option_for_this_product">لا يوجد خيارات إضافية لهذا المنتج</string>
+    <string name="message_from">رسالة من :</string>
+    <string name="choose_option">الخيارات</string>
+
+    <string name="shops_management">إدارة المتاجر</string>
+    <string name="product_management">إدارة المنتجات</string>
+    <string name="add_new_shop">إنشاء متجر جديد </string>
+    <string name="add_thumbnail">إضافة صورة</string>
+    <string name="shop_name">إسم المتجر</string>
+    <string name="pick_on_map">تحديد الموقع على الخريطة</string>
+    <string name="active">نشط</string>
+    <string name="inactive">غير نشط</string>
+    <string name="delete">حذف</string>
+    <string name="lat_long">Lat/Long</string>
+    <string name="category">الفئة</string>
+    <string name="open_close_hour">ساعات العمل</string>
+    <string name="description">الوصف</string>
+    <string name="instagram">Instagram</string>
+    <string name="add_new_product">إضافة منتج جديد</string>
+    <string name="product_name">إسم المنتج</string>
+    <string name="product_code">كود المنتج</string>
+    <string name="message_wait_for_location">في انتظار خدمة موقعك</string>
+    <string name="maps">الخريطة</string>
+    <string name="search_location">البحث عن الموقع</string>
+    <string name="save">حفظ</string>
+    <string name="can_not_find_location">لا يستطيع إيجاد الموقع</string>
+    <string name="select_photo_from">إدراج الصورة من</string>
+    <string name="gallery">مكتبة الصور</string>
+    <string name="camera">Camera</string>الكاميرا
+    <string name="select_category">إختيار الفئة</string>
+    <string name="lat">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="select_city">إختيار المدينة</string>
+    <string name="main_image">الصورة الرئيسية</string>
+    <string name="open_close_am">فتح /إغلاق (صباحا)</string>
+    <string name="open_close_pm">فتح /إغلاق (مساءا)</string>
+    <string name="remove_from_gallery">هل تريد الحذف ؟</string>
+    <string name="gmt">GMT</string>
+    <string name="select_time_zone">إختيار التوقيت حسب</string>
+    <string name="edit_shop">تعديل المتجر</string>
+    <string name="select_hour">إختيار الساعات</string>
+    <string name="please_select_shop_image">يرجى اختيار صورة المتجر</string>
+    <string name="please_select_thumbnail">يرجى اختيار صورة شعار المتجر</string>
+    <string name="please_enter_shop_name">يرجى ادخال إسم المتجر</string>
+    <string name="please_enter_phone_number">يرجى إدخال رقم الهاتف</string>
+    <string name="please_enter_address">يرجى إدخال العنوان</string>
+    <string name="please_enter_city">يرجى اختيار المدينة</string>
+    <string name="please_select_category">يرجى اختيار الفئة</string>
+    <string name="please_select_open_close_hour">يرجى ادخال ساعة الفتح و الإغلاق</string>
+    <string name="please_enter_description">يرجى ادخال وصف للمتجر</string>
+    <string name="please_select_gmt">يرجى اختيار التوقيق حسب</string>
+    <string name="please_select_product_image">يرجى إختيار صورة المنتج </string>
+    <string name="please_enter_product_name">يرجى إدخال اسم المنتج</string>
+    <string name="please_enter_product_code">يرجى إدخال كود المنتج</string>
+    <string name="please_enter_price">يرجى إدخال سعر المنتج</string>
+    <string name="edit_product">تعديل المنتج</string>
+    <string name="lbl_twitter">Twitter</string>
+    <string name="lbl_facebook">Facebook</string>
+    <string name="manage_order">إدارة الطلبات</string>
+    <string name="buyer">المشتري</string>
+    <string name="order_detail">بيانات الطلب</string>
+    <string name="update_status">تحديث الحالة </string>
+    <string name="inprocess">تحت الإنجاز</string>
+    <string name="ready">جاهز</string>
+    <string name="on_the_way">في الطريق</string>
+    <string name="delivered">تم التسليم</string>
+    <string name="fail_delivery">فشل التوصيل</string>
+    <string name="please_choose_your_gmt">يرجى اختيار التوقيت حسب</string>
+    <string name="content_description">الصورة أو الأيقونة</string>
+    <string name="list_shop_home_hint_search">بحث</string>
+    <string name="list_shop_home_text_choose_cities">إختيار مدينة</string>
+    <string name="list_shop_home_all_cities">جميع المدن</string>
+    <string name="list_shop_home_my_location">موقعي</string>
+    <string name="list_shop_home_choose_department">إختيار قسم</string>
+    <string name="list_shop_home_all_department">جميع الأقسام</string>
+    <string name="list_shop_home_button_text_search">بحث</string>
+    <string name="sort_by_rating">ترتيب حسب التقييم</string>
+    <string name="sort_by_name">ترتيب حسب الأسم</string>
+    <string name="sort_by_date">ترتيب حسب التاريخ</string>
+    <string name="text_distance">المسافة</string>
+    <string name="value_distance">المسافة: %s Km</string>
+    <string name="text_0_km">0 Km</string>
+    <string name="text_45_km">45 Km</string>
+    <string name="value_distance_all">المسافة: %s</string>
+    <string name="sort_by">ترتيب حسب</string>
+    <string name="the_departments">الأقسام</string>
+    <string name="choose_category">إختيار الفئة</string>
+    <string name="text_cancel">إلغاء</string>
+    <string name="text_search">بحث</string>
+    <string name="product_code_number">الكود:</string>
+    <string name="shop_cannot_website_address">لا يوجد موقع إلكتروني لهذا المتجر</string>
+    <string name="text_category">الفئة</string>
+    <string name="noti_should_choose_department">يجب إختيار القسم أولا</string>
+    <string name="shops_owner">ترقية إلى حساب صاحب متجر</string>
+    <string name="convert_to_shop_owner">هل ترغب في ترقية حسابك إلى حساب صاحب متجر</string>
+    <string name="button_text_no">لا</string>
+    <string name="button_text_yes">نعم</string>
+    <string name="convert_to_shop_owner_request">يرجى ملاء المعلومات بالأسفل</string>
+    <string name="convert_to_shop_owner_title">ترقية إلى حساب صاحب متجر</string>
+    <string name="message_waiting_approval">حسابك في انتظار الموافقة للتسجيل كصاحب متجر، سنعلمك بالرد في أقرب وقت ممكن ، سوف نرسل الرد إلى البريد الإلكتروني الخاص بك، يرجى الإنتظار.</string>
+    <string name="button_text_done">تم</string>
+
+    <string name="shop_name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>إسم التجر</string>
+    <string name="category_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>الفئة</string>
+    <string name="city_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>المدينة</string>
+    <string name="name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>الإسم</string>
+    <string name="phone_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>رقم الهاتف</string>
+    <string name="shop_phone_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>رقم هاتف المتجر</string>
+    <string name="shop_description_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>وصف عن المتجر</string>
+    <string name="shop_address_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>عنوان المتجر</string>
+    <string name="shop_open_close_hour_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>ساعات الفتح و الإغلاق</string>
+    <string name="facebook_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Facebook link</string>
+    <string name="instagram_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Instagram link</string>
+    <string name="twitter_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Twitter link</string>
+    <string name="website_link_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>Website link</string>
+    <string name="product_code_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>كود المنتج</string>
+    <string name="product_name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>إسم المنتج</string>
+    <string name="product_price_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>سعر المنتج</string>
+    <string name="product_description_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>وصف عن المنتج</string>
+
+    <string name="button_text_shop_owner_info">معلومات صاحب المتجر</string>
+    <string name="button_text_send_the_request">إرسال الطلب</string>
+    <string name="watch_shop">مشاهدة المتجر</string>
+    <string name="create_new_shop">إنشاء متجر جديد</string>
+    <string name="add_banner">أضف صور الواجهات هنا</string>
+    <string name="add_logo">أضف صورة شعار المتجر في القائمة هنا</string>
+    <string name="button_text_shop_address">معلومات العنوان</string>
+    <string name="choose_city">إختيار مدينة</string>
+    <string name="location_button_text">تحديد الموقع على الخريطة</string>
+    <string name="categories_button_text">الفئات</string>
+    <string name="choose_categories">إختيار الفئات</string>
+    <string name="website_links_button_text">Websites Links</string>
+    <string name="create_shop_button_text">إنشاء</string>
+    <string name="manage_and_add_products">إدارة و إضافة المنتجات</string>
+    <string name="choose_hour">إختيار الساعة</string>
+    <string name="status_text">نشط</string>
+    <string name="featured_text">مميزات</string>
+    <string name="verified_text">تم التحقق</string>
+    <string name="location_shop">Lat: %s - Long: %s</string>
+    <string name="validated_hour">التحقق</string>
+    <string name="save_button_text">حفظ</string>
+    <string name="cancel_button_text">إلغاء</string>
+    <string name="not_featured_text">لا يوجد مميزات</string>
+    <string name="not_verified_text">لم يتم التحقق</string>
+    <string name="not_status_text">غير نشط</string>
+    <string name="update_product">تحديث</string>
+    <string name="delete_product">حذف</string>
+    <string name="add_product_banner">أضف صور المنتج هنا</string>
+    <string name="add_logo_product">أضف صورة المنتج في قائمة المنتجات هنا</string>
+    <string name="product_info_button_text">معلومات المنتج</string>
+    <string name="extra_options_button_text">خيارات إضافية</string>
+    <string name="please_enter_name">يرجى إدخال الإسم</string>
+
+    <string name="available_button_text">متاح</string>
+    <string name="out_of_stock_button_text">نفاذ الكمية</string>
+    <string name="active_button_text">نشط</string>
+    <string name="inactive_button_text">غير نشط</string>
+    <string name="order_number">رقم الطلب</string>
+    <string name="order_total">الأجمالي</string>
+    <string name="order_buyer">المشتري</string>
+    <string name="order_status">الحالة</string>
+    <string name="product_price">السعر</string>
+    <string name="product_number">العدد</string>
+    <string name="product_total">الإجمالي</string>
+    <string name="buyer_info_button_text">معلومات المشتري</string>
+    <string name="buyer_name">الإسم</string>
+    <string name="buyer_phone">الهاتف</string>
+    <string name="buyer_email">الريد الإلكتروني</string>
+    <string name="order_requirement_button_text">متطلبات إخرى</string>
+    <string name="payment_method_button_text">طريقة الدفع</string>
+    <string name="shipping_info_button_text">معلومات الشحن</string>
+    <string name="shipping_address">العنوان</string>
+    <string name="shipping_name">الإسم</string>
+    <string name="shipping_phone">الهاتف</string>
+    <string name="order_grand_total">الإجمالي الكلي</string>
+    <string name="order_tax">الضرائب</string>
+    <string name="order_shipping">الشحن</string>
+
+    <string name="update_status_button_text">تحديث الحالة</string>
+    <string name="delivery_method">الدفع عند التوصيل</string>
+    <string name="paypal_method">Paypal</string>
+    <string name="pay_at_collection">الدفع عند الإستلام</string>
+    <string name="phone_number_empty">رقم الهاتف فارغ</string>
+    <string name="order_history_detail">سجل الطلبات</string>
+    <string name="no_data">لا يوجد المزيد من البيانات</string>
+    <string name="add_requirement">إضافة متطلبات أخرى</string>
+    <string name="order_accept">تم القبول</string>
+    <string name="reject_information_not_enough">تم الرفض- معلومات المشتري غير كافية</string>
+    <string name="reject_quantity_not_available">تم الرفض- الكميةغير متاحة</string>
+    <string name="order_number_1">رقم الطلب</string>
+    <string name="order_shop">المتجر</string>
+    <string name="order_message">لا يمكن تحديث هذا الطلب</string>
+    <string name="select_extra_options">الخيارات الإضافية</string>
+    <string name="you_want_delete_this_product">هل تريد حذف هذا المنتج</string>
+    <string name="in_progress">تحت الإنجاز</string>
+    <string name="ready_for_collect">جاهز للإستلام</string>
+    <string name="order_done">تم</string>
+    <string name="order_cancel">إلغاء</string>
+    <string name="order_new">طلب جديد</string>
+    <string name="order_all">جميع الطلبات</string>
+    <string name="order_history_v2">سجل الطلبات</string>
+    <string name="delete_product_success">تم حذف المنتج</string>
+    <string name="reject_convert_to_shop_owner">عذرًا، لقد تم رفض طلبك، لا يمكننا ترقية حسابك إلى حساب صاحب متجر ، يرجى التواصل مع إدارة التطبيقات لحل المشكلة و معالجة الامر  </string>
+    <string name="shop_address">العنوان</string>
+
+    <string name="order_waiting">إنتظار</string>
+    <string name="order_status_not_selected">لم يتم إختيار الحالة</string>
+    <string name="please_select_lat_long">يرجى إختيار خطوط الطول و العرض</string>
+    <string name="shop_found">%s متجر</string>
+    <string name="order_sub_total">الأجمالي الجزئي</string>
+    <string name="banking_method">Bank transfer</string>
+    <string name="order_found">%s طلب</string>
+    <string name="product_found">%s منتج</string>
+    <string name="order_date">تاريخ الطلب</string>
+
+    <string name="button_text_shop_information">معلومات المتجر</string>
+    <string name="lblUserName">إسم المستخدم أو البريد الإلكتروني </string>
+
+</resources>

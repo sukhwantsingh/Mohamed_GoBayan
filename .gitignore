@@ -1,4 +1,3 @@
-# Project exclude paths
 .idea/
 app/build/
 EBS/

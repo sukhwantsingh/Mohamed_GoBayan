@@ -7,10 +7,14 @@ public final class WebServiceConfig {
     public static final String FOLDER = "backend/api/";
 //	public static final String FULL_PATH = HOST + WEB_PATH + FOLDER;
 
-    //    public static final String FILES_API = "https://hicominfo.com/libya-marketplace/backend/index.php/api/";
+    // public static final String FILES_API = "https://hicominfo.com/libya-marketplace/backend/index.php/api/";
 //    public static final String FULL_PATH = "https://hicominfo.com/libya-marketplace/backend/index.php/api/";
-    public static final String FULL_PATH = "http://uat.hicominfo.com:8888/libya-marketplace-phase2/backend/api/";
-    public static final String FILES_API = "http://uat.hicominfo.com:8888/libya-marketplace-phase2/backend/api/";
+
+   // public static final String FULL_PATH = "http://uat.hicominfo.com:8888/libya-marketplace-phase2/backend/api/";
+   // public static final String FILES_API = "http://uat.hicominfo.com:8888/libya-marketplace-phase2/backend/api/";
+
+    public static final String FULL_PATH = "http://libyamarketplace.com/backend/api/";
+    public static final String FILES_API = "http://libyamarketplace.com/backend/api/";
 
     // action
     // public static final String ACTION_GET_SETTING = "getListShop";

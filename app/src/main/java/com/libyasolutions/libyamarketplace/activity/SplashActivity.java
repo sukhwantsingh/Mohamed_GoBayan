@@ -334,12 +334,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void updateLanguage() {
-        String language_code = "ar";
+        String language_code = "ar"; //"ar";
         Locale locale = new Locale(language_code);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 }
