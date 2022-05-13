@@ -36,6 +36,7 @@ import com.libyasolutions.libyamarketplace.modelmanager.ModelManagerListener;
 import com.libyasolutions.libyamarketplace.network.ParserUtility;
 import com.libyasolutions.libyamarketplace.util.GPSTracker;
 import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
+import com.libyasolutions.libyamarketplace.util.MyUtilityKt;
 import com.libyasolutions.libyamarketplace.util.NetworkUtil;
 
 import java.security.MessageDigest;
@@ -334,11 +335,6 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void updateLanguage() {
-        String language_code = "ar"; //"ar";
-        Locale locale = new Locale(language_code);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        MyUtilityKt.changeAppLang(this,MyUtilityKt.pref(this).getLanguage());
     }
 }

@@ -58,12 +58,19 @@ public class MySharedPreferences {
         return !PacketUtility.getVersionName(context).equals(getVersionName());
     }
 
-    public void putLanguage(int language) {
-        putIntValue(LANGUAGE, language);
+    public void putLanguage(String language) {
+        putStringValue(LANGUAGE, language);
     }
 
-    public int getLanguage() {
-        return getIntValue(LANGUAGE);
+    public String getLanguage() {
+        return getStringValue(LANGUAGE,"en");
+    }
+
+    public String getLanguageDisplayCode(){
+        String cd = getStringValue(LANGUAGE,"en");
+        if(cd.equalsIgnoreCase("en"))
+            return "E";
+       else return "AR";
     }
 
     public void putFontSize(float fontSize) {

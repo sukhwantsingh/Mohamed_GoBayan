@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.treebo:internetavailabilitychecker:1.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/internetavailabilitychecker-1.0.1.aar/84d5a17014efd8868e2855b2d6a55ac5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/internetavailabilitychecker-1.0.1.aar/84d5a17014efd8868e2855b2d6a55ac5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/internetavailabilitychecker-1.0.1.aar/85e5aae40c14821563c64f8c65b22eb2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/internetavailabilitychecker-1.0.1.aar/85e5aae40c14821563c64f8c65b22eb2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/internetavailabilitychecker-1.0.1.aar/85e5aae40c14821563c64f8c65b22eb2/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/94a727fca1f8a915bd7aa44bdbebad9b/transformed/jetified-internetavailabilitychecker-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/94a727fca1f8a915bd7aa44bdbebad9b/transformed/jetified-internetavailabilitychecker-1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/94a727fca1f8a915bd7aa44bdbebad9b/transformed/jetified-internetavailabilitychecker-1.0.1/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.treebo/internetavailabilitychecker/1.0.1/7546fee75507f69a52aa3036ba84325dc25311e9/internetavailabilitychecker-1.0.1-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.treebo/internetavailabilitychecker/1.0.1/768b0b1f9c47ba86ffbf51d024d1ffd802f7fd9d/internetavailabilitychecker-1.0.1-sources.jar!/" />
     </SOURCES>

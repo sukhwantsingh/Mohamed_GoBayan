@@ -1,190 +1,221 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D0C04"
     android:orientation="vertical"
     android:visibility="visible">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/lnlLayout"
+    <TextView
+        android:id="@+id/changeLangOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:text="( E )"
+        android:drawablePadding="@dimen/_2sdp"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:textColor="@color/dark_gray_color"
+        android:textSize="@dimen/_14sdp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lnlLayout"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="90dp"
+            android:src="@drawable/logo_icon" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnlLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/iv_continue_as_guest"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_red_button_with_border"
+            android:fontFamily="@font/bold"
             android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/iv_title_1"
-                android:layout_width="@dimen/dp_150"
-                android:layout_height="@dimen/dp_100"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/dimen_4x"
-                android:scaleType="fitCenter"
-                android:src="@drawable/login_title1" />
-
-            <ImageView
-                android:id="@+id/iv_title_2"
-                android:layout_width="@dimen/dimen300"
-                android:layout_height="@dimen/dp_80"
-                android:layout_below="@+id/iv_title_1"
-                android:layout_centerHorizontal="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/login_title2" />
-
-            <ImageView
-                android:id="@+id/iv_continue_as_guest"
-                android:layout_width="@dimen/dp_150"
-                android:layout_height="@dimen/app_layout_bottom_height"
-                android:layout_below="@id/iv_title_2"
-                android:layout_marginTop="@dimen/dimen_2x"
-                android:src="@drawable/bg_guest_button" />
-        </LinearLayout>
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_8sdp"
+            android:text="@string/shopping_as_guest"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
 
         <LinearLayout
-            android:id="@+id/lnlLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_red_button_with_border"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="@string/login"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:id="@+id/btnRegister"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_12sdp"
+                android:paddingVertical="@dimen/_8sdp"
+                android:text="@string/sign_up"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/_11sdp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/bold"
+                android:text="@string/email_username"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <EditText
+                android:id="@+id/txtUserName"
+                style="@style/et_custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_x2x"
-                android:layout_marginRight="@dimen/dimen_x2x"
-                android:background="@drawable/bg_button_white"
-                android:orientation="horizontal">
-
-                <com.libyasolutions.libyamarketplace.widget.MyEditText
-                    android:id="@+id/txtUserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_button_white_color"
-                    android:gravity="right|center_vertical"
-                    android:hint="@string/lblUserName"
-                    android:inputType="text"
-                    android:padding="@dimen/text_small_size_16"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal_1x" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_x2x"
-                android:layout_marginTop="@dimen/dimen_x1x"
-                android:layout_marginRight="@dimen/dimen_x2x"
-                android:background="@drawable/bg_button_white_color"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <com.libyasolutions.libyamarketplace.widget.MyEditText
-                    android:id="@+id/txtPassWord"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_button_white_color"
-                    android:gravity="right"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:padding="@dimen/text_small_size_16"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal_1x" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_x2x"
-                android:layout_marginTop="@dimen/dimen_x1x"
-                android:layout_marginRight="@dimen/dimen_x2x"
-                android:orientation="horizontal">
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                    android:id="@+id/btnLogin"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dimen_1x"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_red_button_with_border"
-                    android:gravity="center"
-                    android:padding="@dimen/text_small_size_16"
-                    android:text="@string/login"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_size_normal_1x" />
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                    android:id="@+id/btnRegister"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_red_button_with_border"
-                    android:gravity="center"
-                    android:padding="@dimen/text_small_size_16"
-                    android:text="@string/register"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_size_normal_1x" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/btnLoginFacebook"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dimen_x2x"
-                android:layout_marginTop="@dimen/dimen_x1x"
-                android:layout_marginRight="@dimen/dimen_x2x"
-                android:background="@drawable/bg_button_bluefb"
-                android:orientation="horizontal"
-                android:visibility="visible">
-
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:gravity="center"
-                    android:paddingTop="@dimen/dimen_1x"
-                    android:paddingBottom="@dimen/dimen_1x"
-                    android:text="@string/login_facebook"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_size_normal_1x" />F
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    android:src="@drawable/logo_facebook"
-                    android:visibility="gone" />
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dimen_x2x"
-                android:layout_marginTop="@dimen/dimen_2x"
-                android:layout_marginRight="@dimen/dimen_x2x"
-                android:layout_marginBottom="@dimen/dimen_2x"
-                android:orientation="horizontal">
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                    android:id="@+id/btnForgetPassword"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:paddingTop="@dimen/dimen_1x"
-                    android:paddingBottom="@dimen/dimen_1x"
-                    android:text="@string/reset_password"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/text_size_normal_1x" />
-            </LinearLayout>
+                android:background="@drawable/bg_border_grey"
+                android:hint="@string/lblUserName"
+                android:inputType="text"
+                android:padding="15dp"
+                android:singleLine="true" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:background="@drawable/bg_button_white_color"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fontFamily="@font/bold"
+                android:text="@string/password"
+                android:textColor="@color/color_dark_grey"
+                android:textSize="@dimen/_11sdp" />
+
+            <EditText
+                android:id="@+id/txtPassWord"
+                style="@style/et_custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_border_grey"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="@dimen/text_small_size_16"
+                android:singleLine="true" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/btnForgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:paddingVertical="5dp"
+                android:text="@string/reset_password"
+                android:textColor="@color/color_blue_greenish"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/btnLogin"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/bg_red_button_with_border"
+                android:backgroundTint="@color/color_dark_blue"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_15sdp"
+                android:paddingVertical="14dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnLoginFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dimen_x2x"
+            android:layout_marginTop="@dimen/dimen_x1x"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="@dimen/dimen_x2x"
+            android:background="@drawable/bg_button_bluefb"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:paddingTop="@dimen/dimen_1x"
+                android:paddingBottom="@dimen/dimen_1x"
+                android:text="@string/login_facebook"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_normal_1x" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:gravity="right"
+                android:src="@drawable/logo_facebook"
+                android:visibility="gone" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 </RelativeLayout>

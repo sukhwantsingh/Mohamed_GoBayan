@@ -60,8 +60,7 @@ public class SortByDialog extends BaseDialog {
                 break;
             case ConstantApp.SORT_BY_DATE:
                 tvSortByDate.setTextColor(getResources().getColor(R.color.white));
-                tvSortByDate.setBackground(ContextCompat.getDrawable(getActivity(),
-                        R.drawable.bg_red_button_with_border));
+                tvSortByDate.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.bg_red_button_with_border));
                 break;
         }
     }

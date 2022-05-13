@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.fresco:webpsupport:1.11.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/webpsupport-1.11.0.aar/74c8632c4f6e2411caf5d004ce6c1085/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/webpsupport-1.11.0.aar/74c8632c4f6e2411caf5d004ce6c1085/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/webpsupport-1.11.0.aar/0aff2ac6931e2b20ca1d6e64c5ce1fcf/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/webpsupport-1.11.0.aar/0aff2ac6931e2b20ca1d6e64c5ce1fcf/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/webpsupport-1.11.0.aar/0aff2ac6931e2b20ca1d6e64c5ce1fcf/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/09de8d57a4bb0ab7c0b325244f6f0676/transformed/jetified-webpsupport-1.11.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/09de8d57a4bb0ab7c0b325244f6f0676/transformed/jetified-webpsupport-1.11.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/09de8d57a4bb0ab7c0b325244f6f0676/transformed/jetified-webpsupport-1.11.0/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.fresco/webpsupport/1.11.0/9cba8f92368cb24314eaf7287e75d4391a187a1f/webpsupport-1.11.0-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.fresco/webpsupport/1.11.0/aef73eba7b1284dfd681226bbcafe34b7d35c040/webpsupport-1.11.0-sources.jar!/" />
     </SOURCES>

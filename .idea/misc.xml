@@ -3,10 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/add_blue_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_border_grey_new.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_red_button_with_border.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.3453125" />
+        <entry key="app/src/main/res/layout/activity_list_category.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/activity_list_food.xml" value="0.3453125" />
+        <entry key="app/src/main/res/layout/activity_list_food_home.xml" value="0.3453125" />
+        <entry key="app/src/main/res/layout/activity_list_food_of_shop_cart.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/activity_list_shop_cart.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/activity_list_shop_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_list_shop_order.xml" value="0.3453125" />
+        <entry key="app/src/main/res/layout/activity_main_tab_user.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/activity_manage_order.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/dialog_convert_to_shop_onwer.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/login_activity.xml" value="0.3453125" />
+        <entry key="app/src/main/res/layout/register_activity.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/row_list_category_right.xml" value="0.1703125" />
       </map>
     </option>
@@ -50,7 +64,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

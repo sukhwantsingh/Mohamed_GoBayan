@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -38,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
             txtPhone, txtAddress, txtCity, txtZipCode;
     private Button btnRegister;
     private Account account = null;
-    private ImageView btnBack;
+    private TextView btnBack;
     private MySharedPreferences mySharedPreferences;
 
     @Override
@@ -65,33 +66,24 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void initControl() {
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String message = validateForm();
-                if (!message.equals(MESSAGE_SUCCESS)) {
-                    CustomToast.showCustomAlert(RegisterActivity.this, message,
-                            Toast.LENGTH_SHORT);
-                } else {
-                    if (account != null) {
-                        if (NetworkUtil.checkNetworkAvailable(RegisterActivity.this)) {
-                            register(account);
-                        } else {
-                            Toast.makeText(RegisterActivity.this,
-                                    R.string.message_network_is_unavailable,
-                                    Toast.LENGTH_LONG).show();
-                        }
+        btnRegister.setOnClickListener(v -> {
+            String message = validateForm();
+            if (!message.equals(MESSAGE_SUCCESS)) {
+                CustomToast.showCustomAlert(RegisterActivity.this, message,
+                        Toast.LENGTH_SHORT);
+            } else {
+                if (account != null) {
+                    if (NetworkUtil.checkNetworkAvailable(RegisterActivity.this)) {
+                        register(account);
+                    } else {
+                        Toast.makeText(RegisterActivity.this,
+                                R.string.message_network_is_unavailable,
+                                Toast.LENGTH_LONG).show();
                     }
                 }
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
 
     private String validateForm() {

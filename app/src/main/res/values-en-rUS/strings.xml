@@ -220,7 +220,7 @@
     <string name="message_quit_app">log out</string>
     <string name="message_log_out">Do you want to log out</string>
     <string name="yes">yes</string>
-    <string name="no">لNo</string>
+    <string name="no">No</string>
     <string name="cart_empty">Your cart is empty</string>
     <string name="have_no_date">no date</string>
     <string name="have_no_more_date">no more date</string>
@@ -263,8 +263,8 @@
     <string name="about_facebook">https://www.facebook.com/Libya.Solutions</string>
     <string name="about_email">info@libyasolutions.com</string>
     <string name="about_phone">..</string>
-    <string name="passHint">password</string>
-    <string name="my_info">my info</string>
+    <string name="passHint">Password</string>
+    <string name="my_info">My info</string>
     <string name="order_history">Order history</string>
     <string name="menu_found">Existing products</string>
     <string name="confirm_password">confirm password</string>

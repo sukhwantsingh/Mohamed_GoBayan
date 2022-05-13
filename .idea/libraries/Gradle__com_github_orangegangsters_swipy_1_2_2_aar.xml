@@ -1,17 +1,16 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.orangegangsters:swipy:1.2.2@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/b1978c88df8bf9f12c713b725ec3a1e6/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-swipy-1.2.2.aar/12f5132a4f6657d634a805de06e75580/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c29c3242f509cc47d620557c15949911/transformed/jetified-swipy-1.2.2/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/b1978c88df8bf9f12c713b725ec3a1e6/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/swipy-1.2.2.aar/b1978c88df8bf9f12c713b725ec3a1e6/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-swipy-1.2.2.aar/12f5132a4f6657d634a805de06e75580/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-swipy-1.2.2.aar/12f5132a4f6657d634a805de06e75580/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-swipy-1.2.2.aar/12f5132a4f6657d634a805de06e75580/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c29c3242f509cc47d620557c15949911/transformed/jetified-swipy-1.2.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c29c3242f509cc47d620557c15949911/transformed/jetified-swipy-1.2.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c29c3242f509cc47d620557c15949911/transformed/jetified-swipy-1.2.2/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.orangegangsters/swipy/1.2.2/c51f15e82a6d69b85f7d78d5c14cb423eb7c8679/swipy-1.2.2-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.orangegangsters/swipy/1.2.2/ea2a55f3ea14778cdc8e25546f042575b8b513f7/swipy-1.2.2-sources.jar!/" />
     </SOURCES>

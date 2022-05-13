@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <color name="cl_GreenText">#128e00</color>
     <color name="cl_BlueNumber">#2c8ab3</color>
     <color name="cl_normalText">#515151</color>
@@ -35,7 +36,7 @@
     <color name="red_button">#eb102f</color>
     <color name="color_red">#FE0000</color>
     <color name="blackl">#cccccc</color>
-    <color name="gray_dark">#999999</color>
+    <color name="gray_dark">#D5D2D2</color>
 
     <!-- Material palette -->
     <color name="gray_home_bottom">#B6B6B6</color>
@@ -70,7 +71,7 @@
     <color name="bgGuest">#f1f0f0</color>
     <color name="bgGuestText">#212121</color>
     <color name="black_overlay_367c7c7c">#367c7c7c</color>
-    
+
     <color name="bg_awaiting_approval_convert_to_shop_owner_account">#FECCCB</color>
     <color name="color_text_awaiting_approval">#B40A08</color>
     <color name="bg_button_second">#329900</color>
@@ -79,5 +80,19 @@
     <color name="color_payment">#81D4FA</color>
     <color name="color_new_order">#e0f0ff</color>
     <color name="color_blue_dark">#0002f8</color>
+    <color name="color_dark_blue">#4975E9</color>
+    <color name="color_dark_grey">#aaaaaa</color>
+    <color name="color_light_grey">#c3c3c3</color>
+    <color name="color_blue_greenish">#0C243E</color>
+    <color name="border_color">#EEEEEE</color>
+    <color name="border_gray">#dddddd</color>
+    <color name="border_sky_blue">#f4fef4</color>
+    <color name="border_light_blue">#f5f5f5</color>
+    <color name="border_light_blue_two">#efefef</color>
+    <color name="blue_button">#624cee</color>
+    <color name="blue_dark_button">#4975e9</color>
+    <color name="grey_back">#edeffe</color>
+    <color name="dark_gray_color">#818181</color>
+
 
 </resources>

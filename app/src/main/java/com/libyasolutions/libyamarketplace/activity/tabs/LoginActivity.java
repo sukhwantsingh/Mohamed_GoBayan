@@ -3,17 +3,22 @@ package com.libyasolutions.libyamarketplace.activity.tabs;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 import androidx.appcompat.view.ContextThemeWrapper;
+
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,6 +53,7 @@ import com.libyasolutions.libyamarketplace.service.ServiceManager;
 import com.libyasolutions.libyamarketplace.util.CustomToast;
 import com.libyasolutions.libyamarketplace.util.Logger;
 import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
+import com.libyasolutions.libyamarketplace.util.MyUtilityKt;
 import com.libyasolutions.libyamarketplace.util.NetworkUtil;
 
 import org.json.JSONException;
@@ -56,6 +62,7 @@ import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class LoginActivity extends BaseActivity {
     private EditText txtUser, txtPass;
@@ -66,8 +73,9 @@ public class LoginActivity extends BaseActivity {
     private MySharedPreferences mySharedPreferences;
     private CallbackManager callbackManager;
     private LinearLayout btnLoginFacebook;
-    private ImageView ivContinueAsGuest;
+    private TextView ivContinueAsGuest;
     private TextView btnResetPassword;
+    private TextView changeLanguageOption;
 
 
     // ======= LOGIN BY FACEBOOK ===========
@@ -89,6 +97,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initUI() {
+        changeLanguageOption = (TextView) findViewById(R.id.changeLangOption);
         txtUser = (EditText) findViewById(R.id.txtUserName);
         txtPass = (EditText) findViewById(R.id.txtPassWord);
         btnLogin = (TextView) findViewById(R.id.btnLogin);
@@ -96,56 +105,64 @@ public class LoginActivity extends BaseActivity {
         btnLoginFacebook = findViewById(R.id.btnLoginFacebook);
         btnResetPassword = findViewById(R.id.btnForgetPassword);
         ivContinueAsGuest = findViewById(R.id.iv_continue_as_guest);
+
+        // show pre values
+        changeLanguageOption.setText(MyUtilityKt.pref(this).getLanguageDisplayCode());
+
     }
 
     private void initControls() {
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (txtUser.getText().toString().isEmpty()
-                        || txtPass.getText().toString().isEmpty()) {
-                    CustomToast.showCustomAlert(
-                            LoginActivity.this, getString(
-                                    R.string.message_input_user_pass),
-                            Toast.LENGTH_SHORT);
-                } else {
-                    userName = txtUser.getText().toString();
-                    passWord = txtPass.getText().toString();
-                    // check network
-                    if (NetworkUtil.checkNetworkAvailable(LoginActivity.this)) {
-                        login(userName, passWord);
-                    } else {
-                        Toast.makeText(LoginActivity.this, getString(R.string.message_network_is_unavailable), Toast.LENGTH_LONG).show();
-                    }
+        changeLanguageOption.setOnClickListener(v -> {
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(LoginActivity.this);
 
+            builderSingle.setTitle(getResources().getString(R.string.select_language));
+
+            final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(LoginActivity.this,  android.R.layout.select_dialog_singlechoice);
+            arrayAdapter.add("English");
+            arrayAdapter.add("عربي");
+
+
+            builderSingle.setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> dialog.dismiss());
+
+            builderSingle.setAdapter(arrayAdapter, (dialog, which) -> {
+            //    String strName = arrayAdapter.getItem(which);
+                String language_code;
+                if(which == 0) { language_code = "en";  }
+                else { language_code = "ar";   }
+
+                MyUtilityKt.changeAppLang(this, language_code);
+                startActivity(new Intent(LoginActivity.this, LoginActivity.class));
+                finishAffinity();
+            });
+            builderSingle.show();
+        });
+
+        btnLogin.setOnClickListener(v -> {
+            if (txtUser.getText().toString().isEmpty()
+                    || txtPass.getText().toString().isEmpty()) {
+                CustomToast.showCustomAlert(
+                        LoginActivity.this, getString(
+                                R.string.message_input_user_pass),
+                        Toast.LENGTH_SHORT);
+            } else {
+                userName = txtUser.getText().toString();
+                passWord = txtPass.getText().toString();
+                // check network
+                if (NetworkUtil.checkNetworkAvailable(LoginActivity.this)) {
+                    login(userName, passWord);
+                } else {
+                    Toast.makeText(LoginActivity.this, getString(R.string.message_network_is_unavailable), Toast.LENGTH_LONG).show();
                 }
 
             }
+
         });
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoActivity(RegisterActivity.class);
-            }
-        });
-        btnLoginFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginFacebook();
-            }
-        });
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickForgetPassword();
-            }
-        });
-        ivContinueAsGuest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoActivity(MainTabActivity.class);
-                finish();
-            }
+        btnRegister.setOnClickListener(v -> gotoActivity(RegisterActivity.class));
+        btnLoginFacebook.setOnClickListener(v -> loginFacebook());
+        btnResetPassword.setOnClickListener(v -> onClickForgetPassword());
+        ivContinueAsGuest.setOnClickListener(v -> {
+            gotoActivity(MainTabActivity.class);
+            finish();
         });
     }
 
@@ -179,9 +196,8 @@ public class LoginActivity extends BaseActivity {
         } else {
             ime = telephonyManager.getDeviceId();
         }
+
         String fcmId = mySharedPreferences.getStringValue(Constant.TOKEN_FCM, "");
-
-
 
         ModelManager.login(this, userName2, passWord2, ime, fcmId, "1",true,
                 new ModelManagerListener() {

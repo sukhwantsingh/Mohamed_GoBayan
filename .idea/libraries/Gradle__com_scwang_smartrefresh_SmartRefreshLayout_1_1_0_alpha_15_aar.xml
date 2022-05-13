@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-15@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-15.aar/f1911cf4b93573cafd262ef896f04052/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-15.aar/f1911cf4b93573cafd262ef896f04052/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshLayout-1.1.0-alpha-15.aar/5344976f8cd0ba64982a3afe8197707f/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshLayout-1.1.0-alpha-15.aar/5344976f8cd0ba64982a3afe8197707f/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshLayout-1.1.0-alpha-15.aar/5344976f8cd0ba64982a3afe8197707f/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1f2019043f2d989891cb5d422d32cbcc/transformed/jetified-SmartRefreshLayout-1.1.0-alpha-15/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f2019043f2d989891cb5d422d32cbcc/transformed/jetified-SmartRefreshLayout-1.1.0-alpha-15/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f2019043f2d989891cb5d422d32cbcc/transformed/jetified-SmartRefreshLayout-1.1.0-alpha-15/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0-alpha-15/2c35b03925abd1fb0e447c45bbb7c12d811427a5/SmartRefreshLayout-1.1.0-alpha-15-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshLayout/1.1.0-alpha-15/cfbfc6992d1a0910997a26e74f6b981e9ead3191/SmartRefreshLayout-1.1.0-alpha-15-sources.jar!/" />
     </SOURCES>

@@ -1,27 +1,34 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray_light"
         app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
-                    app:layout_collapseMode="parallax"
-                    android:layout_marginTop="112dp">
+                    android:layout_marginTop="112dp"
+                    app:layout_collapseMode="parallax">
 
                     <ImageView
                         android:layout_width="0dp"
@@ -30,8 +37,8 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/bg_search_new"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,8 +52,8 @@
                         android:paddingTop="6dp"
                         android:paddingRight="6dp"
                         android:paddingBottom="8dp"
-                        app:layout_constraintRight_toLeftOf="@id/btn_search_by_all_cities"
                         app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/btn_search_by_all_cities"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
@@ -62,14 +69,14 @@
                             android:id="@+id/tv_city_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
                             android:text="@string/list_shop_home_text_choose_cities"
                             android:textColor="@color/black"
                             android:textSize="22sp"
-                            android:maxLines="1"
-                            android:ellipsize="end"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/iv_arrow_bottom"
-                            app:layout_constraintRight_toRightOf="parent"/>
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/iv_arrow_bottom" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -79,17 +86,17 @@
                         android:layout_height="50dp"
                         android:layout_marginLeft="8dp"
                         android:background="@drawable/bg_white_corner_6"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:paddingLeft="6dp"
                         android:paddingTop="10dp"
                         android:paddingRight="6dp"
                         android:text="@string/list_shop_home_all_cities"
                         android:textAllCaps="false"
                         android:textSize="22sp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
                         app:layout_constraintBottom_toBottomOf="@id/container_choose_cities"
-                        app:layout_constraintRight_toLeftOf="@id/btn_search_by_my_location"
                         app:layout_constraintLeft_toRightOf="@id/container_choose_cities"
+                        app:layout_constraintRight_toLeftOf="@id/btn_search_by_my_location"
                         app:layout_constraintTop_toTopOf="@id/container_choose_cities" />
 
                     <com.libyasolutions.libyamarketplace.widget.MyButton
@@ -99,6 +106,8 @@
                         android:layout_marginLeft="8dp"
                         android:layout_marginRight="30dp"
                         android:background="@drawable/bg_red_button_with_border"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:paddingLeft="6dp"
                         android:paddingTop="10dp"
                         android:paddingRight="6dp"
@@ -106,11 +115,9 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="22sp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
                         app:layout_constraintBottom_toBottomOf="@id/btn_search_by_all_cities"
-                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintLeft_toRightOf="@id/btn_search_by_all_cities"
+                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="@id/btn_search_by_all_cities" />
 
                     <com.libyasolutions.libyamarketplace.widget.MyButton
@@ -119,17 +126,17 @@
                         android:layout_height="50dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_white_corner_6"
+                        android:ellipsize="end"
                         android:gravity="center"
+                        android:maxLines="1"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="@string/list_shop_home_choose_department"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
                         android:textSize="22sp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        app:layout_constraintRight_toLeftOf="@id/btn_search_by_all_department"
                         app:layout_constraintLeft_toLeftOf="@id/container_choose_cities"
+                        app:layout_constraintRight_toLeftOf="@id/btn_search_by_all_department"
                         app:layout_constraintTop_toBottomOf="@id/container_choose_cities" />
 
                     <com.libyasolutions.libyamarketplace.widget.MyButton
@@ -139,17 +146,17 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_red_button_with_border"
+                        android:ellipsize="end"
                         android:gravity="center"
+                        android:maxLines="1"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="@string/list_shop_home_all_department"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="22sp"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        app:layout_constraintRight_toRightOf="@id/btn_search_by_my_location"
                         app:layout_constraintLeft_toRightOf="@id/btn_search_by_choose_department"
+                        app:layout_constraintRight_toRightOf="@id/btn_search_by_my_location"
                         app:layout_constraintTop_toBottomOf="@id/btn_search_by_my_location" />
 
                     <ImageView
@@ -176,12 +183,12 @@
                         android:contentDescription="@string/content_description"
                         android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
                         android:paddingTop="6dp"
+                        android:paddingRight="10dp"
                         android:paddingBottom="6dp"
                         android:src="@drawable/ic_location_search_white"
-                        app:layout_constraintRight_toRightOf="@id/btn_search_by_choose_department"
                         app:layout_constraintLeft_toRightOf="@id/iv_search_by_date_name_rating"
+                        app:layout_constraintRight_toRightOf="@id/btn_search_by_choose_department"
                         app:layout_constraintTop_toBottomOf="@id/btn_search_by_choose_department" />
 
                     <com.libyasolutions.libyamarketplace.widget.MyButton
@@ -191,165 +198,165 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bg_red_button_with_border"
                         android:text="@string/list_shop_home_button_text_search"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="22sp"
-                        android:textAllCaps="false"
-                        app:layout_constraintRight_toRightOf="@id/btn_search_by_all_department"
                         app:layout_constraintLeft_toLeftOf="@id/btn_search_by_all_department"
+                        app:layout_constraintRight_toRightOf="@id/btn_search_by_all_department"
                         app:layout_constraintTop_toBottomOf="@id/btn_search_by_all_department" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:layout_collapseMode="pin"
-                app:contentInsetLeft="0dp"
-                app:contentInsetStart="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetEnd="0dp">
-
-                <LinearLayout
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:background="@color/white"
+                    app:contentInsetEnd="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="?attr/actionBarSize">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/btnBack"
-                            android:layout_width="55dp"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_margin="@dimen/dimen16"
-                            android:src="@drawable/ic_chevron_right_black_24dp" />
-
-                        <View
-                            android:id="@+id/vieww"
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="5dp"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginTop="@dimen/dimen16"
-                            android:background="@color/red" />
-                    </RelativeLayout>
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:background="@color/white"
-                        android:paddingLeft="30dp"
-                        android:paddingTop="6dp"
-                        android:paddingBottom="6dp"
-                        android:paddingRight="30dp"
-                        app:layout_collapseMode="pin">
-
-                        <FrameLayout
-                            android:id="@+id/container_search"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_red_button_with_border"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:layout_height="?attr/actionBarSize">
 
                             <ImageView
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:padding="2dp"
-                                android:contentDescription="@string/content_description"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_search_white_64" />
+                                android:id="@+id/btnBack"
+                                android:layout_width="55dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_margin="@dimen/dimen16"
+                                android:src="@drawable/ic_chevron_right_black_24dp" />
 
-                        </FrameLayout>
+                            <View
+                                android:id="@+id/vieww"
+                                android:layout_width="match_parent"
+                                android:layout_height="5dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginTop="@dimen/dimen16"
+                                android:background="@color/red" />
+                        </RelativeLayout>
 
-                        <FrameLayout
-                            android:id="@+id/container_sort"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="6dp"
-                            android:background="@drawable/bg_white_border_gray"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/container_search"
-                            app:layout_constraintTop_toTopOf="parent">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:background="@color/white"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="6dp"
+                            android:paddingRight="30dp"
+                            android:paddingBottom="6dp"
+                            app:layout_collapseMode="pin">
 
-                            <ImageView
-                                android:id="@+id/iv_sort"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:contentDescription="@string/content_description"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/ic_sort_desending" />
+                            <FrameLayout
+                                android:id="@+id/container_search"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_red_button_with_border"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
-                        </FrameLayout>
+                                <ImageView
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:contentDescription="@string/content_description"
+                                    android:padding="2dp"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/ic_search_white_64" />
 
-                        <com.libyasolutions.libyamarketplace.widget.MyEditText
-                            android:id="@+id/edt_search"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginLeft="6dp"
-                            android:background="@drawable/bg_white_border_gray"
-                            android:gravity="right|center_vertical"
-                            android:hint="@string/list_shop_home_hint_search"
-                            android:maxLines="1"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:inputType="text"
-                            android:imeOptions="actionDone"
-                            android:autofillHints="false"
-                            android:textSize="22sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/container_sort"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            </FrameLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            <FrameLayout
+                                android:id="@+id/container_sort"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:background="@drawable/bg_white_border_gray"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toRightOf="@id/container_search"
+                                app:layout_constraintTop_toTopOf="parent">
 
-                </LinearLayout>
+                                <ImageView
+                                    android:id="@+id/iv_sort"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:contentDescription="@string/content_description"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/ic_sort_desending" />
 
-            </androidx.appcompat.widget.Toolbar>
+                            </FrameLayout>
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+                            <com.libyasolutions.libyamarketplace.widget.MyEditText
+                                android:id="@+id/edt_search"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="6dp"
+                                android:autofillHints="false"
+                                android:background="@drawable/bg_white_border_gray"
+                                android:gravity="right|center_vertical"
+                                android:hint="@string/list_shop_home_hint_search"
+                                android:imeOptions="actionDone"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textSize="22sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toRightOf="@id/container_sort"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_shadow">
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/iv_expand_app_bar"
-                android:layout_width="48dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="35dp"
-                android:src="@drawable/ic_arrow_down_1"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:visibility="gone"
-                tools:visibility="visible"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"/>
+                    </LinearLayout>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                android:id="@+id/tvShopQuality"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                tools:text="8 shop found"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.appcompat.widget.Toolbar>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shadow">
+
+                <ImageView
+                    android:id="@+id/iv_expand_app_bar"
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="35dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:src="@drawable/ic_arrow_down_1"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    android:id="@+id/tvShopQuality"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="8 shop found" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
@@ -362,116 +369,117 @@
                 android:id="@+id/rclViewShop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clipToPadding="false"/>
+                android:clipToPadding="false" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-    <ImageView
-        android:id="@+id/iv_show_more"
-        android:layout_width="@dimen/dp_60"
-        android:layout_height="@dimen/dp_60"
-        android:layout_marginLeft="@dimen/dimen_2x"
-        android:layout_marginBottom="70dp"
-        android:padding="2dp"
-        android:src="@drawable/ic_arrow_down_3"
-        android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_gravity="left|bottom"/>
-
-    <LinearLayout
-        android:id="@+id/layout_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_7x"
-        android:background="@color/background_new"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom">
-
+        <ImageView
+            android:id="@+id/iv_show_more"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="@dimen/dimen_2x"
+            android:layout_marginBottom="70dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_arrow_down_3"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <LinearLayout
-            android:id="@+id/tab_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
+            android:id="@+id/layout_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_7x"
+            android:layout_gravity="bottom"
+            android:background="@color/background_new"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="@dimen/dimen_3x"
-                android:layout_height="@dimen/dimen_3x"
+
+            <LinearLayout
+                android:id="@+id/tab_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_hom0e" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_search"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_3x"
-                android:layout_height="@dimen/dimen_3x"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_sear8ch" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_cart"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_3x"
-                android:layout_height="@dimen/dimen_3x"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_cart_6" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_profile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="@dimen/dimen_3x"
                     android:layout_height="@dimen/dimen_3x"
                     android:layout_weight="1"
-                    android:layout_gravity="center"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_profile5" />
+                    android:src="@drawable/ic_hom0e" />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_order_new_number_tab"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:background="@drawable/bg_order_new_number"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    tools:text="1"
-                    android:visibility="gone"
-                    tools:visibility="visible"/>
+            <LinearLayout
+                android:id="@+id/tab_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
 
-            </FrameLayout>
+                <ImageView
+                    android:layout_width="@dimen/dimen_3x"
+                    android:layout_height="@dimen/dimen_3x"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_sear8ch" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab_cart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_3x"
+                    android:layout_height="@dimen/dimen_3x"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_cart_6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab_profile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/dimen_3x"
+                        android:layout_height="@dimen/dimen_3x"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_profile5" />
+
+                    <TextView
+                        android:id="@+id/tv_order_new_number_tab"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/bg_order_new_number"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        tools:text="1"
+                        tools:visibility="visible" />
+
+                </FrameLayout>
 
 
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

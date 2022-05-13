@@ -119,9 +119,9 @@
     <string name="updateInfor">Update profile</string>
     <string name="update">Update</string>
     <string name="updatePass">Update password</string>
-    <string name="myInfo">my Info</string>
+    <string name="myInfo">My Info</string>
     <string name="userHint">User name</string>
-    <string name="password">password</string>
+    <string name="password">Password</string>
     <string name="repassword">Confirm password</string>
     <string name="mail">Email</string>
     <string name="fullName">Full name</string>
@@ -220,7 +220,7 @@
     <string name="message_quit_app">log out</string>
     <string name="message_log_out">Do you want to log out</string>
     <string name="yes">yes</string>
-    <string name="no">لNo</string>
+    <string name="no">No</string>
     <string name="cart_empty">Your cart is empty</string>
     <string name="have_no_date">no date</string>
     <string name="have_no_more_date">no more date</string>
@@ -264,10 +264,10 @@
     <string name="about_email">info@libyasolutions.com</string>
     <string name="about_phone">..</string>
     <string name="passHint">password</string>
-    <string name="my_info">my info</string>
+    <string name="my_info">My info</string>
     <string name="order_history">Order history</string>
     <string name="menu_found">Existing products</string>
-    <string name="confirm_password">confirm password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="lbl_shops">Shops</string>
 
     <string name="ic_profile">&#xe6a9;</string>
@@ -512,7 +512,6 @@
     <string name="delete_product_success">delete product success</string>
     <string name="reject_convert_to_shop_owner">Sorry, your request has been rejected, we can\'t upgrade your account to a store owner account, please contact the application management to solve the problem and fix the issue</string>
     <string name="shop_address">shop address</string>
-
     <string name="order_waiting">order_waiting</string>
     <string name="order_status_not_selected">Did not select the status</string>
     <string name="please_select_lat_long">Please select lat long</string>
@@ -522,9 +521,71 @@
     <string name="order_found">%s Order</string>
     <string name="product_found">%s product</string>
     <string name="order_date">Order date</string>
-
     <string name="button_text_shop_information">Shop information</string>
     <string name="lblUserName">Username or Email Address </string>
+
+<!-- New Editions  -->
+    <string name="change_language">Change Language</string>
+    <string name="my_saved_shops">My saved shops</string>
+    <string name="my_saved_products">My saved products</string>
+    <string name="shop_fav_title">My favorite shops</string>
+    <string name="product_fav_title">My favorite products</string>
+    <string name="similar_shops">Similar Shops</string>
+    <string name="similar_products">Similar Products</string>
+    <string name="alternate_phone_number">Alternate Phone Number</string>
+    <string name="email_username">Email or username</string>
+    <string name="username">Username</string>
+    <string name="personal_info">Personal info</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="contact_info">Contact info</string>
+    <string name="address_info_text">Address info</string>
+    <string name="selcte">Select</string>
+    <string name="project_idd">PRODECT_ID</string>
+    <string name="sent">Sent</string>
+    <string name="upgrade_to_shop_owner_account">Upgrade to Shop owner account</string>
+    <string name="profile_settings">Profile Settings</string>
+    <string name="user_settings">User Settings</string>
+    <string name="order_history_new">Order History</string>
+    <string name="my_favourite_shops">My Favourite Shops</string>
+    <string name="chats">Chats</string>
+    <string name="language">Language</string>
+    <string name="terms_and_conditions">Terms and conditions</string>
+    <string name="my_favourite_products">My Favourite Products</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="shop_settings">Shop Settings</string>
+    <string name="orders_management">Orders management</string>
+    <string name="orders_history_list">Orders History List</string>
+    <string name="orders_found"><b>20</b> Orders Found</string>
+    <string name="dummyContent">Product description or firstpart of description</string>
+    <string name="report_product">Report Product</string>
+    <string name="note">Note</string>
+    <string name="thanks_for_your_report">Thanks For your Report</string>
+    <string name="des_one">Wish to be aware that This is a report only to a report inappropriate content that shouldn\'t be displayed on this platform.</string>
+    <string name="des_two">But it\'s not related to any issue between the buyer and the shop \"seller\" is any</string>
+    <string name="des_three">Unfortunately, if there is any issues with the seller hope to be solved with the shop owner directly with his contact info that has been provided on his page.</string>
+    <string name="des_four">The GoBayan platform doen\'t have any relation with sell operation between the buyer and seller. GoBayan it\'s just a platform that gives space to Seller to display their Products and Buyers to browse what they looking for to buy.</string>
+    <string name="des_five">Thanks for understanding</string>
+    <string name="request_convert_to_the_shop_owner_account">Request convert to the shop Owner account</string>
+    <string name="des_shop_one">Thanks for requesting to upgrade to the Shop owner account, Your Request has been sent successfully.</string>
+    <string name="des_shop_two">Now your account is awaiting approval registered as the shop owner, it will be sent a confirmation to your email, Please wait for processing.</string>
+    <string name="head_text">Fill out the requested information, please</string>
+    <string name="shop_category">Shop category</string>
+    <string name="my_location">My Location</string>
+    <string name="surname">Surname</string>
+    <string name="verified_new">verified</string>
+    <string name="save_change">Save Change</string>
+    <string name="order_details">Order details</string>
+    <string name="departments_and_categories">Departments and Categories</string>
+    <string name="location">Location</string>
+    <string name="see_shop">See Shop</string>
+    <string name="shops_recommend_for_you">Shops Recommend For You</string>
+    <string name="products_recommend_for_you">Products Recommend For You</string>
+    <string name="shops_nearby_you">Shops Nearby You</string>
+    <string name="shopping_as_guest">Shopping as guest</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="select_language">Select Language</string>
+
 
 </resources>
 <!--<resources>

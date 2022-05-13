@@ -1,17 +1,16 @@
 <component name="libraryTable">
   <library name="Gradle: com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-15@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-15.aar/1db03ca2a751c65a582490d5f79a00a0/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshHeader-1.1.0-alpha-15.aar/36a9323c604359842736dad9f4fc3a67/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1fc796a263d5dc9db18e7427d8aeaadc/transformed/jetified-SmartRefreshHeader-1.1.0-alpha-15/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-15.aar/1db03ca2a751c65a582490d5f79a00a0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-15.aar/1db03ca2a751c65a582490d5f79a00a0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshHeader-1.1.0-alpha-15.aar/36a9323c604359842736dad9f4fc3a67/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshHeader-1.1.0-alpha-15.aar/36a9323c604359842736dad9f4fc3a67/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-SmartRefreshHeader-1.1.0-alpha-15.aar/36a9323c604359842736dad9f4fc3a67/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1fc796a263d5dc9db18e7427d8aeaadc/transformed/jetified-SmartRefreshHeader-1.1.0-alpha-15/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1fc796a263d5dc9db18e7427d8aeaadc/transformed/jetified-SmartRefreshHeader-1.1.0-alpha-15/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1fc796a263d5dc9db18e7427d8aeaadc/transformed/jetified-SmartRefreshHeader-1.1.0-alpha-15/AndroidManifest.xml" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshHeader/1.1.0-alpha-15/62f85ea1bc6385d86bc23b166b7fe46a06abcc3e/SmartRefreshHeader-1.1.0-alpha-15-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.scwang.smartrefresh/SmartRefreshHeader/1.1.0-alpha-15/a461b4f975838fa087e5b21bdc67b80e89e5a15/SmartRefreshHeader-1.1.0-alpha-15-sources.jar!/" />
     </SOURCES>
