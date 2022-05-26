@@ -98,27 +98,19 @@ public class ProductDetailsNewActivity extends BaseActivity {
     }
 
     private void initControls() {
-        imgOption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount == null) {
-                    showDialogLogin();
+        imgOption.setOnClickListener(v -> {
+            if (GlobalValue.myAccount == null) {
+                showDialogLogin();
+            } else {
+                if (product.getExtraOptions().size() > 0) {
+                    checkAddCard = false;
+                    showDialogOption(product.getExtraOptions());
                 } else {
-                    if (product.getExtraOptions().size() > 0) {
-                        checkAddCard = false;
-                        showDialogOption(product.getExtraOptions());
-                    } else {
-                        showToastMessage(getResources().getString(R.string.have_no_option_for_this_product));
-                    }
+                    showToastMessage(getResources().getString(R.string.have_no_option_for_this_product));
                 }
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        btnBack.setOnClickListener(v -> onBackPressed());
         ivChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

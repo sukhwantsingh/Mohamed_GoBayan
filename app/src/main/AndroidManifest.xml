@@ -47,6 +47,11 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
 
+      <activity
+            android:name=".activity.FilterScreenActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -72,9 +77,9 @@
 
         <activity
             android:name="com.libyasolutions.libyamarketplace.activity.SplashActivity"
+            android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTop"
-            android:exported="true"
             android:screenOrientation="portrait">
 
             <intent-filter>
@@ -87,138 +92,184 @@
 
         <activity
             android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainTabActivity"
+            android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:exported="false"
             android:theme="@style/AppTheme" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.HomeActivity"
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.HomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.ListHomeShopActivity"
             android:exported="false"
-            />
-
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.ListHomeShopActivity"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.ListHomeFoodActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ShopDetailsNew"
             android:exported="false"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.ListHomeFoodActivity"
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchProductResuiltActivityNew"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchShopResultActivityNew"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ProductDetailsNewActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.LoginActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.ShopDetailsNew"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.RegisterActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchProductResuiltActivityNew"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchShopResultActivityNew"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.cart.ShopCartDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.ProductDetailsNewActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainCartActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.LoginActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainUserActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.RegisterActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.SearchShopResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.SearchActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.SearchProductResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.cart.ShopCartDetailActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.DetailShopOrderActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainCartActivity"     android:exported="false"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.DetailFoodOfShopOrderActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.tabs.MainUserActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.SearchShopResultActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.SearchProductResultActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.DetailShopOrderActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.DetailFoodOfShopOrderActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".activity.tabs.ViewImageActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.tabs.ViewImageActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.libyasolutions.libyamarketplace.activity.FeedBackActivity"
-            android:screenOrientation="portrait"     android:exported="false"
+            android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name="com.libyasolutions.libyamarketplace.activity.AddReviewActivity"
-            android:screenOrientation="portrait"     android:exported="false"
+            android:exported="false"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
             android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.ForgotPasswordActivity"
-            android:screenOrientation="portrait"     android:exported="false"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.PreferencesActivity"     android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.EditProfileActivity"     android:exported="false"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.ListCategoryActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.PreferencesActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.EditProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.libyasolutions.libyamarketplace.activity.ListCategoryActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.ShopDetailActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.ShopDetailActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.ShopsCommentActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.ShopsCommentActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.ProductCommentActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.ProductCommentActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.ListFoodActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.ListFoodActivity"
+            android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.FavoriteActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.tabs.user.FavoriteActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.ProductDetailActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.ProductDetailActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.libyasolutions.libyamarketplace.activity.MapDetailActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.MapDetailActivity"
+            android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
@@ -228,85 +279,119 @@
             android:name="com.paypal.android.sdk.payments.PayPalService"
             android:exported="false" />
 
-        <activity android:name="com.paypal.android.sdk.payments.PaymentActivity"     android:exported="false" />
-        <activity android:name="com.paypal.android.sdk.payments.LoginActivity"      android:exported="false"/>
-        <activity android:name="com.paypal.android.sdk.payments.PaymentMethodActivity"      android:exported="false"/>
-        <activity android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity"      android:exported="false"/>
         <activity
-            android:name="io.card.payment.CardIOActivity"     android:exported="false"
-            android:configChanges="keyboardHidden|orientation" />
-        <activity android:name="io.card.payment.DataEntryActivity"      android:exported="false"/>
+            android:name="com.paypal.android.sdk.payments.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.PaymentMethodActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.PaymentConfirmActivity"
+            android:exported="false" />
+        <activity
+            android:name="io.card.payment.CardIOActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false" />
+        <activity
+            android:name="io.card.payment.DataEntryActivity"
+            android:exported="false" />
         <!--end paypal-->
 
-        <activity android:name="com.libyasolutions.libyamarketplace.activity.AboutUsActivity"     android:exported="false"
-            android:screenOrientation="portrait"/>
-
         <activity
-            android:name=".activity.ListChatActivity"     android:exported="false"
+            android:name="com.libyasolutions.libyamarketplace.activity.AboutUsActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.ChatDetailActivity"     android:exported="false"
+            android:name=".activity.ListChatActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ChatDetailActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.FullImageActivity"     android:exported="false"
+            android:name=".activity.FullImageActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.ShopManagementActivity"     android:exported="false"
+            android:name=".activity.ShopManagementActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".activity.ProductManagementActivity"     android:exported="false"
+            android:name=".activity.ProductManagementActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
 
         <activity
-            android:name=".activity.ChooseExtraLocationActivity"     android:exported="false"
+            android:name=".activity.ChooseExtraLocationActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".activity.ChooseTimeActivity"     android:exported="false"
+            android:name=".activity.ChooseTimeActivity"
+            android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name=".activity.ManageOrderActivity"
-            android:screenOrientation="portrait"     android:exported="false"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity
-            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"     android:exported="false"
-            android:configChanges="orientation|screenSize"
-            android:hardwareAccelerated="false" />
-
-        <activity android:name=".activity.tabs.ConvertShopOwnerActivity"     android:exported="false"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-
-        <activity android:name=".activity.AddNewShopActivityV2"     android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-
-        <activity android:name=".activity.AddNewProductActivityV2"     android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-
-        <activity android:name=".activity.ManageOrderDetailActivityV2"     android:exported="false"
+            android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
 
-        <activity android:name=".activity.tabs.OrderHistoryActivityV2"
-            android:screenOrientation="portrait"     android:exported="false"
-            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:hardwareAccelerated="false" />
 
-        <activity android:name=".activity.tabs.OrderHistoryDetailV2"     android:exported="false"
+        <activity
+            android:name=".activity.tabs.ConvertShopOwnerActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.AddNewShopActivityV2"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".activity.AddNewProductActivityV2"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".activity.ManageOrderDetailActivityV2"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.tabs.OrderHistoryActivityV2"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name=".activity.tabs.OrderHistoryDetailV2"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
 
         <!--start services-->
         <receiver
@@ -320,9 +405,12 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".service.MessageService"   android:exported="true"/>
+        <service
+            android:name=".service.MessageService"
+            android:exported="true" />
 
-        <service android:name=".fcm.MyFirebaseMessagingService"
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -14,6 +14,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -33,8 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.libyasolutions.libyamarketplace.BaseActivity;
-import com.libyasolutions.libyamarketplace.BaseActivityV2;
 import com.libyasolutions.libyamarketplace.R;
+import com.libyasolutions.libyamarketplace.activity.FilterScreenActivity;
 import com.libyasolutions.libyamarketplace.adapter.ShopAdapterNew;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.ConstantApp;
@@ -163,15 +165,30 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         binding.btnBack.setOnClickListener(v->{  chooseBack();   });
         binding.ivShowMore.setOnClickListener(v->{   chooseShowMore();  });
         binding.containerSearch.setOnClickListener(v->{   chooseSearch();  });
-        binding.btnSearch.setOnClickListener(v->{   binding.containerSearch.performClick();  });
-        binding.ivSearchByDateNameRating.setOnClickListener(v->{  chooseSearchByDateNameRating();  });
+        binding.btnSearch.setOnClickListener(v-> {   binding.containerSearch.performClick();  });
+        binding.ivSearchByDateNameRating.setOnClickListener(v-> {
+            chooseSearchByAllCities();
+            chooseSearchByDateNameRating();  });
+
+        binding.btnSearchByMyLocation.setOnClickListener(v-> {   chooseSearchByMyLocation(); });
+        binding.containerSort.setOnClickListener(v-> {
+          //  chooseSearchByAllCities();
+            chooseSearchBySort();
+        });
+        binding.ivSearchByDistance.setOnClickListener(v->{
+         //   chooseSearchByAllCities();
+            chooseSearchByDistance();
+
+        });
+
         binding.containerChooseCities.setOnClickListener(v->{   chooseSearchByCities();   });
         binding.btnSearchByAllCities.setOnClickListener(v->{  chooseSearchByAllCities();    });
-        binding.btnSearchByMyLocation.setOnClickListener(v->{   chooseSearchByMyLocation(); });
-        binding.containerSort.setOnClickListener(v->{   chooseSearchBySort();  });
-        binding.ivSearchByDistance.setOnClickListener(v->{   chooseSearchByDistance();  });
-        binding.btnSearchByChooseDepartment.setOnClickListener(v->{   chooseSearchByDepartment();  });
+        binding.btnSearchByChooseDepartment.setOnClickListener(v->{ chooseSearchByDepartment();  });
         binding.btnSearchByAllDepartment.setOnClickListener(v->{  chooseSearchByAllDepartment();   });
+
+        binding.imageFilter.setOnClickListener(v->{
+           startActivity(new Intent(this, FilterScreenActivity.class));
+        });
 
     }
 
@@ -197,16 +214,19 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onSortByDate() {
                 sortBy = ConstantApp.SORT_BY_DATE;
+                binding.containerSearch.performClick();
             }
 
             @Override
             public void onSortByName() {
                 sortBy = ConstantApp.SORT_BY_NAME;
+                binding.containerSearch.performClick();
             }
 
             @Override
             public void onSortByRating() {
                 sortBy = ConstantApp.SORT_BY_RATING;
+                binding.containerSearch.performClick();
             }
         });
     }
@@ -248,12 +268,14 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     }
     void chooseSearchBySort() {
         if (sortType.equals(ConstantApp.SORT_TYPE_ASC)) {
-            binding.ivSort.setImageResource(R.drawable.ic_sort_desending);
+            binding.ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
             sortType = ConstantApp.SORT_TYPE_DESC;
         } else if (sortType.equals(ConstantApp.SORT_TYPE_DESC)) {
-            binding.ivSort.setImageResource(R.drawable.ic_sort_assending);
+           // binding.ivSort.setImageResource(R.drawable.ic_sort_assending);
+            binding.ivSort.setImageResource(R.drawable.ic_arrow_exchange_alt_v_up);
             sortType = ConstantApp.SORT_TYPE_ASC;
         }
+        binding.containerSearch.performClick();
     }
     void chooseSearchByDistance() {
         getLatLong();
@@ -263,7 +285,10 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         dialog.show(getSupportFragmentManager(), dialog.getTag());
 
         // listener
-        dialog.setOnSearchByDistanceListener(distanceValue -> distance = distanceValue);
+        dialog.setOnSearchByDistanceListener(distanceValue -> {
+                    distance = distanceValue;
+                    binding.containerSearch.performClick();
+                });
     }
     void chooseSearchByDepartment() {
 
@@ -378,22 +403,16 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
             return;
         }
 
-        String searchText = "";
-        if (binding.edtSearch != null) {
-            searchText = binding.edtSearch.getText().toString().trim();
-        }
+        String searchText =  binding.edtSearch.getText().toString().trim();
         ModelManager.getListShopBySearch(this, searchText,
                 new Gson().toJson(categorySearchList), cityId,
                 page, ConstantApp.OPEN_ALL, distance, sortBy, sortType,
                 latitude, longitude, isProgress,
                 new ModelManagerListener() {
-
                     @Override
                     public void onError(VolleyError error) {
                         Log.e(TAG, "error api" + error.getMessage());
-                        if (binding.refreshLayout != null) {
-                            binding.refreshLayout.setRefreshing(false);
-                        }
+                        binding.refreshLayout.setRefreshing(false);
 
                         categorySearchList.clear();
                         shopAdapterNew.notifyDataSetChanged();
@@ -410,8 +429,8 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
 
                             if (!isLoadingMore) {
                                 shopList.clear();
-                                String shopCount = String.valueOf(ParserUtility.ParseCount(object.toString()));
-                                binding.tvShopQuality.setText(getString(R.string.shop_found, shopCount));
+                                String shopCount = "<b>"+ParserUtility.ParseCount(object.toString())+"</b>";
+                                binding.tvShopQuality.setText(Html.fromHtml(getString(R.string.shop_found, shopCount)));
                             }
 
                             if (list.size() > 0) {
@@ -468,17 +487,13 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void setupCityIdSelected() {
-        binding. containerChooseCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
+        binding. containerChooseCities.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_red_button_with_border));
         binding. tvCityName.setTextColor(getResources().getColor(R.color.white));
         binding. ivArrowBottom.setImageResource(R.drawable.ic_arrow_down_2);
     }
 
     private void setupCityIdUnSelected() {
-        binding.  containerChooseCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
+        binding.  containerChooseCities.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_corner_6));
         binding. tvCityName.setTextColor(getResources().getColor(R.color.black));
         binding.ivArrowBottom.setImageResource(R.drawable.ic_arrow_down_1);
     }
@@ -487,29 +502,23 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         binding.ivSearchByDistance.setBackground(
                 ContextCompat.getDrawable(this,
                         R.drawable.bg_red_button_with_border));
-        binding.ivSearchByDistance.setImageResource(R.drawable.ic_location_search_white);
+        binding.ivNav.setImageResource(R.drawable.ic_location_search_white);
         binding.ivSearchByDistance.setEnabled(true);
     }
 
     private void setupDistanceUnSelected() {
-        binding.ivSearchByDistance.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        binding.ivSearchByDistance.setImageResource(R.drawable.ic_location_search_black);
-        binding.ivSearchByDistance.setEnabled(false);
+        binding.ivSearchByDistance.setBackground( ContextCompat.getDrawable(this, R.drawable.bg_border_grey));
+        binding.ivNav.setImageResource(R.drawable.ic_location_b_new);
+        binding.ivSearchByDistance.setEnabled(true);
     }
 
     private void setupCityAllSelected() {
-        binding.btnSearchByAllCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
+        binding.btnSearchByAllCities.setBackground(ContextCompat.getDrawable(this,  R.drawable.bg_red_button_with_border));
         binding.btnSearchByAllCities.setTextColor(getResources().getColor(R.color.white));
     }
 
     private void setupCityAllUnSelected() {
-        binding.btnSearchByAllCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
+        binding.btnSearchByAllCities.setBackground(ContextCompat.getDrawable(this,  R.drawable.bg_white_corner_6));
         binding.btnSearchByAllCities.setTextColor(getResources().getColor(R.color.black));
     }
 

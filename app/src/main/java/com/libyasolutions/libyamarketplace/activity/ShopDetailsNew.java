@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -42,7 +43,7 @@ import java.util.Calendar;
 public class ShopDetailsNew extends BaseActivity {
     private ImageView btnBack, imgShop;
     private LinearLayout btnMap, btnProduct, btnHotline;
-    private TextView tvPhone, tvTime, tvDescription, tvPromotion, tvNameShop, totalComent;
+    private TextView tvPhone, tvTime, tvDescription, tvPromotion, tvNameShop,tvPostDetails, tvAddress, totalComent;
     private RecyclerView recyclerView;
     private int Shopid;
     private Shop shop;
@@ -52,7 +53,8 @@ public class ShopDetailsNew extends BaseActivity {
     FragmentPagerAdapter pagerAdapter;
     private ArrayList<Banner> arrBanner;
     private CirclePageIndicator indicatorBannerImages;
-    private ImageView ivChat, ivWebsite, ivInstagram, ivTwitter, ivFacebook;
+    private ImageView ivChat, ivTwitter;
+    private RelativeLayout ivWebsite, ivInstagram, rlClock, ivFacebook;
     private Dialog loginDialog;
 
 
@@ -122,9 +124,13 @@ public class ShopDetailsNew extends BaseActivity {
         setBanner();
 
         tvNameShop.setText(shop.getShopName());
+        tvAddress.setText(shop.getAddress());
+      //  tvPostDetails.setText(shop.get());
+
         Glide.with(ShopDetailsNew.this).load(shop.getImage()).into(imgShop);
         tvDescription.setText(shop.getDescription());
         tvPhone.setText(shop.getPhone());
+
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         switch (day) {
@@ -150,35 +156,38 @@ public class ShopDetailsNew extends BaseActivity {
                 tvTime.setText(shop.getArrOpenHour().get(5).getOpen_AM1() + "-" + shop.getArrOpenHour().get(5).getClose_PM2());
                 break;
         }
-        totalComent.setText(String.valueOf(shop.getRateNumber()) + " " + getString(R.string.review));
-        rtbRating.setRating(Float.parseFloat(Math
-                .floor(shop.getRateValue() / 2) + ""));
+        totalComent.setText(shop.getRateNumber() + " " + getString(R.string.review));
+        rtbRating.setRating(Float.parseFloat(Math.floor(shop.getRateValue() / 2) + ""));
     }
 
     private void initView() {
         indicatorBannerImages = findViewById(R.id.indicatorBannerImages);
         totalComent = findViewById(R.id.tvTotalComment);
         rtbRating = findViewById(R.id.rtbRating);
-        tvNameShop = findViewById(R.id.tvNameShop);
+        tvNameShop = findViewById(R.id.tv_shopName);
+        tvPostDetails = findViewById(R.id.post_details);
+        tvAddress = findViewById(R.id.tvAddress);
         tvNameShop.setSelected(true);
 
         btnBack = findViewById(R.id.btnBack);
         imgShop = findViewById(R.id.imgShop);
-        btnMap = findViewById(R.id.btnMap);
+        btnMap = findViewById(R.id.direction_ly);
         btnProduct = findViewById(R.id.btnProduct);
-        btnHotline = findViewById(R.id.btnHotLine);
+        btnHotline = findViewById(R.id.call_ly);
         tvPhone = findViewById(R.id.lblPhone);
         tvTime = findViewById(R.id.tvTime);
         tvDescription = findViewById(R.id.tvDescription);
         tvPromotion = findViewById(R.id.tvPromotions);
         recyclerView = findViewById(R.id.rclViewShop);
         viewPager = findViewById(R.id.viewPager);
+        ivTwitter = findViewById(R.id.iv_twitter);
 
         ivChat = findViewById(R.id.iv_chat);
-        ivWebsite = findViewById(R.id.iv_website);
-        ivInstagram = findViewById(R.id.iv_instagram);
-        ivTwitter = findViewById(R.id.iv_twitter);
-        ivFacebook = findViewById(R.id.iv_facebook);
+
+        ivWebsite = findViewById(R.id.rl_web);
+        ivInstagram = findViewById(R.id.rl_insta);
+        rlClock = findViewById(R.id.rl_clock);
+        ivFacebook = findViewById(R.id.rl_fb);
 
     }
 

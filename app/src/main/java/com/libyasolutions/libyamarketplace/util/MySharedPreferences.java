@@ -68,8 +68,7 @@ public class MySharedPreferences {
 
     public String getLanguageDisplayCode(){
         String cd = getStringValue(LANGUAGE,"en");
-        if(cd.equalsIgnoreCase("en"))
-            return "E";
+        if(cd.equalsIgnoreCase("en")) return "E";
        else return "AR";
     }
 

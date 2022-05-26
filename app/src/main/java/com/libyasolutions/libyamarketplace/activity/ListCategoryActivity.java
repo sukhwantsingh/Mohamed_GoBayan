@@ -68,49 +68,40 @@ public class ListCategoryActivity extends BaseActivity implements
     private void initControl() {
         categoryAdapter = new ListCategoryAdapter(self, arrCategories);
         lsvCategory.setAdapter(categoryAdapter);
-        lsvCategory.setOnItemClickListener(new OnItemClickListener() {
+        lsvCategory.setOnItemClickListener((arg0, arg1, index, arg3) -> {
 
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int index,
-                                    long arg3) {
+            if (NetworkUtil.checkNetworkAvailable(self)) {
+                Category category = arrCategories.get(index);
+                Bundle b = new Bundle();
+                b.putInt(GlobalValue.KEY_SHOP_ID, shopId);
+                b.putString(GlobalValue.KEY_SHOP_NAME, shopName);
+                b.putString(GlobalValue.KEY_CATEGORY_ID, category.getId());
+                b.putString(GlobalValue.KEY_CATEGORY_NAME,
+                        category.getName());
 
-                if (NetworkUtil.checkNetworkAvailable(self)) {
-                    Category category = arrCategories.get(index);
-                    Bundle b = new Bundle();
-                    b.putInt(GlobalValue.KEY_SHOP_ID, shopId);
-                    b.putString(GlobalValue.KEY_SHOP_NAME, shopName);
-                    b.putString(GlobalValue.KEY_CATEGORY_ID, category.getId());
-                    b.putString(GlobalValue.KEY_CATEGORY_NAME,
-                            category.getName());
-
-                    gotoActivity(self, ListFoodActivity.class, b);
-                } else {
-                    Toast.makeText(self,
-                            R.string.message_network_is_unavailable,
-                            Toast.LENGTH_LONG).show();
-                }
-
+                gotoActivity(self, ListFoodActivity.class, b);
+            } else {
+                Toast.makeText(self,
+                        R.string.message_network_is_unavailable,
+                        Toast.LENGTH_LONG).show();
             }
+
         });
         btnBack.setOnClickListener(this);
-        swipyRefreshLayout.setOnRefreshListener(new com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
-                Log.d("MainActivity", "Refresh triggered at "
-                        + (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
-                if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
-                    page = 1;
-                   initData();
-                } else {
-                    if (isMore) {
-                        page++;
-                    }
-                    initData();
+        swipyRefreshLayout.setOnRefreshListener(swipyRefreshLayoutDirection -> {
+            Log.d("MainActivity", "Refresh triggered at " + (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
+            if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
+                page = 1;
+               initData();
+            } else {
+                if (isMore) {
+                    page++;
                 }
-
-                swipyRefreshLayout.setRefreshing(false);
-
+                initData();
             }
+
+            swipyRefreshLayout.setRefreshing(false);
+
         });
         ivShowMore.setOnClickListener(new OnClickListener() {
             @Override
@@ -132,7 +123,7 @@ public class ListCategoryActivity extends BaseActivity implements
 
             if (b.containsKey(GlobalValue.KEY_SHOP_NAME)) {
                 shopName = b.getString(GlobalValue.KEY_SHOP_NAME);
-                lblShopName.setText(shopName);
+             //   lblShopName.setText(shopName);
             }
         }
 

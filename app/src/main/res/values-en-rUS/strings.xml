@@ -121,7 +121,7 @@
     <string name="updatePass">Update password</string>
     <string name="myInfo">my Info</string>
     <string name="userHint">User name</string>
-    <string name="password">password</string>
+    <string name="password">Password</string>
     <string name="repassword">Confirm password</string>
     <string name="mail">Email</string>
     <string name="fullName">Full name</string>
@@ -387,7 +387,7 @@
     <string name="sort_by_rating">Sort by rating</string>
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_date">Sort by date</string>
-    <string name="text_distance">distanc</string>
+    <string name="text_distance">distance</string>
     <string name="value_distance">distanc: %s Km</string>
     <string name="text_0_km">0 Km</string>
     <string name="text_45_km">45 Km</string>
@@ -516,7 +516,7 @@
     <string name="order_waiting">order_waiting</string>
     <string name="order_status_not_selected">Did not select the status</string>
     <string name="please_select_lat_long">Please select lat long</string>
-    <string name="shop_found">%s Shop</string>
+    <string name="shop_found">%s Shops Found</string>
     <string name="order_sub_total">partial total</string>
     <string name="banking_method">Bank transfer</string>
     <string name="order_found">%s Order</string>

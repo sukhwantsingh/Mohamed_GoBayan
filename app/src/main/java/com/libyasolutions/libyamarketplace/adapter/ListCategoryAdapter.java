@@ -59,17 +59,16 @@ public class ListCategoryAdapter extends BaseAdapter {
         final Hoder holder;
         if (convertView == null) {
             holder = new Hoder();
-            if (position % 2 == 0) {
-                convertView = inflater.inflate(R.layout.row_list_category, null);
-            } else {
-                convertView = inflater.inflate(R.layout.row_list_category_right, null);
-            }
-            holder.imgCategory = (ImageView) convertView
-                    .findViewById(R.id.imgCategory);
-            holder.lblCategoryName = (TextView) convertView
-                    .findViewById(R.id.lblCategoryName);
-            holder.progress = (ProgressBar) convertView
-                    .findViewById(R.id.progess);
+            convertView = inflater.inflate(R.layout.items_category_new,null);
+//            if (position % 2 == 0) {
+//                convertView = inflater.inflate(R.layout.row_list_category, null);
+//            } else {
+//                convertView = inflater.inflate(R.layout.row_list_category_right, null);
+//            }
+
+            holder.imgCategory = (ImageView) convertView.findViewById(R.id.imgCategory);
+            holder.lblCategoryName = (TextView) convertView.findViewById(R.id.lblCategoryName);
+            holder.progress = (ProgressBar) convertView.findViewById(R.id.progess);
             convertView.setTag(holder);
 
         } else {

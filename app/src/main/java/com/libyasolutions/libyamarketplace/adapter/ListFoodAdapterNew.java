@@ -110,7 +110,6 @@ public class ListFoodAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHo
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
             loadingViewHolder.progressBar.setIndeterminate(true);
         }
-
     }
 
     @Override

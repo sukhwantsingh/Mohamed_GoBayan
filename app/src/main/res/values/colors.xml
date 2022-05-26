@@ -89,10 +89,11 @@
     <color name="border_sky_blue">#f4fef4</color>
     <color name="border_light_blue">#f5f5f5</color>
     <color name="border_light_blue_two">#efefef</color>
-    <color name="blue_button">#624cee</color>
+    <color name="blue_button">#4975E9</color>
     <color name="blue_dark_button">#4975e9</color>
-    <color name="grey_back">#edeffe</color>
+    <color name="grey_back">#F5F5F5</color>
     <color name="dark_gray_color">#818181</color>
+    <color name="grey_sub_heading">#888888</color>
 
 
 </resources>

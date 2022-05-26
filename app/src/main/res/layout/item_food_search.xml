@@ -1,150 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/cl_white">
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="12dp"
+    app:cardPreventCornerOverlap="true">
 
-    <ImageView
-        android:id="@+id/imgShop"
-        android:layout_width="@dimen/dimen120"
-        android:layout_height="@dimen/dimen120"
-        android:layout_marginRight="@dimen/dimen_2x"
-        android:padding="@dimen/dimen_1x"
-        android:scaleType="fitXY"
-        android:src="@drawable/bg_foood_details"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--<android.support.v7.widget.CardView-->
-    <!---->
-    <!--android:foreground="?android:attr/selectableItemBackground"-->
-    <!--app:cardUseCompatPadding="true"-->
-    <!---->
-    <!--card_view:cardElevation="4dp">-->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginRight="@dimen/dimen8"
-        app:layout_constraintBottom_toBottomOf="@id/imgShop"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/imgShop"
-        app:layout_constraintTop_toTopOf="@id/imgShop">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-            android:id="@+id/lblShopName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_small_size_16"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:gravity="right"
-            android:singleLine="true"
-            android:text="Autem Vel"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_small_size_16"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/imageView2"
-            app:layout_constraintRight_toRightOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view" />
-
-        <me.zhanghai.android.materialratingbar.MaterialRatingBar
-            android:id="@+id/rtbRating"
-            style="@style/Widget.AppCompat.RatingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen20"
-            android:layout_margin="@dimen/text_small_size_16"
-            android:max="5"
-            android:numStars="5"
-            android:textColor="@color/gray_dark"
-            app:layout_constraintBottom_toBottomOf="@id/view"
-            app:layout_constraintRight_toRightOf="@id/view"
-            android:backgroundTint="@color/orange"
-            app:mrb_progressTint="@color/orange"/>
-
-
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-            android:id="@+id/lblCategoryName"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ellipsize="end"
-            android:gravity="right"
-            android:maxLines="3"
-            android:text="VAT 10%"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@id/rtbRating"
-            app:layout_constraintLeft_toRightOf="@+id/imageView2"
-            app:layout_constraintRight_toRightOf="@id/lblShopName"
-            app:layout_constraintTop_toBottomOf="@id/lblShopName" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="@dimen/dimen100"
-            android:layout_height="0dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/tag_menu_ar"
-            app:layout_constraintBottom_toBottomOf="@id/view"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:visibility="invisible"
-            app:layout_constraintTop_toTopOf="@id/view" />
+            android:id="@+id/imgShop"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/productimage" />
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-            android:id="@+id/tvPriceSale"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dimen_2x"
-            android:paddingLeft="@dimen/dimen_05x"
-            android:layout_marginRight="4dp"
-            android:ellipsize="end"
-            android:gravity="left"
-            android:singleLine="true"
-            android:text="20 D.L"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_large"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@id/imageView2"
-            app:layout_constraintRight_toLeftOf="@+id/rtbRating"
-            app:layout_constraintBottom_toBottomOf="@+id/rtbRating"
-            app:layout_constraintTop_toTopOf="@id/rtbRating" />
-
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-            android:id="@+id/tvPromotions"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dimen8"
-            android:text="@string/off_20"
-            android:textColor="@color/cl_white"
-            android:textSize="@dimen/dimen16"
-            android:visibility="gone"
-            app:layout_constraintRight_toRightOf="@id/imageView2"
-            app:layout_constraintTop_toTopOf="@id/lblCategoryName" />
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_toEndOf="@+id/imgShop">
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dimen8"
-            android:text="25$"
-            android:textColor="@color/cl_white"
-            android:textSize="@dimen/dimen16"
-            android:visibility="gone"
-            app:layout_constraintRight_toRightOf="@id/imageView2"
-            app:layout_constraintTop_toTopOf="@id/lblShopName" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/lblShopName"
+                style="@style/tvBold"
+                android:text="@string/product_name"
+                android:textColor="@color/color_blue_greenish"
+                android:textSize="@dimen/_14sdp"
+                android:singleLine="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
-    <!--</android.support.v7.widget.CardView>-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/text_shadow_1"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/lblCategoryName"
+                style="@style/tvReg"
+                android:text="@string/dummyContent"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/_9sdp"
+                android:maxLines="3"
+                android:layout_marginTop="@dimen/_2sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lblShopName" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/dimen100"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/tag_menu_ar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/tvStockSec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCategoryName">
+                <TextView
+                    android:id="@+id/tvStock"
+                    style="@style/tvBold"
+                    android:text="Stocks left"
+                    android:textColor="@color/green"
+                    android:textSize="11dp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="75"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPriceSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="20 D.L"
+                android:fontFamily="@font/bold"
+                android:textColor="@color/color_dark_blue"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStockSec"/>
+
+            <ImageView
+                android:id="@+id/heartIcon"
+                android:src="@drawable/ic_heart_b"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/red"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:layout_constraintBottom_toTopOf="@+id/rtbRating"
+                android:layout_width="18dp"
+                android:layout_height="18dp"/>
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/rtbRating"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen20"
+                android:max="5"
+                android:numStars="5"
+                android:textColor="@color/gray_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvStockSec"            android:backgroundTint="@color/orange"
+                app:mrb_progressTint="@color/orange"/>
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tvPromotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen8"
+                android:text="@string/off_20"
+                android:textColor="@color/cl_white"
+                android:textSize="@dimen/dimen16"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="@id/imageView2"
+                app:layout_constraintTop_toTopOf="@id/lblCategoryName" />
+
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen8"
+                android:text="25$"
+                android:textColor="@color/cl_white"
+                android:textSize="@dimen/dimen16"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="@id/imageView2"
+                app:layout_constraintTop_toTopOf="@id/lblShopName" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

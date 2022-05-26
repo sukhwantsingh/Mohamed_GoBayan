@@ -126,7 +126,7 @@ public class ShopAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
             imgShop = itemView.findViewById(R.id.imgShop);
-            tvShopName = itemView.findViewById(R.id.lblShopName);
+            tvShopName = itemView.findViewById(R.id.lblBuyerInformation);
             tvDescription = itemView.findViewById(R.id.lblCategoryName);
             ratingBar = itemView.findViewById(R.id.rtbRating);
 

@@ -9,6 +9,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -59,22 +61,22 @@ import butterknife.OnClick;
 
 public class ListFoodActivity extends BaseActivity implements View.OnClickListener {
 
-    @BindView(R.id.lblShopName)
-    TextViewFontH1 lblShopName;
-    @BindView(R.id.lblMenuName)
-    TextViewFontH1 lblMenuName;
-    @BindView(R.id.layoutHeader)
-    RelativeLayout layoutHeader;
+//    @BindView(R.id.lblShopName)
+//    TextViewFontH1 lblShopName;
+
     @BindView(R.id.container_search)
     FrameLayout containerSearch;
     @BindView(R.id.iv_sort)
     ImageView ivSort;
+
     @BindView(R.id.container_sort)
-    FrameLayout containerSort;
+    LinearLayout containerSort;
+
     @BindView(R.id.edt_search)
     EditText edtSearch;
     @BindView(R.id.tvShopQuality)
-    TextViewFontEnglish tvShopQuality;
+    TextView tvShopQuality;
+
     @BindView(R.id.lsvFood)
     RecyclerView lsvFood;
     @BindView(R.id.tab_home)
@@ -164,8 +166,8 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
 
                             if (!isLoadingMore) {
                                 menuFoodList.clear();
-                                tvShopQuality.setText(getString(R.string.product_found,
-                                        String.valueOf(ParserUtility.ParseCount(object.toString()))));
+                                String ml = "<b>"+ParserUtility.ParseCount(object.toString())+"</b>";
+                                tvShopQuality.setText(Html.fromHtml(getString(R.string.product_found, ml)));
                             }
 
                             if (list.size() > 0) {
@@ -256,13 +258,13 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
 
             if (b.containsKey(GlobalValue.KEY_SHOP_NAME)) {
                 String shopName = b.getString(GlobalValue.KEY_SHOP_NAME);
-                lblShopName.setText(shopName);
+             //   lblShopName.setText(shopName);
             }
 
-            if (b.containsKey(GlobalValue.KEY_CATEGORY_NAME)) {
-                String categoryName = b.getString(GlobalValue.KEY_CATEGORY_NAME);
-                lblMenuName.setText(categoryName);
-            }
+//            if (b.containsKey(GlobalValue.KEY_CATEGORY_NAME)) {
+//                String categoryName = b.getString(GlobalValue.KEY_CATEGORY_NAME);
+//               lblMenuName.setText(categoryName);
+//            }
         }
 
     }
@@ -284,12 +286,14 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
     @OnClick(R.id.container_sort)
     void chooseSort() {
         if (sortBy.equals(ConstantApp.SORT_TYPE_ASC)) {
-            ivSort.setImageResource(R.drawable.ic_sort_desending);
+            ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
             sortBy = ConstantApp.SORT_TYPE_DESC;
         } else if (sortBy.equals(ConstantApp.SORT_TYPE_DESC)) {
-            ivSort.setImageResource(R.drawable.ic_sort_assending);
+            ivSort.setImageResource(R.drawable.ic_arrow_exchange_alt_v_up);
             sortBy = ConstantApp.SORT_TYPE_ASC;
         }
+
+        searchListFoodByShopAndMenu();
     }
 
     @OnClick(R.id.btnBack)
@@ -297,7 +301,7 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
         onBackPressed();
     }
 
-    @OnClick(R.id.lblShopName)
+  //  @OnClick(R.id.lblShopName)
     void chooseShopName() {
         gotoShopDetail(shopId);
     }

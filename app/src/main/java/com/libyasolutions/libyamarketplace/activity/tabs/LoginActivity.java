@@ -125,7 +125,6 @@ public class LoginActivity extends BaseActivity {
             builderSingle.setNegativeButton(getResources().getString(R.string.cancel), (dialog, which) -> dialog.dismiss());
 
             builderSingle.setAdapter(arrayAdapter, (dialog, which) -> {
-            //    String strName = arrayAdapter.getItem(which);
                 String language_code;
                 if(which == 0) { language_code = "en";  }
                 else { language_code = "ar";   }
