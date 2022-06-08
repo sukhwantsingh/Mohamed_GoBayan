@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
@@ -28,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -180,6 +178,14 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
     Toolbar toolbar;
     @BindView(R.id.layout_shop_management)
     ConstraintLayout layoutShopManagement;
+
+    @BindView(R.id.layout_post_management)
+    ConstraintLayout layoutPostManagement;
+
+    @BindView(R.id.llChatMode)
+    LinearLayout layoutChatMode;
+
+
     @BindView(R.id.iv_shop_info_show)
     ImageView ivShopInfoShow;
     @BindView(R.id.iv_shop_info_hide)
@@ -289,6 +295,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
         Intent intent = getIntent();
         shop = intent.getParcelableExtra(Constant.SHOP_OBJ);
+
         if (shop == null) {
             shop = new Shop();
         } else {
@@ -298,6 +305,9 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
             // visible
             layoutShopManagement.setVisibility(View.VISIBLE);
+            layoutPostManagement.setVisibility(View.VISIBLE);
+            layoutChatMode.setVisibility(View.VISIBLE);
+
             tvSaveShopInfo.setVisibility(View.VISIBLE);
             tvSaveAddressInfo.setVisibility(View.VISIBLE);
             tvSaveCategoriesInfo.setVisibility(View.VISIBLE);
@@ -527,12 +537,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
                 }
             });
         } else {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    showToast(getResources().getString(R.string.no_connection));
-                }
-            });
+            runOnUiThread(() -> showToast(getResources().getString(R.string.no_connection)));
         }
     }
 
@@ -779,27 +784,27 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
         dialog.show();
 
         TextView dialogTitle = dialog.findViewById(androidx.appcompat.R.id.alertTitle);
-        Typeface typefaceTitle = Typeface.createFromAsset(getAssets(), "fonts/Nawar_Font_Regular.ttf");
-        if (dialogTitle != null) {
-            dialogTitle.setTypeface(typefaceTitle);
-        }
+     //   Typeface typefaceTitle = Typeface.createFromAsset(getAssets(), "fonts/Nawar_Font_Regular.ttf");
+//        if (dialogTitle != null) {
+//            dialogTitle.setTypeface(typefaceTitle);
+//        }
 
         TextView dialogMessage = dialog.findViewById(android.R.id.message);
         Button dialogButton1 = dialog.findViewById(android.R.id.button1);
         Button dialogButton2 = dialog.findViewById(android.R.id.button2);
-        Typeface typefaceTwo = Typeface.createFromAsset(getAssets(), "fonts/TanseekModernProArabic-Medium.ttf");
-        if (dialogMessage != null) {
-            dialogMessage.setTypeface(typefaceTwo);
-            dialogMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
-        }
-        if (dialogButton1 != null) {
-            dialogButton1.setTypeface(typefaceTwo);
-            dialogButton1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
-        }
-        if (dialogButton2 != null) {
-            dialogButton2.setTypeface(typefaceTwo);
-            dialogButton2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
-        }
+       // Typeface typefaceTwo = Typeface.createFromAsset(getAssets(), "fonts/TanseekModernProArabic-Medium.ttf");
+//        if (dialogMessage != null) {
+//            dialogMessage.setTypeface(typefaceTwo);
+//            dialogMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+//        }
+//        if (dialogButton1 != null) {
+//            dialogButton1.setTypeface(typefaceTwo);
+//            dialogButton1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+//        }
+//        if (dialogButton2 != null) {
+//            dialogButton2.setTypeface(typefaceTwo);
+//            dialogButton2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+//        }
 
 
     }
@@ -881,6 +886,13 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
     @OnClick(R.id.layout_shop_management)
     void openShopManagement() {
         Intent intent1 = new Intent(this, ProductManagementActivity.class);
+        intent1.putExtra(Constant.SHOP_ID, shop.getShopId() + "");
+        startActivity(intent1);
+    }
+
+    @OnClick(R.id.layout_post_management)
+    void openPostManagement() {
+        Intent intent1 = new Intent(this, PostManagementActivity.class);
         intent1.putExtra(Constant.SHOP_ID, shop.getShopId() + "");
         startActivity(intent1);
     }

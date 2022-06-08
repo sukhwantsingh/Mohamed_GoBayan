@@ -2,48 +2,107 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cl_white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen50"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_12sdp"
         android:orientation="horizontal">
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        <TextView
+            style="@style/tvBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/chat"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textColor="@color/black_heading"
+            android:textSize="16dp" />
+
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="@dimen/dimen24"
-            android:layout_height="@dimen/dimen24"
-            android:layout_alignParentRight="true"
-            android:layout_margin="@dimen/text_small_size_16"
-            android:src="@drawable/ic_chevron_right_black_24dp" />
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/background_border"
+            android:src="@drawable/ic_back_arrow_new"/>
+
+
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:padding="@dimen/_9sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/background_border"
+            android:src="@drawable/ic_notification_icon"/>
+
     </RelativeLayout>
 
-    <View
-        android:id="@+id/view"
+    <RelativeLayout
+        android:id="@+id/serchSec"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/red" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:background="@drawable/bg_border_grey">
+
+        <FrameLayout
+            android:id="@+id/container_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_12sdp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                app:tint="@color/color_dark_blue"
+                android:src="@drawable/ic_search_new" />
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/edt_search"
+            style="@style/et_custom"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/container_search"
+            android:autofillHints="false"
+            android:background="@null"
+            android:hint="@string/search_your_house"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:padding="@dimen/_10sdp"
+            android:singleLine="true"
+            android:textColorHint="@color/gray_dark"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dimen_1x">
+        android:layout_marginTop="8dp">
 
         <ListView
             android:id="@+id/lsvAgent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/gray"
-            android:dividerHeight="0.5dp"
+            android:dividerHeight="0dp"
             android:fadingEdge="none"
             android:fastScrollEnabled="false"
             android:smoothScrollbar="true" />
@@ -59,5 +118,8 @@
             android:visibility="gone" />
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"/>
 
 </LinearLayout>

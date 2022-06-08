@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +30,7 @@ public class AddReviewActivity extends BaseActivity implements OnClickListener {
     private ImageView mBtnBack;
     private RatingBar mRtb;
     private EditText mTxtReview;
-    private TextView mBtnAdd;
-    private TextView lblCurrentTextNumber, lblTotalTextNumber;
+    private LinearLayout mBtnAdd;
 
     private String mUser = "";
     private String mRate = "";
@@ -143,22 +143,7 @@ public class AddReviewActivity extends BaseActivity implements OnClickListener {
         // TODO Auto-generated method stub
         mBtnBack.setOnClickListener(this);
         mBtnAdd.setOnClickListener(this);
-        mTxtReview.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                lblCurrentTextNumber.setText(s.length() + "");
-            }
-        });
     }
 
     private void initUI() {
@@ -167,11 +152,8 @@ public class AddReviewActivity extends BaseActivity implements OnClickListener {
         mRtb = (RatingBar) findViewById(R.id.rtb_user);
         mTxtReview = (EditText) findViewById(R.id.txtReview);
         mTxtReview.setFilters(new InputFilter[]{new InputFilter.LengthFilter(textTotal)});
-        mBtnAdd = (TextView) findViewById(R.id.btnAdd);
-        lblTotalTextNumber = (TextView) findViewById(R.id.lblTextTotalNumber);
-        lblCurrentTextNumber = (TextView) findViewById(R.id.lblCurrentNumber);
-        lblTotalTextNumber.setText("/" + textTotal);
-        lblCurrentTextNumber.setText(currentTextTotal + "");
+        mBtnAdd = (LinearLayout) findViewById(R.id.btnAdd);
+
 
         // Should call this method at the end of declaring UI.
         initUIControls();

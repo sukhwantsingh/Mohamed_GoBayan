@@ -1,6 +1,6 @@
 <resources>
     <!--Common String-->
-    <string name="app_name">Libya Marketplace</string>
+    <string name="app_name">Go Bayan</string>
     <string name="near_by">قريب مني</string>
     <string name="action_settings">ضبط الإعدادت</string>
     <string name="message_loading_data">تحميل الإعدادت&#8230;</string>
@@ -426,7 +426,7 @@
     <string name="product_code_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>كود المنتج</string>
     <string name="product_name_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>إسم المنتج</string>
     <string name="product_price_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>سعر المنتج</string>
-    <string name="product_description_2"><![CDATA[ <pre><font color=#E53332>*</font></pre>]]>وصف عن المنتج</string>
+    <string name="product_description_2">وصف عن المنتج</string>
 
     <string name="button_text_shop_owner_info">معلومات صاحب المتجر</string>
     <string name="button_text_send_the_request">إرسال الطلب</string>

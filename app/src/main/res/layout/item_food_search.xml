@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="12dp"
@@ -13,18 +14,28 @@
         android:layout_height="wrap_content"
         android:padding="12dp">
 
-        <ImageView
-            android:id="@+id/imgShop"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainSection"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/productimage" />
+            app:cardElevation="0dp"
+            android:background="@drawable/back_blue_with_gray_border"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/imgShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@color/gray_light" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_toEndOf="@+id/imgShop">
+            android:layout_toEndOf="@+id/mainSection">
 
             <TextView
                 android:id="@+id/lblShopName"
@@ -41,12 +52,15 @@
             <TextView
                 android:id="@+id/lblCategoryName"
                 style="@style/tvReg"
+                android:layout_width="0dp"
                 android:text="@string/dummyContent"
                 android:textColor="@color/gray_dark"
-                android:textSize="@dimen/_9sdp"
+                android:textSize="13dp"
                 android:maxLines="3"
+                android:gravity="start"
                 android:layout_marginTop="@dimen/_2sdp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/lblShopName"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/lblShopName" />
 
             <ImageView
@@ -64,7 +78,7 @@
                 android:id="@+id/tvStockSec"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lblCategoryName">
@@ -78,7 +92,8 @@
                 <TextView
                     style="@style/tvReg"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="75"
+                    tools:text="75"
+                    android:id="@+id/tvStockleft"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
             </LinearLayout>
@@ -92,7 +107,7 @@
                 android:fontFamily="@font/bold"
                 android:textColor="@color/color_dark_blue"
                 android:textSize="16dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvStockSec"
                 app:layout_constraintTop_toBottomOf="@+id/tvStockSec"/>
 
             <ImageView
@@ -101,7 +116,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:tint="@color/red"
                 android:layout_marginBottom="@dimen/_5sdp"
-                app:layout_constraintBottom_toTopOf="@+id/rtbRating"
+                app:layout_constraintTop_toTopOf="@+id/tvStockSec"
+                app:layout_constraintBottom_toBottomOf="@+id/tvStockSec"
                 android:layout_width="18dp"
                 android:layout_height="18dp"/>
 
@@ -111,11 +127,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dimen20"
                 android:max="5"
-                android:numStars="5"
+                android:numStars="1"
+                android:visibility="gone"
                 android:textColor="@color/gray_dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvStockSec"            android:backgroundTint="@color/orange"
+                app:layout_constraintEnd_toEndOf="@+id/heartIcon"
+                app:layout_constraintTop_toBottomOf="@+id/heartIcon"            android:backgroundTint="@color/orange"
                 app:mrb_progressTint="@color/orange"/>
+
+            <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:visibility="visible"
+                android:fontFamily="@font/bold"
+                app:layout_constraintEnd_toEndOf="@+id/heartIcon"
+               app:layout_constraintTop_toTopOf="@+id/tvPriceSale"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPriceSale"
+                android:drawablePadding="8dp"
+                app:drawableStartCompat="@drawable/ic_star_icon" />
+
             <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
                 android:id="@+id/tvPromotions"
                 android:layout_width="wrap_content"
@@ -124,7 +157,8 @@
                 android:text="@string/off_20"
                 android:textColor="@color/cl_white"
                 android:textSize="@dimen/dimen16"
-                android:visibility="gone"
+                android:visibility="visible"
+
                 app:layout_constraintRight_toRightOf="@id/imageView2"
                 app:layout_constraintTop_toTopOf="@id/lblCategoryName" />
 

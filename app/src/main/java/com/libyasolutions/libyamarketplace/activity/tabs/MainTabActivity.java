@@ -11,7 +11,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+
+import androidx.core.view.GravityCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.util.DisplayMetrics;
@@ -25,6 +29,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabWidget;
 import android.widget.TextView;
@@ -44,6 +49,7 @@ import com.libyasolutions.libyamarketplace.activity.ManageOrderActivity;
 import com.libyasolutions.libyamarketplace.activity.ShopManagementActivity;
 import com.libyasolutions.libyamarketplace.activity.SplashActivity;
 import com.libyasolutions.libyamarketplace.activity.tabs.user.EditProfileActivity;
+import com.libyasolutions.libyamarketplace.activity.tabs.user.FavoriteActivity;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.modelmanager.ErrorNetworkHandler;
@@ -77,15 +83,13 @@ public class MainTabActivity extends TabActivity {
     private DrawerLayout drawer;
     TabHost tabHost = null;
     private Activity self;
-//    private NestedScrollView lnlLayoutLeft;
-    private LinearLayout lnlInfor, lnlFeedback,
-            lnlOrder, lnlLogout,
-            lnlAboutUs, layoutChat,
-            layoutShopManagement, layoutManageOrder,
-            layoutConvertToShopOwner;
+    private RelativeLayout lnlInfor, /*lnlFeedback,*/ lnlOrder,  /*lnlAboutUs, */ layoutChat,rlLang,rlTerms,rlPrivacy,
+            layoutShopManagement, layoutManageOrder, lnlFavShops,lnlFavProducts, layoutConvertToShopOwner;
     private FrameLayout lnlAccount;
-    private TextView tvAmount, tvName;
-    private ImageView btnClose;
+    private Button lnlLogout;
+    private TextView tvAmount, tvName, tvEmailId;
+
+    private ImageView btnClose,imageUser;
     private TextView tvOrderSumCount;
     private TextView tvOrderNewCount;
     private TextView tvStatusOrderChangedCount;
@@ -126,23 +130,27 @@ public class MainTabActivity extends TabActivity {
         }
 
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(
-                mMessageReceiver, new IntentFilter("REQUEST_SHOP_OWNER_ACCEPT"));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, new IntentFilter("REQUEST_SHOP_OWNER_ACCEPT"));
 
         self = this;
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-//        lnlLayoutLeft = findViewById(R.id.lnlLayoutLeft);
-//        lnlLayoutLeft.setClickable(true);
+
         initView();
+
         if (GlobalValue.myAccount != null) {
             tvName.setText(GlobalValue.myAccount.getFull_name());
+            tvEmailId.setText(GlobalValue.myAccount.getEmail());
+            Glide.with(this).load(GlobalValue.myAccount.getAvatar()).error(R.drawable.no_image_available).placeholder(R.drawable.no_image_available).into(imageUser);
         }
-        initControls();
-        initTabPages();
+
         if (GlobalValue.arrMyMenuShop == null) {
             GlobalValue.arrMyMenuShop = new ArrayList<Shop>();
         }
+
+        initControls();
+        initTabPages();
+
         mListener();
         processNextScreen();
         getChatCount();
@@ -170,7 +178,7 @@ public class MainTabActivity extends TabActivity {
             if (action != null) {
                 switch (action) {
                     case Constant.SHOW_TAB_PROFILE:
-                        drawer.openDrawer(Gravity.START);
+                        drawer.openDrawer(GravityCompat.START);
                         break;
                     case Constant.SHOW_TAB_SEARCH:
                         tabHost.setCurrentTab(TAB_SEARCH);
@@ -191,7 +199,7 @@ public class MainTabActivity extends TabActivity {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent.getAction().equals(Constant.SHOW_TAB_PROFILE)) {
-                    drawer.openDrawer(Gravity.START);
+                    drawer.openDrawer(GravityCompat.START);
                 }
                 if (intent.getAction().equals(Constant.SHOW_TAB_CART)) {
                     tabHost.setCurrentTab(TAB_MY_CART);
@@ -223,111 +231,86 @@ public class MainTabActivity extends TabActivity {
     private void initControls() {
         final Intent intent = getIntent();
         if (intent.getIntExtra("CODE", 0) == 99) {
-            drawer.openDrawer(Gravity.START);
+            drawer.openDrawer(GravityCompat.START);
         }
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.closeDrawer(Gravity.START);
-            }
-        });
-        lnlAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    drawer.openDrawer(Gravity.START);
-                } else {
-                    showDialogLogin();
-                }
-            }
-        });
-        lnlAboutUs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                drawer.closeDrawer(Gravity.START);
-                Intent intent = new Intent(MainTabActivity.this, AboutUsActivity.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-        lnlOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    drawer.closeDrawer(Gravity.START);
-                    // TODO: doannd
-                    Intent intent = new Intent(MainTabActivity.this, OrderHistoryActivityV2.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left2);
-                } else {
-                    showDialogLogin();
-                }
-            }
-        });
-        lnlInfor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    drawer.closeDrawer(Gravity.START);
-                    Intent intent = new Intent(MainTabActivity.this, EditProfileActivity.class);
-                    startActivity(intent);
-                } else {
-                    showDialogLogin();
 
-                }
+        btnClose.setOnClickListener(v -> drawer.closeDrawer(GravityCompat.START));
 
-            }
-        });
-        lnlFeedback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    drawer.closeDrawer(Gravity.START);
-                    Intent intent1 = new Intent(MainTabActivity.this, FeedBackActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent1);
-                } else {
-                    showDialogLogin();
-                }
-
-            }
-        });
-        layoutChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    gotoActivity(ListChatActivity.class);
-                } else {
-                    showDialogLogin();
-                }
-            }
-        });
-        layoutShopManagement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoActivity(ShopManagementActivity.class);
-            }
-        });
-        layoutManageOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoActivity(ManageOrderActivity.class);
-            }
-        });
-        lnlLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    showLogoutConfirmDialog();
-                } else {
-                    showDialogLogin();
-                }
+        lnlAccount.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                drawer.openDrawer(GravityCompat.START);
+            } else {
+                showDialogLogin();
             }
         });
 
-        /**
-         * Create by Nguyen Dinh Doan 2019-10-01
-         */
+//        lnlAboutUs.setOnClickListener(view -> {
+//            drawer.closeDrawer(GravityCompat.START);
+//            Intent intent12 = new Intent(MainTabActivity.this, AboutUsActivity.class);
+//            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent12);
+//        });
+
+        lnlOrder.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                drawer.closeDrawer(GravityCompat.START);
+                Intent intent13 = new Intent(MainTabActivity.this, OrderHistoryActivityV2.class);
+                startActivity(intent13);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left2);
+            } else {
+                showDialogLogin();
+            }
+        });
+        lnlInfor.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                drawer.closeDrawer(GravityCompat.START);
+                Intent intent14 = new Intent(MainTabActivity.this, EditProfileActivity.class);
+                startActivity(intent14);
+            } else {
+                showDialogLogin();
+
+            }
+
+        });
+
+//        lnlFeedback.setOnClickListener(v -> {
+//            if (GlobalValue.myAccount != null) {
+//                drawer.closeDrawer(GravityCompat.START);
+//                Intent intent1 = new Intent(MainTabActivity.this, FeedBackActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent1);
+//            } else {
+//                showDialogLogin();
+//            }
+//
+//        });
+
+        layoutChat.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                gotoActivity(ListChatActivity.class);
+            } else {
+                showDialogLogin();
+            }
+        });
+        layoutShopManagement.setOnClickListener(v -> gotoActivity(ShopManagementActivity.class));
+        layoutManageOrder.setOnClickListener(v -> gotoActivity(ManageOrderActivity.class));
+
+        lnlFavShops.setOnClickListener(v -> {
+            startActivity(new Intent(this, FavoriteActivity.class).putExtra("type", "1"));
+        });
+
+        lnlFavProducts.setOnClickListener(v -> {
+            startActivity(new Intent(this, FavoriteActivity.class).putExtra("type", "2"));
+        });
+
+
+        lnlLogout.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                showLogoutConfirmDialog();
+            } else {
+                showDialogLogin();
+            }
+        });
         layoutConvertToShopOwner.setOnClickListener(view -> {
             if (mySharedPreferences.getUserInfo().getWaitApproveShopOwner() == 1 ||
                 mySharedPreferences.getUserInfo().getIsCannotSendRequest().equals("1")) {
@@ -373,6 +356,13 @@ public class MainTabActivity extends TabActivity {
             }
 
         });
+
+        rlLang.setOnClickListener(v -> { showToast("Under working");  });
+        rlPrivacy.setOnClickListener(v -> {  showToast("Under working");   });
+        rlTerms.setOnClickListener(v -> {  showToast("Under working");   });
+
+
+
     }
 
     private void showToast(int messageResId) {
@@ -385,14 +375,24 @@ public class MainTabActivity extends TabActivity {
 
     private void initView() {
         lnlInfor = findViewById(R.id.lnlInfor);
-        lnlFeedback = findViewById(R.id.lnlFeedback);
+     //   lnlFeedback = findViewById(R.id.lnlFeedback);
+     //   lnlAboutUs = findViewById(R.id.lnlAboutUs);
+
+        rlLang = findViewById(R.id.rlLanguage);
+        rlPrivacy = findViewById(R.id.rlPrivacy);
+        rlTerms = findViewById(R.id.rlTerms);
+
         lnlLogout = findViewById(R.id.lnlLogout);
         lnlOrder = findViewById(R.id.lnlOrder);
         tvName = findViewById(R.id.tvName);
-        btnClose = findViewById(R.id.btnClose);
+        tvEmailId = findViewById(R.id.tvEmailId);
+        btnClose = findViewById(R.id.imageBack);
+        imageUser = findViewById(R.id.imageData);
         lnlAccount = findViewById(R.id.lnlAccount);
-        lnlAboutUs = findViewById(R.id.lnlAboutUs);
         layoutChat = findViewById(R.id.layout_chat);
+
+        lnlFavProducts = findViewById(R.id.lnlFavProducts);
+        lnlFavShops = findViewById(R.id.lnlFavShops);
         layoutShopManagement = findViewById(R.id.layout_shop_management);
         layoutManageOrder = findViewById(R.id.layout_manage_order);
         layoutConvertToShopOwner = findViewById(R.id.layout_convert_to_shop_owner);
@@ -503,8 +503,7 @@ public class MainTabActivity extends TabActivity {
     private void refreshContent() {
 //        updateIconSelected();
         if (tabHost.getCurrentTab() == TAB_ACCOUNT) {
-            MainUserActivity activity = (MainUserActivity) getLocalActivityManager()
-                    .getActivity(GlobalValue.KEY_TAB_ACCOUNT);
+            MainUserActivity activity = (MainUserActivity) getLocalActivityManager().getActivity(GlobalValue.KEY_TAB_ACCOUNT);
             activity.refreshContent();
         }
         if (GlobalValue.arrMyMenuShop.size() != 0) {
@@ -550,22 +549,17 @@ public class MainTabActivity extends TabActivity {
         tabHost.getTabWidget().getChildAt(3).setVisibility(View.GONE);
 
 
-        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-            @Override
-            public void onTabChanged(String tabId) {
-                // TODO Auto-generated method stub
+        tabHost.setOnTabChangedListener(tabId -> {
 //                updateIconSelected();
-                if (tabId.equals(GlobalValue.KEY_TAB_MY_MENU)) {
-                    new MySharedPreferences(MainTabActivity.this).setFirstOpenSearchScreen(true);
-                    MainCartActivity activity = (MainCartActivity) getLocalActivityManager()
-                            .getActivity(GlobalValue.KEY_TAB_MY_MENU);
-                    activity.refreshContent();
+            if (tabId.equals(GlobalValue.KEY_TAB_MY_MENU)) {
+                new MySharedPreferences(MainTabActivity.this).setFirstOpenSearchScreen(true);
+                MainCartActivity activity = (MainCartActivity) getLocalActivityManager().getActivity(GlobalValue.KEY_TAB_MY_MENU);
+                activity.refreshContent();
 
-                } else if (tabId.equals(GlobalValue.KEY_TAB_HOME)) {
-                    new MySharedPreferences(MainTabActivity.this).setFirstOpenSearchScreen(true);
-                } else if (tabId.equals(GlobalValue.KEY_TAB_SEARCH)) {
+            } else if (tabId.equals(GlobalValue.KEY_TAB_HOME)) {
+                new MySharedPreferences(MainTabActivity.this).setFirstOpenSearchScreen(true);
+            } else if (tabId.equals(GlobalValue.KEY_TAB_SEARCH)) {
 
-                }
             }
         });
 
@@ -578,86 +572,68 @@ public class MainTabActivity extends TabActivity {
         //check login or not
 
         if (tabHost.getCurrentTab() == TAB_HOME) {
-            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_hom0e);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text))
-                    .setTextColor(Color.WHITE);
-            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_sear8ch);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_cart_6);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_account_gray_64);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_hom0e);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text)).setTextColor(Color.WHITE);
+
+            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_sear8ch);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_cart_6);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_account_gray_64);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.gray_home_bottom));
 
 
         } else if (tabHost.getCurrentTab() == TAB_SEARCH) {
-            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_hom0e);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_sear8ch);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text))
-                    .setTextColor(Color.WHITE);
-            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_cart_6);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_account_gray_64);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_hom0e);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon) .setBackgroundResource(R.drawable.ic_sear8ch);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text)) .setTextColor(Color.WHITE);
+
+            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)  .setBackgroundResource(R.drawable.ic_cart_6);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))  .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon)     .setBackgroundResource(R.drawable.ic_account_gray_64);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text))    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
         } else if (tabHost.getCurrentTab() == TAB_MY_CART) {
-            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_hom0e);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_sear8ch);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_cart_6);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))
-                    .setTextColor(Color.WHITE);
-            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_account_gray_64);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_hom0e);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon).setBackgroundResource(R.drawable.ic_sear8ch);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text)).setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)       .setBackgroundResource(R.drawable.ic_cart_6);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))  .setTextColor(Color.WHITE);
+
+            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon)    .setBackgroundResource(R.drawable.ic_account_gray_64);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text)) .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
         } else if (tabHost.getCurrentTab() == TAB_ACCOUNT) {
 
-            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_hom0e);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_sear8ch);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_cart_6);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))
-                    .setTextColor(getResources().getColor(R.color.gray_home_bottom));
-            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon)
-                    .setBackgroundResource(R.drawable.ic_account_white_64);
-            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text))
-                    .setTextColor(Color.WHITE);
+            tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.imgIcon)   .setBackgroundResource(R.drawable.ic_hom0e);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_HOME).findViewById(R.id.text))   .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.imgIcon)      .setBackgroundResource(R.drawable.ic_sear8ch);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_SEARCH).findViewById(R.id.text)) .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.imgIcon)    .setBackgroundResource(R.drawable.ic_cart_6);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_MY_CART).findViewById(R.id.text))  .setTextColor(getResources().getColor(R.color.gray_home_bottom));
+
+            tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.imgIcon) .setBackgroundResource(R.drawable.ic_account_white_64);
+            ((TextView) tabwidget.getChildTabViewAt(TAB_ACCOUNT).findViewById(R.id.text)).setTextColor(Color.WHITE);
         }
     }
 
 
     private View createTabIndicator(int resource, String text) {
-        View tabIndicator = getLayoutInflater()
-                .inflate(R.layout.view_tab, null);
-        ImageView image = (ImageView) tabIndicator.findViewById(R.id.imgIcon);
+        View tabIndicator = getLayoutInflater().inflate(R.layout.view_tab, null);
+        ImageView image = tabIndicator.findViewById(R.id.imgIcon);
         image.setBackgroundResource(resource);
-        TextView content = (TextView) tabIndicator.findViewById(R.id.text);
+        TextView content = tabIndicator.findViewById(R.id.text);
         content.setText(text);
         return tabIndicator;
     }
@@ -677,31 +653,20 @@ public class MainTabActivity extends TabActivity {
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
-        showQuitDialog();
+        if (GlobalValue.myAccount != null) {
+            showQuitDialog();
+        } else {
+            finish();
+        }
+
     }
 
     private void showQuitDialog() {
-
-//        DialogUtility.showYesNoDialog(self, R.string.message_quit_app, R.string.yes, R.string.no, new OnClickListener() {
-////            @Override
-////            public void onClick(DialogInterface dialog, int which) {
-////                if (GlobalValue.myAccount != null) {
-////                    GlobalValue.myAccount = null;
-////                }
-////                new MySharedPreferences(self).setCacheUserInfo("");
-////                new MySharedPreferences(getApplicationContext()).clearAccount();
-////                finishAffinity();
-////
-//////                System.exit(0);
-////            }
-////        });
         mDialog = new Dialog(this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialog.setContentView(R.layout.dialog_confirm);
         DisplayMetrics displaymetrics = new DisplayMetrics();
-        self.getWindowManager().getDefaultDisplay()
-                .getMetrics(displaymetrics);
+        self.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(mDialog.getWindow().getAttributes());
         lp.width = 6 * (displaymetrics.widthPixels / 7);
@@ -717,61 +682,27 @@ public class MainTabActivity extends TabActivity {
         tvConfirm.setText(R.string.yes);
         tvCancel.setText(R.string.no);
 
-        tvConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    GlobalValue.myAccount = null;
-                }
-                new MySharedPreferences(self).setCacheUserInfo("");
-                new MySharedPreferences(getApplicationContext()).clearAccount();
-                finishAffinity();
-                mDialog.dismiss();
+        tvConfirm.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                GlobalValue.myAccount = null;
             }
+            new MySharedPreferences(self).setCacheUserInfo("");
+            new MySharedPreferences(getApplicationContext()).clearAccount();
+            finishAffinity();
+            mDialog.dismiss();
         });
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDialog.dismiss();
-            }
-        });
+        tvCancel.setOnClickListener(v -> mDialog.dismiss());
 
 
         mDialog.show();
     }
 
     public void showLogoutConfirmDialog() {
-
-//        AlertDialog.Builder build = new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Light_Dialog)).setTitle("Log out")
-//                .setMessage(getString(R.string.message_log_out))
-//                .setNegativeButton(getString(R.string.yes), new OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // TODO Auto-generated method stub
-//                        if (GlobalValue.myAccount != null)
-//                            GlobalValue.myAccount = null;
-//                        new MySharedPreferences(getApplicationContext()).clearAccount();
-//                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        getApplicationContext().startActivity(intent);
-//                    }
-//                }).setPositiveButton(getString(R.string.no), new OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // TODO Auto-generated method stub
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//        build.show();
         mDialog = new Dialog(this);
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mDialog.setContentView(R.layout.dialog_confirm);
         DisplayMetrics displaymetrics = new DisplayMetrics();
-        self.getWindowManager().getDefaultDisplay()
-                .getMetrics(displaymetrics);
+        self.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(mDialog.getWindow().getAttributes());
         lp.width = 6 * (displaymetrics.widthPixels / 7);
@@ -785,20 +716,10 @@ public class MainTabActivity extends TabActivity {
         TextView tvConfirm = mDialog.findViewById(R.id.tvConfirm);
         tvContent.setText(R.string.logout);
 
-        tvConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-                mDialog.dismiss();
-            }
+        tvConfirm.setOnClickListener(v -> {
+            logout();  mDialog.dismiss();
         });
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDialog.dismiss();
-            }
-        });
-
+        tvCancel.setOnClickListener(v -> mDialog.dismiss());
 
         mDialog.show();
 
@@ -859,24 +780,16 @@ public class MainTabActivity extends TabActivity {
         TextView tvConfirm = loginDialog.findViewById(R.id.tvConfirm);
 
         tvContent.setText(R.string.login_user_function);
-        tvConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null)
-                    GlobalValue.myAccount = null;
-                new MySharedPreferences(getApplicationContext()).clearAccount();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
-                loginDialog.dismiss();
-            }
+        tvConfirm.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null)
+                GlobalValue.myAccount = null;
+            new MySharedPreferences(getApplicationContext()).clearAccount();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(intent);
+            loginDialog.dismiss();
         });
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginDialog.dismiss();
-            }
-        });
+        tvCancel.setOnClickListener(v -> loginDialog.dismiss());
 
 
         loginDialog.show();

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -22,8 +23,8 @@ import com.libyasolutions.libyamarketplace.util.NetworkUtil;
 
 public class FeedBackActivity extends BaseActivity implements View.OnClickListener {
     private ImageView btnBack;
-    private EditText edtTitle, edtDes;
-    private Button btnSend;
+    private EditText edtDes;
+    private TextView btnSend;
     public static final String MESSAGE_SUCCESS = "success";
     private String type = "2";
     private Activity context = this;
@@ -40,32 +41,18 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
             shopId = extras.getInt(GlobalValue.KEY_SHOP_ID);
         }
         initUI();
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FeedBackActivity.this, MainTabActivity.class);
-                intent.putExtra("CODE", 99);
-                startActivity(intent);
-            }
+        btnBack.setOnClickListener(v -> {
+            onBackPressed();
+//            Intent intent = new Intent(FeedBackActivity.this, MainTabActivity.class);
+//            intent.putExtra("CODE", 99);
+//            startActivity(intent);
         });
 
     }
 
-    private void initData() {
-        // TODO Auto-generated method stub
-    }
-
-    private void initControlUI() {
-        // TODO Auto-generated method stub
-    }
-
     private void initUI() {
-        // TODO Auto-generated method stub
-        btnSend = (Button) findViewById(R.id.btnSend);
+        btnSend = (TextView) findViewById(R.id.btnSend);
         btnBack = (ImageView) findViewById(R.id.btnBack);
-        edtTitle = (EditText) findViewById(R.id.edtTitleFB);
-        edtTitle.setEnabled(false);
-        edtTitle.setText(getString(R.string.report)+" " + shopName + " ("+getString(R.string.lbl_id)+":" + shopId + ")");
         edtDes = (EditText) findViewById(R.id.edtDesFB);
         btnBack.setOnClickListener(this);
         btnSend.setOnClickListener(this);
@@ -75,14 +62,6 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
         String message = MESSAGE_SUCCESS;
 
         String des = edtDes.getText().toString();
-        String title = edtTitle.getText().toString();
-
-        // username
-        if (title.isEmpty()) {
-            message = this.getResources().getString(
-                    R.string.error_title_empty);
-            return message;
-        }
 
         if (des.isEmpty()) {
             message = this.getResources().getString(
@@ -118,13 +97,11 @@ public class FeedBackActivity extends BaseActivity implements View.OnClickListen
     private void send() {
         // TODO Auto-generated method stub
         ModelManager.putFeedBack(this,
-                GlobalValue.myAccount.getId() + "", edtTitle.getText()
-                        .toString(), edtDes.getText().toString(), type, true,
+                GlobalValue.myAccount.getId() + "", "Content is inappropriate", edtDes.getText().toString(), type, true,
                 new ModelManagerListener() {
 
                     @Override
                     public void onSuccess(Object object) {
-                        // TODO Auto-generated method stub
                         CustomToast.showCustomAlert(context,
                                 getString(R.string.message_success),
                                 Toast.LENGTH_SHORT);

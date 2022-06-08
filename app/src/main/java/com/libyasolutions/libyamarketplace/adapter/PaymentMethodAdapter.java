@@ -24,14 +24,12 @@ public class PaymentMethodAdapter extends ArrayAdapter<String> {
 		super(context, resource, objects);
 		act = context;
 		list = objects;
-		inflate = (LayoutInflater) act
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		inflate = (LayoutInflater) act.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@SuppressLint("ViewHolder")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		View row = inflate.inflate(R.layout.layout_text_spinner2, parent, false);
 		TextView make = (TextView) row.findViewById(R.id.lblTextContent);
 		String o = list[position];
@@ -43,7 +41,6 @@ public class PaymentMethodAdapter extends ArrayAdapter<String> {
 
 	@Override
 	public View getDropDownView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
 		ViewHolder holder;
 		if (convertView == null) {
 			holder = new ViewHolder();
@@ -62,7 +59,7 @@ public class PaymentMethodAdapter extends ArrayAdapter<String> {
 		if (o != null) {
 			if (selectRow == position) {
 				holder.layoutRowSpinner.setBackgroundColor(act.getResources()
-						.getColor(R.color.main_button_color));
+						.getColor(R.color.blue_button));
 				holder.lblTextcontent.setTextColor(Color.WHITE);
 
 			} else {

@@ -111,12 +111,7 @@ public class ManageOrderAdapter extends RecyclerView.Adapter<ManageOrderAdapter.
             tvRequestDate = itemView.findViewById(R.id.tv_request_date);
             layoutOrder = itemView.findViewById(R.id.layout_order);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onItemClickListener.onclick(v, getAdapterPosition());
-                }
-            });
+            itemView.setOnClickListener(v -> onItemClickListener.onclick(v, getAdapterPosition()));
         }
     }
 

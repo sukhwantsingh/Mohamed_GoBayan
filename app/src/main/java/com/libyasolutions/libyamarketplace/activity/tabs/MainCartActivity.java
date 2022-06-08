@@ -34,7 +34,6 @@ public class MainCartActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab_cart);
         initUI();
@@ -51,7 +50,6 @@ public class MainCartActivity extends FragmentActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        // TODO Auto-generated method stub
         super.onWindowFocusChanged(hasFocus);
 //        if (hasFocus) {
 //            refreshContent();
@@ -66,10 +64,8 @@ public class MainCartActivity extends FragmentActivity {
     private void initUI() {
         fm = getSupportFragmentManager();
         listFragments = new Fragment[2];
-        listFragments[PAGE_SHOP_CART] = fm
-                .findFragmentById(R.id.fragmentShopCart);
-        listFragments[PAGE_CONFIRM] = fm
-                .findFragmentById(R.id.fragmentDeliveryInfo);
+        listFragments[PAGE_SHOP_CART] = fm.findFragmentById(R.id.fragmentShopCart);
+        listFragments[PAGE_CONFIRM] = fm.findFragmentById(R.id.fragmentDeliveryInfo);
     }
 
     private void initControl() {
@@ -105,8 +101,7 @@ public class MainCartActivity extends FragmentActivity {
         Log.e("huy-log", "current-fragment 1:" + curFragment);
         FragmentTransaction transaction = fm.beginTransaction();
 
-        transaction.setCustomAnimations(R.anim.push_left_in,
-                R.anim.push_left_out);
+        transaction.setCustomAnimations(R.anim.push_left_in, R.anim.push_left_out);
         for (Fragment item : listFragments) {
             transaction.hide(item);
         }
@@ -128,11 +123,11 @@ public class MainCartActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
         if (curFragment != PAGE_SHOP_CART) {
             backFragment(preFragment);
         } else {
-            this.getParent().onBackPressed();
+           // this.getParent().onBackPressed();
+           finish();
         }
     }
 

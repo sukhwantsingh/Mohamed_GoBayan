@@ -1,173 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="16dp">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/tvBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/orders_history_list"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/background_border"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_back_arrow_new" />
+
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetEnd="0dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="@dimen/dimen50"
-                    android:gravity="center"
-                    android:text="@string/order_history_v2"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="55dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="12dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
-                    android:contentDescription="@string/content_description"/>
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    android:layout_marginTop="@dimen/dimen16"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/red" />
-
-            </RelativeLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:background="@color/white">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@color/white"
-                android:paddingLeft="30dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:paddingRight="30dp">
+            <RelativeLayout
+                android:id="@+id/serchSec"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/container_sort"
+                android:background="@drawable/bg_border_grey">
 
                 <FrameLayout
                     android:id="@+id/container_search"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_red_button_with_border"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:layout_height="wrap_content">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:padding="2dp"
-                        android:contentDescription="@string/content_description"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_search_white_64" />
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/ic_search_new" />
 
                 </FrameLayout>
 
-                <FrameLayout
-                    android:id="@+id/container_sort"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:background="@drawable/bg_white_border_gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/container_search"
-                    app:layout_constraintRight_toLeftOf="@id/iv_status"
-                    app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/iv_sort"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/content_description"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_sort_desending" />
-
-                </FrameLayout>
-
-                <ImageView
-                    android:id="@+id/iv_status"
-                    android:layout_width="48dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_white_border_gray"
-                    android:layout_marginLeft="6dp"
-                    android:contentDescription="@string/content_description"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/ic_manage_black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/container_sort"
-                    app:layout_constraintRight_toLeftOf="@id/edt_search"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <com.libyasolutions.libyamarketplace.widget.MyEditText
+                <EditText
                     android:id="@+id/edt_search"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="6dp"
-                    android:background="@drawable/bg_white_border_gray"
-                    android:gravity="right|center_vertical"
-                    android:hint="@string/list_shop_home_hint_search"
-                    android:maxLines="1"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:inputType="text"
-                    android:imeOptions="actionDone"
+                    style="@style/et_custom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/container_search"
                     android:autofillHints="false"
-                    android:textSize="22sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintLeft_toRightOf="@id/iv_status"
+                    android:background="@null"
+                    android:hint="@string/search_your_house"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/gray_dark"
+                    android:textSize="@dimen/_10sdp"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+
+
+            <FrameLayout
+                android:id="@+id/container_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/bg_border_grey"
+                app:layout_constraintBottom_toBottomOf="@+id/serchSec"
+                 app:layout_constraintStart_toEndOf="@+id/serchSec"
+                 app:layout_constraintEnd_toStartOf="@+id/iv_status"
+                app:layout_constraintTop_toTopOf="@+id/serchSec">
+
+                <ImageView
+                    android:id="@+id/iv_sort"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:padding="15dp"
+                    android:contentDescription="@string/content_description"
+                    android:src="@drawable/ic_arrows_exchange_alt_v" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/iv_status"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="17dp"
+                android:contentDescription="@string/content_description"
+                android:src="@drawable/ic_icon_awesome_sort"
+                app:layout_constraintBottom_toBottomOf="@+id/serchSec"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/bg_border_grey"
+                app:layout_constraintLeft_toRightOf="@id/container_sort"
+                app:layout_constraintTop_toTopOf="@+id/serchSec"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/grey_back"
+            android:background="@drawable/bg_border_grey"
+            android:orientation="horizontal">
+            <TextView
                 android:id="@+id/tv_order_quality"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
                 android:gravity="center"
-                android:padding="4dp"
+                style="@style/tvReg"
                 android:textColor="@color/black"
-                android:background="@drawable/bg_shadow"
-                android:textSize="22sp"
-                tools:text="2 order found"/>
-
+                android:textSize="@dimen/_11sdp"
+                tools:text="@string/orders_found"/>
         </LinearLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
+
+
+    </LinearLayout>
 
     <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srl_direction="both"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_constraintTop_toBottomOf="@+id/mainSec"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:ignore="MissingConstraints">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_order_history"
@@ -186,6 +187,7 @@
         android:src="@drawable/ic_arrow_down_3"
         android:visibility="gone"
         tools:visibility="visible"
-        android:layout_gravity="left|bottom"/>
+        android:layout_gravity="left|bottom"
+        tools:ignore="MissingConstraints" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

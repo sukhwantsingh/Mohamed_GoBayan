@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutItemComment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffff"
     android:layout_margin="@dimen/dimen16_2"
-    android:orientation="vertical"
-    android:padding="@dimen/dimen8">
+    android:orientation="vertical">
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:gravity="right"
+    <TextView
         android:id="@+id/tvName"
+        style="@style/tvBold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/tvRating"
         android:ellipsize="end"
         android:singleLine="true"
         android:text="Leonel Messi"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_large" />
+        android:textSize="12dp" />
 
-    <me.zhanghai.android.materialratingbar.MaterialRatingBar
-        android:id="@+id/rtb_user"
-        style="@style/Widget.AppCompat.RatingBar.Small"
+    <TextView
+        android:id="@+id/tvRating"
+        style="@style/tvBold"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_below="@+id/tvName"
-        android:layout_marginTop="@dimen/dimen8"
-        android:layout_marginRight="@dimen/dimen_05x"
-        android:clickable="false"
-        android:isIndicator="true"
-        android:max="5"
-        android:numStars="5"
-        android:progress="0"
-        android:backgroundTint="@color/orange"
-        app:mrb_progressTint="@color/orange"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:drawableStart="@drawable/ic_star_icon"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
 
-
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:gravity="right"
+    <TextView
         android:id="@+id/tvDescription"
+        style="@style/tvReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rtb_user"
-        android:layout_marginTop="@dimen/dimen8"
-        android:textSize="20sp"
+        android:layout_below="@+id/tvName"
+        android:layout_marginTop="5dp"
+        android:gravity="start"
         android:text="In order detail page, there is no shipping address. How will an item be shipped to the buyer? What is the shipping or fulfillment process? Do you have a better idea?  "
-        android:textColor="@color/black" />
+        android:textColor="@color/grey_sub_heading"
+        android:textSize="11dp" />
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+    <TextView
         android:id="@+id/tvTime"
+        style="@style/tvReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDescription"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="@dimen/dimen8"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
         android:text="3 day ago"
-        android:textColor="@color/black"
-        android:textSize="20sp"/>
+        android:visibility="gone"
+        android:textColor="@color/grey_sub_heading"
+        android:textSize="10dp" />
 
 
 </RelativeLayout>

@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cl_department_category"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingLeft="10dp"
-    android:paddingTop="10dp"
-    android:paddingRight="10dp"
-    android:paddingBottom="4dp"
-    android:layout_margin="4dp"
-    android:background="@drawable/bg_red_button_with_border"
-    android:clickable="true"
-    android:focusable="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cl_department_category"
+        android:layout_width="140dp"
+        android:layout_height="190dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        android:layout_marginHorizontal="4dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-    <ImageView
-        android:id="@+id/iv_department_thumbnail"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/content_description"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <com.libyasolutions.libyamarketplace.widget.CustomCheckbox
-        android:id="@+id/cb_department"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:checked="false"
-        android:clickable="true"
-        android:focusable="true"
-        android:button="@drawable/checkbox_selector_department"
-        android:textColor="@color/white"
-        android:paddingRight="8dp"
-        android:gravity="center_vertical|right"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textSize="22sp"
-        app:layout_constraintLeft_toLeftOf="@id/iv_department_thumbnail"
-        app:layout_constraintTop_toBottomOf="@id/iv_department_thumbnail"
-        app:layout_constraintRight_toRightOf="@id/iv_department_thumbnail"
-        tools:text="Cars"/>
+           <androidx.cardview.widget.CardView
+                android:id="@+id/mainSection"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:cardElevation="0dp"
+                android:background="@drawable/back_blue_with_gray_border"
+                app:cardCornerRadius="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/iv_department_thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@color/gray_light" />
+
+            </androidx.cardview.widget.CardView>
+
+            <RadioButton
+                android:id="@+id/cb_department"
+                style="@style/tvReg"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/mainSection"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:checked="false"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingVertical="12dp"
+                android:singleLine="true"
+                android:text="Category Name"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>

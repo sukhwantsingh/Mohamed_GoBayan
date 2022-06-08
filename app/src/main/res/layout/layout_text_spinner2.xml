@@ -4,20 +4,29 @@
     android:layout_height="@dimen/dimen_5x"
     android:orientation="vertical" >
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+    <TextView
         android:id="@+id/lblTextContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:text="sfsf"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal" />
+        style="@style/tvBold"
+        android:paddingStart="8dp"
+        android:textColor="@color/black_heading"
+        android:textSize="14dp" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@drawable/down_arrow_with_background">
 
-    <ImageView
-        android:layout_width="@dimen/dimen_x1x"
-        android:layout_height="@dimen/dimen_x1x"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/dimen_1x"
-        android:src="@drawable/ic_dropdown" />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_centerInParent="true"
+            android:rotation="270" />
+    </RelativeLayout>
 </RelativeLayout>

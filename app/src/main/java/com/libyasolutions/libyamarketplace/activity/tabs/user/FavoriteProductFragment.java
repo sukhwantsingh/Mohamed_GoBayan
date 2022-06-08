@@ -2,6 +2,7 @@ package com.libyasolutions.libyamarketplace.activity.tabs.user;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,7 +15,9 @@ import android.widget.ListView;
 import com.libyasolutions.libyamarketplace.BaseActivity;
 import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.activity.ProductDetailActivity;
+import com.libyasolutions.libyamarketplace.activity.ProductDetailsNewActivity;
 import com.libyasolutions.libyamarketplace.adapter.ListFoodAdapter;
+import com.libyasolutions.libyamarketplace.adapter.ListFoodAdapterNew;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.object.Menu;
 
@@ -41,23 +44,33 @@ public final class FavoriteProductFragment extends Fragment implements OnClickLi
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         view = inflater.inflate(R.layout.fragment_favorite_list, null);
-        listView = (ListView) view.findViewById(R.id.listView);
+        listView =  view.findViewById(R.id.listView);
         productAdapter = new ListFoodAdapter(act, arrayList);
         listView.setAdapter(productAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Menu menu = arrayList.get(i);
-                Bundle bundle = new Bundle();
-                bundle.putString(GlobalValue.KEY_FOOD_ID, menu.getId() + "");
-                ((BaseActivity) act).gotoActivity(act, ProductDetailActivity.class, bundle);
-            }
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Menu menu = arrayList.get(i);
+            GlobalValue.KEY_LOCAL_NAME = menu.getLocalName();
+
+            Bundle b = new Bundle();
+            b.putString(GlobalValue.KEY_FOOD_ID, menu.getId() + "");
+            b.putString(GlobalValue.KEY_NAVIGATE_TYPE, "FAST");
+            b.putString(GlobalValue.KEY_FROM_SCREEN, ListFoodAdapterNew.SEARCH_SCREEN);
+
+            Intent intent = new Intent(requireActivity(), ProductDetailsNewActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtras(b);
+            startActivity(intent);
+
+//            Menu menu = arrayList.get(i);
+//            Bundle bundle = new Bundle();
+//            bundle.putString(GlobalValue.KEY_FOOD_ID, menu.getId() + "");
+//            ((BaseActivity) act).gotoActivity(act, ProductDetailActivity.class, bundle);
         });
         return view;
     }
 
+
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
     }
 }

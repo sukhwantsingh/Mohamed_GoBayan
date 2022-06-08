@@ -7,6 +7,8 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -123,8 +125,8 @@ public class ManageOrderActivity extends BaseActivity {
                             Toast.LENGTH_SHORT).show();
                     ivShowMore.setVisibility(View.GONE);
                 }
-                String orderCount = String.valueOf(ParserUtility.ParseCount(object.toString()));
-                tvOrderQuality.setText(getString(R.string.order_found, orderCount));
+                String orderCount = "<b>"+ParserUtility.ParseCount(object.toString())+"</b>";
+                tvOrderQuality.setText(Html.fromHtml(getString(R.string.order_found, orderCount)));
                 adapter.notifyDataSetChanged();
             }
 
@@ -188,12 +190,15 @@ public class ManageOrderActivity extends BaseActivity {
 
         containerSort.setOnClickListener(view -> {
             if (sortType.equals(ConstantApp.SORT_TYPE_ASC)) {
-                ivSort.setImageResource(R.drawable.ic_sort_desending);
+                ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
                 sortType = ConstantApp.SORT_TYPE_DESC;
             } else if (sortType.equals(ConstantApp.SORT_TYPE_DESC)) {
-                ivSort.setImageResource(R.drawable.ic_sort_assending);
+                ivSort.setImageResource(R.drawable.ic_arrow_exchange_alt_v_up);
                 sortType = ConstantApp.SORT_TYPE_ASC;
             }
+
+            getShopOrders(true);
+
         });
 
         ivStatus.setOnClickListener(view -> {

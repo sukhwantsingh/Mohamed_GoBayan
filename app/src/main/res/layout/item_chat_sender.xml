@@ -13,20 +13,23 @@
         android:id="@+id/chatLeftContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="48dp">
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginStart="65dp">
 
         <RelativeLayout
+            android:id="@+id/leftChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/rlAvatarRight"
+            android:layout_toStartOf="@+id/rlAvatarRight"
             android:orientation="vertical">
 
             <me.himanshusoni.chatmessageview.ChatMessageView
                 android:id="@+id/chatLeft"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dimen_05x"
-                android:gravity="right"
+                android:layout_marginEnd="@dimen/dimen_05x"
+                android:layout_alignParentEnd="true"
+                android:minWidth="50dp"
                 app:cmv_backgroundColor="@color/message"
                 app:cmv_cornerRadius="8dp"
                 app:cmv_showArrow="false">
@@ -38,29 +41,30 @@
                     android:scaleType="centerCrop"
                     android:visibility="gone" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                <TextView
                     android:id="@+id/txtMessage"
+                    style="@style/tvReg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="end"
                     android:text="Hello Word"
                     android:textColor="@color/cl_white"
-                    android:textSize="@dimen/sp_17"
+                    android:textSize="13dp"
                     app:cmv_cornerRadius="8dp" />
-
-
             </me.himanshusoni.chatmessageview.ChatMessageView>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+            <TextView
                 android:id="@+id/txtDateLeft"
+                style="@style/tvReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/chatLeft"
-                android:layout_alignParentStart="true"
-                android:layout_marginRight="@dimen/dimen_1x"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
                 android:text="5/2/2017"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/sp_10"
+                android:textColor="@color/grey_sub_heading"
+                android:textSize="9dp"
                 android:visibility="visible" />
         </RelativeLayout>
 
@@ -69,8 +73,7 @@
             android:id="@+id/rlAvatarRight"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:visibility="gone">
+            android:layout_alignParentEnd="true">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvatarLeft"
@@ -94,13 +97,13 @@
         android:id="@+id/chatRightContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="48dp">
+        android:layout_marginEnd="65dp">
 
         <RelativeLayout
             android:id="@+id/rlAvatarLeft"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentLeft="true">
+            android:layout_alignParentStart="true">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvatarRigt"
@@ -114,7 +117,7 @@
                 android:id="@+id/imgStatusRight"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:src="@drawable/ic_offline"
                 android:visibility="gone" />
@@ -123,13 +126,13 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/rlAvatarLeft">
+            android:layout_toEndOf="@+id/rlAvatarLeft">
 
             <me.himanshusoni.chatmessageview.ChatMessageView
                 android:id="@+id/chatRight"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
+                android:gravity="start"
                 app:cmv_backgroundColor="@color/bgGuest"
                 app:cmv_cornerRadius="8dp"
                 app:cmv_showArrow="false">
@@ -141,28 +144,30 @@
                     android:scaleType="centerCrop"
                     android:visibility="gone" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                <TextView
                     android:id="@+id/txtMessageRight"
+                    style="@style/tvReg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:text="Hello Word"
                     android:textColor="@color/bgGuestText"
-                    android:textSize="@dimen/sp_17" />
+                    android:textSize="13dp" />
 
 
             </me.himanshusoni.chatmessageview.ChatMessageView>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+            <TextView
                 android:id="@+id/txtDateRight"
+                style="@style/tvReg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/chatRight"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="@dimen/dimen_1x"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:text="5/2/2017"
-                android:textColor="@color/secondary_text"
-                android:textSize="@dimen/sp_10"
+                android:textColor="@color/grey_sub_heading"
+                android:textSize="9dp"
                 android:visibility="visible" />
         </RelativeLayout>
 

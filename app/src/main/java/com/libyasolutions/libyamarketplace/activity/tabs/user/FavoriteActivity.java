@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -29,8 +31,7 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
     public static final int SHOP_TAB_INDEX = 0;
     public static final int PRODUCT_TAB_INDEX = 1;
     private ImageView btnBack;
-    private TextView lblShopTab, lblProductTab;
-    private View viewSelectedShop, viewSelectedProduct;
+    private TextView lblShopTab, lblProductTab, title,tv_order_quality;
     private ViewPager viewPager;
     FragmentPagerAdapter pagerAdapter;
     private boolean isSelectedShop = true;
@@ -44,7 +45,13 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
         setContentView(R.layout.activity_favorite);
         initUI();
         initControl();
-
+        if (getIntent().getStringExtra("type").equals("1")) {
+            title.setText(R.string.shop_fav_title);
+             isSelectedShop = true;
+        } else {
+            title.setText(R.string.product_fav_title);
+            isSelectedShop = false;
+        }
     }
 
     @Override
@@ -55,7 +62,6 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        // TODO Auto-generated method stub
         super.onWindowFocusChanged(hasFocus);
     }
 
@@ -64,21 +70,19 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
     }
 
     private void initUI() {
-        btnBack = (ImageView) findViewById(R.id.btnBack);
-        lblProductTab = (TextView) findViewById(R.id.lblProductTab);
-        lblShopTab = (TextView) findViewById(R.id.lblShopTab);
-        viewSelectedShop = findViewById(R.id.viewSelectedShops);
-        viewSelectedProduct = findViewById(R.id.viewSelectedProduct);
-        viewPager = (ViewPager) findViewById(R.id.viewPagerFavorite);
+        btnBack = findViewById(R.id.btnBack);
+        lblProductTab = findViewById(R.id.lblProductTab);
+        title = findViewById(R.id.title);
+        tv_order_quality = findViewById(R.id.tv_order_quality);
+        lblShopTab = findViewById(R.id.lblShopTab);
+        viewPager =  findViewById(R.id.viewPagerFavorite);
 
     }
 
     private void initControl() {
         btnBack.setOnClickListener(this);
         lblProductTab.setOnClickListener(this);
-        viewSelectedProduct.setOnClickListener(this);
         lblShopTab.setOnClickListener(this);
-        viewSelectedShop.setOnClickListener(this);
     }
 
     private void setData() {
@@ -94,18 +98,19 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
                 //add favorite shop list
                 arrFavoriteShops.clear();
                 arrFavoriteShops.addAll(ParserUtility.getListFavouriteShop(json));
+
                 //add favorite products
                 arrFavoriteProducts.clear();
                 arrFavoriteProducts.addAll(ParserUtility.parseListFavoriteFood(json));
-                initViewPager();
 
+                initViewPager();
+                setQuantity();
             }
         });
     }
 
     private void initViewPager() {
-        pagerAdapter = new FavoritePageFragmentAdapter(
-                getSupportFragmentManager());
+        pagerAdapter = new FavoritePageFragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -115,10 +120,8 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == SHOP_TAB_INDEX)
-                    isSelectedShop = true;
-                else
-                    isSelectedShop = false;
+                if (position == SHOP_TAB_INDEX)  isSelectedShop = true;
+                else isSelectedShop = false;
 
                 updateSelectedTab();
             }
@@ -128,38 +131,40 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
 
             }
         });
-        // set current data
-        viewPager.setCurrentItem(SHOP_TAB_INDEX);
-        isSelectedShop = true;
+
         updateSelectedTab();
     }
 
+    private void setQuantity(){
+        if (isSelectedShop) {
+            String orderCount = "<b>" + arrFavoriteShops.size() + "</b>";
+            tv_order_quality.setText(Html.fromHtml(getString(R.string.shop_found, orderCount)));
+        } else {
+            String orderCount = "<b>" + arrFavoriteProducts.size() + "</b>";
+            tv_order_quality.setText(Html.fromHtml(getString(R.string.order_found, orderCount)));
+        }
+
+
+    }
     private void updateSelectedTab() {
         if (isSelectedShop) {
             // set select shop
-            viewSelectedShop.setVisibility(View.VISIBLE);
-            viewSelectedProduct.setVisibility(View.INVISIBLE);
-            lblShopTab.setTextColor(getResources().getColor(R.color.cl_white));
-            lblProductTab.setTextColor(getResources().getColor(R.color.gray_light));
+            viewPager.setCurrentItem(SHOP_TAB_INDEX);
         } else {
-            viewSelectedShop.setVisibility(View.INVISIBLE);
-            viewSelectedProduct.setVisibility(View.VISIBLE);
-            lblShopTab.setTextColor(getResources().getColor(R.color.gray_light));
-            lblProductTab.setTextColor(getResources().getColor(R.color.cl_white));
+            viewPager.setCurrentItem(PRODUCT_TAB_INDEX);
         }
     }
 
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
-        if (v == lblProductTab || v == viewSelectedProduct) {
+        if (v == lblProductTab) {
             isSelectedShop = false;
             updateSelectedTab();
             viewPager.setCurrentItem(PRODUCT_TAB_INDEX);
             return;
         }
-        if (v == lblShopTab || v == viewSelectedShop) {
+        if (v == lblShopTab) {
             isSelectedShop = true;
             updateSelectedTab();
             viewPager.setCurrentItem(SHOP_TAB_INDEX);
@@ -174,7 +179,6 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
         super.onBackPressed();
     }
 
@@ -186,11 +190,8 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
 
         @Override
         public Fragment getItem(int position) {
-
-            if (position == SHOP_TAB_INDEX)
-                return FavoriteShopFragment.setInstance(self, arrFavoriteShops);
-            else
-                return FavoriteProductFragment.setInstance(self, arrFavoriteProducts);
+            if (position == SHOP_TAB_INDEX) return FavoriteShopFragment.setInstance(self, arrFavoriteShops);
+            else return FavoriteProductFragment.setInstance(self, arrFavoriteProducts);
         }
 
         @Override

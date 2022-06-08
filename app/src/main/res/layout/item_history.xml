@@ -2,106 +2,152 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutOrderHistory"
+    android:layout_marginBottom="@dimen/_5sdp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#F9F9F9">
+    android:layout_height="wrap_content">
+
+
+    <View
+        android:id="@+id/firstView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/gray_dark"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
     <ImageView
         android:id="@+id/iv_arrow_left"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_arrow_left"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/content_description"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/background_border"
+        android:padding="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:rotation="-90"
+        android:src="@drawable/ic_arrow_down" />
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:id="@+id/tv1"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/firstSec"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_size_normal"
-        android:text="@string/order_no"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="14dp"
+        android:layout_marginHorizontal="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/firstView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_arrow_left"
+        android:orientation="horizontal">
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        app:layout_constraintRight_toRightOf="@id/tv1"
-        app:layout_constraintTop_toBottomOf="@id/tv1"
-        android:id="@+id/tv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/date_creator"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal" />
+        <TextView
+            android:id="@+id/tv1"
+            style="@style/tvBold"
+            android:text="@string/order_no"
+            android:textColor="@color/black_heading"
+            android:textSize="15dp" />
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        app:layout_constraintTop_toBottomOf="@id/tv2"
-        app:layout_constraintRight_toRightOf="@id/tv1"
-        android:id="@+id/tv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/total_amountnew"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal" />
+        <TextView
+            android:id="@+id/tvSTT"
+            style="@style/tvBold"
+            android:layout_alignParentEnd="true"
+            android:text="#123"
+            android:textColor="@color/black_heading"
+            android:textSize="15dp" />
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        app:layout_constraintTop_toBottomOf="@id/tv3"
-        app:layout_constraintRight_toRightOf="@id/tv1"
-        android:id="@+id/tv4"
-        android:layout_width="wrap_content"
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/secondSec"
+        android:layout_width="0dp"
+        android:layout_marginTop="14dp"
         android:layout_height="wrap_content"
-        android:text="@string/status_new"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal" />
+        android:layout_marginHorizontal="14dp"
+        app:layout_constraintTop_toBottomOf="@+id/firstSec"
+        app:layout_constraintEnd_toStartOf="@+id/iv_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv2"
+            style="@style/tvReg"
+            android:textColor="@color/black_heading"
+            android:textSize="14dp"
+            android:text="@string/date_creator" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:textSize="14dp"
+            android:textColor="@color/black_heading"
+            android:text="#123"
+            style="@style/tvReg"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/thirdSec"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_arrow_left"
+        app:layout_constraintTop_toBottomOf="@+id/secondSec"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv3"
+            style="@style/tvReg"
+            android:textColor="@color/black_heading"
+            android:textSize="14dp"
+            android:text="@string/total_amountnew" />
+
+        <TextView
+            android:id="@+id/tvPriceTotal"
+            android:textSize="14dp"
+            android:textColor="@color/black_heading"
+            android:text="#123"
+            style="@style/tvReg"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/forthSec"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_arrow_left"
+        app:layout_constraintTop_toBottomOf="@+id/thirdSec"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv4"
+            style="@style/tvReg"
+            android:textColor="@color/black_heading"
+            android:textSize="14dp"
+            android:text="@string/status_new" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:textSize="14dp"
+            android:textColor="@color/black_heading"
+            android:text="#123"
+            style="@style/tvReg"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+
+
     <View
-        android:layout_marginTop="@dimen/text_size_normal"
-        app:layout_constraintTop_toBottomOf="@id/tv4"
-        android:background="@color/black_tranper50"
+        android:layout_marginTop="14dp"
+        app:layout_constraintTop_toBottomOf="@id/forthSec"
+        android:background="@color/gray_dark"
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:id="@+id/tvSTT"
-        android:layout_marginLeft="@dimen/text_size_normal"
-        android:textSize="@dimen/text_size_normal"
-        android:textColor="@color/black"
-        android:text="#123"
-        app:layout_constraintTop_toTopOf="@+id/tv1"
-        app:layout_constraintLeft_toRightOf="@id/iv_arrow_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:id="@+id/tvTime"
-        android:layout_marginLeft="@dimen/text_size_normal"
-        android:textSize="@dimen/text_size_normal"
-        android:textColor="@color/black"
-        android:text="#123"
-        app:layout_constraintTop_toTopOf="@+id/tv2"
-        app:layout_constraintLeft_toRightOf="@id/iv_arrow_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:id="@+id/tvPriceTotal"
-        android:layout_marginLeft="@dimen/text_size_normal"
-        android:textSize="@dimen/text_size_normal"
-        android:textColor="@color/black"
-        android:text="#123"
-        app:layout_constraintTop_toTopOf="@+id/tv3"
-        app:layout_constraintLeft_toRightOf="@id/iv_arrow_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-        android:id="@+id/tvStatus"
-        android:layout_marginLeft="@dimen/text_size_normal"
-        android:textSize="@dimen/text_size_normal"
-        android:textColor="@color/black"
-        android:text="#123"
-        app:layout_constraintTop_toTopOf="@+id/tv4"
-        app:layout_constraintLeft_toRightOf="@id/iv_arrow_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

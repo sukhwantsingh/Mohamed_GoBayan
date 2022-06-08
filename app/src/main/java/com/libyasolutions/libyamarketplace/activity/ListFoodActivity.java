@@ -61,11 +61,6 @@ import butterknife.OnClick;
 
 public class ListFoodActivity extends BaseActivity implements View.OnClickListener {
 
-//    @BindView(R.id.lblShopName)
-//    TextViewFontH1 lblShopName;
-
-    @BindView(R.id.container_search)
-    FrameLayout containerSearch;
     @BindView(R.id.iv_sort)
     ImageView ivSort;
 
@@ -79,8 +74,7 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
 
     @BindView(R.id.lsvFood)
     RecyclerView lsvFood;
-    @BindView(R.id.tab_home)
-    LinearLayout tabHome;
+
     @BindView(R.id.tab_search)
     LinearLayout tabSearch;
     @BindView(R.id.tab_cart)
@@ -95,8 +89,7 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
     Toolbar toolbar;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
-    @BindView(R.id.tv_order_new_number_tab)
-    TextView tvOrderSum;
+
 
     private ListFoodAdapterNew foodAdapterNew;
     private List<Menu> menuFoodList = new ArrayList<>();
@@ -222,7 +215,7 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
         tabProfile.setOnClickListener(this);
         tabCart.setOnClickListener(this);
         tabSearch.setOnClickListener(this);
-        tabHome.setOnClickListener(this);
+
     }
 
     @Override
@@ -241,9 +234,7 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
             case R.id.tab_search:
                 sendAction(Constant.SHOW_TAB_SEARCH);
                 break;
-            case R.id.tab_home:
-                sendAction(Constant.SHOW_TAB_HOME);
-                break;
+
         }
     }
 
@@ -276,6 +267,11 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
         searchFoodList(page, true);
     }
 
+    @OnClick(R.id.img_top_cart)
+    void chooseTabCart() {
+        sendAction(Constant.SHOW_TAB_CART);
+    }
+
     @OnClick(R.id.container_search)
     void searchListFoodByShopAndMenu() {
         isLoadingMore = false;
@@ -306,25 +302,10 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
         gotoShopDetail(shopId);
     }
 
-    @OnClick(R.id.tab_profile)
-    void chooseTabProfile() {
-        sendAction(Constant.SHOW_TAB_PROFILE);
-    }
-
-    @OnClick(R.id.tab_cart)
-    void chooseTabCart() {
-        sendAction(Constant.SHOW_TAB_CART);
-    }
-
-    @OnClick(R.id.tab_search)
-    void chooseTabSearch() {
-        sendAction(Constant.SHOW_TAB_SEARCH);
-    }
-
-    @OnClick(R.id.tab_home)
-    void chooseTabHome() {
-        sendAction(Constant.SHOW_TAB_HOME);
-    }
+   // @OnClick(R.id.tab_search)
+    //void chooseTabSearch() {
+   //     sendAction(Constant.SHOW_TAB_SEARCH);
+ //   }
 
     private void sendAction(String action) {
         Intent intent = new Intent(this, MainTabActivity.class);
@@ -344,7 +325,7 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
             if (userId.isEmpty()) {
                 return;
             }
-            ModelManager.notificationCount(this, userId, false,
+          /*  ModelManager.notificationCount(this, userId, false,
                     new ModelManagerListener() {
                         @Override
                         public void onError(VolleyError error) {
@@ -370,53 +351,13 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
                                 showToastMessage(ParserUtility.getMessage(object.toString()));
                             }
                         }
-                    });
+                    });*/
         } else {
             showToastMessage(R.string.no_connection);
         }
     }
 
-    private void showDialogLogin() {
-        Dialog loginDialog = new Dialog(this);
-        loginDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        loginDialog.setContentView(R.layout.dialog_confirm);
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay()
-                .getMetrics(displaymetrics);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(loginDialog.getWindow().getAttributes());
-        lp.width = 6 * (displaymetrics.widthPixels / 7);
-        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        loginDialog.getWindow().setAttributes(lp);
-        loginDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        TextView tvTitle = loginDialog.findViewById(R.id.tvTitle);
-        TextView tvContent = loginDialog.findViewById(R.id.tvContent);
-        TextView tvCancel = loginDialog.findViewById(R.id.tvCancel);
-        TextView tvConfirm = loginDialog.findViewById(R.id.tvConfirm);
-
-        tvContent.setText(R.string.login_user_function);
-        tvConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null)
-                    GlobalValue.myAccount = null;
-                new MySharedPreferences(getApplicationContext()).clearAccount();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
-                loginDialog.dismiss();
-            }
-        });
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginDialog.dismiss();
-            }
-        });
-
-        loginDialog.show();
-    }
 
     private void getChatCount() {
         if (!NetworkUtil.checkNetworkAvailable(this)) {

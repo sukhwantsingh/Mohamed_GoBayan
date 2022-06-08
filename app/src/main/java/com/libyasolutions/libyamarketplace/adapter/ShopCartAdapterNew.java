@@ -42,7 +42,7 @@ public class ShopCartAdapterNew extends RecyclerView.Adapter<ShopCartAdapterNew.
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Glide.with(context).load(lsvShop.get(position).getImage()).into(holder.imgShop);
         holder.lblShopName.setText(lsvShop.get(position).getShopName());
-        holder.lblFoodNumber.setText(StringUtility.replaceArabicNumbers(String.valueOf(lsvShop.get(position).getNumberItems())) + " " + context.getString(R.string.items));
+        holder.lblFoodNumber.setText(StringUtility.replaceArabicNumbers(String.valueOf(lsvShop.get(position).getNumberItems())) + "X");
         if ((lsvShop.get(position).getTotalPrice() + lsvShop.get(position).getCurrentTotalVAT()) >= lsvShop.get(position).getMinPriceForDelivery()) {
             holder.lblShipping.setText(context.getString(R.string.ship) + context.getResources().getString(R.string.currency) + StringUtility.replaceArabicNumbers(String.valueOf(0)));
         } else {

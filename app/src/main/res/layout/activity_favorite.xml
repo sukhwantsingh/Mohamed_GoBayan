@@ -2,36 +2,168 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_7x"
-        android:background="@color/primary_dark"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_12sdp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="@dimen/dimen_3x"
-            android:layout_height="@dimen/dimen_x3x"
-            android:layout_marginLeft="@dimen/dimen_1x"
-            android:layout_marginRight="@dimen/dimen_1x"
-            android:background="@drawable/ic_chevron_right_black_24dp" />
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/background_border"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_back_arrow_new" />
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        <TextView
+            android:id="@+id/title"
+            style="@style/tvBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/my_favourites"
-            android:textColor="@color/cl_white"
-            android:textSize="@dimen/text_size_normal_3x" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center_horizontal"
+            android:text="@string/setting"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/serchSec"
+                android:layout_width="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:background="@drawable/bg_border_grey">
+
+                <FrameLayout
+                    android:id="@+id/container_search"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
+                        android:src="@drawable/ic_search_new" />
+
+                </FrameLayout>
+
+
+                <EditText
+                    android:id="@+id/edt_search"
+                    style="@style/et_custom"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/container_search"
+                    android:autofillHints="false"
+                    android:background="@null"
+                    android:hint="Search your house...."
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/gray_dark"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </RelativeLayout>
+
+
+
+            <FrameLayout
+                android:id="@+id/container_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_6sdp"
+                android:background="@drawable/bg_border_grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/serchSec"
+                app:layout_constraintRight_toLeftOf="@id/iv_status"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_sort"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:padding="14dp"
+                    android:contentDescription="@string/content_description"
+                    android:src="@drawable/ic_arrows_exchange_alt_v" />
+
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/iv_status"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:padding="18dp"
+                android:background="@drawable/bg_border_grey"
+                android:contentDescription="@string/content_description"
+
+                android:src="@drawable/ic_icon_awesome_sort"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/container_sort"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/border_gray"
+            android:background="@drawable/bg_border_grey"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_order_quality"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                style="@style/tvReg"
+                android:textColor="@color/black_heading"
+                android:textSize="@dimen/_11sdp"
+                tools:text="@string/orders_found"/>
+        </LinearLayout>
+
+
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_6x"
+        android:visibility="gone"
         android:background="@color/primary_dark"
         android:orientation="horizontal">
 
@@ -47,6 +179,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:visibility="gone"
                 android:text="@string/shops_upper_case"
                 android:textColor="@color/cl_white"
                 android:textSize="@dimen/text_size_normal_3x" />

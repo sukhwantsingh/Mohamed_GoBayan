@@ -26,29 +26,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/dimen50"
                 android:gravity="center"
-                android:text="@string/order_history_detail"
+                android:text="@string/order_details"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
-
             <ImageView
                 android:id="@+id/iv_back"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="16dp"
                 android:layout_centerVertical="true"
-                android:layout_margin="12dp"
-                android:contentDescription="@string/content_description"
-                android:src="@drawable/ic_chevron_right_black_24dp" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/dimen16"
-                android:background="@color/red" />
+                android:background="@drawable/background_border"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_back_arrow_new" />
 
         </RelativeLayout>
 
@@ -57,8 +47,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -66,41 +56,193 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/progess_lay"
+                    android:layout_marginTop="-12dp"
+                    android:paddingVertical="16dp"
+                    android:background="@drawable/bg_container_info"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/round_lay"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:text="1"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:background="@drawable/blue_round_grdient" />
+
+                    <View
+                        android:id="@+id/line_lay"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/round_lay"
+                        android:background="@color/blue_button" />
+
+                    <TextView
+                        android:id="@+id/round_lay2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/black_heading"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_toEndOf="@+id/line_lay"
+                        android:background="@drawable/blue_round_grdient_outline" />
+
+                    <View
+                        android:id="@+id/line_lay2"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/round_lay2"
+                        android:background="@color/blue_button" />
+
+                    <TextView
+                        android:id="@+id/round_lay3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/black_heading"
+                        android:layout_toEndOf="@+id/line_lay2"
+                        android:background="@drawable/blue_round_grdient_outline" />
+
+
+                    <View
+                        android:id="@+id/line_lay3"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/round_lay3"
+                        android:background="@color/blue_button" />
+
+
+                    <TextView
+                        android:id="@+id/round_lay4"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_toEndOf="@+id/line_lay3"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="@color/black_heading"
+                        android:background="@drawable/blue_round_grdient_outline" />
+
+
+                    <View
+                        android:id="@+id/line_lay4"
+                        android:layout_width="@dimen/_12sdp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/round_lay4"
+                        android:background="@color/blue_button" />
+
+                    <TextView
+                        android:id="@+id/round_lay5"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="@color/black_heading"
+                        android:layout_toEndOf="@+id/line_lay4"
+                        android:background="@drawable/blue_round_grdient_outline" />
+
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                         android:layout_below="@+id/round_lay5"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/round_white_gradient"
+                        android:text="@string/received"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        style="@style/tvMedium"
+                        android:textColor="@color/blue_search"
+                        android:textSize="13dp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/progess_lay"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/blue_fill_round_gradient">
+
+                    <TextView
+                        android:id="@+id/progress_text"
+                        style="@style/MaterialAlertDialog.Material3.Body.Text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Progress"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </RelativeLayout>
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_container_info"
                 android:paddingLeft="8dp"
                 android:paddingTop="10dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="10dp">
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_number"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:background="@drawable/bg_edit_text_normal"
-                    android:gravity="right|center_vertical"
+                    android:gravity="end|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/tv_order_number"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_number"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_number"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_number"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_number" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -108,23 +250,23 @@
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_number"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_number" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_date"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_date"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_date" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -132,23 +274,23 @@
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_date"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_date" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_total"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_total"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_total" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_buyer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -156,23 +298,23 @@
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_total"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_total" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_buyer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_buyer"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_buyer"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_buyer" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_status"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -180,18 +322,18 @@
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_buyer"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_buyer" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_status"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_status"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_status"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_status" />
@@ -204,8 +346,8 @@
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:scrollbars="horizontal"
-                tools:listitem="@layout/item_list_product_order_v2"
-                tools:itemCount="1"/>
+                tools:itemCount="1"
+                tools:listitem="@layout/item_list_product_order_v2" />
 
             <me.relex.circleindicator.CircleIndicator2
                 android:id="@+id/indicator"
@@ -213,7 +355,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 app:ci_animator="@anim/no_indicator"
-                app:ci_drawable="@drawable/red_radius"
+                app:ci_drawable="@drawable/blue_round_grdient"
                 app:ci_drawable_unselected="@drawable/gray_radius"
                 app:ci_height="10dp"
                 app:ci_width="10dp" />
@@ -233,51 +375,51 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="10dp">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_buyer_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/buyer_name"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_buyer_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|center_vertical"
                         android:padding="6dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_buyer_name" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_buyer_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/buyer_phone"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_value_buyer_name" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_buyer_phone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|center_vertical"
                         android:padding="6dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toRightOf="@id/iv_buyer_phone"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_buyer_phone" />
@@ -286,52 +428,56 @@
                         android:id="@+id/iv_buyer_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/blue_fill_round_gradient"
+                        android:padding="@dimen/_3sdp"
                         android:contentDescription="@string/content_description"
-                        android:src="@drawable/ic_phone_red"
+                        android:src="@drawable/calling_blue_icon"
                         app:layout_constraintBottom_toBottomOf="@id/tv_value_buyer_phone"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tv_value_buyer_phone" />
+                        app:layout_constraintTop_toTopOf="@id/tv_value_buyer_phone"
+                        app:tint="@color/white"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_buyer_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/buyer_email"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_value_buyer_phone" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_buyer_email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|center_vertical"
                         android:padding="6dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_buyer_email" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.libyasolutions.libyamarketplace.widget.MyButton
+                <Button
                     android:id="@+id/btn_buyer_info"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_red_button_with_border"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/blue_fill_round_gradient"
                     android:text="@string/buyer_info_button_text"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:fontFamily="@font/regular"
+                    android:textSize="15dp" />
 
             </FrameLayout>
 
@@ -350,33 +496,34 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="10dp">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_order_requirement"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|top"
                         android:lines="3"
                         android:padding="8dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.libyasolutions.libyamarketplace.widget.MyButton
+                <Button
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_red_button_with_border"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/blue_fill_round_gradient"
                     android:text="@string/order_requirement_button_text"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:fontFamily="@font/regular"
+                    android:textSize="15dp" />
 
             </FrameLayout>
 
@@ -395,18 +542,19 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="10dp">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_payment_method"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="30dp"
-                        android:background="@drawable/bg_edit_text_payment"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/blue_outline_gradient"
+                        android:backgroundTint="@color/filter_blue"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textColor="@color/black_heading"
+                        android:textSize="@dimen/_12sdp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -414,17 +562,18 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.libyasolutions.libyamarketplace.widget.MyButton
+                <Button
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_red_button_with_border"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/blue_fill_round_gradient"
                     android:text="@string/payment_method_button_text"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:fontFamily="@font/regular"
+                    android:textSize="15dp" />
 
             </FrameLayout>
 
@@ -443,77 +592,77 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="10dp">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shipping_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/shipping_address"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_shipping_address"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|center_vertical"
                         android:lines="3"
                         android:padding="6dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_shipping_address" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shipping_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/shipping_name"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_value_shipping_address" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_shipping_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|center_vertical"
                         android:padding="6dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_shipping_name" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shipping_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/shipping_phone"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_value_shipping_name" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_value_shipping_phone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:gravity="right|center_vertical"
                         android:padding="6dp"
-                        android:textSize="22sp"
+                        android:textSize="15dp"
                         app:layout_constraintLeft_toRightOf="@id/iv_shipping_phone"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_shipping_phone" />
@@ -522,26 +671,31 @@
                         android:id="@+id/iv_shipping_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:padding="@dimen/_3sdp"
+                        android:background="@drawable/blue_fill_round_gradient"
                         android:contentDescription="@string/content_description"
-                        android:src="@drawable/ic_phone_red"
+                        android:src="@drawable/calling_blue_icon"
                         app:layout_constraintBottom_toBottomOf="@id/tv_value_shipping_phone"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tv_value_shipping_phone" />
+                        app:layout_constraintTop_toTopOf="@id/tv_value_shipping_phone"
+                        app:tint="@color/white" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <com.libyasolutions.libyamarketplace.widget.MyButton
+                <Button
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/bg_red_button_with_border"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/blue_fill_round_gradient"
                     android:text="@string/shipping_info_button_text"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:textSize="15dp"
+                    android:fontFamily="@font/regular"
+                    />
 
             </FrameLayout>
 
@@ -556,127 +710,127 @@
                 android:paddingRight="8dp"
                 android:paddingBottom="10dp">
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_sub_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="30dp"
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/tv_order_sub_title"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_sub_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_sub_total"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_sub_title"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_sub_title" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_shipping"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_sub_title"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_sub_title" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_shipping"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_shipping"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_shipping"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_shipping" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_total_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_shipping"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_shipping" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_total_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_total"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_total_2"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_total_2" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_tax"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_total_2"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_total_2" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_tax"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_tax"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_tax"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_tax" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_value_order_grand_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_edit_text_normal"
                     android:gravity="right|center_vertical"
                     android:padding="6dp"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="@id/tv_value_order_tax"
                     app:layout_constraintTop_toBottomOf="@id/tv_value_order_tax" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                <TextView
                     android:id="@+id/tv_order_grant_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/order_grand_total"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
+                    android:textSize="15dp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_value_order_grand_total"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="@id/tv_value_order_grand_total" />

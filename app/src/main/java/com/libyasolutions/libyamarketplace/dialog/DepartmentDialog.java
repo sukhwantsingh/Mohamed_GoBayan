@@ -73,8 +73,6 @@ public class DepartmentDialog extends BaseDialog {
     protected void configView() {
         // config recycler view
         rvDepartment.setHasFixedSize(true);
-        rvDepartment.setLayoutManager(new LinearLayoutManager(getActivity(),
-                LinearLayoutManager.HORIZONTAL, false));
         departmentAdapter = new DepartmentAdapter(getActivity(), departmentCategoryList, position -> {
                     String departmentId = departmentCategoryList.get(position).getDepartmentId();
 
@@ -165,9 +163,6 @@ public class DepartmentDialog extends BaseDialog {
                 rvCategory.setVisibility(View.VISIBLE);
             }
             ivArrowBottom.setVisibility(View.VISIBLE);
-
-            LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-            rvCategory.setLayoutManager(layoutManager);
 
             categoryV3Adapter = new CategoryV3Adapter(getActivity(), categoryV3List,
                     (position, categoryV3) -> {

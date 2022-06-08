@@ -2,54 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_color_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:background="@color/cl_white"
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_7x"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="?actionBarSize">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="@dimen/dimen_x3x"
-            android:layout_height="@dimen/dimen_x3x"
-            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/_29sdp"
+            android:layout_height="@dimen/_29sdp"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dimen16"
-            android:src="@drawable/ic_chevron_right_black_24dp" />
+            android:layout_marginStart="@dimen/_12sdp"
+            android:background="@drawable/background_border"
+            android:padding="12dp"
+            android:src="@drawable/ic_back_arrow_new"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+        <TextView
             android:id="@+id/lblTitle"
+            style="@style/tvBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:text="@string/report"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_normal_3x" />
+            android:layout_marginStart="24dp"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/report_product"
+            android:textColor="@color/black_heading"
+            android:textSize="15dp" />
 
-        <View
-            android:id="@+id/view2"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_below="@id/tvTitle"
-            android:layout_alignParentBottom="true"
-            android:background="@color/red" />
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
+        android:fillViewport="true"
         android:layout_height="match_parent">
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_1x"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginVertical="@dimen/_18sdp"
+            android:layout_marginHorizontal="@dimen/_12sdp"
             android:orientation="vertical">
 
             <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
@@ -58,22 +58,52 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/dimen_1x"
                 android:text="@string/title"
+                android:visibility="gone"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_normal_1x" />
 
-            <com.libyasolutions.libyamarketplace.widget.MyEditText
-                android:id="@+id/edtTitleFB"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_layout_radius"
-                android:ems="10"
-                android:gravity="right|center_vertical"
-                android:inputType="textMultiLine"
-                android:padding="@dimen/dimen_1x"
-                android:textColor="@color/gray_dark"
-                android:textSize="@dimen/text_size_normal_1x">
+                android:background="@drawable/bg_border_grey">
 
-            </com.libyasolutions.libyamarketplace.widget.MyEditText>
+                <TextView
+                    android:id="@+id/edtTitleFB"
+                    style="@style/tvBold"
+                    android:layout_alignTop="@+id/ivdrop"
+                    android:layout_alignBottom="@+id/ivdrop"
+                    android:background="@null"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/bold"
+                    android:gravity="center_vertical"
+                    android:hint="@string/select_report_reason"
+                    android:textColor="@color/color_blue_greenish"
+                    android:textColorHint="@color/color_blue_greenish"
+                    android:textSize="14dp" />
+
+                <ImageView
+                    android:id="@+id/ivdrop"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/background_border"
+                    android:padding="@dimen/_3sdp"
+                    android:src="@drawable/ic_arrow_down" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edtTitleFB"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="16dp"
+                    android:buttonTint="@color/color_blue_dark"
+                    android:text="This content is inappropriate"
+                    android:textSize="@dimen/_10sdp" />
+
+            </RelativeLayout>
 
             <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
                 android:id="@+id/lblReportType"
@@ -82,6 +112,7 @@
                 android:layout_marginTop="@dimen/dimen_1x"
                 android:layout_marginBottom="@dimen/dimen_1x"
                 android:text="@string/type"
+                android:visibility="gone"
                 android:textColor="@color/cl_white"
                 android:textSize="@dimen/text_size_normal_1x" />
 
@@ -92,6 +123,7 @@
                 android:background="@drawable/custom_layout_radius"
                 android:padding="@dimen/dimen_1x"
                 android:text="@string/report"
+                android:visibility="gone"
                 android:textColor="@color/gray_dark"
                 android:textSize="@dimen/text_size_normal_1x" />
 
@@ -104,34 +136,117 @@
                 android:textColor="@color/cl_white"
                 android:textSize="@dimen/text_size_normal_1x" />
 
-            <com.libyasolutions.libyamarketplace.widget.MyEditText
+            <EditText
                 android:id="@+id/edtDesFB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_layout_radius"
-                android:gravity="top|right"
+                android:layout_width="300dp"
+                android:layout_height="130dp"
+                android:gravity="top"
                 android:inputType="textMultiLine"
                 android:lines="6"
-                android:padding="@dimen/dimen_1x"
-                android:textSize="@dimen/text_size_normal_1x" />
+                android:textColorHint="@color/black"
+                android:hint="Write report..."
+                android:padding="@dimen/_14sdp"
+                android:background="@drawable/bg_border_grey"
+                android:textSize="@dimen/_11sdp" />
+
+            <RelativeLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/_3sdp"
+                android:backgroundTint="@color/color_dark_blue"
+                android:background="@drawable/bg_red_button_with_border"
+                android:layout_marginVertical="@dimen/_25sdp">
+
+                <TextView
+                    android:id="@+id/btnSend"
+                    style="@style/customButton"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:layout_width="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/bg_red_button_with_border"
+                    android:backgroundTint="@color/color_dark_blue"
+                    android:gravity="center"
+                    android:text="Send Report"
+                    android:textAllCaps="false" />
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_alignParentEnd="true"
+                    app:tint="@color/white"
+                    android:layout_centerVertical="true"
+                    android:rotation="-45"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:src="@drawable/ic_baseline_send_24"/>
+
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_2x"
-                android:gravity="center">
+                android:padding="@dimen/_10sdp"
+                android:background="@drawable/back_green_border_with_color"
+                android:orientation="vertical">
 
-                <com.libyasolutions.libyamarketplace.widget.MyButton
-                    android:id="@+id/btnSend"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_red_button_with_border"
-                    android:paddingLeft="@dimen/dimen_3x"
-                    android:paddingRight="@dimen/dimen_3x"
-                    android:text="@string/send"
-                    android:textColor="@color/cl_white"
-                    android:textSize="@dimen/text_size_large" />
+                <TextView
+                    style="@style/tvBold"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:text="@string/note"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/thanks_for_your_report"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/des_one"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/des_two"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/des_three"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/des_four"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:text="@string/des_five"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp" />
+
+
+
+
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"/>
+
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

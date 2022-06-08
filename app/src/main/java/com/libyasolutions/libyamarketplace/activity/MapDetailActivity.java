@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.libyasolutions.libyamarketplace.BaseActivity;
 import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
@@ -42,6 +45,7 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
     private ImageView btnBack;
     private TextView lblShopName, lblAddress;
     public static BaseActivity self;
+    private FloatingActionButton fabMap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,11 +63,13 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
         btnBack = (ImageView) findViewById(R.id.btnBack);
         lblShopName = (TextView) findViewById(R.id.lblShopName);
         lblAddress = (TextView) findViewById(R.id.lblAddress);
+        fabMap = (FloatingActionButton) findViewById(R.id.fab_map);
     }
 
     private void initControl() {
         btnBack.setOnClickListener(this);
         lblShopName.setOnClickListener(this);
+        fabMap.setOnClickListener(this);
     }
 
     private void initMap() {
@@ -73,12 +79,9 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
     }
 
     private void setData() {
-        // arrShop = new ArrayList<Shop>();
-//        showToastMessage(getString(R.string.message_demo_location));
         Bundle b = getIntent().getExtras();
         if (b != null) {
             shopId = b.getInt(GlobalValue.KEY_SHOP_ID);
-
         }
 
         if (shopId != -1) {
@@ -90,7 +93,6 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
 
                             @Override
                             public void onSuccess(Object object) {
-                                // TODO Auto-generated method stub
                                 String json = (String) object;
                                 shop = ParserUtility.parseShop(json);
                                 if (shop != null) {
@@ -123,8 +125,7 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
         Marker marker;
         if (shop != null) {
             LatLng item = new LatLng(shop.getLatitude(), shop.getLongitude());
-            marker = mMap.addMarker(new MarkerOptions().position(item)
-                    .title(shop.getShopName()));
+            marker = mMap.addMarker(new MarkerOptions().position(item).title(shop.getShopName()));
             try {
                 marker.setIcon(BitmapDescriptorFactory
                         .fromResource(R.drawable.ic_address_map));
@@ -142,7 +143,6 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
@@ -150,12 +150,22 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
         if (v == btnBack) {
             onBackPressed();
         } else if (v == lblShopName) {
             gotoShopDetail(shopId);
         }
+        else if (v == fabMap) {
+            gotGMap(shop);
+        }
+    }
+
+    private void gotGMap(Shop shop){
+     //   Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + shop.getLatitude() + "," + shop.getLongitude());
+        Uri gmmIntentUri =   Uri.parse("http://maps.google.com/maps?daddr=" + shop.getLatitude() + "," + shop.getLongitude());
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     @Override
@@ -178,6 +188,6 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
             }
         });
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+      //  mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 }

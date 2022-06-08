@@ -6,7 +6,7 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,16 +15,17 @@
             android:id="@+id/imageView"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginVertical="@dimen/_12sdp"
             android:layout_marginHorizontal="@dimen/_12sdp"
+            android:layout_marginVertical="5dp"
             android:background="@drawable/background_border"
+            android:padding="@dimen/_10sdp"
             android:src="@drawable/ic_back_arrow_new" />
 
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:fillViewport="true"
+            android:layout_below="@+id/imageView"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -36,21 +37,20 @@
                     android:id="@+id/lblBuyerInformation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/bold"
-                    android:textSize="@dimen/_14sdp"
+                    style="@style/tvBold"
+                    android:textSize="15dp"
                     android:layout_marginHorizontal="@dimen/_12sdp"
-                    android:paddingTop="@dimen/_12sdp"
-                    android:paddingBottom="@dimen/_8sdp"
+                    android:paddingVertical="5dp"
                     android:textColor="@color/color_blue_greenish"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:text="Search for" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_15sdp"
+                    android:padding="8dp"
                     android:orientation="horizontal"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_marginHorizontal="@dimen/_12sdp"
                     android:backgroundTint="@color/grey_back"
                     android:background="@drawable/bg_border_grey_new">
@@ -68,12 +68,13 @@
                             android:textSize="@dimen/_10sdp" />
 
                         <TextView
+                            style="@style/tvReg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Shops"
+                            android:text="@string/shops"
                             android:paddingHorizontal="@dimen/_12sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="12dp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:textColor="@color/white"
                             android:drawablePadding="@dimen/_10sdp"
@@ -100,13 +101,13 @@
                             android:text="Products"
                             android:paddingHorizontal="@dimen/_12sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="12dp"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:textColor="@color/color_blue_greenish"
                             android:drawablePadding="@dimen/_10sdp"
-                            android:drawableTint="@color/blue_dark_button"
-                            android:background="@drawable/back_blue_with_gray_border"
-                            android:drawableStart="@drawable/ic_icon_metro_shop_whitye" />
+                            android:background="@drawable/bg_white_corner_6"
+                            app:drawableStartCompat="@drawable/ic_icon_metro_shop_whitye"
+                            app:drawableTint="@color/blue_dark_button" />
 
                     </LinearLayout>
 
@@ -116,8 +117,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/bold"
-                    android:textSize="@dimen/_14sdp"
+                    style="@style/tvBold"
+                    android:textSize="15dp"
                     android:layout_marginHorizontal="@dimen/_12sdp"
                     android:paddingTop="@dimen/_14sdp"
                     android:paddingBottom="@dimen/_2sdp"
@@ -128,9 +129,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp"
+                    android:padding="8dp"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:backgroundTint="@color/grey_back"
                     android:background="@drawable/bg_border_grey_new">
 
                     <LinearLayout
@@ -147,10 +149,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="All Departments"
+                            android:text="@string/list_shop_home_all_department"
                             android:paddingHorizontal="@dimen/_15sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="12dp"
+                            style="@style/tvBold"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/blue_button"
@@ -173,6 +176,7 @@
                             android:textSize="@dimen/_10sdp" />
 
                         <TextView
+                            style="@style/tvBold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
@@ -181,9 +185,9 @@
                             android:drawablePadding="@dimen/_10sdp"
                             android:paddingHorizontal="@dimen/_15sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:text="Select Department"
+                            android:text="@string/list_shop_home_choose_department"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_11sdp" />
+                            android:textSize="12dp" />
 
 
                         <ImageView
@@ -202,8 +206,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/bold"
-                    android:textSize="@dimen/_14sdp"
+                    style="@style/tvBold"
+                    android:textSize="15dp"
                     android:layout_marginHorizontal="@dimen/_12sdp"
                     android:paddingTop="@dimen/_14sdp"
                     android:paddingBottom="@dimen/_2sdp"
@@ -214,9 +218,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp"
+                    android:padding="8dp"
                     android:orientation="vertical"
                     android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:backgroundTint="@color/grey_back"
                     android:background="@drawable/bg_border_grey_new">
 
                     <LinearLayout
@@ -233,10 +238,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="All Cities"
+                            android:text="@string/all_cities"
                             android:paddingHorizontal="12dp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="12dp"
+                            style="@style/tvBold"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/blue_button"
@@ -258,6 +264,7 @@
                             android:textSize="@dimen/_10sdp" />
 
                         <TextView
+                            style="@style/tvBold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5sdp"
@@ -266,9 +273,9 @@
                             android:drawablePadding="@dimen/_10sdp"
                             android:paddingHorizontal="@dimen/_15sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:text="Select City"
+                            android:text="@string/select_city"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_11sdp" />
+                            android:textSize="12dp" />
 
 
                         <ImageView
@@ -303,19 +310,22 @@
                             android:layout_toEndOf="@+id/radioButThree"
                             android:background="@drawable/bg_white_corner_6"
                             android:orientation="vertical"
-                            android:paddingHorizontal="@dimen/_15sdp"
+
                             android:paddingVertical="@dimen/_10sdp">
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:drawablePadding="@dimen/_10sdp"
-                                android:text="My Location"
+                                android:text="@string/my_location"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_11sdp" />
+                                android:paddingHorizontal="@dimen/_15sdp"
+                                style="@style/tvBold"
+                                android:textSize="12dp" />
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
+                                android:layout_marginTop="8dp"
                                 android:layout_height="wrap_content">
 
                                 <SeekBar
@@ -336,7 +346,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:textColor="@color/black"
-                                    android:textSize="@dimen/_11sdp"
+                                    android:textSize="12dp"
                                     app:layout_constraintStart_toStartOf="@id/sb_distance"
                                     app:layout_constraintTop_toBottomOf="@id/sb_distance" />
 
@@ -345,9 +355,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="10dp"
-                                    android:text="@string/text_0_km"
+                                    android:text="@string/text_45_km"
                                     android:textColor="@color/black"
-                                    android:textSize="@dimen/_11sdp"
+                                    android:textSize="12dp"
+                                    style="@style/tvReg"
                                     app:layout_constraintRight_toRightOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/sb_distance" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -362,8 +373,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/bold"
-                    android:textSize="@dimen/_14sdp"
+                    style="@style/tvBold"
+                    android:textSize="15dp"
                     android:layout_marginHorizontal="@dimen/_12sdp"
                     android:paddingTop="@dimen/_14sdp"
                     android:paddingBottom="@dimen/_2sdp"
@@ -374,8 +385,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp"
+                    android:padding="8dp"
                     android:orientation="vertical"
+                    android:layout_marginBottom="85dp"
                     android:layout_marginHorizontal="@dimen/_12sdp"
                     android:backgroundTint="@color/grey_back"
                     android:background="@drawable/bg_border_grey_new">
@@ -394,10 +406,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Any Price"
+                            android:text="@string/any_price"
                             android:paddingHorizontal="@dimen/_15sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="12dp"
+                            style="@style/tvBold"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/blue_button"
@@ -427,9 +440,10 @@
                             android:drawablePadding="@dimen/_10sdp"
                             android:paddingHorizontal="@dimen/_15sdp"
                             android:paddingVertical="@dimen/_10sdp"
-                            android:text="Select Price"
+                            android:text="@string/select_price"
+                            style="@style/tvBold"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_11sdp" />
+                            android:textSize="12dp" />
 
 
                         <ImageView
@@ -446,25 +460,26 @@
                 </LinearLayout>
 
 
-                <Button
-                    android:id="@+id/btnRegister"
-                    android:layout_width="@dimen/_140sdp"
-                    style="@style/customButton"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/color_dark_blue"
-                    android:background="@drawable/bg_red_button_with_border"
-                    android:gravity="center"
-                    android:textAllCaps="false"
-                    android:layout_marginVertical="@dimen/_20sdp"
-                    android:layout_gravity="center_horizontal"
-                    android:paddingHorizontal="@dimen/_15sdp"
-                    android:paddingVertical="@dimen/_14sdp"
-                    android:text="Apply Now" />
-
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnRegister"
+            style="@style/tvBold"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="@dimen/_20sdp"
+            android:background="@drawable/bg_red_button_with_border"
+            android:backgroundTint="@color/color_dark_blue"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:textColor="@color/white"
+            android:text="@string/apply_now"
+            android:textAllCaps="false" />
+    </RelativeLayout>
 </layout>

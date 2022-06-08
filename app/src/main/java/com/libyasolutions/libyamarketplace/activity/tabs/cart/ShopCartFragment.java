@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.libyasolutions.libyamarketplace.BaseFragment;
 import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.activity.tabs.MainCartActivity;
+import com.libyasolutions.libyamarketplace.activity.tabs.MainTabActivity;
 import com.libyasolutions.libyamarketplace.adapter.ShopCartAdapterNew;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
@@ -32,8 +34,7 @@ import com.libyasolutions.libyamarketplace.util.StringUtility;
 @SuppressLint("NewApi")
 public class ShopCartFragment extends BaseFragment implements OnClickListener, ShopCartAdapterNew.ShopCartListener {
 
-    private Button btnOrder;
-    private TextView tvPriceShipping, tvPriceVAT, tvGone;
+    private TextView tvPriceShipping, tvPriceVAT, tvGone,btnOrder;
     private TextView lblSum;
     private RecyclerView lsvShops;
     private ShopCartAdapterNew shopCartAdapterNew;
@@ -42,6 +43,8 @@ public class ShopCartFragment extends BaseFragment implements OnClickListener, S
     private View view;
     private LinearLayout llRecycler;
     private Dialog mDialog;
+    private ImageView btnBack;
+    private TextView continue_shop;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +58,8 @@ public class ShopCartFragment extends BaseFragment implements OnClickListener, S
     }
 
     private void initUI(View view) {
+        btnBack = view.findViewById(R.id.btnBack);
+        continue_shop = view.findViewById(R.id.continue_shop);
         llRecycler = view.findViewById(R.id.llRecycler);
         tvGone = view.findViewById(R.id.tvGone);
         btnOrder = view.findViewById(R.id.btnOrder);
@@ -63,6 +68,8 @@ public class ShopCartFragment extends BaseFragment implements OnClickListener, S
         tvPriceShipping = view.findViewById(R.id.tvPriceShipping);
         tvPriceVAT = view.findViewById(R.id.tvPriceVAT);
         btnOrder.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
+        continue_shop.setOnClickListener(this);
         lsvShops.setNestedScrollingEnabled(false);
     }
 
@@ -132,12 +139,17 @@ public class ShopCartFragment extends BaseFragment implements OnClickListener, S
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
-        if (v == btnOrder) {
-            onBtnOrderClick();
-        }
+        if (v == btnOrder) { onBtnOrderClick(); }
+        else if (v == btnBack) { if(null != getActivity()) getActivity().finish(); }
+        else if (v == continue_shop) { sendAction(Constant.SHOW_TAB_HOME);  }
     }
-
+    private void sendAction(String action) {
+        Intent intent = new Intent(getActivity(), MainTabActivity.class);
+        intent.setAction(action);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+       if(null != getActivity()) getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.push_left_out);
+    }
     private void onBtnOrderClick() {
         if (GlobalValue.myAccount == null) {
             CustomToast.showCustomAlert(self,

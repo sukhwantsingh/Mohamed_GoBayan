@@ -37,8 +37,8 @@ public class CommentNewAdapter extends RecyclerView.Adapter<CommentNewAdapter.Vi
         holder.tvName.setText(commentArrayList.get(position).getUserID());
         holder.tvTime.setText(DateUtils.getRelativeTimeSpanString(Long.parseLong(String.valueOf(commentArrayList.get(position).getCreatedDate())) * 1000) + "");
         holder.tvDescription.setText(commentArrayList.get(position).getContent());
-        holder.ratingBar.setRating(Float.parseFloat(Math
-                .floor(commentArrayList.get(position).getRateValue() / 4) + ""));
+        holder.tvRating.setText("" + Float.parseFloat(Math.floor(commentArrayList.get(position).getRateValue() / 4) + ""));
+
 
 //        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) holder.layoutItemComment.getLayoutParams();
 //        if (position % 2 == 0) {
@@ -64,8 +64,7 @@ public class CommentNewAdapter extends RecyclerView.Adapter<CommentNewAdapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName, tvDescription, tvTime;
-        private RatingBar ratingBar;
+        private TextView tvName, tvDescription, tvTime, tvRating;
         //private RelativeLayout layoutItemComment;
 
         public ViewHolder(View itemView) {
@@ -73,7 +72,7 @@ public class CommentNewAdapter extends RecyclerView.Adapter<CommentNewAdapter.Vi
             tvName = itemView.findViewById(R.id.tvName);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvTime = itemView.findViewById(R.id.tvTime);
-            ratingBar = itemView.findViewById(R.id.rtb_user);
+            tvRating = itemView.findViewById(R.id.tvRating);
             // layoutItemComment = itemView.findViewById(R.id.layoutItemComment);
         }
     }

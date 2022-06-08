@@ -60,26 +60,18 @@ public class ListFoodAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
         final Holder holder;
         if (convertView == null) {
             holder = new Holder();
             convertView = inflater.inflate(R.layout.row_list_food, null);
-            holder.imgFood = (ImageView) convertView.findViewById(R.id.imgProduct);
-            holder.imgShop = (ImageView) convertView.findViewById(R.id.imgShop);
-            holder.progress = (ProgressBar) convertView
-                    .findViewById(R.id.progess);
-            holder.lblFoodName = (TextView) convertView
-                    .findViewById(R.id.lblProductName);
-            holder.lblPrice = (TextView) convertView
-                    .findViewById(R.id.lblPrice);
-            holder.lblShopName = (TextView) convertView
-                    .findViewById(R.id.lblShopName);
-            holder.lblDiscountPrice = (TextView) convertView
-                    .findViewById(R.id.lblDiscountPrice);
-            holder.rtbRating = (RatingBar) convertView
-                    .findViewById(R.id.rtbRating);
-            holder.address = (TextView) convertView.findViewById(R.id.address);
+            holder.imgFood =  convertView.findViewById(R.id.imgProduct);
+            holder.imgShop =  convertView.findViewById(R.id.imgShop);
+            holder.progress =  convertView.findViewById(R.id.progess);
+            holder.lblFoodName =  convertView.findViewById(R.id.lblProductName);
+            holder.tvRating =  convertView.findViewById(R.id.tvRating);
+
+            holder.lblPrice =  convertView.findViewById(R.id.lblPrice);
+            holder.address = convertView.findViewById(R.id.address);
             holder.address.setSelected(true);
             convertView.setTag(holder);
 
@@ -87,26 +79,21 @@ public class ListFoodAdapter extends BaseAdapter {
             holder = (Holder) convertView.getTag();
         }
         final Menu o = arrFood.get(position);
-        if (o != null) {
-            holder.rtbRating.setRating((o.getRateValue() / 2));
-            holder.lblPrice.setText(context.getString(R.string.currency)
-                    + String.format("%.1f", o.getPrice()));
-            holder.lblFoodName.setText(o.getName());
-            holder.lblDiscountPrice.setText(context
-                    .getString(R.string.currency)
-                    + String.format("%.1f", o.getCurrentPrice()));
-            holder.lblDiscountPrice.setTextColor(Color.RED);
-            holder.lblPrice.setTextColor(Color.GRAY);
-            holder.lblPrice.setPaintFlags(holder.lblPrice.getPaintFlags()
-                    | Paint.STRIKE_THRU_TEXT_FLAG);
-            holder.address.setText(o.getShop().getAddress());
-            holder.lblShopName.setText(o.getShop().getShopName());
 
-            if (o.getPercentDiscount() > 0) {
-                holder.lblPrice.setVisibility(View.VISIBLE);
-            } else {
-                holder.lblPrice.setVisibility(View.GONE);
-            }
+        if (o != null) {
+            holder.tvRating.setText(String.valueOf(o.getRateValue() / 2));
+            holder.lblPrice.setText(String.format("%.1f", o.getPrice()) +" "+ context.getString(R.string.currency));
+            holder.lblFoodName.setText(o.getName());
+
+          //  holder.lblPrice.setTextColor(Color.GRAY);
+          //  holder.lblPrice.setPaintFlags(holder.lblPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.address.setText(o.getShop().getAddress());
+
+//            if (o.getPercentDiscount() > 0) {
+//                holder.lblPrice.setVisibility(View.VISIBLE);
+//            } else {
+//                holder.lblPrice.setVisibility(View.GONE);
+//            }
 
             aq.id(holder.imgFood)
                     .progress(holder.progress)
@@ -152,8 +139,7 @@ public class ListFoodAdapter extends BaseAdapter {
     class Holder {
         ImageView imgFood, imgShop;
         ProgressBar progress;
-        TextView lblFoodName, lblShopName, lblPrice, lblDiscountPrice, address;
-        RatingBar rtbRating;
+        TextView lblFoodName, lblPrice, tvRating, address;
 
     }
 

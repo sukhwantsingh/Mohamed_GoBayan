@@ -93,8 +93,7 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
     Toolbar toolbar;
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    @BindView(R.id.view)
-    View view;
+
     @BindView(R.id.rv_banner_product)
     RecyclerView rvBannerProduct;
     @BindView(R.id.iv_add_banner)
@@ -145,10 +144,8 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
     ConstraintLayout btnProductInfo;
     @BindView(R.id.container_product_info)
     FrameLayout containerProductInfo;
-    @BindView(R.id.tv_product_categories)
-    TextView tvProductCategories;
-    @BindView(R.id.layout_choose_categories)
-    FrameLayout layoutChooseCategories;
+
+
     @BindView(R.id.edt_product_categories)
     EditText edtProductCategories;
     @BindView(R.id.iv_empty_categories)
@@ -296,32 +293,31 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
         edtProductCode.setText(product.getCode());
         edtProductPrice.setText(product.getPrice() + "");
         edtProductDescription.setText(product.getDescription());
+
+
+
+
         if (product.getStatus().equals("1")) {
             status = "1";
-            tvActive.setBackgroundResource(R.drawable.bg_button_right_selected);
-            tvInactive.setBackgroundResource(R.drawable.bg_button_left_unselected);
-            tvActive.setTextColor(getResources().getColor(R.color.white));
-            tvInactive.setTextColor(getResources().getColor(R.color.red));
+            tvActive.setBackgroundResource(R.drawable.bg_border_grey);
+            tvInactive.setBackgroundResource(R.drawable.bg_black_transparent);
         } else {
             status = "0";
-            tvActive.setBackgroundResource(R.drawable.bg_button_right_unselected);
-            tvInactive.setBackgroundResource(R.drawable.bg_button_left_selected);
-            tvActive.setTextColor(getResources().getColor(R.color.red));
-            tvInactive.setTextColor(getResources().getColor(R.color.white));
+            tvActive.setBackgroundResource(R.drawable.bg_black_transparent);
+            tvInactive.setBackgroundResource(R.drawable.bg_border_grey);
+
         }
 
         if (product.getAvailable().equals("1")) {
             available = "1";
-            tvAvailable.setBackgroundResource(R.drawable.bg_button_right_selected);
-            tvOutOfStock.setBackgroundResource(R.drawable.bg_button_left_unselected);
-            tvAvailable.setTextColor(getResources().getColor(R.color.white));
-            tvOutOfStock.setTextColor(getResources().getColor(R.color.red));
+            tvAvailable.setBackgroundResource(R.drawable.bg_border_grey);
+            tvOutOfStock.setBackgroundResource(R.drawable.bg_black_transparent);
+
         } else {
             available = "0";
-            tvAvailable.setBackgroundResource(R.drawable.bg_button_right_unselected);
-            tvOutOfStock.setBackgroundResource(R.drawable.bg_button_left_selected);
-            tvAvailable.setTextColor(getResources().getColor(R.color.red));
-            tvOutOfStock.setTextColor(getResources().getColor(R.color.white));
+            tvAvailable.setBackgroundResource(R.drawable.bg_black_transparent);
+            tvOutOfStock.setBackgroundResource(R.drawable.bg_border_grey);
+
         }
 
         setupLayout();
@@ -330,17 +326,14 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
         listExtraOption.addAll(product.getExtraOptions());
         extraOptionAdapter = new ExtraOptionAdapter(this, listExtraOption);
 
-        extraOptionAdapter.setOnItemClickListener(new AdapterListener.onItemClickListener() {
-            @Override
-            public void onclick(View view, int position) {
-                listOptionItem.clear();
-                listOptionItem.addAll(product.getExtraOptions().get(position).getOptionsItems());
-                Log.e("kevin", "option size: " + listOptionItem.size());
-                Log.e("kevin", "option size 1: " + product.getExtraOptions().get(position).getOptionsItems().size());
-                oldParentPosition = currentParentPosition;
-                currentParentPosition = position;
-                showExtraOptionDialog(view, parentPosition);
-            }
+        extraOptionAdapter.setOnItemClickListener((view, position) -> {
+            listOptionItem.clear();
+            listOptionItem.addAll(product.getExtraOptions().get(position).getOptionsItems());
+            Log.e("kevin", "option size: " + listOptionItem.size());
+            Log.e("kevin", "option size 1: " + product.getExtraOptions().get(position).getOptionsItems().size());
+            oldParentPosition = currentParentPosition;
+            currentParentPosition = position;
+            showExtraOptionDialog(view, parentPosition);
         });
 
         rvExtraOptions.setAdapter(extraOptionAdapter);
@@ -495,60 +488,52 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
         AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.app_name)
                 .setMessage(R.string.select_photo_from)
-                .setPositiveButton(R.string.gallery,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                // one can be replaced with any action code
-                                if (PermissionUtil.checkReadWriteStoragePermission(AddNewProductActivityV2.this)) {
-                                    Intent pickPhoto = new Intent(
-                                            Intent.ACTION_PICK,
-                                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                                    startActivityForResult(pickPhoto,
-                                            REQUEST_IMAGE_GALLERY_IMAGE_ONE);
-                                }
+                .setPositiveButton(R.string.gallery,  (arg0, arg1) -> {
+                            // one can be replaced with any action code
+                            if (PermissionUtil.checkReadWriteStoragePermission(AddNewProductActivityV2.this)) {
+                                Intent pickPhoto = new Intent(
+                                        Intent.ACTION_PICK,
+                                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                startActivityForResult(pickPhoto,
+                                        REQUEST_IMAGE_GALLERY_IMAGE_ONE);
                             }
                         })
-                .setNegativeButton(R.string.camera,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                // zero can be replaced with any action code
-                                if (PermissionUtil.checkCameraPermission(AddNewProductActivityV2.this)) {
-                                    Intent takePictureIntent = new Intent(
-                                            MediaStore.ACTION_IMAGE_CAPTURE);
-                                    if (takePictureIntent
-                                            .resolveActivity(getPackageManager()) != null) {
-                                        startActivityForResult(takePictureIntent,
-                                                REQUEST_IMAGE_CAPTURE_IMAGE_ONE);
-                                    }
+                .setNegativeButton(R.string.camera, (arg0, arg1) -> {
+                            // zero can be replaced with any action code
+                            if (PermissionUtil.checkCameraPermission(AddNewProductActivityV2.this)) {
+                                Intent takePictureIntent = new Intent(
+                                        MediaStore.ACTION_IMAGE_CAPTURE);
+                                if (takePictureIntent
+                                        .resolveActivity(getPackageManager()) != null) {
+                                    startActivityForResult(takePictureIntent,
+                                            REQUEST_IMAGE_CAPTURE_IMAGE_ONE);
                                 }
                             }
                         }).create();
         dialog.show();
 
         TextView dialogTitle = dialog.findViewById(R.id.alertTitle);
-        Typeface typefaceTitle = Typeface.createFromAsset(getAssets(), "fonts/Nawar_Font_Regular.ttf");
-        if (dialogTitle != null) {
-            dialogTitle.setTypeface(typefaceTitle);
-        }
+       // Typeface typefaceTitle = Typeface.createFromAsset(getAssets(), "fonts/Nawar_Font_Regular.ttf");
+      //  if (dialogTitle != null) {
+      //      dialogTitle.setTypeface(typefaceTitle);
+      //  }
 
         TextView dialogMessage = dialog.findViewById(android.R.id.message);
         Button dialogButton1 = dialog.findViewById(android.R.id.button1);
         Button dialogButton2 = dialog.findViewById(android.R.id.button2);
-        Typeface typefaceTwo = Typeface.createFromAsset(getAssets(), "fonts/TanseekModernProArabic-Medium.ttf");
-        if (dialogMessage != null) {
-            dialogMessage.setTypeface(typefaceTwo);
-            dialogMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
-        }
-        if (dialogButton1 != null) {
-            dialogButton1.setTypeface(typefaceTwo);
-            dialogButton1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
-        }
-        if (dialogButton2 != null) {
-            dialogButton2.setTypeface(typefaceTwo);
-            dialogButton2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
-        }
+     //  Typeface typefaceTwo = Typeface.createFromAsset(getAssets(), "fonts/TanseekModernProArabic-Medium.ttf");
+//        if (dialogMessage != null) {
+//            dialogMessage.setTypeface(typefaceTwo);
+//            dialogMessage.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+//        }
+//        if (dialogButton1 != null) {
+//            dialogButton1.setTypeface(typefaceTwo);
+//            dialogButton1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+//        }
+//        if (dialogButton2 != null) {
+//            dialogButton2.setTypeface(typefaceTwo);
+//            dialogButton2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+//        }
     }
 
     @OnClick(R.id.iv_add_banner)
@@ -1036,37 +1021,33 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
     @OnClick(R.id.tv_available)
     void chooseAvailable() {
         available = "1";
-        tvAvailable.setBackgroundResource(R.drawable.bg_button_right_selected);
-        tvOutOfStock.setBackgroundResource(R.drawable.bg_button_left_unselected);
-        tvAvailable.setTextColor(getResources().getColor(R.color.white));
-        tvOutOfStock.setTextColor(getResources().getColor(R.color.red));
+        tvAvailable.setBackgroundResource(R.drawable.bg_border_grey);
+        tvOutOfStock.setBackgroundResource(0);
+
     }
 
     @OnClick(R.id.tv_out_of_stock)
     void chooseOutOfStock() {
         available = "0";
-        tvAvailable.setBackgroundResource(R.drawable.bg_button_right_unselected);
-        tvOutOfStock.setBackgroundResource(R.drawable.bg_button_left_selected);
-        tvAvailable.setTextColor(getResources().getColor(R.color.red));
-        tvOutOfStock.setTextColor(getResources().getColor(R.color.white));
+        tvAvailable.setBackgroundResource(0);
+        tvOutOfStock.setBackgroundResource(R.drawable.bg_border_grey);
+
     }
 
     @OnClick(R.id.tv_active)
     void chooseActive() {
         status = "1";
-        tvActive.setBackgroundResource(R.drawable.bg_button_right_selected);
-        tvInactive.setBackgroundResource(R.drawable.bg_button_left_unselected);
-        tvActive.setTextColor(getResources().getColor(R.color.white));
-        tvInactive.setTextColor(getResources().getColor(R.color.red));
+        tvActive.setBackgroundResource(R.drawable.bg_border_grey);
+        tvInactive.setBackgroundResource(0);
+
     }
 
     @OnClick(R.id.tv_inactive)
     void chooseInactive() {
         status = "0";
-        tvActive.setBackgroundResource(R.drawable.bg_button_right_unselected);
-        tvInactive.setBackgroundResource(R.drawable.bg_button_left_selected);
-        tvActive.setTextColor(getResources().getColor(R.color.red));
-        tvInactive.setTextColor(getResources().getColor(R.color.white));
+        tvActive.setBackgroundResource(0);
+        tvInactive.setBackgroundResource(R.drawable.bg_border_grey);
+
     }
 
     private void validateDataCreateProduct() {

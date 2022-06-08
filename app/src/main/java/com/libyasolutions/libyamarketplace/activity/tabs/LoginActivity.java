@@ -137,12 +137,9 @@ public class LoginActivity extends BaseActivity {
         });
 
         btnLogin.setOnClickListener(v -> {
-            if (txtUser.getText().toString().isEmpty()
-                    || txtPass.getText().toString().isEmpty()) {
-                CustomToast.showCustomAlert(
-                        LoginActivity.this, getString(
-                                R.string.message_input_user_pass),
-                        Toast.LENGTH_SHORT);
+            if (txtUser.getText().toString().isEmpty() || txtPass.getText().toString().isEmpty()) {
+                CustomToast.showCustomAlert(LoginActivity.this, getString(
+                                R.string.message_input_user_pass), Toast.LENGTH_SHORT);
             } else {
                 userName = txtUser.getText().toString();
                 passWord = txtPass.getText().toString();
@@ -188,13 +185,13 @@ public class LoginActivity extends BaseActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        String ime;
+        String ime = "63623323474";
 
-        if (Build.VERSION.SDK_INT >= 26) {
-            ime = telephonyManager.getImei();
-        } else {
-            ime = telephonyManager.getDeviceId();
-        }
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            ime = telephonyManager.getImei();
+//        } else {
+//            ime = telephonyManager.getDeviceId();
+//        }
 
         String fcmId = mySharedPreferences.getStringValue(Constant.TOKEN_FCM, "");
 
@@ -203,9 +200,9 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(Object object) {
-                        // TODO Auto-generated method stub
                         String json = (String) object;
                         Account account = ParserUtility.parseAccount(json);
+
                         if (account != null) {
                             new MySharedPreferences(self).saveUserInfo(account);
                             GlobalValue.myAccount = account;
@@ -217,11 +214,9 @@ public class LoginActivity extends BaseActivity {
                             if (!ServiceManager.getInstance(getApplicationContext()).isMyServiceRunning(MessageService.class)) {
                                 ServiceManager.getInstance(getApplicationContext()).registerService(MessageService.class);
                             }
+
                         } else {
-                            CustomToast.showCustomAlert(
-                                    LoginActivity.this,
-                                    getResources().getString(R.string.message_login_false),
-                                    Toast.LENGTH_SHORT);
+                            CustomToast.showCustomAlert(LoginActivity.this,   getResources().getString(R.string.message_login_false),  Toast.LENGTH_SHORT);
 
                         }
                     }
@@ -395,13 +390,13 @@ public class LoginActivity extends BaseActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        String ime;
+        String ime = "63623323474";
 
-        if (Build.VERSION.SDK_INT >= 26) {
-            ime = telephonyManager.getImei();
-        } else {
-            ime = telephonyManager.getDeviceId();
-        }
+//        if (Build.VERSION.SDK_INT >= 26) {
+//            ime = telephonyManager.getImei();
+//        } else {
+//            ime = telephonyManager.getDeviceId();
+//        }
         String fcmId = mySharedPreferences.getStringValue(Constant.TOKEN_FCM, "");
 
         ModelManager.register(LoginActivity.this, data,

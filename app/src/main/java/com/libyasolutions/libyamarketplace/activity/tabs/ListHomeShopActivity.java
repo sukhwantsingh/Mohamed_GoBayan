@@ -122,12 +122,6 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         binding.rclViewShop.setAdapter(shopAdapterNew);
         searchListShopHome(1, true);
 
-        // tab listener
-        binding.tabProfile.setOnClickListener(this);
-        binding.tabCart.setOnClickListener(this);
-        binding.tabSearch.setOnClickListener(this);
-        binding.tabHome.setOnClickListener(this);
-
         // refresh data
         binding.refreshLayout.setOnRefreshListener(() -> {
             isLoadingMore = false;
@@ -163,6 +157,7 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         });
 
         binding.btnBack.setOnClickListener(v->{  chooseBack();   });
+        binding.imgHome.setOnClickListener(v->{  chooseBack();  });
         binding.ivShowMore.setOnClickListener(v->{   chooseShowMore();  });
         binding.containerSearch.setOnClickListener(v->{   chooseSearch();  });
         binding.btnSearch.setOnClickListener(v-> {   binding.containerSearch.performClick();  });
@@ -170,15 +165,14 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
             chooseSearchByAllCities();
             chooseSearchByDateNameRating();  });
 
-        binding.btnSearchByMyLocation.setOnClickListener(v-> {   chooseSearchByMyLocation(); });
+        binding.btnSearchByMyLocation.setOnClickListener(v-> { chooseSearchByMyLocation(); });
         binding.containerSort.setOnClickListener(v-> {
           //  chooseSearchByAllCities();
-            chooseSearchBySort();
+              chooseSearchBySort();
         });
         binding.ivSearchByDistance.setOnClickListener(v->{
-         //   chooseSearchByAllCities();
-            chooseSearchByDistance();
-
+         //   chooseSearchByAllCities();  //   chooseSearchByDistance();
+          chooseBack();
         });
 
         binding.containerChooseCities.setOnClickListener(v->{   chooseSearchByCities();   });
@@ -187,10 +181,16 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         binding.btnSearchByAllDepartment.setOnClickListener(v->{  chooseSearchByAllDepartment();   });
 
         binding.imageFilter.setOnClickListener(v->{
-           startActivity(new Intent(this, FilterScreenActivity.class));
+          //  chooseSearchByDepartment();
+             gotoActivity(FilterScreenActivity.class);
+        });
+
+        binding.imgTopCart.setOnClickListener(v->{
+            gotoActivity(MainCartActivity.class);
         });
 
     }
+
 
     void chooseBack() {
         onBackPressed();
@@ -291,7 +291,6 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
                 });
     }
     void chooseSearchByDepartment() {
-
         if (!NetworkUtil.checkNetworkAvailable(this)) {
             showToast(getString(R.string.no_connection));
             return;
@@ -361,13 +360,6 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onResume() {
         super.onResume();
-
-        if (GlobalValue.arrMyMenuShop.size() != 0) {
-            binding.tabCart.setBackgroundColor(Color.BLUE);
-        } else {
-            binding.tabCart.setBackgroundColor(getResources().getColor(R.color.background_new));
-        }
-
         binding.appBar.addOnOffsetChangedListener(this);
     }
 
@@ -493,15 +485,13 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void setupCityIdUnSelected() {
-        binding.  containerChooseCities.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_corner_6));
-        binding. tvCityName.setTextColor(getResources().getColor(R.color.black));
+        binding.containerChooseCities.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_corner_6));
+        binding.tvCityName.setTextColor(getResources().getColor(R.color.black));
         binding.ivArrowBottom.setImageResource(R.drawable.ic_arrow_down_1);
     }
 
     private void setupDistanceSelected() {
-        binding.ivSearchByDistance.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
+        binding.ivSearchByDistance.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_red_button_with_border));
         binding.ivNav.setImageResource(R.drawable.ic_location_search_white);
         binding.ivSearchByDistance.setEnabled(true);
     }
@@ -573,77 +563,37 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
             if (userId.isEmpty()) {
                 return;
             }
-
-            ModelManager.notificationCount(this, userId, false,
-                    new ModelManagerListener() {
-                        @Override
-                        public void onError(VolleyError error) {
-                            showToast(ErrorNetworkHandler.processError(error));
-                        }
-
-                        @Override
-                        public void onSuccess(Object object) {
-                            if (ParserUtility.isSuccess(object.toString())) {
-                                String newOrderCount = ParserUtility.getNewOrderCount(object.toString());
-                                String newStatusChangedCount = ParserUtility.getNewStatusChangedCount(object.toString());
-
-                                int notificationOrderSum = Integer.parseInt(newOrderCount) + Integer.parseInt(newStatusChangedCount) + chatCount;
-                                if (notificationOrderSum != 0) {
-                                    binding.tvOrderNewNumberTab.setVisibility(View.VISIBLE);
-                                    binding.tvOrderNewNumberTab.setText(String.valueOf(notificationOrderSum));
-                                }
-
-                            } else {
-                                showToast(ParserUtility.getMessage(object.toString()));
-                            }
-                        }
-                    });
+//
+//            ModelManager.notificationCount(this, userId, false,
+//                    new ModelManagerListener() {
+//                        @Override
+//                        public void onError(VolleyError error) {
+//                            showToast(ErrorNetworkHandler.processError(error));
+//                        }
+//
+//                        @Override
+//                        public void onSuccess(Object object) {
+//                            if (ParserUtility.isSuccess(object.toString())) {
+//                                String newOrderCount = ParserUtility.getNewOrderCount(object.toString());
+//                                String newStatusChangedCount = ParserUtility.getNewStatusChangedCount(object.toString());
+//
+//                                int notificationOrderSum = Integer.parseInt(newOrderCount) + Integer.parseInt(newStatusChangedCount) + chatCount;
+//                                if (notificationOrderSum != 0) {
+//                                    binding.tvOrderNewNumberTab.setVisibility(View.VISIBLE);
+//                                    binding.tvOrderNewNumberTab.setText(String.valueOf(notificationOrderSum));
+//                                }
+//
+//                            } else {
+//                                showToast(ParserUtility.getMessage(object.toString()));
+//                            }
+//                        }
+//                    });
         } else {
             showToast(getResources().getString(R.string.no_connection));
         }
     }
 
-    private void showDialogLogin() {
-        Dialog loginDialog = new Dialog(this);
-        loginDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        loginDialog.setContentView(R.layout.dialog_confirm);
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay()
-                .getMetrics(displaymetrics);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(loginDialog.getWindow().getAttributes());
-        lp.width = 6 * (displaymetrics.widthPixels / 7);
-        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        loginDialog.getWindow().setAttributes(lp);
-        loginDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        TextView tvTitle = loginDialog.findViewById(R.id.tvTitle);
-        TextView tvContent = loginDialog.findViewById(R.id.tvContent);
-        TextView tvCancel = loginDialog.findViewById(R.id.tvCancel);
-        TextView tvConfirm = loginDialog.findViewById(R.id.tvConfirm);
-
-        tvContent.setText(R.string.login_user_function);
-        tvConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null)
-                    GlobalValue.myAccount = null;
-                new MySharedPreferences(getApplicationContext()).clearAccount();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
-                loginDialog.dismiss();
-            }
-        });
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginDialog.dismiss();
-            }
-        });
-
-        loginDialog.show();
-    }
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset ) {

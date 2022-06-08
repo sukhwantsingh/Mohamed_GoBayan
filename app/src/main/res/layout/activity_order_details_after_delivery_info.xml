@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cnsTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_12sdp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/background_border"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_back_arrow_new"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lblTitle"
+                style="@style/tvBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/payment"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cnsTop"
+            android:clipToPadding="false"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_border"
+                    android:orientation="vertical"
+                    android:paddingBottom="15dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycleProducts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="3"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/row_items_order_detail" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            style="@style/tvBold"
+                            android:text="@string/discount"
+                            android:textColor="@color/black_heading"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvdiscountPrice"
+                            style="@style/tvReg"
+                            android:layout_alignParentEnd="true"
+                            android:text="-$100"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            style="@style/tvBold"
+                            android:text="@string/total"
+                            android:textColor="@color/color_blue_greenish"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvTotalPrice"
+                            style="@style/tvReg"
+                            android:layout_alignParentEnd="true"
+                            android:text="-$100"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/background_border"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        android:id="@+id/txtFullName"
+                        style="@style/tvBold"
+                        android:text="@string/delivery_free"
+                        android:textColor="@color/black_heading"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tvDeliveryFee"
+                        style="@style/tvReg"
+                        android:layout_alignParentEnd="true"
+                        android:text="$10"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/background_border"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        style="@style/tvBold"
+                        android:text="@string/order_tax"
+                        android:textColor="@color/black_heading"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/tvTaxprice"
+                        style="@style/tvReg"
+                        android:layout_alignParentEnd="true"
+                        android:text="$0"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/background_border"
+                    android:backgroundTint="@color/filter_blue_shade"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="12dp">
+
+                    <TextView
+                        style="@style/tvBold"
+                        android:text="@string/sum_total"
+                        android:textColor="@color/black_heading"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        style="@style/tvBold"
+                        android:layout_alignParentEnd="true"
+                        android:text="$1010"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btnPayment"
+            style="@style/tvMedium"
+            android:layout_width="180dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/blue_fill_round_gradient"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/go_payment"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+</layout>

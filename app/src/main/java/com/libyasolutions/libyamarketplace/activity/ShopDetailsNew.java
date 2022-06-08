@@ -5,56 +5,74 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.ArrayRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.libyasolutions.libyamarketplace.BaseActivity;
 import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.activity.tabs.LoginActivity;
+import com.libyasolutions.libyamarketplace.activity.tabs.MainTabActivity;
+import com.libyasolutions.libyamarketplace.adapter.ShopAdapterNew;
+import com.libyasolutions.libyamarketplace.adapter.SimilarShopAdapterNew;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.fragment.BannerFragment;
+import com.libyasolutions.libyamarketplace.modelmanager.ErrorNetworkHandler;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManager;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManagerListener;
 import com.libyasolutions.libyamarketplace.network.ParserUtility;
 import com.libyasolutions.libyamarketplace.object.Banner;
+import com.libyasolutions.libyamarketplace.object.OpenHour;
 import com.libyasolutions.libyamarketplace.object.Shop;
+import com.libyasolutions.libyamarketplace.responses.ShopDetailResponse;
 import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
+import com.libyasolutions.libyamarketplace.util.NetworkUtil;
 import com.libyasolutions.libyamarketplace.widget.CirclePageIndicator;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ShopDetailsNew extends BaseActivity {
-    private ImageView btnBack, imgShop;
+    private ImageView btnBack, homeIcon,imgShop;
     private LinearLayout btnMap, btnProduct, btnHotline;
-    private TextView tvPhone, tvTime, tvDescription, tvPromotion, tvNameShop,tvPostDetails, tvAddress, totalComent;
+    private TextView tvPhone, tvTime, tvDescription, tvPromotion, tvNameShop,tvPostDetails, tvAddress, totalComent,tvViewAll;
     private RecyclerView recyclerView;
     private int Shopid;
     private Shop shop;
     private RatingBar rtbRating;
 
-    private ViewPager viewPager;
+    private ViewPager viewPager, viewPager_banners;
     FragmentPagerAdapter pagerAdapter;
     private ArrayList<Banner> arrBanner;
-    private CirclePageIndicator indicatorBannerImages;
-    private ImageView ivChat, ivTwitter;
-    private RelativeLayout ivWebsite, ivInstagram, rlClock, ivFacebook;
+    private ArrayList<Banner> similarProductBanners = new ArrayList<>();
+    private CirclePageIndicator indicatorBannerImages, indicatorGallary;
+    private ImageView ivChat, ivTwitter,ivFavorite;
+    private RelativeLayout ivWebsite, ivInstagram, rlClock, ivFacebook,rlSaveShop;
     private Dialog loginDialog;
 
 
@@ -75,46 +93,83 @@ public class ShopDetailsNew extends BaseActivity {
     }
 
     private void setBanner() {
-        pagerAdapter = new BannerPageFragmentAdapter(
-                getSupportFragmentManager());
+        pagerAdapter = new BannerPageFragmentAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pagerAdapter);
+        viewPager_banners.setAdapter(pagerAdapter);
+
         indicatorBannerImages.setViewPager(viewPager);
+        indicatorGallary.setViewPager(viewPager_banners);
+
+        setIndicatorColors();
+
+        viewPager.setCurrentItem(0);
+        viewPager_banners.setCurrentItem(0);
+    }
+
+    private void setIndicatorColors(){
         final float density = getResources().getDisplayMetrics().density;
         indicatorBannerImages.setBackgroundColor(0x000000);
         indicatorBannerImages.setRadius(5 * density);
+
+        indicatorGallary.setBackgroundColor(0x000000);
+        indicatorGallary.setRadius(5 * density);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             indicatorBannerImages.setStrokeColor(ContextCompat.getColor(self, R.color.gray_light));
             indicatorBannerImages.setPageColor(ContextCompat.getColor(self, R.color.gray));
-            indicatorBannerImages.setFillColor(ContextCompat.getColor(self, R.color.red));
+            indicatorBannerImages.setFillColor(ContextCompat.getColor(self, R.color.blue_search));
+
+            indicatorGallary.setStrokeColor(ContextCompat.getColor(self, R.color.gray_light));
+            indicatorGallary.setPageColor(ContextCompat.getColor(self, R.color.gray));
+            indicatorGallary.setFillColor(ContextCompat.getColor(self, R.color.blue_search));
+
+
         } else {
             indicatorBannerImages.setStrokeColor(self.getResources().getColor(R.color.gray_light));
             indicatorBannerImages.setPageColor(self.getResources().getColor(R.color.gray));
-            indicatorBannerImages.setFillColor(self.getResources().getColor(R.color.red));
+            indicatorBannerImages.setFillColor(self.getResources().getColor(R.color.blue_search));
+
+            indicatorGallary.setStrokeColor(self.getResources().getColor(R.color.gray_light));
+            indicatorGallary.setPageColor(self.getResources().getColor(R.color.gray));
+            indicatorGallary.setFillColor(self.getResources().getColor(R.color.blue_search));
+
+
         }
-        indicatorBannerImages.setStrokeWidth(1 * density);
+
+     //   indicatorBannerImages.setStrokeWidth(1 * density);
         indicatorBannerImages.setSnap(true);
-        viewPager.setCurrentItem(0);
+
+      //  indicatorGallary.setStrokeWidth(1 * density);
+        indicatorGallary.setSnap(true);
+
     }
 
+    private ShopDetailResponse shopDetailResponse;
     private void initData(int Shopid) {
         ModelManager.getShopById(self, Shopid, true,
                 new ModelManagerListener() {
 
                     @Override
                     public void onSuccess(Object object) {
-
                         String json = (String) object;
                         shop = ParserUtility.parseShop(json);
-                        if (shop != null) {
+
+                        shopDetailResponse = new Gson().fromJson(json, ShopDetailResponse.class);
+                        Log.e("res: ", shopDetailResponse.status);
+
+                        SimilarShopAdapterNew shopAdapterNew =
+                                new SimilarShopAdapterNew(recyclerView, shopDetailResponse.data.similarProducts, ShopDetailsNew.this);
+                        recyclerView.setAdapter(shopAdapterNew);
+
+                        if (null != shop) {
                             showShopDetails(shop);
                         }
                     }
 
                     @Override
                     public void onError(VolleyError error) {
-                        // TODO Auto-generated method stub
-
-                    }
+                        Log.wtf("error: ","_ " + error.getMessage());
+                   }
                 });
 
     }
@@ -122,6 +177,14 @@ public class ShopDetailsNew extends BaseActivity {
     private void showShopDetails(Shop shop) {
         arrBanner = shop.getArrBanner();
         setBanner();
+
+//        if (GlobalValue.myAccount != null) {
+//            rlSaveShop.setVisibility(View.VISIBLE);
+//            if (shop.isFavourite()) ivFavorite.setImageResource(R.drawable.save_cart_icon);
+//            else ivFavorite.setImageResource(R.drawable.ic_saved_b);
+//        } else {
+//            rlSaveShop.setVisibility(View.GONE);
+//        }
 
         tvNameShop.setText(shop.getShopName());
         tvAddress.setText(shop.getAddress());
@@ -158,18 +221,23 @@ public class ShopDetailsNew extends BaseActivity {
         }
         totalComent.setText(shop.getRateNumber() + " " + getString(R.string.review));
         rtbRating.setRating(Float.parseFloat(Math.floor(shop.getRateValue() / 2) + ""));
+
     }
 
     private void initView() {
+        rlSaveShop = findViewById(R.id.save_cart_lay);
+        ivFavorite = findViewById(R.id.ivFavorite);
         indicatorBannerImages = findViewById(R.id.indicatorBannerImages);
+        indicatorGallary = findViewById(R.id.indicater_img_gallary);
         totalComent = findViewById(R.id.tvTotalComment);
         rtbRating = findViewById(R.id.rtbRating);
         tvNameShop = findViewById(R.id.tv_shopName);
+        tvViewAll = findViewById(R.id.similer_shop_view_all);
         tvPostDetails = findViewById(R.id.post_details);
         tvAddress = findViewById(R.id.tvAddress);
-        tvNameShop.setSelected(true);
 
         btnBack = findViewById(R.id.btnBack);
+        homeIcon = findViewById(R.id.home_icon);
         imgShop = findViewById(R.id.imgShop);
         btnMap = findViewById(R.id.direction_ly);
         btnProduct = findViewById(R.id.btnProduct);
@@ -180,6 +248,7 @@ public class ShopDetailsNew extends BaseActivity {
         tvPromotion = findViewById(R.id.tvPromotions);
         recyclerView = findViewById(R.id.rclViewShop);
         viewPager = findViewById(R.id.viewPager);
+        viewPager_banners = findViewById(R.id.viewPager_banners);
         ivTwitter = findViewById(R.id.iv_twitter);
 
         ivChat = findViewById(R.id.iv_chat);
@@ -189,51 +258,36 @@ public class ShopDetailsNew extends BaseActivity {
         rlClock = findViewById(R.id.rl_clock);
         ivFacebook = findViewById(R.id.rl_fb);
 
+        // setup initial data
+        recyclerView.setHasFixedSize(true);
+
+
     }
 
     private void initControls() {
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
+        btnBack.setOnClickListener(v -> onBackPressed());
+        tvViewAll.setOnClickListener(v -> onBackPressed());
+        homeIcon.setOnClickListener(v -> { startActivity(new Intent(this, MainTabActivity.class));  });
+        btnMap.setOnClickListener(v -> gotoMapDetailActivity(shop));
+        btnHotline.setOnClickListener(v -> {
+            Intent callIntent = new Intent(Intent.ACTION_DIAL);
+            callIntent.setData(Uri.parse("tel:" + shop.getPhone()));
+            startActivity(callIntent);
         });
-        btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoMapDetailActivity(shop);
-            }
-        });
-        btnHotline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:" + shop.getPhone()));
-                startActivity(callIntent);
-            }
-        });
-        btnProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoMenuActivity(shop);
-            }
-        });
-        ivChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null) {
-                    Intent intent = new Intent(self, ChatDetailActivity.class);
-                    intent.putExtra("idAgent", shop.getShopOwnerId());
-                    intent.putExtra("title", shop.getShopName());
-                    intent.putExtra("image", shop.getShopOwnerImage());
-                    intent.putExtra(Constant.SHOP_ID, shop.getShopId() + "");
-                    intent.putExtra(Constant.SHOP_NAME, shop.getShopName());
-                    intent.putExtra(Constant.COUNT_SHOP, shop.getCountShop() + "");
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.push_left_out);
-                } else {
-                    showDialogLogin();
-                }
+        btnProduct.setOnClickListener(v -> gotoMenuActivity(shop));
+        ivChat.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null) {
+                Intent intent = new Intent(self, ChatDetailActivity.class);
+                intent.putExtra("idAgent", shop.getShopOwnerId());
+                intent.putExtra("title", shop.getShopName());
+                intent.putExtra("image", shop.getShopOwnerImage());
+                intent.putExtra(Constant.SHOP_ID, shop.getShopId() + "");
+                intent.putExtra(Constant.SHOP_NAME, shop.getShopName());
+                intent.putExtra(Constant.COUNT_SHOP, shop.getCountShop() + "");
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.push_left_out);
+            } else {
+                showDialogLogin();
             }
         });
 
@@ -253,54 +307,119 @@ public class ShopDetailsNew extends BaseActivity {
             }
         });
 
-        ivInstagram.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (shop.getShopInstagram().trim().length() != 0) {
-                    try {
-                        String url = shop.getShopInstagram();
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(url));
-                        startActivity(i);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        ivInstagram.setOnClickListener(v -> {
+            if (shop.getShopInstagram().trim().length() != 0) {
+                try {
+                    String url = shop.getShopInstagram();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
-        ivTwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (shop.getShopTwitter().trim().length() != 0) {
-                    try {
-                        String url = shop.getShopTwitter();
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(url));
-                        startActivity(i);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
+        ivTwitter.setOnClickListener(v -> {
+            if (shop.getShopTwitter().trim().length() != 0) {
+                try {
+                    String url = shop.getShopTwitter();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
 
                 }
+
             }
         });
-        ivFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (shop.getShopFacebook().trim().length() != 0) {
-                    try {
-                        String url = shop.getShopFacebook();
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(url));
-                        startActivity(i);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        ivFacebook.setOnClickListener(v -> {
+            if (shop.getShopFacebook().trim().length() != 0) {
+                try {
+                    String url = shop.getShopFacebook();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
+
+        rlClock.setOnClickListener(v -> {
+            dialogOpeningClosingTime(shop);
+        });
+
+        rlSaveShop.setOnClickListener(v -> {
+          //  onClickFavourite();
+        });
+
     }
+
+    private void onClickFavourite() {
+        if (GlobalValue.myAccount != null) {
+            ModelManager.updateFavouriteShop(self, GlobalValue.myAccount.getId(), Shopid + "", !shop.isFavourite(), true, new ModelManagerListener() {
+                @Override
+                public void onError(VolleyError error) {
+                    ErrorNetworkHandler.processError(error);
+                }
+
+                @Override
+                public void onSuccess(Object object) {
+                    shop.setFavourite(!shop.isFavourite());
+                    //update favourite button
+                    if (shop.isFavourite())
+                        ivFavorite.setImageResource(R.drawable.save_cart_icon);
+                    else
+                        ivFavorite.setImageResource(R.drawable.ic_saved_b);
+                }
+            });
+        }
+    }
+
+
+    private void dialogOpeningClosingTime(Shop innerShop) {
+      Dialog oepnCLoseDialog = new Dialog(this);
+        oepnCLoseDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        oepnCLoseDialog.setContentView(R.layout.dialog_opeing_closing_time);
+        oepnCLoseDialog.setCancelable(true);
+
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        self.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(oepnCLoseDialog.getWindow().getAttributes());
+        lp.width = 6 * (displaymetrics.widthPixels / 7);
+        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        oepnCLoseDialog.getWindow().setAttributes(lp);
+        oepnCLoseDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        TextView subHeading = (TextView) oepnCLoseDialog.findViewById(R.id.tv_subhead_name);
+        TextView subHeadingTime = (TextView) oepnCLoseDialog.findViewById(R.id.tv_subhead_time);
+
+        if(null != innerShop){
+            StringBuilder mRawName = new StringBuilder();
+            StringBuilder mRawTime = new StringBuilder();
+            for(int io=0; io < innerShop.getArrOpenHour().size();io++) {
+                String inDay = innerShop.getArrOpenHour().get(io).getDateName();
+                String inRawOpen = innerShop.getArrOpenHour().get(io).getOpen_AM1();
+                String inRawClose = innerShop.getArrOpenHour().get(io).getClose_PM2();
+
+                String combine = "<b>" + inDay + "</b><br><br>";
+                String combineTime = inRawOpen + "  -  " + inRawClose + "<br><br>";
+
+                mRawName.append(combine);
+                mRawTime.append(combineTime);
+            }
+
+         subHeading.setText(Html.fromHtml(mRawName.toString()));
+         subHeadingTime.setText(Html.fromHtml(mRawTime.toString()));
+
+        }
+
+        oepnCLoseDialog.show();
+    }
+
+
 
     private void gotoMenuActivity(Shop shop) {
         Bundle b = new Bundle();
@@ -340,47 +459,6 @@ public class ShopDetailsNew extends BaseActivity {
         }
     }
 
-    private void showDialogLogin() {
-        loginDialog = new Dialog(this);
-        loginDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        loginDialog.setContentView(R.layout.dialog_confirm);
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        self.getWindowManager().getDefaultDisplay()
-                .getMetrics(displaymetrics);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(loginDialog.getWindow().getAttributes());
-        lp.width = 6 * (displaymetrics.widthPixels / 7);
-        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        loginDialog.getWindow().setAttributes(lp);
-        loginDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
-        TextView tvTitle = loginDialog.findViewById(R.id.tvTitle);
-        TextView tvContent = loginDialog.findViewById(R.id.tvContent);
-        TextView tvCancel = loginDialog.findViewById(R.id.tvCancel);
-        TextView tvConfirm = loginDialog.findViewById(R.id.tvConfirm);
-
-        tvContent.setText(R.string.login_user_function);
-        tvConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (GlobalValue.myAccount != null)
-                    GlobalValue.myAccount = null;
-                new MySharedPreferences(getApplicationContext()).clearAccount();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                getApplicationContext().startActivity(intent);
-                loginDialog.dismiss();
-            }
-        });
-        tvCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginDialog.dismiss();
-            }
-        });
-
-
-        loginDialog.show();
-    }
 
 }

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -72,9 +74,8 @@ public class ShopManagementActivity extends BaseActivity implements View.OnClick
     }
 
     private void initViews() {
-        ivBack = findViewById(R.id.iv_back);
-        tvTitle = findViewById(R.id.tv_title);
-        tvTitle.setSelected(true);
+        ivBack = findViewById(R.id.imageBack);
+        tvTitle = findViewById(R.id.lblTitle);
 
         fabNewShop = findViewById(R.id.fab_new_shop);
         swipyRefreshLayout = findViewById(R.id.refreshLayout);
@@ -86,6 +87,8 @@ public class ShopManagementActivity extends BaseActivity implements View.OnClick
     }
 
     private void initData() {
+        tvTitle.setText(getString(R.string.shops_management));
+
         shopManagementAdapter = new ShopManagementAdapter(self, listShops);
         rcvProduct.setAdapter(shopManagementAdapter);
 
@@ -96,7 +99,8 @@ public class ShopManagementActivity extends BaseActivity implements View.OnClick
         if (page <= 1) {
             listShops.clear();
         }
-        ModelManager.getListShopByAccount(this, /*"1432968757"*/GlobalValue.myAccount.getId(), page, isPull, new ModelManagerListener() {
+
+        ModelManager.getListShopByAccount(this, /*"1432968757"*/ GlobalValue.myAccount.getId(), page, isPull, new ModelManagerListener() {
 
             @Override
             public void onSuccess(Object object) {
@@ -112,8 +116,8 @@ public class ShopManagementActivity extends BaseActivity implements View.OnClick
                             Toast.LENGTH_SHORT).show();
                 }
                 shopManagementAdapter.notifyDataSetChanged();
-                String shopCount = String.valueOf(ParserUtility.ParseCount(object.toString()));
-                tvShopQuality.setText(getString(R.string.shop_found, shopCount));
+                String shopCount = "<b>" + ParserUtility.ParseCount(object.toString()) + "</b>";
+                tvShopQuality.setText(Html.fromHtml(getString(R.string.shop_found, shopCount)));
             }
 
             @Override
@@ -124,24 +128,21 @@ public class ShopManagementActivity extends BaseActivity implements View.OnClick
     }
 
     private void initControl() {
-        swipyRefreshLayout.setOnRefreshListener(new com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh(SwipyRefreshLayoutDirection swipyRefreshLayoutDirection) {
-                Log.d("MainActivity", "Refresh triggered at "
-                        + (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
-                if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
-                    page = 1;
-                    getListShopByAccount(true, page);
-                } else {
-                    if (isMore) {
-                        page++;
-                    }
-                    getListShopByAccount(true, page);
+        swipyRefreshLayout.setOnRefreshListener(swipyRefreshLayoutDirection -> {
+            Log.d("MainActivity", "Refresh triggered at "
+                    + (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP ? "top" : "bottom"));
+            if (swipyRefreshLayoutDirection == SwipyRefreshLayoutDirection.TOP) {
+                page = 1;
+                getListShopByAccount(true, page);
+            } else {
+                if (isMore) {
+                    page++;
                 }
-
-                swipyRefreshLayout.setRefreshing(false);
-
+                getListShopByAccount(true, page);
             }
+
+            swipyRefreshLayout.setRefreshing(false);
+
         });
 
         ivBack.setOnClickListener(this);

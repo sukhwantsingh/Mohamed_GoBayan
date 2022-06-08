@@ -1,89 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="320dp"
     android:layout_height="wrap_content"
-    app:cardElevation="@dimen/_12sdp"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardUseCompatPadding="true"
-    app:cardCornerRadius="@dimen/_15sdp"
+    app:cardCornerRadius="12dp"
     app:cardPreventCornerOverlap="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_18sdp">
+        android:padding="12dp">
 
-        <ImageView
-            android:id="@+id/productImage"
-            android:layout_width="@dimen/_95sdp"
-            android:layout_height="@dimen/_95sdp"
-            android:src="@drawable/productimage" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/mainSection"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardElevation="0dp"
+            android:background="@drawable/back_blue_with_gray_border"
+            app:cardCornerRadius="10dp">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imgShop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@color/gray_light" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:layout_toRightOf="@+id/productImage">
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_toEndOf="@+id/mainSection">
 
             <TextView
-                android:id="@+id/lblBuyerInformation"
+                android:id="@+id/lblShopName"
                 style="@style/tvBold"
                 android:text="@string/product_name"
                 android:textColor="@color/color_blue_greenish"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:singleLine="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
 
             <TextView
-                android:id="@+id/tvDes"
+                android:id="@+id/lblCategoryName"
                 style="@style/tvReg"
+                android:layout_width="0dp"
                 android:text="@string/dummyContent"
                 android:textColor="@color/gray_dark"
-                android:textSize="@dimen/_9sdp"
-                android:layout_below="@+id/lblBuyerInformation"
-                android:layout_marginTop="@dimen/_2sdp" />
+                android:textSize="13dp"
+                android:maxLines="3"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/_2sdp"
+                app:layout_constraintStart_toStartOf="@+id/lblShopName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lblShopName" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="@dimen/dimen100"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/tag_menu_ar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/tvStockSec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lblCategoryName">
+                <TextView
+                    android:id="@+id/tvStock"
+                    style="@style/tvBold"
+                    android:text="Stocks left"
+                    android:textColor="@color/green"
+                    android:textSize="11dp" />
+
+                <TextView
+                    style="@style/tvReg"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    tools:text="75"
+                    android:id="@+id/tvStockleft"
+                    android:textColor="@color/black"
+                    android:textSize="12dp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tvStock"
-                style="@style/tvBold"
-                android:layout_below="@+id/tvDes"
-                android:layout_marginTop="@dimen/_18sdp"
-                android:text="Stocks left"
-                android:textColor="@color/green"
-                android:textSize="@dimen/_7sdp" />
-
-            <TextView
-                style="@style/tvReg"
-                android:layout_below="@+id/tvDes"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_toRightOf="@+id/tvStock"
-                android:text="75"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_9sdp" />
-
-
-            <TextView
-                style="@style/tvBold"
-                android:layout_below="@+id/tvStock"
-                android:text="$120"
+                android:id="@+id/tvPriceSale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="20 D.L"
+                android:fontFamily="@font/bold"
                 android:textColor="@color/color_dark_blue"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="@+id/tvStockSec"
+                app:layout_constraintTop_toBottomOf="@+id/tvStockSec"/>
 
+            <ImageView
+                android:id="@+id/heartIcon"
+                android:src="@drawable/ic_heart_b"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/red"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:layout_constraintTop_toTopOf="@+id/tvStockSec"
+                app:layout_constraintBottom_toBottomOf="@+id/tvStockSec"
+                android:layout_width="18dp"
+                android:layout_height="18dp"/>
+
+            <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                android:id="@+id/rtbRating"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen20"
+                android:max="5"
+                android:numStars="1"
+                android:visibility="gone"
+                android:textColor="@color/gray_dark"
+                app:layout_constraintEnd_toEndOf="@+id/heartIcon"
+                app:layout_constraintTop_toBottomOf="@+id/heartIcon"            android:backgroundTint="@color/orange"
+                app:mrb_progressTint="@color/orange"/>
 
             <TextView
-                style="@style/tvBold"
-                android:layout_below="@+id/tvStock"
-                android:layout_alignParentEnd="true"
-                android:drawableStart="@drawable/ic_star_icon"
-                android:drawablePadding="@dimen/_5sdp"
-                android:text="4.7"
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.0"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="14dp"
+                android:visibility="visible"
+                android:fontFamily="@font/bold"
+                app:layout_constraintEnd_toEndOf="@+id/heartIcon"
+                app:layout_constraintTop_toTopOf="@+id/tvPriceSale"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPriceSale"
+                android:drawablePadding="8dp"
+                app:drawableStartCompat="@drawable/ic_star_icon" />
 
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                android:id="@+id/tvPromotions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen8"
+                android:text="@string/off_20"
+                android:textColor="@color/cl_white"
+                android:textSize="@dimen/dimen16"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="@id/imageView2"
+                app:layout_constraintTop_toTopOf="@id/lblCategoryName" />
 
-        </RelativeLayout>
+            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen8"
+                android:text="25$"
+                android:textColor="@color/cl_white"
+                android:textSize="@dimen/dimen16"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="@id/imageView2"
+                app:layout_constraintTop_toTopOf="@id/lblShopName" />
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
+
 
 </androidx.cardview.widget.CardView>

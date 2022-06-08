@@ -1,21 +1,29 @@
 package com.libyasolutions.libyamarketplace;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.libyasolutions.libyamarketplace.activity.ListCategoryActivity;
 import com.libyasolutions.libyamarketplace.activity.ListFoodActivity;
 import com.libyasolutions.libyamarketplace.activity.ShopDetailActivity;
+import com.libyasolutions.libyamarketplace.activity.tabs.LoginActivity;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.network.ProgressDialog;
+import com.libyasolutions.libyamarketplace.util.MySharedPreferences;
 
 import java.util.Locale;
 
@@ -319,5 +327,40 @@ public class BaseActivity extends AppCompatActivity {
     }
     protected void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showDialogLogin() {
+      Dialog loginDialog = new Dialog(this);
+        loginDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        loginDialog.setContentView(R.layout.dialog_confirm);
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        self.getWindowManager().getDefaultDisplay()
+                .getMetrics(displaymetrics);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(loginDialog.getWindow().getAttributes());
+        lp.width = 6 * (displaymetrics.widthPixels / 7);
+        lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        loginDialog.getWindow().setAttributes(lp);
+        loginDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        TextView tvTitle = loginDialog.findViewById(R.id.tvTitle);
+        TextView tvContent = loginDialog.findViewById(R.id.tvContent);
+        TextView tvCancel = loginDialog.findViewById(R.id.tvCancel);
+        TextView tvConfirm = loginDialog.findViewById(R.id.tvConfirm);
+
+        tvContent.setText(R.string.login_user_function);
+        tvConfirm.setOnClickListener(v -> {
+            if (GlobalValue.myAccount != null)
+                GlobalValue.myAccount = null;
+            new MySharedPreferences(getApplicationContext()).clearAccount();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(intent);
+            loginDialog.dismiss();
+        });
+        tvCancel.setOnClickListener(v -> loginDialog.dismiss());
+
+
+        loginDialog.show();
     }
 }

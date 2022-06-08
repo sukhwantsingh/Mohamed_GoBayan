@@ -1,9 +1,13 @@
 package com.libyasolutions.libyamarketplace;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
+
+import com.libyasolutions.libyamarketplace.activity.ListCategoryActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -51,6 +55,38 @@ public abstract class BaseActivityV2 extends AppCompatActivity {
 
     protected void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void gotoActivity(Class<?> cla) {
+        Intent intent = new Intent(this, cla);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left2);
+    }
+
+    public void backActivity(Class<?> cla, Bundle b) {
+        Intent intent = new Intent(this, ListCategoryActivity.class);
+        intent.putExtras(b);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left2);
+    }
+
+
+    public void backActivity(Class<?> cla) {
+        Intent intent = new Intent(this, cla);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+    }
+
+    public void gotoActivity(Class<?> cla, int flag) {
+        Intent intent = new Intent(this, cla);
+        intent.setFlags(flag);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left2);
+    }
+
+    public void gotoWeb(Uri uri) {
+        Intent myIntent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(myIntent);
     }
 
 }

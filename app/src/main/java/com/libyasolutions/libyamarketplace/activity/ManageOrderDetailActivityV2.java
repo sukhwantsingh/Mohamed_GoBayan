@@ -54,8 +54,6 @@ public class ManageOrderDetailActivityV2 extends BaseActivityV2 {
     TextView tvTitle;
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    @BindView(R.id.view)
-    View view;
     @BindView(R.id.tv_value_order_number)
     TextView tvValueOrderNumber;
     @BindView(R.id.tv_order_number)

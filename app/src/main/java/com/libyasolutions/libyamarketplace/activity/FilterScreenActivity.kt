@@ -7,6 +7,7 @@ import com.libyasolutions.libyamarketplace.R
 import com.libyasolutions.libyamarketplace.databinding.ActivityFilterScreenBinding
 
 class FilterScreenActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityFilterScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,6 +15,12 @@ class FilterScreenActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         initViews()
+        initControls()
+    }
+
+    private fun initControls() {
+
+
     }
 
     private fun initViews() {

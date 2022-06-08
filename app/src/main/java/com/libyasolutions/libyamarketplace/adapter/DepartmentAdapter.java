@@ -2,6 +2,7 @@ package com.libyasolutions.libyamarketplace.adapter;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.bumptech.glide.Glide;
 import com.libyasolutions.libyamarketplace.R;
@@ -76,10 +78,12 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
         @BindView(R.id.iv_department_thumbnail)
         ImageView ivDepartmentThumbnail;
+
         @BindView(R.id.cb_department)
-        CheckBox cbDepartment;
+        RadioButton cbDepartment;
+
         @BindView(R.id.cl_department_category)
-        ConstraintLayout clDepartmentCategory;
+        CardView clDepartmentCategory;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

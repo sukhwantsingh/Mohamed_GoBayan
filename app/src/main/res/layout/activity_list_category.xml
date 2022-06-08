@@ -50,11 +50,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:srl_direction="both">
 
-        <ListView
+        <GridView
             android:id="@+id/lsvCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null"
+            android:numColumns="2"
+            android:verticalSpacing="6dp"
             android:dividerHeight="0dp" />
 
         <!-- <androidx.recyclerview.widget.RecyclerView
@@ -77,7 +79,7 @@
         android:layout_marginBottom="@dimen/dimen_x4x"
         android:padding="2dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_arrow_down_3"
+        android:src="@drawable/ic_arrow_dwn_new"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />

@@ -336,113 +336,113 @@ public class OrderStatusDialog extends BaseDialog {
     }
 
     private void setupOrderNewSelected() {
-        tvOrderNew.setBackgroundResource(R.color.color_red);
+        tvOrderNew.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderNew.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderNewUnSelected() {
         tvOrderNew.setBackgroundResource(R.color.white);
-        tvOrderNew.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderNew.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderInProcessSelected() {
-        tvOrderInProgress.setBackgroundResource(R.color.color_red);
+        tvOrderInProgress.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderInProgress.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderInProcessUnSelected() {
         tvOrderInProgress.setBackgroundResource(R.color.white);
-        tvOrderInProgress.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderInProgress.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderReadySelected() {
-        tvOrderReadyCollect.setBackgroundResource(R.color.color_red);
+        tvOrderReadyCollect.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderReadyCollect.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderReadyUnSelected() {
         tvOrderReadyCollect.setBackgroundResource(R.color.white);
-        tvOrderReadyCollect.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderReadyCollect.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderOnTheWaySelected() {
-        tvOrderOnTheWay.setBackgroundResource(R.color.color_red);
+        tvOrderOnTheWay.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderOnTheWay.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderOnTheWayUnSelected() {
         tvOrderOnTheWay.setBackgroundResource(R.color.white);
-        tvOrderOnTheWay.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderOnTheWay.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderDeliveriedSelected() {
-        tvOrderDelivered.setBackgroundResource(R.color.color_red);
+        tvOrderDelivered.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderDelivered.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderDeliveriedUnSelected() {
         tvOrderDelivered.setBackgroundResource(R.color.white);
-        tvOrderDelivered.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderDelivered.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderCancelSelected() {
-        tvOrderCancel.setBackgroundResource(R.color.color_red);
+        tvOrderCancel.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderCancel.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderCancelUnSelected() {
         tvOrderCancel.setBackgroundResource(R.color.white);
-        tvOrderCancel.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderCancel.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderFailedDeliverySelected() {
-        tvOrderFailedDelivery.setBackgroundResource(R.color.color_red);
+        tvOrderFailedDelivery.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderFailedDelivery.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderFailedDeliveryUnSelected() {
         tvOrderFailedDelivery.setBackgroundResource(R.color.white);
-        tvOrderFailedDelivery.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderFailedDelivery.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderAcceptSelected() {
-        tvOrderAccept.setBackgroundResource(R.color.color_red);
+        tvOrderAccept.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderAccept.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderAcceptUnSelected() {
         tvOrderAccept.setBackgroundResource(R.color.white);
-        tvOrderAccept.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderAccept.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderRejectInfoNotEnoughSelected() {
-        tvOrderRejectInfo.setBackgroundResource(R.color.color_red);
+        tvOrderRejectInfo.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderRejectInfo.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderRejectInfoNotEnoughUnSelected() {
         tvOrderRejectInfo.setBackgroundResource(R.color.white);
-        tvOrderRejectInfo.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderRejectInfo.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderRejectQuantityNotAvailableSelected() {
-        tvOrderRejectAvailable.setBackgroundResource(R.color.color_red);
+        tvOrderRejectAvailable.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderRejectAvailable.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderRejectQuantityNotAvailableUnSelected() {
         tvOrderRejectAvailable.setBackgroundResource(R.color.white);
-        tvOrderRejectAvailable.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderRejectAvailable.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     private void setupOrderAllSelected() {
-        tvOrderAll.setBackgroundResource(R.color.color_red);
+        tvOrderAll.setBackgroundResource(R.drawable.blue_fill_round_gradient);
         tvOrderAll.setTextColor(getActivity().getResources().getColor(R.color.white));
     }
 
     private void setupOrderAllUnSelected() {
         tvOrderAll.setBackgroundResource(R.color.white);
-        tvOrderAll.setTextColor(getActivity().getResources().getColor(R.color.black));
+        tvOrderAll.setTextColor(getActivity().getResources().getColor(R.color.black_heading));
     }
 
     public interface OnOrderStatusListener {

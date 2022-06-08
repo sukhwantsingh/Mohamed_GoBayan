@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+    <TextView
         android:id="@+id/lblTextContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/dimen_1x"
-        android:textSize="@dimen/text_size_normal_2x" />
+        style="@style/tvBold"
+        android:textSize="14dp" />
 
 </RelativeLayout>

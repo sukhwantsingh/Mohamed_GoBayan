@@ -5,17 +5,17 @@
     android:padding="@dimen/dimen_05x"
     android:orientation="horizontal">
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+    <TextView
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        style="@style/tvReg"
         android:text="@string/category"
-        android:gravity="left"
         android:singleLine="true"
         android:ellipsize="end"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal" />
+        android:textSize="14dp" />
 
     <CheckBox
         android:id="@+id/checkbox"

@@ -13,6 +13,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -84,34 +86,26 @@ public class ListHomeFoodActivity extends BaseActivityV2
     Button btnSearchByChooseDepartment;
     @BindView(R.id.btn_search_by_all_department)
     Button btnSearchByAllDepartment;
-    @BindView(R.id.iv_search_by_distance)
-    ImageView ivSearchByDistance;
+
     @BindView(R.id.tvShopQuality)
     TextView tvShopQuality;
     @BindView(R.id.rclViewShop)
     RecyclerView rclViewShop;
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
-    @BindView(R.id.layout)
-    CoordinatorLayout layout;
+
     @BindView(R.id.iv_show_more)
     ImageView ivShowMore;
-    @BindView(R.id.tab_home)
-    LinearLayout tabHome;
-    @BindView(R.id.tab_search)
-    LinearLayout tabSearch;
-    @BindView(R.id.tab_cart)
-    LinearLayout tabCart;
-    @BindView(R.id.tab_profile)
-    LinearLayout tabProfile;
+
     @BindView(R.id.iv_arrow_bottom)
     ImageView ivArrowBottomCity;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.tv_order_new_number_tab)
-    TextView tvOrderSum;
+
     @BindView(R.id.app_bar)
     AppBarLayout appBar;
+
     @BindView(R.id.iv_expand_app_bar)
     ImageView ivExpandAppBar;
 
@@ -163,11 +157,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         rclViewShop.setAdapter(listFoodAdapterNew);
         searchListFoodHome(1, isProgress);
 
-        tabProfile.setOnClickListener(this);
-        tabCart.setOnClickListener(this);
-        tabSearch.setOnClickListener(this);
-        tabHome.setOnClickListener(this);
-
         // refresh layout
         refreshLayout.setOnRefreshListener(() -> {
             isLoadingMore = false;
@@ -195,18 +184,30 @@ public class ListHomeFoodActivity extends BaseActivityV2
     @Override
     public void onResume() {
         super.onResume();
-        if (GlobalValue.arrMyMenuShop.size() != 0) {
-            tabCart.setBackgroundColor(Color.BLUE);
-        } else {
-            tabCart.setBackgroundColor(getResources().getColor(R.color.background_new));
-        }
-        appBar.addOnOffsetChangedListener(this);
+       appBar.addOnOffsetChangedListener(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         appBar.removeOnOffsetChangedListener(this);
+    }
+
+    @OnClick(R.id.iv_search_by_distance)
+    void onLocClick() {
+        chooseBack();
+    }
+
+    @OnClick(R.id.img_top_cart)
+    void goToCart() {
+      //sendAction(Constant.SHOW_TAB_CART);
+        gotoActivity(MainCartActivity.class);
+
+    }
+
+    @OnClick(R.id.imgHome)
+    void goToHome() {
+        chooseBack();
     }
 
     @OnClick(R.id.iv_expand_app_bar)
@@ -236,22 +237,26 @@ public class ListHomeFoodActivity extends BaseActivityV2
 
     @OnClick(R.id.iv_search_by_date_name_rating)
     void chooseSearchByDateNamRating() {
+        chooseSearchByAllCities();
         SortByDialog dialog = SortByDialog.newInstance(sortBy);
         dialog.show(getSupportFragmentManager(), dialog.getTag());
         dialog.setOnSortByListener(new SortByDialog.OnSortByListener() {
             @Override
             public void onSortByDate() {
                 sortBy = ConstantApp.SORT_BY_DATE;
+                chooseSearch();
             }
 
             @Override
             public void onSortByName() {
                 sortBy = ConstantApp.SORT_BY_NAME;
+                chooseSearch();
             }
 
             @Override
             public void onSortByRating() {
                 sortBy = ConstantApp.SORT_BY_RATING;
+                chooseSearch();
             }
         });
     }
@@ -269,7 +274,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
             }
 
             setupCityIdSelected();
-            setupDistanceUnSelected();
             setupCityAllUnSelected();
             setupMyLocationUnSelected();
         });
@@ -282,7 +286,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
 
         setupCityAllSelected();
         setupCityIdUnSelected();
-        setupDistanceUnSelected();
         setupMyLocationUnSelected();
     }
 
@@ -293,7 +296,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         tvCityName.setText(getString(R.string.list_shop_home_text_choose_cities));
 
         setupMyLocationSelected();
-        setupDistanceSelected();
         setupCityIdUnSelected();
         setupCityAllUnSelected();
     }
@@ -301,15 +303,16 @@ public class ListHomeFoodActivity extends BaseActivityV2
     @OnClick(R.id.container_sort)
     void chooseSearchBySort() {
         if (sortType.equals(ConstantApp.SORT_TYPE_ASC)) {
-            ivSort.setImageResource(R.drawable.ic_sort_desending);
+            ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
             sortType = ConstantApp.SORT_TYPE_DESC;
         } else if (sortType.equals(ConstantApp.SORT_TYPE_DESC)) {
-            ivSort.setImageResource(R.drawable.ic_sort_assending);
+            ivSort.setImageResource(R.drawable.ic_arrow_exchange_alt_v_up);
             sortType = ConstantApp.SORT_TYPE_ASC;
         }
+        chooseSearch();
     }
 
-    @OnClick(R.id.iv_search_by_distance)
+//    @OnClick(R.id.iv_search_by_distance)
     void chooseSearchByDistance() {
         getLatLong();
 
@@ -446,8 +449,8 @@ public class ListHomeFoodActivity extends BaseActivityV2
 
                             if (!isLoadingMore) {
                                 menuList.clear();
-                                tvShopQuality.setText(getString(R.string.product_found,
-                                        String.valueOf(ParserUtility.ParseCount(object.toString()))));
+                                String mCount = "<b>"+ParserUtility.ParseCount(object.toString())+"</b>";
+                                tvShopQuality.setText(Html.fromHtml(getString(R.string.product_found, mCount)));
                             }
                             if (arr.size() > 0) {
                                 ivShowMore.setVisibility(View.VISIBLE);
@@ -519,22 +522,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         ivArrowBottomCity.setImageResource(R.drawable.ic_arrow_down_1);
     }
 
-    private void setupDistanceSelected() {
-        ivSearchByDistance.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
-        ivSearchByDistance.setImageResource(R.drawable.ic_location_search_white);
-        ivSearchByDistance.setEnabled(true);
-    }
-
-    private void setupDistanceUnSelected() {
-        ivSearchByDistance.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        ivSearchByDistance.setImageResource(R.drawable.ic_location_search_black);
-        ivSearchByDistance.setEnabled(false);
-    }
-
     private void setupCityAllSelected() {
         btnSearchByAllCities.setBackground(
                 ContextCompat.getDrawable(this,
@@ -601,32 +588,32 @@ public class ListHomeFoodActivity extends BaseActivityV2
             if (userId.isEmpty()) {
                 return;
             }
-            ModelManager.notificationCount(this, userId, false,
-                    new ModelManagerListener() {
-                        @Override
-                        public void onError(VolleyError error) {
-                            showToast(ErrorNetworkHandler.processError(error));
-                        }
-
-                        @Override
-                        public void onSuccess(Object object) {
-                            if (ParserUtility.isSuccess(object.toString())) {
-                                String newOrderCount = ParserUtility.getNewOrderCount(object.toString());
-                                String newStatusChangedCount = ParserUtility.getNewStatusChangedCount(object.toString());
-
-                                int notificationOrderSum = Integer.parseInt(newOrderCount) + Integer.parseInt(newStatusChangedCount) + chatCount;
-                                if (notificationOrderSum != 0) {
-                                    if (tvOrderSum != null) {
-                                        tvOrderSum.setVisibility(View.VISIBLE);
-                                        tvOrderSum.setText(String.valueOf(notificationOrderSum));
-                                    }
-                                }
-
-                            } else {
-                                showToast(ParserUtility.getMessage(object.toString()));
-                            }
-                        }
-                    });
+//            ModelManager.notificationCount(this, userId, false,
+//                    new ModelManagerListener() {
+//                        @Override
+//                        public void onError(VolleyError error) {
+//                            showToast(ErrorNetworkHandler.processError(error));
+//                        }
+//
+//                        @Override
+//                        public void onSuccess(Object object) {
+//                            if (ParserUtility.isSuccess(object.toString())) {
+//                                String newOrderCount = ParserUtility.getNewOrderCount(object.toString());
+//                                String newStatusChangedCount = ParserUtility.getNewStatusChangedCount(object.toString());
+//
+//                                int notificationOrderSum = Integer.parseInt(newOrderCount) + Integer.parseInt(newStatusChangedCount) + chatCount;
+//                                if (notificationOrderSum != 0) {
+//                                    if (tvOrderSum != null) {
+//                                        tvOrderSum.setVisibility(View.VISIBLE);
+//                                        tvOrderSum.setText(String.valueOf(notificationOrderSum));
+//                                    }
+//                                }
+//
+//                            } else {
+//                                showToast(ParserUtility.getMessage(object.toString()));
+//                            }
+//                        }
+//                    });
         } else {
             showToast(R.string.no_connection);
         }

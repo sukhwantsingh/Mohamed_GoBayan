@@ -87,8 +87,7 @@ public class ListCategoryAdapter extends BaseAdapter {
                                 public void callback(String url, ImageView iv,
                                                      Bitmap bm, AjaxStatus status) {
                                     if (bm != null) {
-                                        Drawable d = new BitmapDrawable(context
-                                                .getResources(), bm);
+                                        Drawable d = new BitmapDrawable(context.getResources(), bm);
                                         holder.imgCategory.setBackgroundDrawable(d);
                                     } else {
                                         holder.imgCategory

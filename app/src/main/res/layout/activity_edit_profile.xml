@@ -2,39 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_color_gray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/layoutHeader"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_7x"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_8sdp"
+        android:paddingHorizontal="@dimen/_12sdp">
 
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="@dimen/dimen_x3x"
-            android:layout_height="@dimen/dimen_x3x"
-            android:layout_marginLeft="@dimen/dimen_1x"
-            android:layout_marginRight="@dimen/dimen_1x"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_chevron_right_black_24dp" />
+        <include
+            android:id="@+id/toolbarSec"
+            layout="@layout/toolbar_layout" />
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-            android:textAllCaps="true"
-            android:id="@+id/lblTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dimen_1x"
-            android:gravity="center"
-            android:text="@string/edit_profile"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size_normal_3x" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
+        android:fillViewport="true"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -46,193 +32,197 @@
                 android:id="@+id/layoutPaymentMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tvBold"
+                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/black_heading"
+                    android:text="@string/personal_info"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/mainImage"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_alignParentEnd="true"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:background="@drawable/gray_background_round"
+                        android:backgroundTint="@color/gray_light" />
+
+                    <ImageView
+                        android:id="@+id/iv_camera"
+                        android:layout_width="@dimen/_35sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/back_blue_with_gray_border"
+                        android:backgroundTint="@color/blue_button"
+                        android:padding="@dimen/_6sdp"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_white_camera"
+                        app:layout_constraintTop_toTopOf="@+id/mainImage"
+                        app:layout_constraintVertical_bias="1"
+                        app:layout_constraintBottom_toBottomOf="@+id/mainImage"
+                        app:layout_constraintStart_toStartOf="@+id/mainImage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
+                    android:layout_marginVertical="@dimen/_12sdp"
                     android:orientation="vertical">
 
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
-                        android:id="@+id/txtUserName"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/tvReg"
+                        android:textSize="@dimen/_11sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/first_name"/>
+
+                    <EditText
+                        android:id="@+id/txtFullName"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/lblUserName"
+                        style="@style/et_custom"
+                        android:background="@drawable/bg_border_grey"
                         android:imeOptions="actionNext"
                         android:inputType="text"
-                        android:paddingRight="@dimen/dimen16"
-                        android:singleLine="true"
+                        android:padding="8dp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/tvReg"
+                        android:textSize="@dimen/_11sdp"
+                        android:layout_marginTop="16dp"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_normal_size" />
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/surname"/>
 
-                    <View
+                    <EditText
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
-                    android:orientation="vertical">
-
-
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:id="@+id/txtPassWord"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/password"
+                        style="@style/et_custom"
+                        android:background="@drawable/bg_border_grey"
                         android:imeOptions="actionNext"
-                        android:inputType="textPassword"
-                        android:paddingRight="@dimen/dimen16"
-                        android:gravity="right|center_vertical"
-                        android:paddingTop="@dimen/dimen_1x"
-                        android:paddingBottom="@dimen/dimen_1x"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:singleLine="true" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
-                    android:orientation="vertical">
-
-
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
-                        android:id="@+id/txtRePassWord"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/repassword"
-                        android:imeOptions="actionNext"
-                        android:inputType="textPassword"
-                        android:paddingBottom="@dimen/dimen_1x"
-                        android:paddingRight="@dimen/dimen16"
-                        android:paddingTop="@dimen/dimen_1x"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutBuyerInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_2x"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:orientation="vertical">
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                    android:textAllCaps="true"
-                    android:id="@+id/lblBuyerInformation"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/dimen16"
-                    android:paddingBottom="@dimen/dimen16"
-                    android:gravity="center"
-                    android:text="@string/personal_information"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal" />
+                    style="@style/tvBold"
+                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/black_heading"
+                    android:text="@string/contact_info"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
                     android:orientation="vertical">
 
-
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
-                        android:id="@+id/txtFullName"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/name"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:paddingRight="@dimen/dimen16"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                        android:layout_height="wrap_content">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
-                    android:orientation="vertical">
+                        <TextView
+                            style="@style/tvReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/email"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
 
 
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
+                        <TextView
+                            style="@style/tvReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/verified_new"
+                            android:textColor="@color/green"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+
+
+                    <EditText
                         android:id="@+id/txtEmail"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/emailnew"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:padding="8dp"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailAddress"
-                        android:paddingRight="@dimen/dimen16"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                        android:singleLine="true" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
                     android:orientation="vertical">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                    >
 
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
+                        <TextView
+                            style="@style/tvReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/phone"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+
+                        <TextView
+                            style="@style/tvReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/verified_new"
+                            android:textColor="@color/green"
+                            android:textSize="12dp" />
+
+
+                    </RelativeLayout>
+
+                    <EditText
                         android:id="@+id/txtPhone"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/phone"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:padding="8dp"
                         android:imeOptions="actionNext"
                         android:inputType="phone"
-                        android:paddingBottom="@dimen/dimen_1x"
-                        android:paddingRight="@dimen/dimen16"
-                        android:paddingTop="@dimen/dimen_1x"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                        android:singleLine="true" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -240,87 +230,118 @@
                 android:id="@+id/layoutDeliveryInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_2x"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:orientation="vertical">
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                    android:textAllCaps="true"
-                    android:id="@+id/lblDeliveryInformation"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/dimen16"
-                    android:paddingBottom="@dimen/dimen16"
-                    android:gravity="center"
-                    android:text="@string/address_information"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal" />
+                    style="@style/tvBold"
+                    android:textSize="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/black_heading"
+                    android:text="@string/address_information"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
                     android:orientation="vertical">
 
+                        <TextView
+                        style="@style/tvReg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/address"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
 
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
+                    <EditText
                         android:id="@+id/txtAddress"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/address"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:paddingBottom="@dimen/dimen_1x"
-                        android:paddingRight="@dimen/dimen16"
-                        android:paddingTop="@dimen/dimen_1x"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
+                        android:layout_height="@dimen/_100sdp"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:maxLength="100"
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:singleLine="true" />
 
-                    <View
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                       >
+
+                        <TextView
+                            style="@style/tvReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="@string/city"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_11sdp" />
+
+                        <TextView
+                            style="@style/tvReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/selected"
+                            android:textColor="@color/green"
+                            android:textSize="12dp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/back_dropdwon"
+                        android:background="@drawable/bg_border_grey">
+
+                        <EditText
+                            android:id="@+id/txtCity"
+                            style="@style/et_custom"
+                            android:layout_width="match_parent"
+                            android:background="@null"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:padding="@dimen/_15sdp"
+                            android:singleLine="true" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="@dimen/_25sdp"-->
+<!--                            android:layout_height="@dimen/_25sdp"-->
+<!--                            android:layout_alignParentEnd="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:layout_marginHorizontal="@dimen/_15sdp"-->
+<!--                            android:background="@drawable/background_border"-->
+<!--                            android:padding="@dimen/_3sdp"-->
+<!--                            android:src="@drawable/ic_arrow_down" />-->
+                    </RelativeLayout>
+
+
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen16"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
 
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
-                        android:gravity="right|center_vertical"
-                        android:id="@+id/txtCity"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen50"
-                        android:background="@color/cl_white"
-                        android:hint="@string/city"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:paddingBottom="@dimen/dimen_1x"
-                        android:paddingRight="@dimen/dimen16"
-                        android:paddingTop="@dimen/dimen_1x"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/gray_home_bottom" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen16"
-                    android:orientation="vertical">
-
-
-                    <com.libyasolutions.libyamarketplace.widget.MyEditText
+                    <EditText
                         android:gravity="right|center_vertical"
                         android:id="@+id/txtZipcode"
                         android:layout_width="match_parent"
@@ -344,7 +365,132 @@
 
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/tvBold"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/black_heading"
+                    android:text="@string/account_information"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                         <TextView
+                        style="@style/tvReg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/username"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                    <EditText
+                        android:id="@+id/txtUserName"
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/back_dropdwon"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:padding="8dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/tvReg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/password"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <EditText
+                        android:id="@+id/txtPassWord"
+                        android:layout_width="match_parent"
+                        android:backgroundTint="@color/back_dropdwon"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:padding="8dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/tvReg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/lblPasswordNew"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <EditText
+                        android:id="@+id/txtNewPassWord"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:padding="8dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/tvReg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/confirm_password"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp" />
+
+                    <EditText
+                        android:id="@+id/txtCnfPassWord"
+                        android:layout_width="match_parent"
+                        android:background="@drawable/bg_border_grey"
+                        style="@style/et_custom"
+                        android:padding="8dp"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -353,19 +499,24 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <com.libyasolutions.libyamarketplace.widget.AutoBgButton
+                <TextView
                     android:id="@+id/btnRegister"
-                    android:layout_width="@dimen/dimen150"
+                    android:layout_width="@dimen/_140sdp"
+                    style="@style/customButton"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/color_dark_blue"
                     android:background="@drawable/bg_red_button_with_border"
-                    android:paddingBottom="@dimen/dimen_x1x"
-                    android:paddingLeft="@dimen/dimen_4x"
-                    android:paddingRight="@dimen/dimen_4x"
-                    android:paddingTop="@dimen/dimen_x1x"
-                    android:text="@string/register"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_size_normal_2x" />
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingHorizontal="@dimen/_15sdp"
+                    android:paddingVertical="@dimen/_14sdp"
+                    android:text="@string/save_change" />
+
+
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"/>
         </LinearLayout>
     </ScrollView>
 

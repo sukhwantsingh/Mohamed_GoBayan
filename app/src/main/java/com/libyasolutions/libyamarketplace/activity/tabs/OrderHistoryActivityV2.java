@@ -9,6 +9,8 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -57,8 +59,7 @@ public class OrderHistoryActivityV2 extends BaseActivityV2 {
     SwipyRefreshLayout refreshLayout;
     @BindView(R.id.iv_show_more)
     ImageView ivShowMore;
-    @BindView(R.id.iv_status)
-    ImageView ivStatus;
+
 
     private List<OrderGroup> orderGroupList = new ArrayList<>();
     private HistoryAdapterNew adapter;
@@ -165,8 +166,8 @@ public class OrderHistoryActivityV2 extends BaseActivityV2 {
                             } else {
                                 showToast(ParserUtility.getMessage(object.toString()));
                             }
-                            String orderCount = String.valueOf(ParserUtility.ParseCount(object.toString()));
-                            tvOrderQuality.setText(getString(R.string.order_found, orderCount));
+                            String orderCount = "<b>"+ParserUtility.ParseCount(object.toString())+"</b>";
+                            tvOrderQuality.setText(Html.fromHtml(getString(R.string.order_found, orderCount)));
                             adapter.notifyDataSetChanged();
                         }
 
@@ -183,12 +184,14 @@ public class OrderHistoryActivityV2 extends BaseActivityV2 {
     @OnClick(R.id.container_sort)
     void chooseOrderSearchType() {
         if (sortType.equals(ConstantApp.SORT_TYPE_ASC)) {
-            ivSort.setImageResource(R.drawable.ic_sort_desending);
+            ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
             sortType = ConstantApp.SORT_TYPE_DESC;
         } else if (sortType.equals(ConstantApp.SORT_TYPE_DESC)) {
-            ivSort.setImageResource(R.drawable.ic_sort_assending);
+            ivSort.setImageResource(R.drawable.ic_arrow_exchange_alt_v_up);
             sortType = ConstantApp.SORT_TYPE_ASC;
         }
+
+        getOrderHistory();
     }
 
     @OnClick(R.id.iv_status)

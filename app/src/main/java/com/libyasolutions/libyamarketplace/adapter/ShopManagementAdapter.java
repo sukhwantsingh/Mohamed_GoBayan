@@ -47,12 +47,12 @@ public class ShopManagementAdapter extends RecyclerView.Adapter<ShopManagementAd
 
         if (shop.getStatus() == 1) {
             holder.tvStatus.setText(context.getResources().getString(R.string.active));
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.red));
-            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_red_border));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.active_color));
+            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.background_border_green));
         } else {
             holder.tvStatus.setText(context.getResources().getString(R.string.inactive));
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.gray_light));
-            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_gray_border));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.red));
+            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_red_border));
         }
 
         // load image

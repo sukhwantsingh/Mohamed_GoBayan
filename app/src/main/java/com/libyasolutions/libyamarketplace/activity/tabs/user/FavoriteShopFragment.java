@@ -2,6 +2,7 @@ package com.libyasolutions.libyamarketplace.activity.tabs.user;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import com.libyasolutions.libyamarketplace.BaseActivity;
 import com.libyasolutions.libyamarketplace.R;
 import com.libyasolutions.libyamarketplace.activity.ShopDetailActivity;
+import com.libyasolutions.libyamarketplace.activity.ShopDetailsNew;
 import com.libyasolutions.libyamarketplace.adapter.ShopAdapter;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.object.Shop;
@@ -44,14 +46,20 @@ public final class FavoriteShopFragment extends Fragment implements OnClickListe
 		listView=(ListView)view.findViewById(R.id.listView);
 		shopAdapter=new ShopAdapter(act,arrayList);
 		listView.setAdapter(shopAdapter);
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-				Shop shop=arrayList.get(i);
-				Bundle bundle = new Bundle();
-				bundle.putInt(GlobalValue.KEY_SHOP_ID, shop.getShopId());
-				((BaseActivity)act).gotoActivity(act, ShopDetailActivity.class, bundle);
-			}
+		listView.setOnItemClickListener((adapterView, view, i, l) -> {
+			Shop shop = arrayList.get(i);
+
+			Bundle bundle = new Bundle();
+			bundle.putInt(GlobalValue.KEY_SHOP_ID, shop.getShopId());
+			Intent intent = new Intent(requireActivity(), ShopDetailsNew.class);
+			intent.putExtras(bundle);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
+
+//			Shop shop=arrayList.get(i);
+//			Bundle bundle = new Bundle();
+//			bundle.putInt(GlobalValue.KEY_SHOP_ID, shop.getShopId());
+//			((BaseActivity)act).gotoActivity(act, ShopDetailActivity.class, bundle);
 		});
 		return view;
 	}

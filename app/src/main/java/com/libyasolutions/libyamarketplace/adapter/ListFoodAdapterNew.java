@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
 
 public class ListFoodAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static final String SEARCH_SCREEN = "searchActivity";
+    public static final String SEARCH_SCREEN = "searchActivity";
 
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
@@ -90,21 +90,23 @@ public class ListFoodAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHo
             Glide.with(context).load(menuArrayList.get(position).getImage()).into(viewHolder.imgShop);
             viewHolder.tvFoodName.setText(menuArrayList.get(position).getName());
             viewHolder.tvPriceSale.setText(String.valueOf(menuArrayList.get(position).getPrice()) + " " + context.getResources().getString(R.string.currency));
+        //    viewHolder.tvPriceSale.setText("$" + menuArrayList.get(position).getPrice());
+
             viewHolder.tvDescription.setText(menuArrayList.get(position).getDescription());
-            viewHolder.rtbRating.setRating((menuArrayList.get(position).getRateValue() / 2));
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle b = new Bundle();
-                    b.putString(GlobalValue.KEY_FOOD_ID, menuArrayList.get(position).getId() + "");
-                    b.putString(GlobalValue.KEY_NAVIGATE_TYPE, "FAST");
-                    GlobalValue.KEY_LOCAL_NAME = menuArrayList.get(position).getLocalName();
-                    b.putString(GlobalValue.KEY_FROM_SCREEN, SEARCH_SCREEN);
-                    Intent intent = new Intent(context, ProductDetailsNewActivity.class);
-                    intent.putExtras(b);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                }
+         //   viewHolder.tvLeftStock.setText(menuArrayList.get(position).getAvailable());
+
+            viewHolder.tvRating.setText(String.valueOf(menuArrayList.get(position).getRateValue() / 2));
+
+            viewHolder.itemView.setOnClickListener(v -> {
+                Bundle b = new Bundle();
+                b.putString(GlobalValue.KEY_FOOD_ID, menuArrayList.get(position).getId() + "");
+                b.putString(GlobalValue.KEY_NAVIGATE_TYPE, "FAST");
+                GlobalValue.KEY_LOCAL_NAME = menuArrayList.get(position).getLocalName();
+                b.putString(GlobalValue.KEY_FROM_SCREEN, SEARCH_SCREEN);
+                Intent intent = new Intent(context, ProductDetailsNewActivity.class);
+                intent.putExtras(b);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             });
         } else if (holder instanceof LoadingViewHolder) {
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
@@ -131,7 +133,7 @@ public class ListFoodAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvFoodName, tvDescription, tvPrice, tvPriceSale, tvPromotion;
+        private TextView tvFoodName, tvDescription, tvPrice, tvPriceSale, tvPromotion,tvRating,tvLeftStock;
         private ImageView imgShop;
         private RatingBar rtbRating;
 
@@ -144,6 +146,8 @@ public class ListFoodAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHo
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvPriceSale = itemView.findViewById(R.id.tvPriceSale);
             tvPromotion = itemView.findViewById(R.id.tvPromotions);
+            tvRating = itemView.findViewById(R.id.tvRating);
+            tvLeftStock = itemView.findViewById(R.id.tvStockleft);
         }
     }
 

@@ -192,188 +192,178 @@ public class ChatDetailActivity extends BaseActivity implements AdapterListener.
     }
 
     public void initControl() {
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-        btnSendFiles.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialogChooseImage();
+        btnBack.setOnClickListener(v -> onBackPressed());
+        btnSendFiles.setOnClickListener(view -> {
+            showDialogChooseImage();
 //                browseDocuments();
-            }
         });
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!edComment.getText().toString().equals("")) {
-                    //Conversation
-                    // User status 1 -> read
-                    if (userObj != null) {
-                        Map<String, Object> listConversation = new HashMap<String, Object>();
-                        listConversation.put("senderId", userObj.getId());
-                        listConversation.put("datePost", (System.currentTimeMillis() / 1000) + "");
-                        listConversation.put("receiverId", idAgent);
-                        listConversation.put("receiverName", title);
-                        listConversation.put("lastMessage", edComment.getText().toString());
+        btnSend.setOnClickListener(v -> {
+            if (!edComment.getText().toString().equals("")) {
+                //Conversation
+                // User status 1 -> read
+                if (userObj != null) {
+                    Map<String, Object> listConversation = new HashMap<String, Object>();
+                    listConversation.put("senderId", userObj.getId());
+                    listConversation.put("datePost", (System.currentTimeMillis() / 1000) + "");
+                    listConversation.put("receiverId", idAgent);
+                    listConversation.put("receiverName", title);
+                    listConversation.put("lastMessage", edComment.getText().toString());
 //                        listConversation.put("senderName", userObj.getFull_name());
-                        listConversation.put("imageSender", userObj.getAvatar());
-                        listConversation.put("status", "1");
-                        listConversation.put("imageReceiver", image);
-                        listConversation.put("unread", "0");
-                        listConversation.put("shopId", shopId);
-                        listConversation.put("shopName", shopName);
-                        listConversation.put("countShop", countShop + "");
-                        if (adapter.getBuyerId() != null && adapter.getBuyerId().length() != 0) {
-                            buyerId = adapter.getBuyerId();
-                            if (buyerId.equals(userObj.getId())) {
-                                Log.e(TAG, "countShop: " + countShop);
-                                if (countShop > 1) {
-                                    senderName = "[" + shopName + "]:" + userObj.getFull_name();
-                                    listConversation.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
-                                } else {
-                                    senderName = userObj.getFull_name();
-                                    listConversation.put("senderName", userObj.getFull_name());
-                                }
-
+                    listConversation.put("imageSender", userObj.getAvatar());
+                    listConversation.put("status", "1");
+                    listConversation.put("imageReceiver", image);
+                    listConversation.put("unread", "0");
+                    listConversation.put("shopId", shopId);
+                    listConversation.put("shopName", shopName);
+                    listConversation.put("countShop", countShop + "");
+                    if (adapter.getBuyerId() != null && adapter.getBuyerId().length() != 0) {
+                        buyerId = adapter.getBuyerId();
+                        if (buyerId.equals(userObj.getId())) {
+                            Log.e(TAG, "countShop: " + countShop);
+                            if (countShop > 1) {
+                                senderName = "[" + shopName + "]:" + userObj.getFull_name();
+                                listConversation.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
                             } else {
-                                senderName = shopName;
-                                listConversation.put("senderName", shopName);
+                                senderName = userObj.getFull_name();
+                                listConversation.put("senderName", userObj.getFull_name());
                             }
+
                         } else {
-                            buyerId = userObj.getId();
-                            senderName = "[" + shopName + "]:" + userObj.getFull_name();
-                            listConversation.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
+                            senderName = shopName;
+                            listConversation.put("senderName", shopName);
                         }
-                        listConversation.put("buyerId", buyerId);
+                    } else {
+                        buyerId = userObj.getId();
+                        senderName = "[" + shopName + "]:" + userObj.getFull_name();
+                        listConversation.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
+                    }
+                    listConversation.put("buyerId", buyerId);
 
-                        if (keyConversation.equals("")) {
-                            keyConversation = ref.child("user").child(userObj.getId()).child("chatWith").child(idAgent + shopId).push().getKey();
-                            adapter = new ChatAdapter(ChatDetailActivity.this, keyConversation, image, idAgent);
-                            listView.setAdapter(adapter);
+                    if (keyConversation.equals("")) {
+                        keyConversation = ref.child("user").child(userObj.getId()).child("chatWith").child(idAgent + shopId).push().getKey();
+                        adapter = new ChatAdapter(ChatDetailActivity.this, keyConversation, image, idAgent);
+                        listView.setAdapter(adapter);
 
-                            Log.e(TAG, "list size: " + adapter.getCount());
-                            buyerId = adapter.getBuyerId();
-                            Log.e(TAG, "onDataChange: " + buyerId);
+                        Log.e(TAG, "list size: " + adapter.getCount());
+                        buyerId = adapter.getBuyerId();
+                        Log.e(TAG, "onDataChange: " + buyerId);
 //                        adapter.notifyDataSetChanged();
-                        }
+                    }
 
-                        ref.child("user").child(userObj.getId()).child("chatWith").child(idAgent + shopId).child(keyConversation).updateChildren(listConversation);
+                    ref.child("user").child(userObj.getId()).child("chatWith").child(idAgent + shopId).child(keyConversation).updateChildren(listConversation);
 
-                        //Receiver User status 0 -> unread
-                        final Map<String, Object> listConversationReceiver = new HashMap<String, Object>();
-                        listConversationReceiver.put("senderId", userObj.getId());
-                        listConversationReceiver.put("datePost", (System.currentTimeMillis() / 1000) + "");
-                        listConversationReceiver.put("receiverId", idAgent);
-                        listConversationReceiver.put("receiverName", title);
-                        listConversationReceiver.put("lastMessage", edComment.getText().toString());
+                    //Receiver User status 0 -> unread
+                    final Map<String, Object> listConversationReceiver = new HashMap<String, Object>();
+                    listConversationReceiver.put("senderId", userObj.getId());
+                    listConversationReceiver.put("datePost", (System.currentTimeMillis() / 1000) + "");
+                    listConversationReceiver.put("receiverId", idAgent);
+                    listConversationReceiver.put("receiverName", title);
+                    listConversationReceiver.put("lastMessage", edComment.getText().toString());
 //                        listConversationReceiver.put("senderName", userObj.getFull_name());
-                        listConversationReceiver.put("imageSender", userObj.getAvatar());
-                        listConversationReceiver.put("imageReceiver", image);
-                        listConversationReceiver.put("shopId", shopId);
-                        listConversationReceiver.put("shopName", shopName);
-                        listConversationReceiver.put("countShop", countShop + "");
-                        if (adapter.getBuyerId() != null && adapter.getBuyerId().length() != 0) {
-                            if (buyerId.equals(userObj.getId())) {
-                                Log.e(TAG, "countShop: " + countShop);
-                                if (countShop > 1) {
-                                    senderName = "[" + shopName + "]:" + userObj.getFull_name();
-                                    listConversationReceiver.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
-                                } else {
-                                    senderName = userObj.getFull_name();
-                                    listConversationReceiver.put("senderName", userObj.getFull_name());
-                                }
+                    listConversationReceiver.put("imageSender", userObj.getAvatar());
+                    listConversationReceiver.put("imageReceiver", image);
+                    listConversationReceiver.put("shopId", shopId);
+                    listConversationReceiver.put("shopName", shopName);
+                    listConversationReceiver.put("countShop", countShop + "");
+                    if (adapter.getBuyerId() != null && adapter.getBuyerId().length() != 0) {
+                        if (buyerId.equals(userObj.getId())) {
+                            Log.e(TAG, "countShop: " + countShop);
+                            if (countShop > 1) {
+                                senderName = "[" + shopName + "]:" + userObj.getFull_name();
+                                listConversationReceiver.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
                             } else {
-                                senderName = shopName;
-                                listConversationReceiver.put("senderName", shopName);
+                                senderName = userObj.getFull_name();
+                                listConversationReceiver.put("senderName", userObj.getFull_name());
                             }
                         } else {
-                            senderName = "[" + shopName + "]:" + userObj.getFull_name();
-                            buyerId = userObj.getId();
-                            listConversationReceiver.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
+                            senderName = shopName;
+                            listConversationReceiver.put("senderName", shopName);
                         }
-                        listConversationReceiver.put("buyerId", buyerId);
+                    } else {
+                        senderName = "[" + shopName + "]:" + userObj.getFull_name();
+                        buyerId = userObj.getId();
+                        listConversationReceiver.put("senderName", "[" + shopName + "]:" + userObj.getFull_name());
+                    }
+                    listConversationReceiver.put("buyerId", buyerId);
 
-                        //check Chat With If has count unRead => unread ++ else push unread = 1;
-                        ref.child("user").child(idAgent).child("chatWith").child(userObj.getId() + shopId).child(keyConversation).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                Map<String, Object> listConversationReceivers = new HashMap<String, Object>();
-                                final Map<String, Object> listData = (Map<String, Object>) dataSnapshot.getValue();
+                    //check Chat With If has count unRead => unread ++ else push unread = 1;
+                    ref.child("user").child(idAgent).child("chatWith").child(userObj.getId() + shopId).child(keyConversation).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Map<String, Object> listConversationReceivers = new HashMap<String, Object>();
+                            final Map<String, Object> listData = (Map<String, Object>) dataSnapshot.getValue();
 
-                                if (listData != null) {
-                                    Conversation convert = dataSnapshot.getValue(Conversation.class);
-                                    //to get unread
-                                    int unread;
-                                    if (convert.getUnread() != null) {
-                                        unread = Integer.valueOf(convert.getUnread());
-                                    } else {
-                                        unread = 0;
-                                    }
-                                    if (listData.get("status") != null) {
-                                        if (convert.getStatus().equals("1")) {
-                                            listConversationReceivers.put("unread", "0");
-                                        } else {
-                                            listConversationReceivers.put("unread", String.valueOf(unread + 1));
-                                        }
+                            if (listData != null) {
+                                Conversation convert = dataSnapshot.getValue(Conversation.class);
+                                //to get unread
+                                int unread;
+                                if (convert.getUnread() != null) {
+                                    unread = Integer.valueOf(convert.getUnread());
+                                } else {
+                                    unread = 0;
+                                }
+                                if (listData.get("status") != null) {
+                                    if (convert.getStatus().equals("1")) {
+                                        listConversationReceivers.put("unread", "0");
                                     } else {
                                         listConversationReceivers.put("unread", String.valueOf(unread + 1));
                                     }
-                                    edComment.setText("");
                                 } else {
-                                    listConversationReceivers.put("unread", "1");
-                                    edComment.setText("");
+                                    listConversationReceivers.put("unread", String.valueOf(unread + 1));
                                 }
-                                ref.child("user").child(idAgent).child("chatWith").child(userObj.getId() + shopId).child(keyConversation).updateChildren(listConversationReceivers);
+                                edComment.setText("");
+                            } else {
+                                listConversationReceivers.put("unread", "1");
+                                edComment.setText("");
                             }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-
-                        });
-                        ref.child("user").child(idAgent).child("chatWith").child(userObj.getId() + shopId).child(keyConversation).updateChildren(listConversationReceiver);
-
-                        //Message
-                        MessengerFirebase messengerFirebase = new MessengerFirebase();
-                        messengerFirebase.setDatePost(System.currentTimeMillis() / 1000 + "");
-                        messengerFirebase.setSenderId(userObj.getId());
-                        messengerFirebase.setReceiverId(idAgent);
-                        messengerFirebase.setMessage(edComment.getText().toString());
-                        messengerFirebase.setUrlFile("");
-                        messengerFirebase.setImageH(0 + "");
-                        messengerFirebase.setImageW(0 + "");
-
-                        String keyMessage = ref.child("message").child(keyConversation).push().getKey();
-                        final Map<String, Object> messageFirebase = new HashMap<String, Object>();
-                        messageFirebase.put("datePost", messengerFirebase.getDatePost());
-                        messageFirebase.put("imageW", messengerFirebase.getImageW());
-                        messageFirebase.put("imageH", messengerFirebase.getImageH());
-                        messageFirebase.put("message", messengerFirebase.getMessage());
-                        messageFirebase.put("receiverId", messengerFirebase.getReceiverId());
-                        messageFirebase.put("senderId", messengerFirebase.getSenderId());
-                        messageFirebase.put("urlFile", messengerFirebase.getUrlFile());
-                        messageFirebase.put("shopId", shopId);
-                        messageFirebase.put("shopName", shopName);
-                        messageFirebase.put("countShop", countShop + "");
-                        if (adapter.getBuyerId() != null && adapter.getBuyerId().length() != 0) {
-                            buyerId = adapter.getBuyerId();
-                            messageFirebase.put("buyerId", buyerId);
-                        } else {
-                            buyerId = userObj.getId();
-                            messageFirebase.put("buyerId", buyerId);
+                            ref.child("user").child(idAgent).child("chatWith").child(userObj.getId() + shopId).child(keyConversation).updateChildren(listConversationReceivers);
                         }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                        ref.child("message").child(keyConversation).push().setValue(messageFirebase);
+                        }
+
+                    });
+                    ref.child("user").child(idAgent).child("chatWith").child(userObj.getId() + shopId).child(keyConversation).updateChildren(listConversationReceiver);
+
+                    //Message
+                    MessengerFirebase messengerFirebase = new MessengerFirebase();
+                    messengerFirebase.setDatePost(System.currentTimeMillis() / 1000 + "");
+                    messengerFirebase.setSenderId(userObj.getId());
+                    messengerFirebase.setReceiverId(idAgent);
+                    messengerFirebase.setMessage(edComment.getText().toString());
+                    messengerFirebase.setUrlFile("");
+                    messengerFirebase.setImageH(0 + "");
+                    messengerFirebase.setImageW(0 + "");
+
+                    String keyMessage = ref.child("message").child(keyConversation).push().getKey();
+                    final Map<String, Object> messageFirebase = new HashMap<String, Object>();
+                    messageFirebase.put("datePost", messengerFirebase.getDatePost());
+                    messageFirebase.put("imageW", messengerFirebase.getImageW());
+                    messageFirebase.put("imageH", messengerFirebase.getImageH());
+                    messageFirebase.put("message", messengerFirebase.getMessage());
+                    messageFirebase.put("receiverId", messengerFirebase.getReceiverId());
+                    messageFirebase.put("senderId", messengerFirebase.getSenderId());
+                    messageFirebase.put("urlFile", messengerFirebase.getUrlFile());
+                    messageFirebase.put("shopId", shopId);
+                    messageFirebase.put("shopName", shopName);
+                    messageFirebase.put("countShop", countShop + "");
+                    if (adapter.getBuyerId() != null && adapter.getBuyerId().length() != 0) {
+                        buyerId = adapter.getBuyerId();
+                        messageFirebase.put("buyerId", buyerId);
+                    } else {
+                        buyerId = userObj.getId();
+                        messageFirebase.put("buyerId", buyerId);
+                    }
 
 
-                        adapter.notifyDataSetChanged();
-                        listView.getRefreshableView().smoothScrollToPosition(adapter.getCount() + 1);
+                    ref.child("message").child(keyConversation).push().setValue(messageFirebase);
+
+
+                    adapter.notifyDataSetChanged();
+                    listView.getRefreshableView().smoothScrollToPosition(adapter.getCount() + 1);
 
 //                        ModelManager.sendMessageIPhone(getBaseContext(),
 //                                userObj.getId(), edComment.getText().toString(), idAgent, true, new ModelManagerListener() {
@@ -385,19 +375,18 @@ public class ChatDetailActivity extends BaseActivity implements AdapterListener.
 //                                    public void onSuccess(Object object) {
 //                                    }
 //                                });
-                        ModelManager.sendMessageIphone(getBaseContext(), userObj.getId(), idAgent, edComment.getText().toString(), buyerId, String.valueOf(countShop), senderName, shopId, shopName,
-                                false, new ModelManagerListener() {
-                                    @Override
-                                    public void onError(VolleyError error) {
-                                    }
+                    ModelManager.sendMessageIphone(getBaseContext(), userObj.getId(), idAgent, edComment.getText().toString(), buyerId, String.valueOf(countShop), senderName, shopId, shopName,
+                            false, new ModelManagerListener() {
+                                @Override
+                                public void onError(VolleyError error) {
+                                }
 
-                                    @Override
-                                    public void onSuccess(Object object) {
-                                    }
-                                });
-                    } else {
-                        showToastMessage(getResources().getString(R.string.please_enter_message));
-                    }
+                                @Override
+                                public void onSuccess(Object object) {
+                                }
+                            });
+                } else {
+                    showToastMessage(getResources().getString(R.string.please_enter_message));
                 }
             }
         });
@@ -411,12 +400,7 @@ public class ChatDetailActivity extends BaseActivity implements AdapterListener.
                         Log.e("kevin", "onPullDownToRefresh: " + currentPosition);
                         adapter.getMoreData(listView);
                     } else {
-                        listView.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                listView.onRefreshComplete();
-                            }
-                        });
+                        listView.post(() -> listView.onRefreshComplete());
 
                         showToastMessage(getResources().getString(R.string.no_more_message));
                     }
@@ -430,9 +414,7 @@ public class ChatDetailActivity extends BaseActivity implements AdapterListener.
         });
     }
 
-    // TODO: 09/08/2018 Toan:
     private void browseDocuments() {
-
         String[] mimeTypes =
                 {"application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .doc & .docx
                         "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", // .ppt & .pptx

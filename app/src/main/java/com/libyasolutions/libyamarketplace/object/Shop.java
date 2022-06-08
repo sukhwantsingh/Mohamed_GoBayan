@@ -602,4 +602,5 @@ public class Shop implements Parcelable {
     public void setFavourite(boolean isFavourite) {
         this.isFavourite = isFavourite;
     }
+
 }

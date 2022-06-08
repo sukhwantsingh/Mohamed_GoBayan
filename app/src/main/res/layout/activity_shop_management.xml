@@ -1,94 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/gray_light">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetEnd="0dp">
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_12sdp">
+            <include
+                android:id="@+id/toolbarSec"
+                layout="@layout/toolbar_layout" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center"
-                    android:text="@string/shops_management"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="55dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="12dp"
-                    android:src="@drawable/ic_chevron_right_black_24dp"
-                    android:contentDescription="@string/content_description"/>
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="5dp"
-                    android:layout_marginTop="@dimen/dimen16"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/red" />
-
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                android:id="@+id/tv_shop_quality"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cns_search_sort"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:padding="4dp"
-                android:textColor="@color/black"
-                android:background="@drawable/bg_shadow"
-                android:textSize="22sp"
-                tools:text="2 Shops"/>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:id="@+id/serchSec"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/container_sort"
+                    android:background="@drawable/bg_border_grey">
+
+                    <FrameLayout
+                        android:id="@+id/container_search"
+                        android:layout_width="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:paddingStart="@dimen/_12sdp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_search_new" />
+
+                    </FrameLayout>
+
+
+                    <EditText
+                        android:id="@+id/edt_search"
+                        style="@style/et_custom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/container_search"
+                        android:autofillHints="false"
+                        android:background="@null"
+                        android:hint="@string/search_your_house"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/gray_dark"
+                        android:textSize="@dimen/_10sdp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </RelativeLayout>
+
+
+
+                <FrameLayout
+                    android:id="@+id/container_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_border_grey"
+                    app:layout_constraintBottom_toBottomOf="@+id/serchSec"
+                    app:layout_constraintStart_toEndOf="@+id/serchSec"
+                   app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/serchSec">
+
+                    <ImageView
+                        android:id="@+id/iv_sort"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="15dp"
+                        android:contentDescription="@string/content_description"
+                        android:src="@drawable/ic_arrows_exchange_alt_v" />
+
+                </FrameLayout>
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/iv_status"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:padding="17dp"-->
+<!--                    android:contentDescription="@string/content_description"-->
+<!--                    android:src="@drawable/ic_icon_awesome_sort"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/serchSec"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    android:background="@drawable/bg_border_grey"-->
+<!--                    app:layout_constraintLeft_toRightOf="@id/container_sort"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/serchSec"/>-->
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginVertical="8dp"
+                android:padding="@dimen/_10sdp"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/grey_back"
+                android:background="@drawable/bg_border_grey"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_shop_quality"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    style="@style/tvReg"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_11sdp"
+                    tools:text="@string/orders_found"/>
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
-        android:id="@+id/refreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srl_direction="both"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_shop"
+         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:scrollbars="none"/>
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/tvShops"
+            android:orientation="vertical">
 
-    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+            <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srl_direction="both"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:clipToPadding="false" />
+
+            </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20sdp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_new_shop"
@@ -96,7 +183,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="@dimen/dimen_2x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_add_white"
         android:theme="@style/AppTheme.FloatingAccentButtonOverlay" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <ImageView
+        android:id="@+id/iv_show_more"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_arrow_dwn_new"
+        android:visibility="gone"
+        android:padding="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

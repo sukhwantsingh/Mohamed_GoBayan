@@ -25,7 +25,9 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,13 +70,13 @@ public class DeliveryInfoFragment extends BaseFragment implements
 
     private View view;
     private ImageView btnBack;
-    private EditText txtBuyerName, txtBuyerEmail, txtBuyerPhone, txtBuyerAddress, txtBuyerCity, txtBuyerZipCode;
+    private String txtBuyerName, txtBuyerEmail, txtBuyerPhone, txtBuyerAddress, txtBuyerCity, txtBuyerZipCode;
     private EditText txtReceiverName, txtReceiverEmail, txtReceiverPhone, txtReceiverAddress, txtReceiverCity, txtReceiverZipCode;
-    private CheckBox ckbSameAsBuyerInfo;
-    private Button btnContinue;
-    private TextView lblTotal;
+    private Switch ckbSameAsBuyerInfo;
+    private TextView btnContinue;
+    private TextView lblTotal,tvShopAddress;
     private Spinner spnPaymentMethods;
-    private LinearLayout layoutDeliveryInformation;
+    private RelativeLayout layoutDeliveryInformation;
     private PaymentMethodAdapter paymentMethodAdapter;
     private int selectedPaymentMethod = 0;
     private String data;
@@ -102,25 +104,20 @@ public class DeliveryInfoFragment extends BaseFragment implements
     private void initUI(View view) {
         layoutDeliveryInformation = view.findViewById(R.id.layoutDeliveryInformation);
         btnContinue = view.findViewById(R.id.btnContinue);
-        btnBack = (ImageView) view.findViewById(R.id.btnBack);
-        lblTotal = (TextView) view.findViewById(R.id.lblTotal);
-        spnPaymentMethods = (Spinner) view.findViewById(R.id.spnPaymentMethods);
+        btnBack =  view.findViewById(R.id.btnBack);
+        lblTotal =  view.findViewById(R.id.lblTotal);
+        tvShopAddress =  view.findViewById(R.id.tv_shop_address);
+        spnPaymentMethods =  view.findViewById(R.id.spnPaymentMethods);
 
-        txtBuyerName = (EditText) view.findViewById(R.id.txtBuyerName);
-        txtBuyerEmail = (EditText) view.findViewById(R.id.txtBuyerEmail);
-        txtBuyerPhone = (EditText) view.findViewById(R.id.txtBuyerPhone);
-        txtBuyerAddress = (EditText) view.findViewById(R.id.txtBuyerAddress);
-        txtBuyerCity = (EditText) view.findViewById(R.id.txtBuyerCity);
-        txtBuyerZipCode = (EditText) view.findViewById(R.id.txtBuyerZipcode);
         //Receiver info
-        txtReceiverName = (EditText) view.findViewById(R.id.txtReceiverName);
-        txtReceiverEmail = (EditText) view.findViewById(R.id.txtReceiverEmail);
-        txtReceiverPhone = (EditText) view.findViewById(R.id.txtReceiverPhone);
-        txtReceiverAddress = (EditText) view.findViewById(R.id.txtReceiverAddress);
-        txtReceiverCity = (EditText) view.findViewById(R.id.txtReceiverCity);
-        txtReceiverZipCode = (EditText) view.findViewById(R.id.txtReceiverZipcode);
+        txtReceiverName =  view.findViewById(R.id.txtReceiverName);
+        txtReceiverEmail =  view.findViewById(R.id.txtReceiverEmail);
+        txtReceiverPhone =  view.findViewById(R.id.txtReceiverPhone);
+        txtReceiverAddress =  view.findViewById(R.id.txtReceiverAddress);
+        txtReceiverCity = view.findViewById(R.id.txtReceiverCity);
+        txtReceiverZipCode =  view.findViewById(R.id.txtReceiverZipcode);
 
-        ckbSameAsBuyerInfo = (CheckBox) view.findViewById(R.id.ckbSameAsBuyerInfo);
+        ckbSameAsBuyerInfo =  view.findViewById(R.id.ckbSameAsBuyerInfo);
         edtAddRequirement = view.findViewById(R.id.edt_add_requirement);
 
     }
@@ -128,17 +125,13 @@ public class DeliveryInfoFragment extends BaseFragment implements
     private void initControls() {
         btnBack.setOnClickListener(this);
         btnContinue.setOnClickListener(this);
-        ckbSameAsBuyerInfo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                updateReceiverInformation(b);
-            }
-        });
+
+        ckbSameAsBuyerInfo.setOnCheckedChangeListener((compoundButton, b) -> updateReceiverInformation(b));
+
         spnPaymentMethods.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 1) {
                     selectedPaymentMethod = position + 5;
                     layoutDeliveryInformation.setVisibility(View.GONE);
@@ -203,18 +196,23 @@ public class DeliveryInfoFragment extends BaseFragment implements
 
     @Override
     public void refreshContent() {
-        txtBuyerName.setText(GlobalValue.myAccount.getFull_name());
-        txtBuyerEmail.setText(GlobalValue.myAccount.getEmail());
-        txtBuyerPhone.setText(GlobalValue.myAccount.getPhone());
-        txtBuyerAddress.setText(GlobalValue.myAccount.getAddress());
-        txtBuyerCity.setText(GlobalValue.myAccount.getCity());
-        txtBuyerZipCode.setText(GlobalValue.myAccount.getZipCode());
-        //show total Price
+        txtBuyerName = GlobalValue.myAccount.getFull_name();
+        txtBuyerEmail = GlobalValue.myAccount.getEmail();
+        txtBuyerPhone = GlobalValue.myAccount.getPhone();
+        txtBuyerAddress = GlobalValue.myAccount.getAddress();
+        txtBuyerCity = GlobalValue.myAccount.getCity();
+        txtBuyerZipCode = GlobalValue.myAccount.getZipCode();
+
+        // set on textView shop address
+        tvShopAddress.setText(txtBuyerName+ ", " + txtBuyerEmail + ", " + txtBuyerPhone + ", " + txtBuyerAddress + ", " + txtBuyerCity + ", " + txtBuyerZipCode);
+
+
+        // Show total Price
         showTotalPrice();
-        //set payment method data
+        // Set payment method data
         setPaymentMethodData();
         ckbSameAsBuyerInfo.setSelected(false);
-        //updateReceiverInformation(ckbSameAsBuyerInfo.isSelected());
+        // updateReceiverInformation(ckbSameAsBuyerInfo.isSelected());
     }
 
     private void updateReceiverInformation(boolean selectedSameAsBuyer) {
@@ -237,10 +235,9 @@ public class DeliveryInfoFragment extends BaseFragment implements
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
         if (v == btnContinue) {
-            onClickOrder();
-
+          //  onClickOrder();
+            gotoActivity(OrderDetailsAfterDeliveryInfo.class);
         } else if (v == btnBack) {
             // hidden keyboard :
             hiddenKeyboard();
@@ -250,12 +247,10 @@ public class DeliveryInfoFragment extends BaseFragment implements
     }
 
     private void onClickOrder() {
-        // TODO Auto-generated method stub
         //check receiverName
-
-        if (selectedPaymentMethod==6){
-            data=createOfferJson(GlobalValue.arrMyMenuShop,"","","","","","", "");
-        }else {
+        if (selectedPaymentMethod == 6){
+            data = createOfferJson(GlobalValue.arrMyMenuShop,"","","","","","", "");
+        } else {
             String receiverName = txtReceiverName.getText().toString();
             if (StringUtility.isEmpty(receiverName)) {
                 Toast.makeText(getCurrentActivity(),
@@ -334,7 +329,6 @@ public class DeliveryInfoFragment extends BaseFragment implements
 
                     @Override
                     public void onSuccess(Object object) {
-                        // TODO Auto-generated method stub
                         String strJson = (String) object;
                         try {
                             JSONObject json = new JSONObject(strJson);

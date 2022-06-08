@@ -101,7 +101,7 @@
                         android:hint="@string/search_your_house"
                         android:imeOptions="actionDone"
                         android:inputType="text"
-                        android:padding="13dp"
+                        android:padding="12dp"
                         android:singleLine="true"
                         android:textColorHint="@color/gray_dark"
                         android:textSize="@dimen/_10sdp" />
@@ -122,6 +122,7 @@
                     <ImageView
                         android:layout_width="@dimen/_18sdp"
                         android:layout_height="@dimen/_18sdp"
+                        android:padding="2dp"
                         android:src="@drawable/ic_icon_awesome_sort" />
 
                 </LinearLayout>
@@ -187,112 +188,19 @@
             android:id="@+id/lsvFood"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="20dp"
             android:clipToPadding="false" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-
-    <LinearLayout
-        android:id="@+id/layout_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_7x"
-        android:background="@color/background_new"
-        android:layout_gravity="bottom"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/tab_home"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_3x"
-                android:layout_height="@dimen/dimen_3x"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_hom0e" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_search"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_3x"
-                android:layout_height="@dimen/dimen_3x"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_sear8ch" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_cart"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_3x"
-                android:layout_height="@dimen/dimen_3x"
-                android:layout_weight="1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_cart_6" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_profile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_3x"
-                    android:layout_height="@dimen/dimen_3x"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_profile5" />
-
-                <TextView
-                    android:id="@+id/tv_order_new_number_tab"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:background="@drawable/bg_order_new_number"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    tools:text="1"
-                    android:visibility="gone"
-                    tools:visibility="visible"/>
-            </FrameLayout>
-
-
-        </LinearLayout>
-    </LinearLayout>
-
     <ImageView
         android:id="@+id/iv_show_more"
         android:layout_width="@dimen/dp_60"
         android:layout_height="@dimen/dp_60"
-        android:layout_gravity="left|bottom"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="70dp"
-        android:src="@drawable/ic_arrow_down_3"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_arrow_dwn_new"
         android:visibility="gone"
         android:padding="2dp"
         tools:visibility="visible" />

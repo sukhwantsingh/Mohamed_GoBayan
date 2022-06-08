@@ -13,7 +13,6 @@
         android:layout_height="wrap_content">
 
 
-
         <ImageView
             android:id="@+id/imgShop"
             android:layout_width="match_parent"
@@ -150,6 +149,8 @@
                 android:maxLines="3"
                 android:text="VAT 10%"
                 android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

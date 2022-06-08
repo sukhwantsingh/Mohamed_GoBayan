@@ -3,10 +3,10 @@
     android:id="@+id/show"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_foood_details">
+    >
 
     <LinearLayout
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -15,7 +15,7 @@
             android:id="@+id/layoutHeader"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_7x"
-            android:background="@color/primary_dark"
+            android:background="@color/blue_button"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 

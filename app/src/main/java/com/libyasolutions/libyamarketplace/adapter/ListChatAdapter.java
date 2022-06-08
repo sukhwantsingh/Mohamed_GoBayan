@@ -122,7 +122,7 @@ public class ListChatAdapter extends BaseAdapter {
     }
 
     public static class HolderView {
-        CircleImageView imageAvatar;
+        ImageView imageAvatar;
         TextView txtContent, txtNewMsg, txtDate;
         ImageView imgStatus, imgStatusNew;
         TextView tvCountMessage;

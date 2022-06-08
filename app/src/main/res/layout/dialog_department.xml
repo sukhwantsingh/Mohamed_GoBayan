@@ -7,13 +7,14 @@
     android:background="@drawable/bg_dialog"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
+    <TextView
         android:id="@+id/tv_department_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/the_departments"
-        android:textSize="18sp"
+        android:textSize="15dp"
         android:textColor="@color/black"
+        style="@style/tvMedium"
         android:padding="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@drawable/bg_red_button_with_border"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_department_title"
         app:layout_constraintRight_toRightOf="parent"/>
 
@@ -35,42 +36,61 @@
         android:clipToPadding="false"
         android:scrollbars="none"
         android:padding="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_divider"/>
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_department_category"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/bg_red_button_with_border"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_department"
-        app:layout_constraintRight_toRightOf="parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_department">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ic_arrow_down_2"
-            android:layout_marginLeft="16dp"
-            android:contentDescription="@string/content_description"
-            android:scaleType="fitXY"
-            app:layout_constraintLeft_toLeftOf="parent"
+        <RelativeLayout
+            android:layout_width="200dp"
+            android:layout_height="38dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_border_grey">
 
-        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/choose_category"
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            <EditText
+                style="@style/tvMedium"
+                android:layout_width="match_parent"
+                android:background="@null"
+                android:focusable="false"
+                android:layout_centerVertical="true"
+                android:clickable="false"
+                android:layout_marginStart="12dp"
+                android:layout_toStartOf="@+id/ivar"
+                android:textSize="12dp"
+                android:text="@string/select_category"
+                android:textColor="@color/black" />
+
+
+            <ImageView
+                android:id="@+id/ivar"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="8dp"
+                android:background="@drawable/background_border"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/ic_arrow_down" />
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -80,6 +100,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/btn_no"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/container_department_category">
 
@@ -89,6 +110,8 @@
             android:layout_height="200dp"
             android:clipToPadding="false"
             android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             android:padding="10dp"
             tools:visibility="visible" />
 
@@ -96,7 +119,7 @@
             android:id="@+id/iv_arrow_bottom"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_arrow_down_3"
+            android:src="@drawable/ic_arrow_dwn_new"
             android:layout_margin="16dp"
             android:layout_gravity="left|bottom"
             android:visibility="gone"
@@ -105,36 +128,36 @@
     </FrameLayout>
 
 
-    <com.libyasolutions.libyamarketplace.widget.MyButton
+    <Button
         android:id="@+id/btn_no"
         android:layout_width="0dp"
         android:layout_height="44dp"
-        android:background="@drawable/bg_white_border_red"
+        android:background="@drawable/bg_white_border_gray"
         android:text="@string/text_cancel"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:textSize="22sp"
+        android:layout_marginHorizontal="10dp"
+        android:textSize="14dp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@id/container_department_category"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_category"
-        app:layout_constraintRight_toLeftOf="@id/btn_search"/>
+        app:layout_constraintEnd_toStartOf="@id/btn_search"/>
 
-    <com.libyasolutions.libyamarketplace.widget.MyButton
+    <Button
         android:id="@+id/btn_search"
         android:layout_width="0dp"
         android:layout_height="44dp"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/bg_red_button_with_border"
         android:text="@string/text_search"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:textColor="@color/white"
-        android:textSize="22sp"
         android:textAllCaps="false"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_no"
-        app:layout_constraintLeft_toRightOf="@id/btn_no"/>
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintStart_toEndOf="@id/btn_no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_no" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

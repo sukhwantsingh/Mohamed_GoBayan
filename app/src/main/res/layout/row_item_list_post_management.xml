@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_5sdp">
+
+    <View
+        android:id="@+id/viewFirst"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_dark"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainSec"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewFirst">
+
+        <TextView
+            android:id="@+id/tv_edit_post"
+            style="@style/tvReg"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_red_button_with_border"
+            android:backgroundTint="@color/blue_button"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_8sdp"
+            android:text="@string/edit_post"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_delete_post"
+            style="@style/tvReg"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/blue_outline_gradient"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_8sdp"
+            android:text="@string/delete"
+            android:textColor="@color/blue_button"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_edit_post" />
+
+        <TextView
+            android:id="@+id/tv_post_date"
+            style="@style/tvReg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_edit_post"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Autem Vel: 18/02/2022" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="2"
+            android:textColor="@color/grey_sub_heading"
+            android:textSize="12dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/tv_post_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_post_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_post_date"
+            tools:text="Part of post text Part of post text Part of post text Part of post text" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            style="@style/tvReg"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/bg_red_border"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_3sdp"
+            android:textSize="11dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_delete_post"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_delete_post"
+            android:layout_marginEnd="24dp"
+            tools:text="Deactivate" />
+
+        <ToggleButton
+            android:id="@+id/chatToggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="chat"
+            android:textOff="Chat Off"
+            android:textOn="Chat On"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@color/gray_dark"
+        app:layout_constraintTop_toBottomOf="@+id/mainSec" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

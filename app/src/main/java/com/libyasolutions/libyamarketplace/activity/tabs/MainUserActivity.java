@@ -52,7 +52,6 @@ public class MainUserActivity extends FragmentActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         // Set view
         mySharedPreferences = new MySharedPreferences(this);

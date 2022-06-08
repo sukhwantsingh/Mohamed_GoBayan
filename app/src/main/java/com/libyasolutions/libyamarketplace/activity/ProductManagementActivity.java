@@ -11,6 +11,8 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +59,7 @@ public class ProductManagementActivity extends BaseActivity implements View.OnCl
     private RecyclerView rcvProduct;
     private TextView tvProductQuality;
     private FrameLayout containerSearch;
-    private FrameLayout containerSort;
+    private LinearLayout containerSort;
     private ImageView ivSort;
     private EditText edtSearch;
     private ImageView ivShowMore;
@@ -126,16 +129,13 @@ public class ProductManagementActivity extends BaseActivity implements View.OnCl
         rcvProduct.setAdapter(productManagementAdapter);
 
         // update product
-        productManagementAdapter.setOnItemClickListener(new AdapterListener.onItemClickListener() {
-            @Override
-            public void onclick(View view, int position) {
-                Menu product = listProducts.get(position);
-                Intent intent1 = new Intent(self, AddNewProductActivityV2.class);
-                intent1.putExtra(Constant.PRODUCT_OBJ, product);
-                intent1.putExtra(Constant.SHOP_ID, shopId);
-                GlobalValue.currentProduct = product;
-                startActivity(intent1);
-            }
+        productManagementAdapter.setOnItemClickListener((view, position) -> {
+            Menu product = listProducts.get(position);
+            Intent intent1 = new Intent(self, AddNewProductActivityV2.class);
+            intent1.putExtra(Constant.PRODUCT_OBJ, product);
+            intent1.putExtra(Constant.SHOP_ID, shopId);
+            GlobalValue.currentProduct = product;
+            startActivity(intent1);
         });
 
         // delete this product
@@ -228,13 +228,12 @@ public class ProductManagementActivity extends BaseActivity implements View.OnCl
                         ivShowMore.setVisibility(View.GONE);
                     }
                     productManagementAdapter.notifyDataSetChanged();
-                    String productCount = String.valueOf(ParserUtility.ParseCount(object.toString()));
-                    tvProductQuality.setText(getString(R.string.product_found, productCount));
+                    String productCount = "<b>" + ParserUtility.ParseCount(object.toString()) + "</b>";
+                    tvProductQuality.setText(Html.fromHtml(getString(R.string.product_found, productCount)));
                 }
 
                 @Override
                 public void onError(VolleyError error) {
-                    // TODO Auto-generated method stub
                     Toast.makeText(self, ErrorNetworkHandler.processError(error), Toast.LENGTH_LONG).show();
                 }
             });
@@ -286,10 +285,10 @@ public class ProductManagementActivity extends BaseActivity implements View.OnCl
                 break;
             case R.id.container_sort: {
                 if (sortBy.equals(ConstantApp.SORT_TYPE_ASC)) {
-                    ivSort.setImageResource(R.drawable.ic_sort_desending);
+                    ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
                     sortBy = ConstantApp.SORT_TYPE_DESC;
                 } else if (sortBy.equals(ConstantApp.SORT_TYPE_DESC)) {
-                    ivSort.setImageResource(R.drawable.ic_sort_assending);
+                    ivSort.setImageResource(R.drawable.ic_arrow_exchange_alt_v_up);
                     sortBy = ConstantApp.SORT_TYPE_ASC;
                 }
                 break;

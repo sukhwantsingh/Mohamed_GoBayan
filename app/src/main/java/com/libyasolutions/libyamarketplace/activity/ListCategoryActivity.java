@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,7 +34,7 @@ public class ListCategoryActivity extends BaseActivity implements
     private TextView lblShopName;
     private ImageView btnBack;
     private ArrayList<Category> arrCategories = new ArrayList<Category>();
-    private ListView lsvCategory;
+    private GridView lsvCategory;
     private ListCategoryAdapter categoryAdapter;
     private int shopId = -1;
     private String shopName = "";
@@ -60,7 +61,7 @@ public class ListCategoryActivity extends BaseActivity implements
         ivShowMore = findViewById(R.id.iv_show_more);
         swipyRefreshLayout = findViewById(R.id.refreshLayout);
 
-        lsvCategory = (ListView) findViewById(R.id.lsvCategory);
+        lsvCategory = (GridView) findViewById(R.id.lsvCategory);
         lblShopName = (TextView) findViewById(R.id.tvNameShop);
         btnBack = (ImageView) findViewById(R.id.btnBack);
     }

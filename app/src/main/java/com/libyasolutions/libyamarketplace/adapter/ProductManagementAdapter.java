@@ -46,21 +46,37 @@ public class ProductManagementAdapter extends RecyclerView.Adapter<ProductManage
         holder.tvProductName.setText(product.getName());
         holder.tvDescription.setText(product.getDescription());
 
+//        if (product.getStatus().equals("1")) {
+//            holder.tvStatus.setText(context.getResources().getString(R.string.active));
+//            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.red));
+//            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_red_border));
+//
+//            holder.tvDeleteProduct.setEnabled(true);
+//        } else {
+//            holder.tvStatus.setText(context.getResources().getString(R.string.inactive));
+//            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.gray_light));
+//            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_gray_border));
+//
+//            holder.tvDeleteProduct.setEnabled(false);
+//        }
+
+
         if (product.getStatus().equals("1")) {
             holder.tvStatus.setText(context.getResources().getString(R.string.active));
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.red));
-            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_red_border));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.active_color));
+            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.background_border_green));
 
             holder.tvDeleteProduct.setEnabled(true);
         } else {
             holder.tvStatus.setText(context.getResources().getString(R.string.inactive));
-            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.gray_light));
-            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_gray_border));
+            holder.tvStatus.setTextColor(context.getResources().getColor(R.color.red));
+            holder.tvStatus.setBackground(context.getResources().getDrawable(R.drawable.bg_red_border));
 
             holder.tvDeleteProduct.setEnabled(false);
         }
+
         holder.tvPrice.setText(product.getPrice() + " " + context.getResources().getString(R.string.currency));
-        holder.tvProductCode.setText(product.getCode());
+        holder.tvProductCode.setText("Code: "+product.getCode());
 
         Glide.with(context).load(product.getImage()).into(holder.ivProduct);
 

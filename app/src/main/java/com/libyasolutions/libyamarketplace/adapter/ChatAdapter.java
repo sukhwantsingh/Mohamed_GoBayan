@@ -296,7 +296,6 @@ public class ChatAdapter extends BaseAdapter implements InternetConnectivityList
 
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
-        // TODO Auto-generated method stub
         final HolderView holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_chat_sender, null);
@@ -308,12 +307,16 @@ public class ChatAdapter extends BaseAdapter implements InternetConnectivityList
 
         holder.txtMessage = convertView.findViewById(R.id.txtMessage);
         holder.txtMessageRight = convertView.findViewById(R.id.txtMessageRight);
+
         holder.chatLeft = convertView.findViewById(R.id.chatLeft);
         holder.chatRight = convertView.findViewById(R.id.chatRight);
+
         holder.chatRightContainer = convertView.findViewById(R.id.chatRightContainer);
         holder.chatLeftContainer = convertView.findViewById(R.id.chatLeftContainer);
+
         holder.imgAvatarLeft = convertView.findViewById(R.id.imgAvatarLeft);
         holder.imgAvatarRight = convertView.findViewById(R.id.imgAvatarRigt);
+
         holder.txtDateRight = convertView.findViewById(R.id.txtDateRight);
         holder.txtDateLeft = convertView.findViewById(R.id.txtDateLeft);
 

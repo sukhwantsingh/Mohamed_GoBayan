@@ -6,18 +6,20 @@
     <color name="cl_BlueNumber">#2c8ab3</color>
     <color name="cl_normalText">#515151</color>
     <color name="cl_white">#ffffff</color>
+
     <!-- <color name="green">#009900</color> -->
     <!-- <color name="orange">#ffb533</color> -->
     <color name="cl_orange">#f0de13</color>
     <color name="cl_bottom">#e8ebec</color>
     <color name="purple">#204365</color>
     <color name="blue_facebook">#3b579d</color>
-    <color name="blue_search">#0a85c2</color>
+    <color name="blue_search">#4975E9</color>
     <color name="blue_type_stop_result">#0db4ef</color>
     <color name="gray_search">#999999</color>
     <color name="gray_light">#e1e1e1</color>
     <color name="green">#23a400</color>
     <color name="red">#ed2a2c</color>
+    <color name="red2">#F00F32</color>
     <color name="transparent">#00000000</color>
     <color name="orange">#ed8305</color>
     <color name="text_shadow_2">#7F000000</color>
@@ -27,6 +29,7 @@
     <color name="yellow">#FFFF00</color>
     <color name="yellow_gray">#FFD700</color>
     <color name="black">#000000</color>
+    <color name="black_heading">#0C243E</color>
     <color name="processorder">#ae09c7</color>
     <color name="neworder">#0d4aca</color>
     <color name="cancelorder">#cf2c16</color>
@@ -40,8 +43,8 @@
 
     <!-- Material palette -->
     <color name="gray_home_bottom">#B6B6B6</color>
-    <color name="primary">#00BCD4</color>
-    <color name="primary_dark">#860000</color>
+    <color name="primary">#4975E9</color>
+    <color name="primary_dark">#4975E9</color>
     <color name="tab_selected_color">#3068c7</color>
     <color name="tab_unselected_color">#212121</color>
     <color name="main_button_color">#ffaa40</color>
@@ -67,7 +70,7 @@
     <color name="background_new">#666666</color>
     <color name="main_color_gray">#EDEDED</color>
     <color name="lite_blue">#359ff2</color>
-    <color name="message">#148BFD</color>
+    <color name="message">#4975E9</color>
     <color name="bgGuest">#f1f0f0</color>
     <color name="bgGuestText">#212121</color>
     <color name="black_overlay_367c7c7c">#367c7c7c</color>
@@ -83,6 +86,7 @@
     <color name="color_dark_blue">#4975E9</color>
     <color name="color_dark_grey">#aaaaaa</color>
     <color name="color_light_grey">#c3c3c3</color>
+    <color name="color_light_grey2">#EAEAEA</color>
     <color name="color_blue_greenish">#0C243E</color>
     <color name="border_color">#EEEEEE</color>
     <color name="border_gray">#dddddd</color>
@@ -90,10 +94,14 @@
     <color name="border_light_blue">#f5f5f5</color>
     <color name="border_light_blue_two">#efefef</color>
     <color name="blue_button">#4975E9</color>
-    <color name="blue_dark_button">#4975e9</color>
+    <color name="blue_dark_button">#4975E9</color>
     <color name="grey_back">#F5F5F5</color>
     <color name="dark_gray_color">#818181</color>
     <color name="grey_sub_heading">#888888</color>
+    <color name="back_dropdwon">#F5F7FC</color>
+    <color name="active_color">#50B72A</color>
+    <color name="filter_blue">#B0D0EF</color>
+    <color name="filter_blue_shade">#ECF1FD</color>
 
 
 </resources>

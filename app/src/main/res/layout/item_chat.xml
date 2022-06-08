@@ -2,23 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/dimen_1x">
+        android:padding="10dp">
 
         <RelativeLayout
-            android:layout_width="40dp"
-            android:layout_height="40dp">
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgAvatar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/avatar_default" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mainSection"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/imgAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/back_blue_with_gray_border"
+                    android:src="@color/gray_light" />
+
+            </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/imgStatus"
@@ -32,47 +44,61 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dimen_1x"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="@dimen/dimen_1x"
             android:orientation="vertical">
 
             <RelativeLayout
+                android:id="@+id/rl_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                <TextView
                     android:id="@+id/txtContent"
-                    android:layout_width="wrap_content"
+                    style="@style/tvMedium"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/txtDate"
+                    android:singleLine="true"
                     android:text="userName"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/blue_button"
+                    android:textSize="15dp" />
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                <TextView
                     android:id="@+id/txtDate"
+                    style="@style/tvReg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_alignParentEnd="true"
                     android:text="2017"
-                    android:textColor="@color/secondary_text" />
+                    android:textColor="@color/secondary_text"
+                    android:textSize="11dp" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="6dp"
                 android:layout_height="wrap_content">
 
-                <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                <TextView
                     android:id="@+id/txtNewMsg"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="new msg"
+                    android:text="description"
+                    style="@style/tvReg"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_toStartOf="@+id/relativeLayout"
+                    android:textSize="13dp"
                     android:textColor="@color/secondary_text" />
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
+                 android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dimen_2x">
 
@@ -85,7 +111,7 @@
                         android:layout_alignParentTop="true"
                         android:visibility="gone" />
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish
+                    <TextView
                         android:id="@+id/tvCountMessage"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
@@ -97,7 +123,7 @@
 
 
                 </RelativeLayout>
-                <!--<com.libyasolutions.libyamarketplace.widget.TextViewFontEnglish-->
+                <!--<TextView-->
                 <!--android:id="@+id/txtDate"-->
                 <!--android:layout_width="wrap_content"-->
                 <!--android:layout_height="wrap_content"-->

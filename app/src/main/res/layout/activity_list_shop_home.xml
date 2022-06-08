@@ -58,11 +58,12 @@
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/toolSec">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_marginVertical="@dimen/_15sdp"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -132,9 +133,9 @@
                                 android:id="@+id/imageFilter"
                                 android:layout_width="@dimen/_43sdp"
                                 android:layout_height="@dimen/_43sdp"
-                                android:padding="14dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@string/content_description"
+                                android:padding="14dp"
                                 android:src="@drawable/ic_filter_icon_new" />
 
 
@@ -166,10 +167,10 @@
                                 android:src="@drawable/ic_location_b_new" />
 
                             <TextView
-                                style="@style/tvReg"
-                                android:layout_marginStart="@dimen/_10sdp"
+                                style="@style/tvMedium"
+                                android:layout_marginStart="8dp"
                                 android:text="@string/my_location"
-                                android:textSize="@dimen/_9sdp"
+                                android:textSize="12dp"
                                 android:textColor="@color/blue_dark_button" />
 
 
@@ -193,10 +194,10 @@
                                 android:src="@drawable/ic_icon_awesome_sort" />
 
                             <TextView
-                                style="@style/tvReg"
-                                android:layout_marginStart="@dimen/_15sdp"
+                                style="@style/tvMedium"
+                                android:layout_marginStart="8dp"
                                 android:text="@string/sort_by"
-                                android:textSize="@dimen/_9sdp"
+                                android:textSize="12dp"
                                 android:textColor="@color/blue_dark_button" />
 
 
@@ -428,13 +429,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="14dp"
-                    android:layout_marginVertical="@dimen/_10sdp"
                     android:padding="@dimen/_10sdp"
                     android:gravity="center_horizontal"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_gravity="center_horizontal"
-                    android:backgroundTint="@color/border_gray"
+                    android:backgroundTint="@color/grey_back"
                     android:background="@drawable/bg_border_grey"
                     android:orientation="horizontal">
 
@@ -470,25 +470,28 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="56dp"
             android:layout_marginHorizontal="6dp"
             android:paddingTop="@dimen/_15sdp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_bar"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="6dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rclViewShop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:clipToPadding="false"
                 android:orientation="vertical" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
         <ImageView
             android:id="@+id/iv_show_more"
@@ -497,108 +500,12 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="16dp"
             android:padding="2dp"
-            android:src="@drawable/ic_arrow_down_3"
+            android:src="@drawable/ic_arrow_dwn_new"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/layout_bottom"
+           app:layout_constraintBottom_toBottomOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <LinearLayout
-            android:id="@+id/layout_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_7x"
-            android:background="@color/background_new"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
 
-
-            <LinearLayout
-                android:id="@+id/tab_home"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_3x"
-                    android:layout_height="@dimen/dimen_3x"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_hom0e" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tab_search"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_3x"
-                    android:layout_height="@dimen/dimen_3x"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_sear8ch" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tab_cart"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_3x"
-                    android:layout_height="@dimen/dimen_3x"
-                    android:layout_weight="1"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_cart_6" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tab_profile"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="@dimen/dimen_3x"
-                        android:layout_height="@dimen/dimen_3x"
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/ic_profile5" />
-
-                    <TextView
-                        android:id="@+id/tv_order_new_number_tab"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="5dp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:background="@drawable/bg_order_new_number"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        tools:text="1"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
-
-                </FrameLayout>
-
-
-            </LinearLayout>
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

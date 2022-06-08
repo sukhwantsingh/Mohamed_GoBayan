@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layoutRowOffer"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="15dp"
+    app:cardPreventCornerOverlap="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/app_margin"
         android:background="@drawable/bg_custom_spinner"
-        android:orientation="horizontal"
-        android:padding="@dimen/dimen_1x">
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_width="@dimen/width_image_map"
-            android:layout_height="@dimen/width_image_map">
+            android:id="@+id/mainImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp">
 
             <ProgressBar
                 android:id="@+id/progess"
@@ -28,7 +30,8 @@
                 android:id="@+id/imgShop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/shopimagetwo" />
 
             <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
                 android:id="@+id/lblOpenHourStatus"
@@ -39,27 +42,56 @@
                 android:background="@color/text_shadow_2"
                 android:padding="@dimen/dimen_05x"
                 android:text="CLOSED"
+                android:visibility="gone"
                 android:textColor="@color/cl_white"
                 android:textSize="@dimen/dimen_x1x" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mainImage"
+            android:paddingVertical="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/shopLogoImage"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/shoplogo" />
+
+            <TextView
+                android:id="@+id/lblShopName"
+                style="@style/tvBold"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/shopLogoImage"
+                android:paddingStart="@dimen/_5sdp"
+                android:text="@string/shop_name"
+                android:textColor="@color/color_blue_greenish"
+                android:textSize="@dimen/_12sdp" />
+
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             android:layout_marginLeft="@dimen/dimen_1x"
             android:orientation="vertical">
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                android:id="@+id/lblShopName"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="top|left"
-                android:textSize="@dimen/text_size_normal" />
+            <!--            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1-->
+            <!--                android:id="@+id/lblShopName"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="0dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:gravity="top|left"-->
+            <!--                android:textSize="@dimen/text_size_normal" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -152,4 +184,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

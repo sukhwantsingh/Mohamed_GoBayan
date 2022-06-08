@@ -1,54 +1,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background_color"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/layoutHeader"
+    <RelativeLayout
+        android:id="@+id/rlt_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_7x"
-        android:background="@color/red_button"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="?actionBarSize">
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="@dimen/dimen_3x"
-            android:layout_height="@dimen/dimen_x3x"
-            android:layout_marginLeft="@dimen/dimen_1x"
-            android:layout_marginRight="@dimen/dimen_1x"
-            android:background="@drawable/ic_chevron_right_black_24dp" />
+            android:layout_width="@dimen/_29sdp"
+            android:layout_height="@dimen/_29sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/background_border"
+            android:padding="12dp"
+            android:src="@drawable/ic_back_arrow_new" />
 
-        <LinearLayout
-            android:id="@+id/layoutTopRight"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/lblShopName"
+            style="@style/tvBold"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_centerInParent="true"
+            android:singleLine="true"
+            android:text="@string/shop_name"
+            android:textColor="@color/black_heading"
+            android:textSize="15dp" />
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH1
-                android:id="@+id/lblShopName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="shop 1"
-                android:textColor="@color/cl_white"
-                android:textSize="@dimen/text_size_large" />
+    </RelativeLayout>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
-                android:id="@+id/lblAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="@dimen/dimen_05x"
-                android:text="@string/map"
-                android:textColor="@color/cl_white"
-                android:textSize="@dimen/dimen_2x" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <fragment
-        android:id="@+id/map"
-        class="com.google.android.gms.maps.SupportMapFragment"
+    <TextView
+        android:id="@+id/lblAddress"
+        style="@style/tvReg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="@string/map"
+        android:textColor="@color/grey_sub_heading"
+        android:background="@drawable/background_border"
+        android:drawablePadding="8dp"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:textSize="12dp"
+        app:drawableStartCompat="@drawable/ic_location_b_new" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="16dp"
+        android:background="@drawable/background_border"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"   />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            app:fabSize="normal"
+            android:id="@+id/fab_map"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/directions_blue_icon"
+            android:tint="@color/white"
+            android:layout_height="wrap_content"/>
+
+
+    </RelativeLayout>
 </LinearLayout>

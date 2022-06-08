@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -32,10 +33,10 @@ import org.json.JSONObject;
 public class EditProfileActivity extends BaseActivity implements OnClickListener {
 
     public static final String MESSAGE_SUCCESS = "success";
-    private EditText txtPass, txtRePass, txtEmail, txtFullName,
+    private EditText txtPass, txtEmail, txtFullName,
             txtPhone, txtAddress, txtCity, txtZipCode;
     private EditText txtUserName;
-    private Button btnUpdate;
+    private TextView btnUpdate,lblTitle;
     private ImageView btnBack;
     private Account accountTemp = null;
 
@@ -49,8 +50,9 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     }
 
     private void initData() {
+         lblTitle.setText("");
 
-        if (GlobalValue.myAccount != null) {
+         if (GlobalValue.myAccount != null) {
             try {
                 accountTemp = GlobalValue.myAccount.clone();
             } catch (CloneNotSupportedException e) {
@@ -70,17 +72,17 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
     }
 
     private void initUI() {
-        txtUserName = (EditText) findViewById(R.id.txtUserName);
-        txtPass = (EditText) findViewById(R.id.txtPassWord);
-        txtRePass = (EditText) findViewById(R.id.txtRePassWord);
-        txtEmail = (EditText) findViewById(R.id.txtEmail);
-        txtFullName = (EditText) findViewById(R.id.txtFullName);
-        txtPhone = (EditText) findViewById(R.id.txtPhone);
-        txtAddress = (EditText) findViewById(R.id.txtAddress);
-        txtCity = (EditText) findViewById(R.id.txtCity);
-        txtZipCode = (EditText) findViewById(R.id.txtZipcode);
-        btnBack = (ImageView) findViewById(R.id.btnBack);
-        btnUpdate = (Button) findViewById(R.id.btnRegister);
+        lblTitle =  findViewById(R.id.lblTitle);
+        txtUserName =  findViewById(R.id.txtUserName);
+        txtPass = findViewById(R.id.txtPassWord);
+        txtEmail =  findViewById(R.id.txtEmail);
+        txtFullName = findViewById(R.id.txtFullName);
+        txtPhone =  findViewById(R.id.txtPhone);
+        txtAddress =  findViewById(R.id.txtAddress);
+        txtCity =findViewById(R.id.txtCity);
+        txtZipCode =  findViewById(R.id.txtZipcode);
+        btnBack = findViewById(R.id.imageBack);
+        btnUpdate =  findViewById(R.id.btnRegister);
         btnUpdate.setText(getString(R.string.update));
 
     }
@@ -92,7 +94,6 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
         if (v == btnUpdate) {
             String message = validateForm();
             if (!message.equals(MESSAGE_SUCCESS)) {
@@ -123,13 +124,13 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
 
         String username = txtUserName.getText().toString();
         String pass = txtPass.getText().toString();
-        String repass = txtRePass.getText().toString();
         String email = txtEmail.getText().toString();
         String fullname = txtFullName.getText().toString();
         String phone = txtPhone.getText().toString();
         String address = txtAddress.getText().toString();
         String city = txtCity.getText().toString();
         String zipCode = txtZipCode.getText().toString();
+
         // username
         if (username.isEmpty()) {
             message = self.getResources().getString(
@@ -138,25 +139,11 @@ public class EditProfileActivity extends BaseActivity implements OnClickListener
         }
         // password
         if (!pass.isEmpty()) {
-            // repassword
-            if (repass.isEmpty()) {
-                message = self.getResources().getString(
-                        R.string.error_RePassword_empty);
-                return message;
-            } else {
-                if (!repass.equals(pass)) {
-                    message = self.getResources().getString(
-                            R.string.error_RePassword_empty);
-                    return message;
-                }
-            }
-        } else {
-            if (!repass.isEmpty()) {
-                message = self.getResources().getString(
-                        R.string.error_Password_empty);
-                return message;
-            }
+            message = self.getResources().getString(
+                    R.string.error_Password_empty);
+            return message;
         }
+
         // email
         if (email.isEmpty()) {
             message = self.getResources().getString(

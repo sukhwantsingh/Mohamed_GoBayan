@@ -5,14 +5,13 @@
     android:paddingTop="8dp"
     android:orientation="vertical">
 
-    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+    <TextView
         android:id="@+id/tv_option_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right|center_vertical"
         android:text="title"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size_normal" />
+        android:textSize="14dp" />
 
     <com.libyasolutions.libyamarketplace.widget.MyEditText
         android:id="@+id/edt_option"
