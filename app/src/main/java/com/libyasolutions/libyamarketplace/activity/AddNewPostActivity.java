@@ -6,12 +6,14 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -26,9 +28,17 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
+
 import com.android.volley.VolleyError;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.google.gson.Gson;
 import com.libyasolutions.libyamarketplace.BaseActivityV2;
 import com.libyasolutions.libyamarketplace.R;
+import com.libyasolutions.libyamarketplace.activity.addpost.ModelPostAdded;
+import com.libyasolutions.libyamarketplace.activity.addpost.ModelPosts;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 
@@ -36,6 +46,7 @@ import com.libyasolutions.libyamarketplace.modelmanager.ErrorNetworkHandler;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManager;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManagerListener;
 
+import com.libyasolutions.libyamarketplace.network.ParserUtility;
 import com.libyasolutions.libyamarketplace.network.ProgressDialog;
 import com.libyasolutions.libyamarketplace.object.Banner;
 import com.libyasolutions.libyamarketplace.object.Menu;
@@ -46,9 +57,12 @@ import com.libyasolutions.libyamarketplace.util.PermissionUtil;
 import com.zfdang.multiple_images_selector.ImagesSelectorActivity;
 import com.zfdang.multiple_images_selector.SelectorSettings;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -56,7 +70,6 @@ import butterknife.OnClick;
 
 public class AddNewPostActivity extends BaseActivityV2 {
 
-    public final int REQUEST_IMAGE_GALLERY_IMAGE_ONE = 0;
     public final int REQUEST_IMAGE_CAPTURE_IMAGE_ONE = 1;
     private final int CHOOSE_MORE_IMAGE_CODE = 22;
 
@@ -87,31 +100,22 @@ public class AddNewPostActivity extends BaseActivityV2 {
     @BindView(R.id.layout_post_status)
     LinearLayout layoutPostStatus;
 
-    ArrayList<String> mResults = new ArrayList<>();
-
     private String rootFolder;
     private MySharedPreferences sharedPref;
 
     private ProgressDialog pDialog;
 
     private String shopId;
-    private String deleteIds = "";
-    private String categoryId = "";
-    private Menu product;
-    private String available = "1";
+    private String postId;
     private String status = "1";
 
-    private Bitmap bitmapProduct;
-    private File productImage, thumbnailImage;
-    private int oldSizeGallery;
-    private int parentPosition;
+     private File productImage;
 
-    private Dialog confirmDeleteGalleryDialog;
-
-    private int currentParentPosition, oldParentPosition;
+    public static ModelPosts.Data.Post post;
 
 
     public static void startActivity(Context context) {
+
         context.startActivity(new Intent(context, AddNewPostActivity.class));
     }
 
@@ -130,23 +134,17 @@ public class AddNewPostActivity extends BaseActivityV2 {
         rootFolder = Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name) + "/images/";
         sharedPref = new MySharedPreferences(this);
 
-        Intent intent = getIntent();
-        shopId = intent.getStringExtra(Constant.SHOP_ID);
-        product = intent.getParcelableExtra(Constant.PRODUCT_OBJ);
+        shopId = getIntent().getStringExtra(Constant.SHOP_ID);
 
+        if (null != post) {
+            postId = getIntent().getStringExtra(Constant.POST_ID);
 
-        if (product == null) {
-            product = new Menu();
-        } else {
             tvTitle.setText(getResources().getString(R.string.edit_post));
             btnCreateProduct.setText(getResources().getString(R.string.update));
             layoutPostStatus.setVisibility(View.VISIBLE);
 
-            product = GlobalValue.currentProduct;
-            fillData();
+            setupLayout();
         }
-        //setGalleryAdapter();
-       //  getCategoryByShop();
 
         if (pDialog == null) {
             pDialog = new ProgressDialog(this);
@@ -155,79 +153,34 @@ public class AddNewPostActivity extends BaseActivityV2 {
         }
     }
 
-    private void fillData() {
-//        Glide.with(this).load(product.getImage()).asBitmap().into(new SimpleTarget<Bitmap>() {
-//            @Override
-//            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-//                bitmapProduct = resource;
-//                ivLogoProduct.setImageBitmap(resource);
-//            }
-//        });
-
-        oldSizeGallery = product.getArrGalleries().size();
-
-        categoryId = String.valueOf(product.getCategoryId());
-
-    //    edtProductDescription.setText(product.getDescription());
-
-
-
-
-        if (product.getStatus().equals("1")) {
-            status = "1";
-            tvActive.setBackgroundResource(R.drawable.bg_border_grey);
-            tvInactive.setBackgroundResource(R.drawable.bg_black_transparent);
-        } else {
-            status = "0";
-            tvActive.setBackgroundResource(R.drawable.bg_black_transparent);
-            tvInactive.setBackgroundResource(R.drawable.bg_border_grey);
-
-        }
-
-        setupLayout();
-
-    }
 
     private void setupLayout() {
-        // product info
+        // post info
+        Glide.with(this).load(post.getImage()).asBitmap().into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                ivImage.setImageBitmap(resource);
+            }
+        });
+
+        if (null != post.getStatus() && post.getStatus().equalsIgnoreCase("1")) {
+            status = "1";
+            tvActive.setBackgroundResource(R.drawable.background_border_green);
+            tvInactive.setBackgroundResource(R.drawable.bg_border_grey);
+        } else {
+            status = "0";
+            tvActive.setBackgroundResource(R.drawable.bg_border_grey);
+            tvInactive.setBackgroundResource(R.drawable.background_border_green);
+        }
+
+        edtDescription.setText(post.getDescription() + "");
 
     }
 
     @Override
     protected void configView() {
-        // config banner
-        for (Banner banner : product.getArrGalleries()) {
-            Log.e("kevin", "banner image: " + banner.getImage());
-        }
-
-     // Todo: Bind the data here
 
 
-    }
-
-    private void getCategoryByShop() {
-//        if (!NetworkUtil.checkNetworkAvailable(this)) {
-//            Toast.makeText(this, R.string.message_network_is_unavailable, Toast.LENGTH_LONG).show();
-//        }
-        //else
-          /*  ModelManager.getAllCategoryByShop(this, Integer.parseInt(shopId), true,
-                    new ModelManagerListener() {
-
-                        @Override
-                        public void onSuccess(Object object) {
-                            String json = (String) object;
-
-//                            if (ParserUtility.parseListCategories(json).size() == 0) {
-//                                showToast(getResources().getString(R.string.have_no_date));
-//                            }
-
-                        }
-
-                        @Override
-                        public void onError(VolleyError error) {
-                            Toast.makeText(AddNewPostActivity.this, ErrorNetworkHandler.processError(error), Toast.LENGTH_LONG).show();
-                        }
-                    });*/
     }
 
 
@@ -297,13 +250,15 @@ public class AddNewPostActivity extends BaseActivityV2 {
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     Intent data = result.getData();
-                    // do your operation from here....
                     if (data != null && data.getData() != null) {
                         Uri selectedImageUri = data.getData();
                         try {
                             Bitmap selectedImageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
-                             ivImage.setImageBitmap(selectedImageBitmap);
+                            ivImage.setImageBitmap(selectedImageBitmap);
 
+                           // productImage = new File(getPath(selectedImageUri));
+                            Uri tempUri = getImageUri(getApplicationContext(), selectedImageBitmap);
+                            productImage = new File(getRealPathFromURI(tempUri));
                           } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -312,171 +267,125 @@ public class AddNewPostActivity extends BaseActivityV2 {
                 }
             });
 
-    private void asynAddProduct() {
-        if (NetworkUtil.checkNetworkAvailable(this)) {
-            if (!pDialog.isShowing()) {
-                pDialog.show();
-            }
-            @SuppressLint("StaticFieldLeak") AsyncTask<Void, Void, Void> asyncTask = new AsyncTask<Void, Void, Void>() {
-                @Override
-                protected void onPreExecute() {
-                    super.onPreExecute();
-                }
-
-                @Override
-                protected Void doInBackground(Void... voids) {
-                    addProduct();
-                    return null;
-                }
-
-                @Override
-                protected void onPostExecute(Void aVoid) {
-                    super.onPostExecute(aVoid);
-                }
-            };
-            asyncTask.execute();
-        } else {
-            showToast(getResources().getString(R.string.no_connection));
-        }
-
+    public String getPath(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 
-    private boolean validate() {
-        if (bitmapProduct == null) {
-            showToast(getResources().getString(R.string.please_select_product_image));
-            return false;
-        }
-/*
-        if (edtProductName.getText().toString().trim().length() == 0) {
-            showToast(getResources().getString(R.string.please_enter_product_name));
-            edtProductName.requestFocus();
-            return false;
-        }
-*/
+   private boolean validate() {
+//        if (post == null && productImage == null) {
+//            showToast(getResources().getString(R.string.please_select_product_image));
+//            return false;
+//        }
 
+        if (edtDescription.getText().toString().trim().length() == 0) {
+            showToast(getString(R.string.enter_post_desc));
+            edtDescription.requestFocus();
+            return false;
+        }
         return true;
     }
 
-    private void addProduct() {
-       /* if (NetworkUtil.checkNetworkAvailable(this)) {
-            String productName = edtProductName.getText().toString().trim();
-            String productCode = edtProductCode.getText().toString().trim();
-            String price = edtProductPrice.getText().toString().trim();
-            String description = edtProductDescription.getText().toString().trim();
-            String extraOption = createExtraOptionJson();
+    private void addPost() {
+      if (NetworkUtil.checkNetworkAvailable(this)) {
+            String description = edtDescription.getText().toString().trim();
 
-            product.setShopId(Integer.parseInt(shopId));
-            product.setName(productName);
-            product.setCode(productCode);
-            product.setPrice(Double.parseDouble(price));
-            product.setCategoryId(categoryId);
-            product.setDescription(description);
-            product.setStatus(status);
-            product.setAvailable(available);
-            thumbnailImage = productImage;
-
-            ModelManager.addNewProduct(this, sharedPref.getUserInfo().getId(), product, extraOption, deleteIds, productImage, thumbnailImage, listFile, new ModelManagerListener() {
+            ModelManager.addNewPost(postId, shopId, GlobalValue.myAccount.getId(),description, status, productImage, new ModelManagerListener() {
                 @Override
                 public void onError(VolleyError error) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            showToast(getResources().getString(R.string.have_error));
-                        }
-                    });
+                    runOnUiThread(() -> showToast(getResources().getString(R.string.have_error)));
                     if (pDialog.isShowing()) {
                         pDialog.dismiss();
                     }
-                    deleteRecursive(new File(rootFolder));
+                   deleteRecursive(new File(rootFolder));
                 }
 
                 @Override
                 public void onSuccess(Object object) {
-                    if (pDialog.isShowing()) {
-                        pDialog.dismiss();
-                    }
+                    if (pDialog.isShowing()) { pDialog.dismiss(); }
                     final String json = (String) object;
-                    if (ParserUtility.isSuccess(json)) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                showToast(getResources().getString(R.string.message_success));
-                                finish();
-                            }
-                        });
-                    } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                showToast(ParserUtility.getMessage(json));
-                            }
-                        });
-                    }
-                    deleteRecursive(new File(rootFolder));
+                    ModelPostAdded postAdded = new Gson().fromJson(json,ModelPostAdded.class);
+                    if(postAdded != null) {
+                        showToast("" + postAdded.getMessage());
 
-                    Intent intent = new Intent();
-                    intent.setAction(Constant.REFRESH_DATA);
-                    sendBroadcast(intent);
-                }
+                        if(null!= postAdded.getStatus() && postAdded.getStatus().equalsIgnoreCase("success")){
+                         finish();
+
+                         deleteRecursive(new File(rootFolder));
+                         Intent intent = new Intent();
+                         intent.setAction(Constant.REFRESH_DATA);
+                         sendBroadcast(intent);
+                       }
+
+                    }
+
+               }
             });
         } else {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    showToast(getResources().getString(R.string.no_connection));
-                }
-            });
-        }*/
+            runOnUiThread(() -> showToast(getResources().getString(R.string.no_connection)));
+        }
     }
 
     @OnClick({R.id.btn_create_product})
     void createProduct() {
-       // if (validate()) {
-       //     asynAddProduct();
-      //  }
+         if (validate()) {
+             if (NetworkUtil.checkNetworkAvailable(this)) {
+                 if (!pDialog.isShowing()) {
+                     pDialog.show();
+                 }
+                 addPost();
+             } else {
+                 showToast(getResources().getString(R.string.no_connection));
+             }
+       }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case REQUEST_IMAGE_GALLERY_IMAGE_ONE:
-                if (resultCode == RESULT_OK) {
-                    Uri selectedImage = data.getData();
-                    Bitmap image = null;
-                    Bitmap imageConvert = null;
-                    try {
-                        if(selectedImage != null) {
-                            bitmapProduct = image = ImageUtil.decodeUri(this, selectedImage);
-                            int dimension = getSquareCropDimensionForBitmap(image);
-                            imageConvert = ThumbnailUtils.extractThumbnail(image, dimension, dimension);
-                            productImage = ImageUtil.saveBitmap(this, image);
-
-                            ivImage.setImageURI(selectedImage);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                break;
-            case REQUEST_IMAGE_CAPTURE_IMAGE_ONE:
+           case REQUEST_IMAGE_CAPTURE_IMAGE_ONE:
                 if (resultCode == RESULT_OK) {
                     Bundle extras = data.getExtras();
                     Bitmap imageBitmap = (Bitmap) extras.get("data");
-                    bitmapProduct = imageBitmap;
-                    int dimension = getSquareCropDimensionForBitmap(imageBitmap);
-                    Bitmap imageConvert = ThumbnailUtils.extractThumbnail(imageBitmap, dimension, dimension);
+                 //   int dimension = getSquareCropDimensionForBitmap(imageBitmap);
+                  //  Bitmap imageConvert = ThumbnailUtils.extractThumbnail(imageBitmap, dimension, dimension);
                     try {
-                        productImage = ImageUtil.saveBitmap(this, imageBitmap);
-                    } catch (IOException e) {
+                     //   productImage = ImageUtil.saveBitmap(this, imageBitmap);
+                        ivImage.setImageBitmap(imageBitmap);
+                        Uri tempUri = getImageUri(getApplicationContext(), imageBitmap);
+                        productImage = new File(getRealPathFromURI(tempUri));
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    ivImage.setImageBitmap(imageBitmap);
+
                 }
                 break;
-
-
         }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
+    public String getRealPathFromURI(Uri uri) {
+        String path = "";
+        if (getContentResolver() != null) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+                int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                path = cursor.getString(idx);
+                cursor.close();
+            }
+        }
+        return path;
     }
 
     public int getSquareCropDimensionForBitmap(Bitmap bitmap) {
@@ -496,16 +405,16 @@ public class AddNewPostActivity extends BaseActivityV2 {
     @OnClick(R.id.tv_active)
     void chooseActive() {
         status = "1";
-        tvActive.setBackgroundResource(R.drawable.bg_border_grey);
-        tvInactive.setBackgroundResource(0);
+        tvActive.setBackgroundResource(R.drawable.background_border_green);
+        tvInactive.setBackgroundResource(R.drawable.bg_border_grey);
 
     }
 
     @OnClick(R.id.tv_inactive)
     void chooseInactive() {
         status = "0";
-        tvActive.setBackgroundResource(0);
-        tvInactive.setBackgroundResource(R.drawable.bg_border_grey);
+        tvActive.setBackgroundResource(R.drawable.bg_border_grey);
+        tvInactive.setBackgroundResource(R.drawable.background_border_green);
 
     }
 

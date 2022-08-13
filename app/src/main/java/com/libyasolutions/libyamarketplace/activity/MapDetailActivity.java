@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
+
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -94,6 +96,7 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
                             @Override
                             public void onSuccess(Object object) {
                                 String json = (String) object;
+
                                 shop = ParserUtility.parseShop(json);
                                 if (shop != null) {
                                     lblShopName.setText(shop.getShopName());
@@ -104,7 +107,6 @@ public class MapDetailActivity extends BaseActivity implements OnClickListener, 
 
                             @Override
                             public void onError(VolleyError error) {
-                                // TODO Auto-generated method stub
                                 Toast.makeText(self, ErrorNetworkHandler.processError(error), Toast.LENGTH_LONG).show();
                             }
                         });

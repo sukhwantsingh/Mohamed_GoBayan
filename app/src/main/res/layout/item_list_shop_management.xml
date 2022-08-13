@@ -109,7 +109,7 @@
             tools:text="Active"
             style="@style/tvReg"
             android:textSize="13dp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ToggleButton

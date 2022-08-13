@@ -50,17 +50,15 @@ public class SortByDialog extends BaseDialog {
         switch (sortBy) {
             case ConstantApp.SORT_BY_RATING:
                 tvSortByRating.setTextColor(getResources().getColor(R.color.white));
-                tvSortByRating.setBackground(ContextCompat.getDrawable(getActivity(),
-                        R.drawable.bg_red_button_with_border));
+                tvSortByRating.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.bg_red_button_with_border));
                 break;
             case ConstantApp.SORT_BY_NAME:
                 tvSortByName.setTextColor(getResources().getColor(R.color.white));
-                tvSortByName.setBackground(ContextCompat.getDrawable(getActivity(),
-                        R.drawable.bg_red_button_with_border));
+                tvSortByName.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.bg_red_button_with_border));
                 break;
             case ConstantApp.SORT_BY_DATE:
                 tvSortByDate.setTextColor(getResources().getColor(R.color.white));
-                tvSortByDate.setBackground(ContextCompat.getDrawable(getActivity(), R.drawable.bg_red_button_with_border));
+                tvSortByDate.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.bg_red_button_with_border));
                 break;
         }
     }

@@ -78,7 +78,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         preferenceManager = MySharedPreferences.getInstance(SplashActivity.this);

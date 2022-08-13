@@ -10,6 +10,7 @@ public class Menu implements Parcelable {
     private int id;
     private String name, localName;
     private String code;
+    private String availableStock;
     private int shopId;
     private String categoryId;
     private double price, percentDiscount;
@@ -57,6 +58,7 @@ public class Menu implements Parcelable {
         name = in.readString();
         localName = in.readString();
         code = in.readString();
+        availableStock = in.readString();
         shopId = in.readInt();
         categoryId = in.readString();
         price = in.readDouble();
@@ -88,6 +90,7 @@ public class Menu implements Parcelable {
         dest.writeString(name);
         dest.writeString(localName);
         dest.writeString(code);
+        dest.writeString(availableStock);
         dest.writeInt(shopId);
         dest.writeString(categoryId);
         dest.writeDouble(price);
@@ -370,5 +373,13 @@ public class Menu implements Parcelable {
 
     public void setIsFavourite(boolean isFavourite) {
         this.isFavourite = isFavourite;
+    }
+
+    public String getAvailableStock() {
+        return availableStock;
+    }
+
+    public void setAvailableStock(String availableStock) {
+        this.availableStock = availableStock;
     }
 }

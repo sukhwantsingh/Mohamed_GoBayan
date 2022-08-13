@@ -1,5 +1,6 @@
 package com.libyasolutions.libyamarketplace.activity.tabs;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TabActivity;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.view.GravityCompat;
+import androidx.legacy.app.ActionBarDrawerToggle;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.util.DisplayMetrics;
@@ -42,8 +44,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.libyasolutions.libyamarketplace.R;
-import com.libyasolutions.libyamarketplace.activity.AboutUsActivity;
-import com.libyasolutions.libyamarketplace.activity.FeedBackActivity;
 import com.libyasolutions.libyamarketplace.activity.ListChatActivity;
 import com.libyasolutions.libyamarketplace.activity.ManageOrderActivity;
 import com.libyasolutions.libyamarketplace.activity.ShopManagementActivity;
@@ -156,6 +156,8 @@ public class MainTabActivity extends TabActivity {
         getChatCount();
     }
 
+
+
     private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -245,7 +247,6 @@ public class MainTabActivity extends TabActivity {
         });
 
 //        lnlAboutUs.setOnClickListener(view -> {
-//            drawer.closeDrawer(GravityCompat.START);
 //            Intent intent12 = new Intent(MainTabActivity.this, AboutUsActivity.class);
 //            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 //            startActivity(intent12);
@@ -253,7 +254,6 @@ public class MainTabActivity extends TabActivity {
 
         lnlOrder.setOnClickListener(v -> {
             if (GlobalValue.myAccount != null) {
-                drawer.closeDrawer(GravityCompat.START);
                 Intent intent13 = new Intent(MainTabActivity.this, OrderHistoryActivityV2.class);
                 startActivity(intent13);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left2);
@@ -261,9 +261,9 @@ public class MainTabActivity extends TabActivity {
                 showDialogLogin();
             }
         });
+
         lnlInfor.setOnClickListener(v -> {
             if (GlobalValue.myAccount != null) {
-                drawer.closeDrawer(GravityCompat.START);
                 Intent intent14 = new Intent(MainTabActivity.this, EditProfileActivity.class);
                 startActivity(intent14);
             } else {
@@ -311,6 +311,7 @@ public class MainTabActivity extends TabActivity {
                 showDialogLogin();
             }
         });
+
         layoutConvertToShopOwner.setOnClickListener(view -> {
             if (mySharedPreferences.getUserInfo().getWaitApproveShopOwner() == 1 ||
                 mySharedPreferences.getUserInfo().getIsCannotSendRequest().equals("1")) {
@@ -363,6 +364,12 @@ public class MainTabActivity extends TabActivity {
 
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(drawer != null) drawer.closeDrawer(GravityCompat.START);
     }
 
     private void showToast(int messageResId) {
@@ -653,11 +660,18 @@ public class MainTabActivity extends TabActivity {
 
     @Override
     public void onBackPressed() {
-        if (GlobalValue.myAccount != null) {
-            showQuitDialog();
+
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+           drawer.closeDrawer(GravityCompat.START);
         } else {
-            finish();
+            if (GlobalValue.myAccount != null) {
+                showQuitDialog();
+            } else {
+                finish();
+            }
+
         }
+
 
     }
 

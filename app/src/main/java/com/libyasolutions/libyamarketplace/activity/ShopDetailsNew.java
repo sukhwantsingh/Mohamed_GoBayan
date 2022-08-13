@@ -42,6 +42,7 @@ import com.libyasolutions.libyamarketplace.adapter.SimilarShopAdapterNew;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.fragment.BannerFragment;
+import com.libyasolutions.libyamarketplace.fragment.PostBannerFragment;
 import com.libyasolutions.libyamarketplace.modelmanager.ErrorNetworkHandler;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManager;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManagerListener;
@@ -58,9 +59,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ShopDetailsNew extends BaseActivity {
-    private ImageView btnBack, homeIcon,imgShop;
-    private LinearLayout btnMap, btnProduct, btnHotline;
-    private TextView tvPhone, tvTime, tvDescription, tvPromotion, tvNameShop,tvPostDetails, tvAddress, totalComent,tvViewAll;
+    private ImageView btnBack, homeIcon,imgShop,ivArr;
+    private LinearLayout btnMap, btnProduct, btnHotline,llArrowDown;
+    private TextView tvPhone, tvTime, tvDescription, tvPromotion, tvNameShop,tvPostDetails, tvAddress, totalComent,tvViewAll,tvPosts;
     private RecyclerView recyclerView;
     private int Shopid;
     private Shop shop;
@@ -68,12 +69,16 @@ public class ShopDetailsNew extends BaseActivity {
 
     private ViewPager viewPager, viewPager_banners;
     FragmentPagerAdapter pagerAdapter;
+    FragmentPagerAdapter postPagerAdapter;
     private ArrayList<Banner> arrBanner;
+    private ArrayList<ShopDetailResponse.ShopPostBanner> arrPostBanner;
+
     private ArrayList<Banner> similarProductBanners = new ArrayList<>();
     private CirclePageIndicator indicatorBannerImages, indicatorGallary;
     private ImageView ivChat, ivTwitter,ivFavorite;
-    private RelativeLayout ivWebsite, ivInstagram, rlClock, ivFacebook,rlSaveShop;
+    private RelativeLayout rlChat, ivWebsite, ivInstagram, rlClock, ivFacebook,rlSaveShop;
     private Dialog loginDialog;
+    private RelativeLayout rlSubOptions;
 
 
     @Override
@@ -93,17 +98,35 @@ public class ShopDetailsNew extends BaseActivity {
     }
 
     private void setBanner() {
-        pagerAdapter = new BannerPageFragmentAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(pagerAdapter);
-        viewPager_banners.setAdapter(pagerAdapter);
 
-        indicatorBannerImages.setViewPager(viewPager);
-        indicatorGallary.setViewPager(viewPager_banners);
+        if(arrBanner.isEmpty()){
+            viewPager.setVisibility(View.GONE);
+        } else {
+             viewPager.setVisibility(View.VISIBLE);
 
-        setIndicatorColors();
+            pagerAdapter = new BannerPageFragmentAdapter(getSupportFragmentManager());
+            viewPager.setAdapter(pagerAdapter);
+            indicatorBannerImages.setViewPager(viewPager);
+            setIndicatorColors();
+            viewPager.setCurrentItem(0);
+        }
 
-        viewPager.setCurrentItem(0);
-        viewPager_banners.setCurrentItem(0);
+        // Post banners
+        if(null != arrPostBanner && arrPostBanner.isEmpty()){
+            tvPosts.setVisibility(View.GONE);
+            viewPager_banners.setVisibility(View.GONE);
+        } else {
+            tvPosts.setVisibility(View.VISIBLE);
+            viewPager_banners.setVisibility(View.VISIBLE);
+
+            postPagerAdapter = new PostBannerPageFragmentAdapter(getSupportFragmentManager());
+            viewPager_banners.setAdapter(postPagerAdapter);
+            indicatorGallary.setViewPager(viewPager_banners);
+            setIndicatorColorsForPostBanners();
+
+            viewPager_banners.setCurrentItem(0);
+        }
+
     }
 
     private void setIndicatorColors(){
@@ -111,33 +134,42 @@ public class ShopDetailsNew extends BaseActivity {
         indicatorBannerImages.setBackgroundColor(0x000000);
         indicatorBannerImages.setRadius(5 * density);
 
-        indicatorGallary.setBackgroundColor(0x000000);
-        indicatorGallary.setRadius(5 * density);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             indicatorBannerImages.setStrokeColor(ContextCompat.getColor(self, R.color.gray_light));
             indicatorBannerImages.setPageColor(ContextCompat.getColor(self, R.color.gray));
             indicatorBannerImages.setFillColor(ContextCompat.getColor(self, R.color.blue_search));
 
-            indicatorGallary.setStrokeColor(ContextCompat.getColor(self, R.color.gray_light));
-            indicatorGallary.setPageColor(ContextCompat.getColor(self, R.color.gray));
-            indicatorGallary.setFillColor(ContextCompat.getColor(self, R.color.blue_search));
-
-
         } else {
             indicatorBannerImages.setStrokeColor(self.getResources().getColor(R.color.gray_light));
             indicatorBannerImages.setPageColor(self.getResources().getColor(R.color.gray));
             indicatorBannerImages.setFillColor(self.getResources().getColor(R.color.blue_search));
 
+        }
+
+     //   indicatorBannerImages.setStrokeWidth(1 * density);
+        indicatorBannerImages.setSnap(true);
+
+    }
+
+    private void setIndicatorColorsForPostBanners(){
+        final float density = getResources().getDisplayMetrics().density;
+
+        indicatorGallary.setBackgroundColor(0x000000);
+        indicatorGallary.setRadius(5 * density);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            indicatorGallary.setStrokeColor(ContextCompat.getColor(self, R.color.gray_light));
+            indicatorGallary.setPageColor(ContextCompat.getColor(self, R.color.gray));
+            indicatorGallary.setFillColor(ContextCompat.getColor(self, R.color.blue_search));
+
+        } else {
             indicatorGallary.setStrokeColor(self.getResources().getColor(R.color.gray_light));
             indicatorGallary.setPageColor(self.getResources().getColor(R.color.gray));
             indicatorGallary.setFillColor(self.getResources().getColor(R.color.blue_search));
 
 
         }
-
-     //   indicatorBannerImages.setStrokeWidth(1 * density);
-        indicatorBannerImages.setSnap(true);
 
       //  indicatorGallary.setStrokeWidth(1 * density);
         indicatorGallary.setSnap(true);
@@ -155,7 +187,6 @@ public class ShopDetailsNew extends BaseActivity {
                         shop = ParserUtility.parseShop(json);
 
                         shopDetailResponse = new Gson().fromJson(json, ShopDetailResponse.class);
-                        Log.e("res: ", shopDetailResponse.status);
 
                         SimilarShopAdapterNew shopAdapterNew =
                                 new SimilarShopAdapterNew(recyclerView, shopDetailResponse.data.similarProducts, ShopDetailsNew.this);
@@ -176,15 +207,17 @@ public class ShopDetailsNew extends BaseActivity {
 
     private void showShopDetails(Shop shop) {
         arrBanner = shop.getArrBanner();
+        arrPostBanner = shopDetailResponse.data.shopPosts;
+
         setBanner();
 
-//        if (GlobalValue.myAccount != null) {
-//            rlSaveShop.setVisibility(View.VISIBLE);
-//            if (shop.isFavourite()) ivFavorite.setImageResource(R.drawable.save_cart_icon);
-//            else ivFavorite.setImageResource(R.drawable.ic_saved_b);
-//        } else {
-//            rlSaveShop.setVisibility(View.GONE);
-//        }
+        if (GlobalValue.myAccount != null) {
+            rlSaveShop.setVisibility(View.VISIBLE);
+            if (shop.isFavourite()) ivFavorite.setImageResource(R.drawable.ico_save_shop);
+            else ivFavorite.setImageResource(R.drawable.ico_unsave_shop);
+        } else {
+            rlSaveShop.setVisibility(View.GONE);
+        }
 
         tvNameShop.setText(shop.getShopName());
         tvAddress.setText(shop.getAddress());
@@ -225,6 +258,10 @@ public class ShopDetailsNew extends BaseActivity {
     }
 
     private void initView() {
+        ivArr = findViewById(R.id.ivArr);
+        llArrowDown = findViewById(R.id.drop_down_ly);
+        rlSubOptions = findViewById(R.id.rel_drop_options);
+
         rlSaveShop = findViewById(R.id.save_cart_lay);
         ivFavorite = findViewById(R.id.ivFavorite);
         indicatorBannerImages = findViewById(R.id.indicatorBannerImages);
@@ -235,6 +272,7 @@ public class ShopDetailsNew extends BaseActivity {
         tvViewAll = findViewById(R.id.similer_shop_view_all);
         tvPostDetails = findViewById(R.id.post_details);
         tvAddress = findViewById(R.id.tvAddress);
+        tvPosts = findViewById(R.id.post);
 
         btnBack = findViewById(R.id.btnBack);
         homeIcon = findViewById(R.id.home_icon);
@@ -252,6 +290,7 @@ public class ShopDetailsNew extends BaseActivity {
         ivTwitter = findViewById(R.id.iv_twitter);
 
         ivChat = findViewById(R.id.iv_chat);
+        rlChat = findViewById(R.id.chat_ly);
 
         ivWebsite = findViewById(R.id.rl_web);
         ivInstagram = findViewById(R.id.rl_insta);
@@ -260,6 +299,7 @@ public class ShopDetailsNew extends BaseActivity {
 
         // setup initial data
         recyclerView.setHasFixedSize(true);
+
 
 
     }
@@ -275,20 +315,33 @@ public class ShopDetailsNew extends BaseActivity {
             startActivity(callIntent);
         });
         btnProduct.setOnClickListener(v -> gotoMenuActivity(shop));
+
         ivChat.setOnClickListener(v -> {
+
             if (GlobalValue.myAccount != null) {
-                Intent intent = new Intent(self, ChatDetailActivity.class);
-                intent.putExtra("idAgent", shop.getShopOwnerId());
-                intent.putExtra("title", shop.getShopName());
-                intent.putExtra("image", shop.getShopOwnerImage());
-                intent.putExtra(Constant.SHOP_ID, shop.getShopId() + "");
-                intent.putExtra(Constant.SHOP_NAME, shop.getShopName());
-                intent.putExtra(Constant.COUNT_SHOP, shop.getCountShop() + "");
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.push_left_out);
+                if(shopDetailResponse.data.chatStatus.equalsIgnoreCase("1")) {
+
+                    Intent intent = new Intent(self, ChatDetailActivity.class);
+                    intent.putExtra("idAgent", shop.getShopOwnerId());
+                    intent.putExtra("title", shop.getShopName());
+                    intent.putExtra("image", shop.getShopOwnerImage());
+                    intent.putExtra(Constant.SHOP_ID, shop.getShopId() + "");
+                    intent.putExtra(Constant.SHOP_NAME, shop.getShopName());
+                    intent.putExtra(Constant.COUNT_SHOP, shop.getCountShop() + "");
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.push_left_out);
+
+                } else {
+                    showToastMessage(getString(R.string.this_shop_turned_off_chat_option));
+                }
+
+
             } else {
                 showDialogLogin();
             }
+
+
+
         });
 
         /*doannd website code*/
@@ -351,8 +404,19 @@ public class ShopDetailsNew extends BaseActivity {
         });
 
         rlSaveShop.setOnClickListener(v -> {
-          //  onClickFavourite();
+            onClickFavourite();
         });
+        llArrowDown.setOnClickListener(v-> {
+            if(rlSubOptions.isShown()){
+                ivArr.setRotation(0);
+                rlSubOptions.setVisibility(View.GONE);
+            }
+            else{
+                ivArr.setRotation(180);
+                rlSubOptions.setVisibility(View.VISIBLE);
+            }
+        });
+
 
     }
 
@@ -369,9 +433,9 @@ public class ShopDetailsNew extends BaseActivity {
                     shop.setFavourite(!shop.isFavourite());
                     //update favourite button
                     if (shop.isFavourite())
-                        ivFavorite.setImageResource(R.drawable.save_cart_icon);
+                        ivFavorite.setImageResource(R.drawable.ico_save_shop);
                     else
-                        ivFavorite.setImageResource(R.drawable.ic_saved_b);
+                        ivFavorite.setImageResource(R.drawable.ico_unsave_shop);
                 }
             });
         }
@@ -456,6 +520,32 @@ public class ShopDetailsNew extends BaseActivity {
         @Override
         public int getCount() {
             return arrBanner.size();
+        }
+    }
+
+
+    class PostBannerPageFragmentAdapter extends FragmentPagerAdapter {
+
+        public PostBannerPageFragmentAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+
+            ShopDetailResponse.ShopPostBanner banner = arrPostBanner.get(position);
+            return PostBannerFragment.InStances(banner.image, banner.description);
+
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return arrPostBanner.get(position).description;
+        }
+
+        @Override
+        public int getCount() {
+            return arrPostBanner.size();
         }
     }
 

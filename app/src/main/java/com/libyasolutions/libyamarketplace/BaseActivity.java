@@ -97,7 +97,6 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
@@ -334,8 +333,7 @@ public class BaseActivity extends AppCompatActivity {
         loginDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         loginDialog.setContentView(R.layout.dialog_confirm);
         DisplayMetrics displaymetrics = new DisplayMetrics();
-        self.getWindowManager().getDefaultDisplay()
-                .getMetrics(displaymetrics);
+        self.getWindowManager().getDefaultDisplay() .getMetrics(displaymetrics);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(loginDialog.getWindow().getAttributes());
         lp.width = 6 * (displaymetrics.widthPixels / 7);

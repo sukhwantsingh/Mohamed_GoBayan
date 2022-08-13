@@ -382,12 +382,7 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
 
         bannerNewAdapter.registerAdapterDataObserver(indicator.getAdapterDataObserver());
 
-        bannerNewAdapter.setOnItemClickListener(new GalleryToAddAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                showConfirmDialog(getResources().getString(R.string.remove_from_gallery), position);
-            }
-        });
+        bannerNewAdapter.setOnItemClickListener((view, position) -> showConfirmDialog(getResources().getString(R.string.remove_from_gallery), position));
 
     }
 
@@ -400,7 +395,6 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
 
                         @Override
                         public void onSuccess(Object object) {
-                            // TODO Auto-generated method stub
                             String json = (String) object;
                             if (ParserUtility
                                     .parseListCategories(json).size() == 0) {
@@ -421,7 +415,6 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
 
                         @Override
                         public void onError(VolleyError error) {
-                            // TODO Auto-generated method stub
                             listCategories.clear();
                             Toast.makeText(AddNewProductActivityV2.this, ErrorNetworkHandler.processError(error), Toast.LENGTH_LONG).show();
                         }
@@ -441,31 +434,24 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
 
         tvMessage.setText(message);
 
-        btnYes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listFile.size() != 0)
-                    listFile.remove(position - oldSizeGallery);
+        btnYes.setOnClickListener(v -> {
+            if (listFile.size() != 0)
+                listFile.remove(position - oldSizeGallery);
 
-                if (product != null) {
-                    deleteIds += product.getArrGalleries().get(position).getId() + ",";
-                    if (deleteIds.length() > 1 && deleteIds.contains(","))
-                        deleteIds = deleteIds.substring(0, deleteIds.length() - 1);
-                    Log.e("kevin", "deleteIds: " + deleteIds);
-                }
+            if (product != null) {
+                deleteIds += product.getArrGalleries().get(position).getId() + ",";
+                if (deleteIds.length() > 1 && deleteIds.contains(","))
+                    deleteIds = deleteIds.substring(0, deleteIds.length() - 1);
+                Log.e("kevin", "deleteIds: " + deleteIds);
+            }
 
-                product.getArrGalleries().remove(position);
-                // Refresh gallery
-                bannerNewAdapter.notifyDataSetChanged();
-                confirmDeleteGalleryDialog.dismiss();
-            }
+            product.getArrGalleries().remove(position);
+            // Refresh gallery
+            bannerNewAdapter.notifyDataSetChanged();
+            confirmDeleteGalleryDialog.dismiss();
         });
-        btnNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmDeleteGalleryDialog.dismiss();
-            }
-        });
+        btnNo.setOnClickListener(v -> confirmDeleteGalleryDialog.dismiss());
+
         confirmDeleteGalleryDialog = builder.create();
         int w = getResources().getDisplayMetrics().widthPixels;
         confirmDeleteGalleryDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -473,7 +459,7 @@ public class AddNewProductActivityV2 extends BaseActivityV2 {
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(confirmDeleteGalleryDialog.getWindow().getAttributes());
-        lp.width = (int) (w * 0.75);
+        lp.width = (int) (w * 0.85);
         lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
         confirmDeleteGalleryDialog.getWindow().setAttributes(lp);
     }

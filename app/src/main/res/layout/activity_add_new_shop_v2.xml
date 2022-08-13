@@ -67,13 +67,14 @@
                     android:translationY="25dp"
                     android:background="@drawable/bg_edit_text_normal">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         android:gravity="center"
+                        style="@style/tvReg"
                         android:text="@string/add_banner"
                         android:textColor="@color/black"
-                        android:textSize="22sp" />
+                        android:textSize="14sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_banner_shop"
@@ -298,14 +299,14 @@
                     android:background="@drawable/bg_container_info"
                     android:paddingBottom="20dp">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shop_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="*Shop Name"/>
@@ -314,22 +315,22 @@
                         android:id="@+id/edt_shop_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
                         android:padding="10dp"
-                        android:gravity="center_vertical|right"
+                        android:gravity="center_vertical|end"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_shop_name"/>
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_name"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:contentDescription="@string/content_description"
@@ -339,14 +340,14 @@
                         app:layout_constraintTop_toTopOf="@id/edt_shop_name"
                         app:layout_constraintBottom_toBottomOf="@id/edt_shop_name"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shop_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_shop_name"
                         tools:text="*Shop Phone"/>
@@ -355,12 +356,12 @@
                         android:id="@+id/edt_shop_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="phone"
                         android:padding="10dp"
                         android:gravity="center_vertical|right"
@@ -369,8 +370,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_phone"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -379,31 +380,31 @@
                         app:layout_constraintTop_toTopOf="@id/edt_shop_phone"
                         app:layout_constraintBottom_toBottomOf="@id/edt_shop_phone"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/location_alternate_no_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
-                        android:visibility="gone"
+                        android:textSize="14sp"
+                        android:visibility="visible"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_shop_phone"
-                        tools:text="*Alternate Shop Phone"/>
+                        android:text="@string/alternate_shop_phone"/>
 
                     <EditText
                         android:id="@+id/location_alternate_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="phone"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:padding="10dp"
                         android:gravity="center_vertical|right"
                         app:layout_constraintRight_toRightOf="parent"
@@ -411,8 +412,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_phonee"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -421,14 +422,14 @@
                         app:layout_constraintTop_toTopOf="@id/location_alternate_no"
                         app:layout_constraintBottom_toBottomOf="@id/location_alternate_no"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shop_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/location_alternate_no"
                         tools:text="*Shop description"/>
@@ -437,26 +438,23 @@
                         android:id="@+id/edt_shop_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
+                        android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text|textMultiLine"
-                        android:gravity="top|right"
+                        android:gravity="top|end"
                         android:lines="5"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_shop_description"/>
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_description"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -466,15 +464,16 @@
                         app:layout_constraintTop_toTopOf="@id/edt_shop_description"
                         app:layout_constraintBottom_toBottomOf="@id/edt_shop_description"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_save_shop_info"
                         android:layout_width="60dp"
+                        style="@style/tvReg"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="60dp"
                         android:text="@string/save_button_text"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="12dp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -486,19 +485,18 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_shop_description"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_cancel_shop_info"
                         android:layout_width="60dp"
+                        style="@style/tvReg"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/cancel_button_text"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="12dp"
                         android:background="@drawable/blue_fill_round_gradient"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
+                       android:paddingHorizontal="8dp"
+                        android:paddingVertical="5dp"
                         android:gravity="center"
                         android:visibility="gone"
                         tools:visibility="visible"
@@ -511,7 +509,7 @@
                     android:id="@+id/btn_shop_info"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/blue_fill_round_gradient">
@@ -580,13 +578,13 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        <TextView
                             android:id="@+id/tv_shop_city"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:layout_height="match_parent"
+                            android:gravity="end"
                             android:text="@string/choose_city"
-                            android:textSize="22sp"
+                            android:textSize="14sp"
                             android:textColor="@color/black"/>
 
                         <ImageView
@@ -608,7 +606,7 @@
                         android:background="@drawable/bg_edit_text_normal"
                         android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
                         android:gravity="center_vertical|right"
                         android:enabled="false"
@@ -618,8 +616,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_city"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -629,14 +627,14 @@
                         app:layout_constraintBottom_toBottomOf="@id/edt_shop_city"
                         app:layout_constraintRight_toLeftOf="@id/edt_shop_city"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_shop_address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_shop_city"
                         tools:text="*Shop address"/>
@@ -645,13 +643,13 @@
                         android:id="@+id/edt_shop_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
                         android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
                         android:gravity="center_vertical|right"
                         app:layout_constraintRight_toRightOf="parent"
@@ -659,8 +657,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_address"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -673,13 +671,13 @@
                     <Button
                         android:id="@+id/btn_location_address"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="42dp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="Select the location on the map"
+                        android:textSize="14dp"
+                        android:text="@string/select_the_location_on_the_map"
                         android:textColor="@color/white"
                         android:textAllCaps="false"
                         app:layout_constraintRight_toRightOf="parent"
@@ -689,13 +687,13 @@
                         android:id="@+id/edt_location_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
-                        android:padding="6dp"
+                        android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
                         android:gravity="center_vertical|right"
                         android:enabled="false"
@@ -704,8 +702,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_location"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -715,7 +713,7 @@
                         app:layout_constraintTop_toTopOf="@id/edt_location_address"
                         app:layout_constraintBottom_toBottomOf="@id/edt_location_address"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_save_address_info"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
@@ -723,7 +721,7 @@
                         android:layout_marginStart="60dp"
                         android:text="@string/save_button_text"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="13sp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -735,14 +733,14 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_location_address"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_cancel_address_info"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/cancel_button_text"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="13sp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -760,7 +758,7 @@
                     android:id="@+id/btn_address_info"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/blue_fill_round_gradient">
@@ -816,6 +814,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:visibility="gone"
+                    tools:visibility="visible"
                     android:background="@drawable/bg_container_info"
                     android:paddingBottom="20dp">
 
@@ -831,13 +830,13 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        <TextView
                             android:id="@+id/tv_shop_categories"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:layout_height="match_parent"
+                            android:gravity="end"
                             android:text="@string/choose_categories"
-                            android:textSize="22sp"
+                            android:textSize="14sp"
                             android:textColor="@color/black"/>
 
                         <ImageView
@@ -859,7 +858,7 @@
                         android:background="@drawable/bg_edit_text_normal"
                         android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
                         android:gravity="center_vertical|right"
                         android:enabled="false"
@@ -868,8 +867,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_categories"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -892,13 +891,13 @@
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_shop_categories">
 
-                        <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                        <TextView
                             android:id="@+id/tv_shop_hour"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="right"
+                            android:gravity="end"
                             android:text="@string/choose_hour"
-                            android:textSize="22sp"
+                            android:textSize="14sp"
                             android:textColor="@color/black"/>
 
                         <ImageView
@@ -922,7 +921,7 @@
                         android:background="@drawable/bg_edit_text_normal"
                         android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
                         android:gravity="center_vertical|right"
                         android:enabled="false"
@@ -931,8 +930,8 @@
 
                     <ImageView
                         android:id="@+id/iv_empty_shop_hour"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_warning_empty"
                         android:visibility="gone"
@@ -941,7 +940,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/edt_shop_hour"
                         app:layout_constraintRight_toLeftOf="@id/edt_shop_hour"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_save_categories_info"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
@@ -949,7 +948,7 @@
                         android:layout_marginStart="60dp"
                         android:text="@string/save_button_text"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="13sp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -961,14 +960,14 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_shop_hour"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_cancel_categories_info"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/cancel_button_text"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="13sp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -986,7 +985,7 @@
                     android:id="@+id/btn_shop_categories"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/blue_fill_round_gradient">
@@ -1045,14 +1044,15 @@
                     android:background="@drawable/bg_container_info"
                     android:paddingBottom="20dp">
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_facebook_link"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
+                        style="@style/tvReg"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="Facebook link"/>
@@ -1061,15 +1061,15 @@
                         android:id="@+id/edt_facebook_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
-                        android:padding="6dp"
+                        android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
-                        android:gravity="center_vertical|right"
+                        android:gravity="center_vertical|end"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_facebook_link"/>
 
@@ -1086,14 +1086,15 @@
                     <!--                        app:layout_constraintTop_toTopOf="@id/edt_facebook_link"-->
                     <!--                        app:layout_constraintBottom_toBottomOf="@id/edt_facebook_link"/>-->
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_instagram_link"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
+                        style="@style/tvReg"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_facebook_link"
                         tools:text="Instagram link"/>
@@ -1102,15 +1103,15 @@
                         android:id="@+id/edt_instagram_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
-                        android:padding="6dp"
+                        android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
-                        android:gravity="center_vertical|right"
+                        android:gravity="center_vertical|end"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_instagram_link"/>
 
@@ -1127,14 +1128,15 @@
                     <!--                        app:layout_constraintTop_toTopOf="@id/edt_instagram_link"-->
                     <!--                        app:layout_constraintBottom_toBottomOf="@id/edt_instagram_link"/>-->
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_twitter_link"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
+                        style="@style/tvReg"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_instagram_link"
                         tools:text="Twitter link"/>
@@ -1143,15 +1145,15 @@
                         android:id="@+id/edt_twitter_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
-                        android:padding="6dp"
+                        android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
-                        android:gravity="center_vertical|right"
+                        android:gravity="center_vertical|end"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_twitter_link"/>
 
@@ -1168,14 +1170,15 @@
                     <!--                        app:layout_constraintTop_toTopOf="@id/edt_twitter_link"-->
                     <!--                        app:layout_constraintBottom_toBottomOf="@id/edt_twitter_link"/>-->
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_website_link"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="14sp"
+                        style="@style/tvReg"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_twitter_link"
                         tools:text="Website link"/>
@@ -1184,15 +1187,15 @@
                         android:id="@+id/edt_website_link"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="60dp"
                         android:background="@drawable/bg_edit_text_normal"
-                        android:padding="6dp"
+                        android:padding="10dp"
                         android:textColor="@color/black"
-                        android:textSize="22sp"
+                        android:textSize="15sp"
                         android:inputType="text"
-                        android:gravity="center_vertical|right"
+                        android:gravity="center_vertical|end"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_website_link"/>
 
@@ -1209,7 +1212,7 @@
                     <!--                        app:layout_constraintTop_toTopOf="@id/edt_website_link"-->
                     <!--                        app:layout_constraintBottom_toBottomOf="@id/edt_website_link"/>-->
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_save_website_link"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
@@ -1217,7 +1220,7 @@
                         android:layout_marginStart="60dp"
                         android:text="@string/save_button_text"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="13sp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -1229,14 +1232,14 @@
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edt_website_link"/>
 
-                    <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+                    <TextView
                         android:id="@+id/tv_cancel_website_link"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@string/cancel_button_text"
                         android:textColor="@color/white"
-                        android:textSize="22sp"
+                        android:textSize="13sp"
                         android:background="@drawable/blue_fill_round_gradient"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -1254,7 +1257,7 @@
                     android:id="@+id/btn_website_links"
                     android:layout_width="170dp"
                     android:layout_height="44dp"
-                    android:layout_gravity="right"
+                    android:layout_gravity="end"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/blue_fill_round_gradient">
@@ -1297,25 +1300,26 @@
 
             </FrameLayout>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            <TextView
                 android:id="@+id/tv_status_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/status_new"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="14sp"
+                style="@style/tvReg"
                 android:visibility="gone"
                 tools:visibility="visible"/>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            <TextView
                 android:id="@+id/tv_status"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/bg_edit_text_normal"
                 android:gravity="center"
@@ -1324,34 +1328,37 @@
                 android:paddingRight="16dp"
                 android:paddingBottom="4dp"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="14sp"
+                style="@style/tvReg"
                 android:visibility="gone"
                 tools:text="Active"
                 tools:visibility="visible" />
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            <TextView
                 android:id="@+id/tv_featured_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/featured_text"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="14sp"
+                style="@style/tvReg"
                 android:visibility="gone"
                 tools:visibility="visible"/>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            <TextView
                 android:id="@+id/tv_featured"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="14sp"
+                style="@style/tvReg"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:paddingLeft="16dp"
@@ -1361,29 +1368,31 @@
                 tools:visibility="visible"
                 android:visibility="gone"/>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            <TextView
                 android:id="@+id/tv_verified_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/verified_text"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="14sp"
+                style="@style/tvReg"
                 android:visibility="gone"
                 tools:visibility="visible"/>
 
-            <com.libyasolutions.libyamarketplace.widget.TextViewFontH2
+            <TextView
                 android:id="@+id/tv_verified"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="22sp"
+                android:textSize="14sp"
+                style="@style/tvReg"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:paddingLeft="16dp"
@@ -1397,13 +1406,13 @@
                 android:id="@+id/btn_create_shop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/customButton"
-                android:backgroundTint="@color/blue_dark_button"
+                style="@style/tvMedium"
                 android:layout_marginVertical="@dimen/_20sdp"
                 android:layout_marginStart="20dp"
-                android:background="@drawable/blue_outline_gradient"
+                android:background="@drawable/blue_fill_round_gradient"
                 android:text="@string/create_shop_button_text"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="15dp"
+                android:textColor="@color/white"
                 android:textAllCaps="false"/>
 
         </LinearLayout>

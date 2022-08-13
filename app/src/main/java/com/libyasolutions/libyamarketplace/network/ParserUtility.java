@@ -358,10 +358,10 @@ public class ParserUtility {
                             .getString(WebServiceConfig.KEY_SHOP_NAME));
                     shop.setAddress(item
                             .getString(WebServiceConfig.KEY_SHOP_ADDRESS));
-                    shop.setPhone(item
-                            .getString(WebServiceConfig.KEY_SHOP_PHONE));
-                    shop.setImage(item
-                            .getString(WebServiceConfig.KEY_SHOP_IMAGE));
+                    shop.setPhone(item.getString(WebServiceConfig.KEY_SHOP_PHONE));
+                    shop.setAlternatePhone(item.optString(WebServiceConfig.KEY_SHOP_PHONE_ALTERNATE));
+
+                    shop.setImage(item.getString(WebServiceConfig.KEY_SHOP_IMAGE));
                     shop.setDescription(item
                             .getString(WebServiceConfig.KEY_SHOP_DESCRIPTION));
 
@@ -468,6 +468,8 @@ public class ParserUtility {
                     shop.setShopName(item.getString(WebServiceConfig.KEY_SHOP_NAME));
                     shop.setAddress(item.getString(WebServiceConfig.KEY_SHOP_ADDRESS));
                     shop.setPhone(item.getString(WebServiceConfig.KEY_SHOP_PHONE));
+                    shop.setAlternatePhone(item.optString(WebServiceConfig.KEY_SHOP_PHONE_ALTERNATE));
+
                     shop.setImage(item.getString("shop_image"));
                     shop.setThumbnail(item.getString("shop_thumbnail"));
                     shop.setDescription(item.getString(WebServiceConfig.KEY_SHOP_DESCRIPTION));
@@ -580,8 +582,10 @@ public class ParserUtility {
                             .getString(WebServiceConfig.KEY_SHOP_NAME));
                     shop.setAddress(item
                             .getString(WebServiceConfig.KEY_SHOP_ADDRESS));
-                    shop.setPhone(item
-                            .getString(WebServiceConfig.KEY_SHOP_PHONE));
+                    shop.setPhone(item.getString(WebServiceConfig.KEY_SHOP_PHONE));
+                    shop.setAlternatePhone(item.optString(WebServiceConfig.KEY_SHOP_PHONE_ALTERNATE));
+
+
                     shop.setImage(item
                             .getString(WebServiceConfig.KEY_SHOP_IMAGE));
                     shop.setDescription(item
@@ -672,6 +676,8 @@ public class ParserUtility {
             shop.setShopName(item.getString(WebServiceConfig.KEY_SHOP_NAME));
             shop.setAddress(item.getString(WebServiceConfig.KEY_SHOP_ADDRESS));
             shop.setPhone(item.getString(WebServiceConfig.KEY_SHOP_PHONE));
+            shop.setAlternatePhone(item.optString(WebServiceConfig.KEY_SHOP_PHONE_ALTERNATE));
+
             shop.setImage(item.getString("shop_image"));
             shop.setThumbnail(item.getString(WebServiceConfig.KEY_SHOP_IMAGE));
             shop.setDescription(item
@@ -1014,6 +1020,7 @@ public class ParserUtility {
                 food = new Menu();
                 food.setId(item.getInt(WebServiceConfig.KEY_FOOD_ID));
                 food.setCode(item.getString(WebServiceConfig.KEY_FOOD_CODE));
+                food.setAvailableStock(item.optString(WebServiceConfig.KEY_REMAINING_QUANTITY));
                 food.setName(item.getString(WebServiceConfig.KEY_FOOD_NAME));
                 food.setDescription(item.getString(WebServiceConfig.KEY_FOOD_DESCRIPTION));
                 if (item.has("food_image"))
@@ -1079,7 +1086,6 @@ public class ParserUtility {
                 arrFood.add(food);
             }
         } catch (JSONException e) {
-            // TODO Auto-generated catch block
             Log.e("error", "Parsed list food false" + e.getMessage());
         }
 
@@ -1098,6 +1104,7 @@ public class ParserUtility {
                 food = new Menu();
                 food.setId(item.getInt(WebServiceConfig.KEY_FOOD_ID));
                 food.setCode(item.getString(WebServiceConfig.KEY_FOOD_CODE));
+                food.setAvailableStock(item.optString(WebServiceConfig.KEY_REMAINING_QUANTITY));
                 food.setName(item.getString(WebServiceConfig.KEY_FOOD_NAME));
                 food.setDescription(item
                         .getString(WebServiceConfig.KEY_FOOD_DESCRIPTION));
@@ -1143,6 +1150,7 @@ public class ParserUtility {
                 food = new Menu();
                 food.setId(item.getInt(WebServiceConfig.KEY_FOOD_ID));
                 food.setCode(item.getString(WebServiceConfig.KEY_FOOD_CODE));
+                food.setAvailableStock(item.optString(WebServiceConfig.KEY_REMAINING_QUANTITY));
                 food.setName(item.getString(WebServiceConfig.KEY_FOOD_NAME));
                 food.setDescription(item
                         .getString(WebServiceConfig.KEY_FOOD_DESCRIPTION));
@@ -1203,6 +1211,7 @@ public class ParserUtility {
                 food = new Menu();
                 food.setId(item.getInt(WebServiceConfig.KEY_FOOD_ID));
                 food.setCode(item.getString(WebServiceConfig.KEY_FOOD_CODE));
+                food.setAvailableStock(item.optString(WebServiceConfig.KEY_REMAINING_QUANTITY));
                 food.setName(item.getString(WebServiceConfig.KEY_FOOD_NAME));
                 food.setDescription(item
                         .getString(WebServiceConfig.KEY_FOOD_DESCRIPTION));
@@ -1263,6 +1272,7 @@ public class ParserUtility {
             food = new Menu();
             food.setId(item.getInt(WebServiceConfig.KEY_FOOD_ID));
             food.setCode(item.getString(WebServiceConfig.KEY_FOOD_CODE));
+            food.setAvailableStock(item.optString(WebServiceConfig.KEY_REMAINING_QUANTITY));
             food.setName(item.getString(WebServiceConfig.KEY_FOOD_NAME));
             food.setDescription(item.getString(WebServiceConfig.KEY_FOOD_DESCRIPTION));
             food.setImage(item.getString(WebServiceConfig.KEY_FOOD_IMAGE));
@@ -1334,6 +1344,8 @@ public class ParserUtility {
             shop.setShopName(item.getString(WebServiceConfig.KEY_SHOP_NAME));
             shop.setAddress(item.getString(WebServiceConfig.KEY_SHOP_ADDRESS));
             shop.setPhone(item.getString(WebServiceConfig.KEY_SHOP_PHONE));
+            shop.setAlternatePhone(item.optString(WebServiceConfig.KEY_SHOP_PHONE_ALTERNATE));
+
             shop.setImage(item.getString(WebServiceConfig.KEY_SHOP_IMAGE));
             shop.setThumbnail(item.getString("shop_thumbnail"));
             shop.setDescription(item

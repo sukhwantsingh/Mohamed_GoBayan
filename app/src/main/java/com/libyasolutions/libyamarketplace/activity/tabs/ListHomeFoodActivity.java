@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.appbar.AppBarLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -27,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.libyasolutions.libyamarketplace.BaseActivityV2;
 import com.libyasolutions.libyamarketplace.R;
+import com.libyasolutions.libyamarketplace.activity.AddNewPostActivity;
+import com.libyasolutions.libyamarketplace.activity.FilterScreenActivity;
 import com.libyasolutions.libyamarketplace.adapter.ListFoodAdapterNew;
 import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.ConstantApp;
@@ -69,6 +73,7 @@ public class ListHomeFoodActivity extends BaseActivityV2
         implements View.OnClickListener, AppBarLayout.OnOffsetChangedListener {
 
     public static final int DELAY_MILLIS_2000 = 2000;
+    private final int REQ_CODE_FILTER = 1127;
 
     @BindView(R.id.iv_sort)
     ImageView ivSort;
@@ -76,21 +81,14 @@ public class ListHomeFoodActivity extends BaseActivityV2
     EditText edtSearch;
     @BindView(R.id.tv_city_name)
     TextView tvCityName;
-    @BindView(R.id.container_choose_cities)
-    ConstraintLayout containerSearchByChooseCities;
-    @BindView(R.id.btn_search_by_all_cities)
-    Button btnSearchByAllCities;
-    @BindView(R.id.btn_search_by_my_location)
-    Button btnSearchByMyLocation;
-    @BindView(R.id.btn_search_by_choose_department)
-    Button btnSearchByChooseDepartment;
-    @BindView(R.id.btn_search_by_all_department)
-    Button btnSearchByAllDepartment;
+
 
     @BindView(R.id.tvShopQuality)
     TextView tvShopQuality;
+
     @BindView(R.id.rclViewShop)
     RecyclerView rclViewShop;
+
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout refreshLayout;
 
@@ -109,6 +107,7 @@ public class ListHomeFoodActivity extends BaseActivityV2
     @BindView(R.id.iv_expand_app_bar)
     ImageView ivExpandAppBar;
 
+
     private ListFoodAdapterNew listFoodAdapterNew;
     private MySharedPreferences mySharedPreferences;
 
@@ -119,13 +118,14 @@ public class ListHomeFoodActivity extends BaseActivityV2
     private int page = 1;
     private boolean isLoadingMore = false;
 
-    private String cityId = "";
+    private String cityId = ConstantApp.ALL_CITIES;
     private String distance = "45";
     private String lat = "";
     private String lon = "";
     private String sortType = "desc";
     private String sortBy = "date";
     private boolean isProgress = true;
+    private String minPrice ="", maxPrice = "";
 
     private DatabaseReference ref;
     private ArrayList<Conversation> listConversation;
@@ -144,11 +144,26 @@ public class ListHomeFoodActivity extends BaseActivityV2
 
     @Override
     protected void initData() {
-        getLatLong();
         mySharedPreferences = new MySharedPreferences(this);
         ref = FirebaseDatabase.getInstance().getReference();
+
+        checkIntentForValues();
     }
 
+    private void checkIntentForValues() {
+        String chkCity = getIntent().getStringExtra("cityId");
+        if(null != chkCity){
+            cityId = chkCity;
+            distance = getIntent().getStringExtra("distance");
+            minPrice = getIntent().getStringExtra("minPrice");
+            maxPrice = getIntent().getStringExtra("maxPrice");
+            lat = getIntent().getStringExtra("latitude");
+            lon = getIntent().getStringExtra("longitude");
+            categorySearchList = FilterScreenActivity.Companion.getCategorySearchList();
+
+        }
+        //else getLatLong();
+    }
     @Override
     protected void configView() {
         rclViewShop.setHasFixedSize(true);
@@ -193,6 +208,8 @@ public class ListHomeFoodActivity extends BaseActivityV2
         appBar.removeOnOffsetChangedListener(this);
     }
 
+
+
     @OnClick(R.id.iv_search_by_distance)
     void onLocClick() {
         chooseBack();
@@ -202,6 +219,36 @@ public class ListHomeFoodActivity extends BaseActivityV2
     void goToCart() {
       //sendAction(Constant.SHOW_TAB_CART);
         gotoActivity(MainCartActivity.class);
+
+    }
+
+    @OnClick(R.id.imageFilter)
+    void goFilterCart() {
+        FilterScreenActivity.Companion.setComingFrom("PRODUCT");
+        gotoActivityForResult(this, FilterScreenActivity.class, REQ_CODE_FILTER);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE_FILTER) {
+            if (resultCode == RESULT_OK) {
+                if(null != data) {
+                    cityId = data.getStringExtra("cityId");
+                    distance = data.getStringExtra("distance");
+                    minPrice = data.getStringExtra("minPrice");
+                    maxPrice = data.getStringExtra("maxPrice");
+                    lat = data.getStringExtra("latitude");
+                    lon = data.getStringExtra("longitude");
+                    categorySearchList = FilterScreenActivity.Companion.getCategorySearchList();
+
+                    chooseSearch();
+                }
+            }
+        }
+
+
 
     }
 
@@ -228,7 +275,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         searchListFoodHome(page, isProgress);
     }
 
-    @OnClick({R.id.container_search, R.id.btn_search})
     void chooseSearch() {
         isLoadingMore = false;
         page = 1;
@@ -237,7 +283,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
 
     @OnClick(R.id.iv_search_by_date_name_rating)
     void chooseSearchByDateNamRating() {
-        chooseSearchByAllCities();
         SortByDialog dialog = SortByDialog.newInstance(sortBy);
         dialog.show(getSupportFragmentManager(), dialog.getTag());
         dialog.setOnSortByListener(new SortByDialog.OnSortByListener() {
@@ -261,44 +306,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         });
     }
 
-    @OnClick(R.id.container_choose_cities)
-    void chooseSearchByCities() {
-        refreshLocationData();
-
-        CityIdDialog dialog = CityIdDialog.newInstance();
-        dialog.show(getSupportFragmentManager(), dialog.getTag());
-        dialog.setOnSearchByCityIdListener((idCity, cityName) -> {
-            if (idCity != null && cityName != null) {
-                cityId = idCity;
-                tvCityName.setText(cityName);
-            }
-
-            setupCityIdSelected();
-            setupCityAllUnSelected();
-            setupMyLocationUnSelected();
-        });
-    }
-
-    @OnClick(R.id.btn_search_by_all_cities)
-    void chooseSearchByAllCities() {
-        refreshLocationData();
-        refreshCityData();
-
-        setupCityAllSelected();
-        setupCityIdUnSelected();
-        setupMyLocationUnSelected();
-    }
-
-    @OnClick(R.id.btn_search_by_my_location)
-    void chooseSearchByMyLocation() {
-        getLatLong();
-        distance = "45";
-        tvCityName.setText(getString(R.string.list_shop_home_text_choose_cities));
-
-        setupMyLocationSelected();
-        setupCityIdUnSelected();
-        setupCityAllUnSelected();
-    }
 
     @OnClick(R.id.container_sort)
     void chooseSearchBySort() {
@@ -312,7 +319,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         chooseSearch();
     }
 
-//    @OnClick(R.id.iv_search_by_distance)
     void chooseSearchByDistance() {
         getLatLong();
 
@@ -324,60 +330,6 @@ public class ListHomeFoodActivity extends BaseActivityV2
         dialog.setOnSearchByDistanceListener(distanceValue -> distance = distanceValue);
     }
 
-    @OnClick(R.id.btn_search_by_choose_department)
-    void chooseSearchByDepartment() {
-        if (!NetworkUtil.checkNetworkAvailable(this)) {
-            showToast(R.string.no_connection);
-            return;
-        }
-
-        ModelManager.getListDepartmentCategory(this, true, new ModelManagerListener() {
-            @Override
-            public void onError(VolleyError error) {
-                Log.e(TAG, "error api" + error.getMessage());
-                showToast(ErrorNetworkHandler.processError(error));
-            }
-
-            @Override
-            public void onSuccess(Object object) {
-                if (ParserUtility.isSuccess(object.toString())) {
-                    departmentCategoryList.clear();
-                    List<DepartmentCategory> list =
-                            ParserUtility.parseDepartmentCategory(object.toString());
-                    if (list != null && list.size() > 0) {
-                        departmentCategoryList.addAll(list);
-                    } else {
-                        Log.e(TAG, "some error in parse json");
-                    }
-                    setupDepartmentDialog();
-                } else {
-                    showToast(ParserUtility.getMessage(object.toString()));
-                }
-            }
-        });
-    }
-
-    private void setupDepartmentDialog() {
-        DepartmentDialog dialog = DepartmentDialog.newInstance(departmentCategoryList);
-        dialog.show(getSupportFragmentManager(), dialog.getTag());
-
-        dialog.setOnSearchByDepartmentListener(list -> {
-            formatList(list);
-            page = 1;
-            isLoadingMore = false;
-            searchListFoodHome(page, true);
-        });
-
-
-        setupDepartmentIdSelected();
-        setupDepartmentAllUnSelected();
-    }
-
-    @OnClick(R.id.btn_search_by_all_department)
-    void chooseSearchByAllDepartment() {
-        setupDepartmentAllSelected();
-        setupDepartmentIdUnSelected();
-    }
 
     @Override
     public void onClick(View v) {
@@ -484,99 +436,8 @@ public class ListHomeFoodActivity extends BaseActivityV2
         }
     }
 
-    private void formatList(List<CategorySearch> list) {
-        for (CategorySearch categorySearch : list) {
-            if (categorySearch.getCategory().length() > 1) {
-                String categoryId = categorySearch.getCategory()
-                        .substring(0, categorySearch.getCategory().length() - 1);
-                categorySearch.setCategory(categoryId);
-            }
-            categorySearchList.add(categorySearch);
-        }
-    }
 
-    private void refreshLocationData() {
-        lat = "";
-        lon = "";
-        distance = "45";
-    }
 
-    private void refreshCityData() {
-        cityId = ConstantApp.ALL_CITIES;
-        tvCityName.setText(getString(R.string.list_shop_home_text_choose_cities));
-    }
-
-    private void setupCityIdSelected() {
-        containerSearchByChooseCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
-        tvCityName.setTextColor(getResources().getColor(R.color.white));
-        ivArrowBottomCity.setImageResource(R.drawable.ic_arrow_down_2);
-    }
-
-    private void setupCityIdUnSelected() {
-        containerSearchByChooseCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        tvCityName.setTextColor(getResources().getColor(R.color.black));
-        ivArrowBottomCity.setImageResource(R.drawable.ic_arrow_down_1);
-    }
-
-    private void setupCityAllSelected() {
-        btnSearchByAllCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
-        btnSearchByAllCities.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupCityAllUnSelected() {
-        btnSearchByAllCities.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        btnSearchByAllCities.setTextColor(getResources().getColor(R.color.black));
-    }
-
-    private void setupMyLocationSelected() {
-        btnSearchByMyLocation.setBackground(
-                ContextCompat.getDrawable(
-                        this, R.drawable.bg_red_button_with_border));
-        btnSearchByMyLocation.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupMyLocationUnSelected() {
-        btnSearchByMyLocation.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        btnSearchByMyLocation.setTextColor(getResources().getColor(R.color.black));
-    }
-
-    private void setupDepartmentIdSelected() {
-        btnSearchByChooseDepartment.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
-        btnSearchByChooseDepartment.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupDepartmentIdUnSelected() {
-        btnSearchByChooseDepartment.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        btnSearchByChooseDepartment.setTextColor(getResources().getColor(R.color.black));
-    }
-
-    private void setupDepartmentAllSelected() {
-        btnSearchByAllDepartment.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
-        btnSearchByAllDepartment.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupDepartmentAllUnSelected() {
-        btnSearchByAllDepartment.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        btnSearchByAllDepartment.setTextColor(getResources().getColor(R.color.black));
-    }
 
     private void getNotificationCount() {
         if (NetworkUtil.checkNetworkAvailable(this)) {

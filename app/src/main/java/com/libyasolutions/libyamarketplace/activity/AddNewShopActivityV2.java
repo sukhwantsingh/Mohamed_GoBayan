@@ -35,6 +35,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -100,6 +101,10 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
     TextView tvShopPhone;
     @BindView(R.id.edt_shop_phone)
     EditText edtShopPhone;
+
+   @BindView(R.id.location_alternate_no)
+    EditText edtAlternateShopPhone;
+
     @BindView(R.id.iv_empty_shop_phone)
     ImageView ivEmptyShopPhone;
     @BindView(R.id.tv_shop_description)
@@ -239,6 +244,9 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
     @BindView(R.id.btn_save_shop)
     Button btnSaveShop;
 
+    @BindView(R.id.sw_caht_mode)
+    Switch swChatEnableDisable;
+
     private LatLng latLng;
     private Bitmap bitmapShop;
     private Bitmap bitmapThumbnail;
@@ -371,6 +379,18 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
         edtShopName.setText(shop.getShopName());
         edtShopPhone.setText(shop.getPhone());
+
+        // Todo: Pending
+        edtAlternateShopPhone.setText(shop.getPhone());
+
+        if(null!= shop.getChatStatus() && shop.getChatStatus().equalsIgnoreCase("1")){
+            swChatEnableDisable.setChecked(true);
+        } else {
+            swChatEnableDisable.setChecked(false);
+        }
+
+
+
         edtShopCity.setText(shop.getCityName());
         edtShopAddress.setText(shop.getAddress());
         String location = getResources().getString(R.string.location_shop,
@@ -461,17 +481,21 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
         if (NetworkUtil.checkNetworkAvailable(this)) {
             String shopName = edtShopName.getText().toString().trim();
             String phone = edtShopPhone.getText().toString().trim();
+            String phoneAlternate = edtAlternateShopPhone.getText().toString().trim();
             String address = edtShopAddress.getText().toString().trim();
             String description = edtShopDescription.getText().toString().trim();
             final String facebook = edtFacebookLink.getText().toString().trim();
             String twitter = edtTwitterLink.getText().toString().trim();
             String instagram = edtInstagramLink.getText().toString().trim();
             String website = edtWebsiteLink.getText().toString().trim();
+            String chatStatus = "0";
+            if(swChatEnableDisable.isChecked()) chatStatus = "1"; else chatStatus = "0";
 
             //status = ckbActive.isChecked() ? "1" : "0";
 
             shop.setShopName(shopName);
             shop.setPhone(phone);
+            shop.setAlternatePhone(phoneAlternate);
             shop.setAddress(address);
             shop.setCityId(Integer.parseInt(cityId));
             shop.setCategoryId(categoryId);
@@ -482,6 +506,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
             shop.setShopInstagram(instagram);
             shop.setWebsite(website);
             shop.setGmt(gmt);
+            shop.setChatStatus(chatStatus);
 
 
             if (latLng != null) {
@@ -492,7 +517,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
                 shop.setLongitude(0.0);
             }
 
-            ModelManager.addNewShop(this, sharedPref.getUserInfo().getId(), shop, "0", deleteIds, shopImage, thumbnailImage, listFile, new ModelManagerListener() {
+            ModelManager.addNewShop(sharedPref.getUserInfo().getId(), shop, "0", deleteIds, shopImage, thumbnailImage, listFile, new ModelManagerListener() {
                 @Override
                 public void onError(VolleyError error) {
                     Log.e(TAG, "onError: " + error.getMessage());
@@ -515,19 +540,9 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
                     }
                     final String json = (String) object;
                     if (ParserUtility.isSuccess(json)) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                showToast(getResources().getString(R.string.message_success));
-                            }
-                        });
+                        runOnUiThread(() -> showToast(getResources().getString(R.string.message_success)));
                     } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                showToast(ParserUtility.getMessage(json));
-                            }
-                        });
+                        runOnUiThread(() -> showToast(ParserUtility.getMessage(json)));
                     }
                     deleteRecursive(new File(rootFolder));
 
@@ -600,31 +615,23 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
         tvMessage.setText(message);
 
-        btnYes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listFile.size() != 0)
-                    listFile.remove(position - oldSizeGallery);
-                if (shop != null) {
-                    deleteIds += shop.getArrBanner().get(position).getId() + ",";
-                    if (deleteIds.length() > 1 && deleteIds.contains(","))
-                        deleteIds = deleteIds.substring(0, deleteIds.length() - 1);
-                    Log.e("kevin", "deleteIds: " + deleteIds);
-                }
-
-                shop.getArrBanner().remove(position);
-
-                // Refresh gallery
-                bannerNewAdapter.notifyDataSetChanged();
-                confirmDeleteGalleryDialog.dismiss();
+        btnYes.setOnClickListener(v -> {
+            if (listFile.size() != 0)
+                listFile.remove(position - oldSizeGallery);
+            if (shop != null) {
+                deleteIds += shop.getArrBanner().get(position).getId() + ",";
+                if (deleteIds.length() > 1 && deleteIds.contains(","))
+                    deleteIds = deleteIds.substring(0, deleteIds.length() - 1);
+                Log.e("kevin", "deleteIds: " + deleteIds);
             }
+
+            shop.getArrBanner().remove(position);
+
+            // Refresh gallery
+            bannerNewAdapter.notifyDataSetChanged();
+            confirmDeleteGalleryDialog.dismiss();
         });
-        btnNo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmDeleteGalleryDialog.dismiss();
-            }
-        });
+        btnNo.setOnClickListener(v -> confirmDeleteGalleryDialog.dismiss());
         confirmDeleteGalleryDialog = builder.create();
         int w = getResources().getDisplayMetrics().widthPixels;
         confirmDeleteGalleryDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -632,7 +639,7 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(confirmDeleteGalleryDialog.getWindow().getAttributes());
-        lp.width = (int) (w * 0.75);
+        lp.width = (int) (w * 0.85);
         lp.height = LinearLayout.LayoutParams.WRAP_CONTENT;
         confirmDeleteGalleryDialog.getWindow().setAttributes(lp);
     }
@@ -1222,64 +1229,66 @@ public class AddNewShopActivityV2 extends BaseActivityV2 {
                     this, R.drawable.bg_edit_text_normal));
         }
 
-//        // facebook link
-//        if (edtFacebookLink.getText().toString().trim().isEmpty()) {
-//            if (ivEmptyFacebookLink.getVisibility() == View.GONE) {
-//                ivEmptyFacebookLink.setVisibility(View.VISIBLE);
-//            }
-//            edtFacebookLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_wrong));
-//        } else {
-//            if (ivEmptyFacebookLink.getVisibility() == View.VISIBLE) {
-//                ivEmptyFacebookLink.setVisibility(View.GONE);
-//            }
-//            edtFacebookLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_normal));
-//        }
-//
-//        // instagram link
-//        if (edtInstagramLink.getText().toString().trim().isEmpty()) {
-//            if (ivEmptyInstagramLink.getVisibility() == View.GONE) {
-//                ivEmptyInstagramLink.setVisibility(View.VISIBLE);
-//            }
-//            edtInstagramLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_wrong));
-//        } else {
-//            if (ivEmptyInstagramLink.getVisibility() == View.VISIBLE) {
-//                ivEmptyInstagramLink.setVisibility(View.GONE);
-//            }
-//            edtInstagramLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_normal));
-//        }
-//
-//        // twitter link
-//        if (edtTwitterLink.getText().toString().trim().isEmpty()) {
-//            if (ivEmptyTwitterLink.getVisibility() == View.GONE) {
-//                ivEmptyTwitterLink.setVisibility(View.VISIBLE);
-//            }
-//            edtTwitterLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_wrong));
-//        } else {
-//            if (ivEmptyTwitterLink.getVisibility() == View.VISIBLE) {
-//                ivEmptyTwitterLink.setVisibility(View.GONE);
-//            }
-//            edtTwitterLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_normal));
-//        }
-//
-//        // website link
-//        if (edtWebsiteLink.getText().toString().trim().isEmpty()) {
-//            if (ivEmptyWebsiteLink.getVisibility() == View.GONE) {
-//                ivEmptyWebsiteLink.setVisibility(View.VISIBLE);
-//            }
-//            edtWebsiteLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_wrong));
-//        } else {
-//            if (ivEmptyWebsiteLink.getVisibility() == View.VISIBLE) {
-//                ivEmptyWebsiteLink.setVisibility(View.GONE);
-//            }
-//            edtWebsiteLink.setBackground(ContextCompat.getDrawable(
-//                    this, R.drawable.bg_edit_text_normal));
-//        }
+/*        // facebook link
+        if (edtFacebookLink.getText().toString().trim().isEmpty()) {
+            if (ivEmptyFacebookLink.getVisibility() == View.GONE) {
+                ivEmptyFacebookLink.setVisibility(View.VISIBLE);
+            }
+            edtFacebookLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_wrong));
+        } else {
+            if (ivEmptyFacebookLink.getVisibility() == View.VISIBLE) {
+                ivEmptyFacebookLink.setVisibility(View.GONE);
+            }
+            edtFacebookLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_normal));
+        }
+
+        // instagram link
+        if (edtInstagramLink.getText().toString().trim().isEmpty()) {
+            if (ivEmptyInstagramLink.getVisibility() == View.GONE) {
+                ivEmptyInstagramLink.setVisibility(View.VISIBLE);
+            }
+            edtInstagramLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_wrong));
+        } else {
+            if (ivEmptyInstagramLink.getVisibility() == View.VISIBLE) {
+                ivEmptyInstagramLink.setVisibility(View.GONE);
+            }
+            edtInstagramLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_normal));
+        }
+
+        // twitter link
+        if (edtTwitterLink.getText().toString().trim().isEmpty()) {
+            if (ivEmptyTwitterLink.getVisibility() == View.GONE) {
+                ivEmptyTwitterLink.setVisibility(View.VISIBLE);
+            }
+            edtTwitterLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_wrong));
+        } else {
+            if (ivEmptyTwitterLink.getVisibility() == View.VISIBLE) {
+                ivEmptyTwitterLink.setVisibility(View.GONE);
+            }
+            edtTwitterLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_normal));
+        }
+
+        // website link
+        if (edtWebsiteLink.getText().toString().trim().isEmpty()) {
+            if (ivEmptyWebsiteLink.getVisibility() == View.GONE) {
+                ivEmptyWebsiteLink.setVisibility(View.VISIBLE);
+            }
+            edtWebsiteLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_wrong));
+        } else {
+            if (ivEmptyWebsiteLink.getVisibility() == View.VISIBLE) {
+                ivEmptyWebsiteLink.setVisibility(View.GONE);
+            }
+            edtWebsiteLink.setBackground(ContextCompat.getDrawable(
+                    this, R.drawable.bg_edit_text_normal));
+        }*/
+
+
     }
 }

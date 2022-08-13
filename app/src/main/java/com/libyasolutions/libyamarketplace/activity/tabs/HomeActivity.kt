@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import com.android.volley.VolleyError
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationListener
 import com.google.android.gms.maps.model.Marker
 import com.libyasolutions.libyamarketplace.BaseActivity
@@ -35,6 +35,8 @@ import com.libyasolutions.libyamarketplace.network.ParserUtility
 import com.libyasolutions.libyamarketplace.util.GPSTracker
 import com.libyasolutions.libyamarketplace.util.NetworkUtil
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.layout_setting_.*
+import kotlinx.android.synthetic.main.view_tab.*
 
 @SuppressLint("NewApi")
 class HomeActivity : BaseActivity(), LocationListener {
@@ -72,7 +74,12 @@ class HomeActivity : BaseActivity(), LocationListener {
             tvRecycleProductRecommend.adapter = AdapRecommendedProducts(this@HomeActivity,null)
             tvRecycleShopNearby.adapter = AdapShopsNearbyYou(this@HomeActivity,null)
             tvRecycleProductNearby.adapter = AdapProductNearbyYou(this@HomeActivity,null)
+        }
 
+        if (GlobalValue.myAccount != null) {
+            binding.tvUserName.text = GlobalValue.myAccount.full_name
+            Glide.with(this).load(GlobalValue.myAccount.avatar).error(R.drawable.ic_user_photo)
+                .placeholder(R.drawable.ic_user_photo).into(binding.defaultImg)
         }
     }
 
@@ -104,13 +111,20 @@ class HomeActivity : BaseActivity(), LocationListener {
             }
 
             ivHome.setOnClickListener {  sendAction(Constant.SHOW_TAB_HOME)  }
-            ivSetting.setOnClickListener {  sendAction(Constant.SHOW_TAB_PROFILE)  }
+            ivSetting.setOnClickListener {
+                if (GlobalValue.myAccount != null) {
+                    sendAction(Constant.SHOW_TAB_PROFILE)
+                } else {
+                    showDialogLogin()
+                }
+            }
             ivCart.setOnClickListener {
              // sendAction(Constant.SHOW_TAB_CART)
                 gotoActivity(MainCartActivity::class.java)
             }
             filterImage.setOnClickListener {
             //   sendAction(Constant.SHOW_TAB_SEARCH)
+                 FilterScreenActivity.comingFrom = "HOME"
                  gotoActivity(FilterScreenActivity::class.java)
             }
 

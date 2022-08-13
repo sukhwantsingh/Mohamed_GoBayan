@@ -13,7 +13,7 @@
         android:paddingEnd="10dp"
         style="@style/tvMedium"
         android:background="@drawable/blue_fill_round_gradient"
-        android:textSize="12dp"
+        android:textSize="13dp"
         android:gravity="start"
         android:textColor="@color/white"
         android:maxLines="1"

@@ -133,7 +133,7 @@
     <string name="SearchFor">Search</string>
     <string name="shop">Shops</string>
     <string name="title">title</string>
-    <string name="price">price</string>
+    <string name="price">Price</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="add_upper_case">Add</string>
     <string name="to_cart">To cart</string>
@@ -344,12 +344,12 @@
     <string name="main_image">Main image</string>
     <string name="open_close_am">Open/close</string>
     <string name="open_close_pm">Open/close</string>
-    <string name="remove_from_gallery">do you want to remove it from the gallery?</string>
+    <string name="remove_from_gallery">Do you want to remove it from the gallery?</string>
     <string name="gmt">GMT</string>
     <string name="select_time_zone">Select time zone</string>
     <string name="edit_shop">Edit shop</string>
     <string name="select_hour">Select hour</string>
-    <string name="please_select_shop_image">Please select shop imageر</string>
+    <string name="please_select_shop_image">Please select shop image</string>
     <string name="please_select_thumbnail">Please select shop logo</string>
     <string name="please_enter_shop_name">Please enter shop name</string>
     <string name="please_enter_phone_number">Please enter phone number</string>
@@ -388,11 +388,11 @@
     <string name="sort_by_name">Sort by name</string>
     <string name="sort_by_date">Sort by date</string>
     <string name="text_distance">distance</string>
-    <string name="value_distance">distanc: %s Km</string>
+    <string name="value_distance">Distance: %s Km</string>
     <string name="text_0_km">0 Km</string>
     <string name="text_45_km">45 Km</string>
-    <string name="value_distance_all">distanc: %s</string>
-    <string name="sort_by">Sort_by</string>
+    <string name="value_distance_all">Distance: %s</string>
+    <string name="sort_by">Sort By</string>
     <string name="the_departments">Departments</string>
     <string name="choose_category">Choose Category</string>
     <string name="text_cancel">Cancel</string>
@@ -525,5 +525,6 @@
 
     <string name="button_text_shop_information">Shop information</string>
     <string name="lblUserName">Username or Email Address </string>
-
+    <string name="this_shop_turned_off_chat_option">This shop turned off the chat option at the moment</string>
+    <string name="posts_found">%s Posts Found</string>
 </resources>

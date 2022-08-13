@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_gravity="center"
         android:checked="false"
-        android:clickable="true"
-        android:focusable="true"
+        android:clickable="false"
+        android:focusable="false"
         android:singleLine="true"
         android:text="Category Name"
         android:textColor="@color/black"
-        android:textSize="12dp" />
+        android:textSize="14dp" />
 
 <!--    <View-->
 <!--        android:layout_width="match_parent"-->

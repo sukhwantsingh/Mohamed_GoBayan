@@ -525,5 +525,6 @@
 
     <string name="button_text_shop_information">معلومات المتجر</string>
     <string name="lblUserName">إسم المستخدم أو البريد الإلكتروني </string>
-
+    <string name="this_shop_turned_off_chat_option">This shop turned off the chat option at the moment</string>
+    <string name="posts_found">%s Posts Found</string>
 </resources>

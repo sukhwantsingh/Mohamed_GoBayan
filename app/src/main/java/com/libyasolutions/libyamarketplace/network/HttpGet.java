@@ -21,12 +21,12 @@ public class HttpGet extends HttpRequest {
         super(context, HttpRequest.METHOD_GET, url, isShowDialog, httpListener, httpError);
         this.params = params;
         this.url = getUrl(url, this.params).replace(" ","%20");
-        Log.e("Test","Demo"+this.url);
+        Log.wtf("Test","Demo"+this.url);
         sendRequest();
     }
 
     protected void sendRequest() {
-        Log.e("HttpGET", "url : " + this.url);
+        Log.wtf("HttpGET", "url : " + this.url);
         request = getStringRequest();
         super.sendRequest();
     }

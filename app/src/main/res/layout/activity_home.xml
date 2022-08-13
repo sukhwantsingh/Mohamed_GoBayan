@@ -40,6 +40,7 @@
 
             <TextView
                 style="@style/tvBold"
+                android:id="@+id/tvUserName"
                 android:layout_below="@+id/tvHello"
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@+id/default_img"
@@ -48,6 +49,7 @@
                 android:textSize="14dp" />
 
             <ImageView
+                android:id="@+id/ivlg"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
@@ -55,6 +57,143 @@
                 android:backgroundTint="@color/border_gray"
                 android:src="@drawable/app_icon" />
 
+            <LinearLayout
+                android:id="@+id/lla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivlg"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layout_search"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_grey"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/_3sdp">
+
+                    <FrameLayout
+                        android:id="@+id/container_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:paddingStart="@dimen/_12sdp">
+
+                        <ImageView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:src="@drawable/ic_search_new"
+                            app:tint="@color/blue_dark_button" />
+
+                    </FrameLayout>
+
+                    <EditText
+                        android:id="@+id/edt_search"
+                        style="@style/tvReg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="@string/search_your_house"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black_heading"
+                        android:textColorHint="@color/border_gray"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6sdp"
+                    android:background="@drawable/bg_border_grey">
+
+                    <ImageView
+                        android:id="@+id/filterImage"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/content_description"
+                        android:padding="@dimen/_11sdp"
+                        android:src="@drawable/ic_filter_icon_new" />
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:weightSum="3"
+                android:layout_below="@+id/lla"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_fill_round_gradient"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_12sdp">
+
+                    <TextView
+                        style="@style/tvReg"
+                        android:text="@string/my_location"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnShops"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_grey"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_12sdp">
+
+                    <TextView
+                        style="@style/tvReg"
+                        android:text="@string/shops"
+                        android:textColor="@color/blue_dark_button"
+                        android:textSize="12dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnMenus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_border_grey"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_12sdp">
+
+                    <TextView
+                        android:text="@string/products"
+                        style="@style/tvReg"
+                        android:textColor="@color/blue_dark_button"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
         </RelativeLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -71,166 +210,10 @@
                 android:paddingBottom="50dp"
                 android:clipToPadding="false"
                 android:paddingTop="@dimen/_10sdp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/layout_search"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_border_grey"
-                        android:orientation="horizontal"
-                        android:paddingVertical="@dimen/_3sdp">
-
-                        <FrameLayout
-                            android:id="@+id/container_search"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:paddingStart="@dimen/_12sdp">
-
-                            <ImageView
-                                android:layout_width="@dimen/_15sdp"
-                                android:layout_height="@dimen/_15sdp"
-                                android:src="@drawable/ic_search_new"
-                                app:tint="@color/blue_dark_button" />
-
-                        </FrameLayout>
-
-                        <EditText
-                            android:id="@+id/edt_search"
-                            style="@style/tvReg"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:hint="@string/search_your_house"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:padding="@dimen/_10sdp"
-                            android:singleLine="true"
-                            android:textColor="@color/black_heading"
-                            android:textColorHint="@color/gray_dark"
-                            android:textSize="14dp" />
-
-                    </LinearLayout>
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_6sdp"
-                        android:background="@drawable/bg_border_grey">
-
-                        <ImageView
-                            android:id="@+id/filterImage"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/content_description"
-                            android:padding="@dimen/_11sdp"
-                            android:src="@drawable/ic_filter_icon_new" />
-
-                    </FrameLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:weightSum="3"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/_12sdp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:background="@drawable/blue_fill_round_gradient"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_5sdp"
-                        android:paddingVertical="@dimen/_12sdp">
-
-                        <ImageView
-                            android:id="@+id/iv_search_by_distance"
-                            android:layout_width="@dimen/_12sdp"
-                            android:layout_height="@dimen/_12sdp"
-                            android:src="@drawable/ic_location_b_new"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            style="@style/tvMedium"
-                            android:layout_marginStart="5dp"
-                            android:text="@string/my_location"
-                            android:textColor="@color/white"
-                            android:textSize="12dp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/btnShops"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_border_grey"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_5sdp"
-                        android:paddingVertical="@dimen/_12sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_12sdp"
-                            android:layout_height="@dimen/_12sdp"
-                            android:src="@drawable/ic_icon_metro_shop_whitye"
-                            app:tint="@color/blue_dark_button" />
-
-                        <TextView
-                            style="@style/tvMedium"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/shops"
-                            android:textColor="@color/blue_dark_button"
-                            android:textSize="12dp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/btnMenus"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_border_grey"
-                        android:gravity="center"
-                        android:paddingHorizontal="@dimen/_5sdp"
-                        android:paddingVertical="@dimen/_12sdp">
-
-                        <ImageView
-                            android:layout_width="@dimen/_12sdp"
-                            android:layout_height="@dimen/_12sdp"
-                            android:src="@drawable/ic_location_b_new" />
-
-                        <TextView
-                            android:layout_marginStart="8dp"
-                            android:text="@string/products"
-                            style="@style/tvMedium"
-                            android:textColor="@color/blue_dark_button"
-                            android:textSize="12dp" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/_15sdp">
+                    android:layout_marginBottom="15dp">
 
                     <TextView
                         android:id="@+id/tvShopsHeading"
@@ -370,7 +353,7 @@
             android:id="@+id/bottomSec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="15dp"
             android:layout_marginBottom="16dp"
             android:layout_marginHorizontal="48dp"
             android:visibility="visible"

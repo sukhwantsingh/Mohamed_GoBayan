@@ -1,5 +1,6 @@
 package com.libyasolutions.libyamarketplace;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -87,6 +88,11 @@ public abstract class BaseActivityV2 extends AppCompatActivity {
     public void gotoWeb(Uri uri) {
         Intent myIntent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(myIntent);
+    }
+    public void gotoActivityForResult(Context context, Class<?> cla,
+                                      int requestCode) {
+        Intent intent = new Intent(context, cla);
+        startActivityForResult(intent, requestCode);
     }
 
 }

@@ -29,7 +29,8 @@
         android:id="@+id/rclOptions"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen300"
-        app:layout_constraintTop_toBottomOf="@id/view">
+        android:layout_marginTop="@dimen/dimen16"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
     </androidx.recyclerview.widget.RecyclerView>
 

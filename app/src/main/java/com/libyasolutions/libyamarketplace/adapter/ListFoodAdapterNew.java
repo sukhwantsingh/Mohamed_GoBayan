@@ -92,8 +92,8 @@ public class ListFoodAdapterNew extends RecyclerView.Adapter<RecyclerView.ViewHo
             viewHolder.tvPriceSale.setText(String.valueOf(menuArrayList.get(position).getPrice()) + " " + context.getResources().getString(R.string.currency));
         //    viewHolder.tvPriceSale.setText("$" + menuArrayList.get(position).getPrice());
 
-            viewHolder.tvDescription.setText(menuArrayList.get(position).getDescription());
-         //   viewHolder.tvLeftStock.setText(menuArrayList.get(position).getAvailable());
+             viewHolder.tvDescription.setText(menuArrayList.get(position).getDescription());
+             viewHolder.tvLeftStock.setText(menuArrayList.get(position).getAvailableStock());
 
             viewHolder.tvRating.setText(String.valueOf(menuArrayList.get(position).getRateValue() / 2));
 

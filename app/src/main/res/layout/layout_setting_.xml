@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    android:paddingBottom="8dp"
+    android:background="@color/cl_white">
 
     <RelativeLayout
+        android:id="@+id/rl1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_12sdp"
         android:paddingVertical="@dimen/_8sdp"
-        android:paddingHorizontal="@dimen/_12sdp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <include
             android:id="@+id/toolbarSec"
@@ -18,14 +24,19 @@
     </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/ns1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fillViewport="true">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rl1">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="@dimen/_12sdp"
             android:orientation="vertical">
 
@@ -33,10 +44,10 @@
                 android:id="@+id/layout_convert_to_shop_owner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingVertical="@dimen/_10sdp"
-                android:visibility="gone"
+                android:background="@drawable/bg_border_grey"
                 android:paddingHorizontal="@dimen/_12sdp"
-                android:background="@drawable/bg_border_grey">
+                android:paddingVertical="@dimen/_10sdp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/txtEmail"
@@ -63,54 +74,52 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
-                android:gravity="center_horizontal"
                 android:layout_gravity="center_horizontal"
-                android:backgroundTint="@color/grey_back"
                 android:background="@drawable/bg_border_grey"
-                android:orientation="horizontal">
+                android:backgroundTint="@color/grey_back"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
 
                 <ImageView
                     android:id="@+id/iv_expand_app_bar"
                     android:layout_width="48dp"
                     android:layout_height="32dp"
                     android:layout_marginLeft="35dp"
-                    android:src="@drawable/ic_arrow_down_1"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:visibility="gone"
-               />
+                    android:src="@drawable/ic_arrow_down_1"
+                    android:visibility="gone" />
 
                 <TextView
-                    style="@style/tvBold"
                     android:id="@+id/tvShopQuality"
+                    style="@style/tvBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:text="@string/shop_owner_account"
                     android:textColor="@color/black_heading"
-                    android:textSize="13dp"
-                    android:text="@string/shop_owner_account" />
+                    android:textSize="13dp" />
             </LinearLayout>
-
 
 
             <TextView
                 android:id="@+id/lblBuyerInformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bold"
-                android:textSize="15dp"
                 android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/bold"
+                android:text="@string/profile_settings"
                 android:textColor="@color/black_heading"
-                android:text="@string/profile_settings"/>
+                android:textSize="15dp" />
 
             <RelativeLayout
                 android:id="@+id/lnlInfor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:padding="16dp"
-                android:background="@drawable/bg_border_grey">
+                android:background="@drawable/bg_border_grey"
+                android:padding="16dp">
 
                 <ImageView
                     android:id="@+id/imageData"
@@ -158,22 +167,22 @@
             </RelativeLayout>
 
             <TextView
+                style="@style/tvBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/tvBold"
-                android:textSize="15dp"
                 android:layout_marginTop="16dp"
+                android:text="@string/shop_settings"
                 android:textColor="@color/color_blue_greenish"
-                android:text="@string/shop_settings"/>
+                android:textSize="15dp" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:padding="18dp"
+                android:background="@drawable/bg_border_grey"
                 android:orientation="vertical"
-                android:background="@drawable/bg_border_grey">
+                android:padding="18dp">
 
                 <RelativeLayout
                     android:id="@+id/layout_shop_management"
@@ -182,8 +191,8 @@
 
                     <ImageView
                         android:id="@+id/ivshp"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_shop_management_new" />
@@ -213,8 +222,9 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
+
                 <RelativeLayout
                     android:id="@+id/layout_manage_order"
                     android:layout_width="match_parent"
@@ -223,8 +233,8 @@
 
                     <ImageView
                         android:id="@+id/ivord"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_order_management" />
@@ -268,28 +278,28 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginTop="@dimen/_12sdp"/>
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/border_color" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bold"
-                android:textSize="15dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/bold"
+                android:text="@string/user_settings"
                 android:textColor="@color/color_blue_greenish"
-                android:text="@string/user_settings"/>
+                android:textSize="15dp" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginTop="8dp"
-                android:padding="18dp"
+                android:layout_marginBottom="90dp"
+                android:background="@drawable/bg_border_grey"
                 android:orientation="vertical"
-                android:background="@drawable/bg_border_grey">
+                android:padding="18dp">
 
                 <RelativeLayout
                     android:id="@+id/lnlOrder"
@@ -298,8 +308,8 @@
 
                     <ImageView
                         android:id="@+id/orderImage"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_order_history" />
@@ -324,6 +334,7 @@
                         android:padding="@dimen/_3sdp"
                         android:rotation="-90"
                         android:src="@drawable/ic_arrow_down" />
+
                     <TextView
                         android:id="@+id/tv_status_order_changed_count"
                         android:layout_width="18dp"
@@ -335,15 +346,14 @@
                         android:textSize="11dp"
                         android:visibility="gone"
                         tools:text="1"
-                        tools:visibility="visible"
-                      />
+                        tools:visibility="visible" />
                 </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
                 <RelativeLayout
                     android:id="@+id/lnlFavShops"
@@ -353,8 +363,8 @@
 
                     <ImageView
                         android:id="@+id/myFavouriteShops"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_saved_b" />
@@ -384,8 +394,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
 
                 <RelativeLayout
@@ -396,8 +406,8 @@
 
                     <ImageView
                         android:id="@+id/myFavouriteProduct"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_heart_b" />
@@ -427,8 +437,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
                 <RelativeLayout
                     android:id="@+id/layout_chat"
@@ -438,8 +448,8 @@
 
                     <ImageView
                         android:id="@+id/chats"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_chat_new" />
@@ -463,6 +473,7 @@
                         android:padding="@dimen/_3sdp"
                         android:rotation="-90"
                         android:src="@drawable/ic_arrow_down" />
+
                     <TextView
                         android:id="@+id/tv_chat_count"
                         android:layout_width="18dp"
@@ -481,8 +492,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
                 <RelativeLayout
                     android:id="@+id/rlLanguage"
@@ -492,8 +503,8 @@
 
                     <ImageView
                         android:id="@+id/language"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="@dimen/_6sdp"
                         android:src="@drawable/ic_language_outline" />
@@ -523,8 +534,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
                 <RelativeLayout
                     android:id="@+id/rlPrivacy"
@@ -534,8 +545,8 @@
 
                     <ImageView
                         android:id="@+id/productsImage"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="10dp"
                         android:src="@drawable/ic_privacy" />
@@ -565,8 +576,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
                 <RelativeLayout
                     android:id="@+id/rlTerms"
@@ -576,8 +587,8 @@
 
                     <ImageView
                         android:id="@+id/termsCondition"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/gray_background_round_image"
                         android:padding="10dp"
                         android:src="@drawable/ic_term_condition" />
@@ -604,29 +615,13 @@
                         android:src="@drawable/ic_arrow_down" />
 
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/color_light_grey"
-                    android:layout_marginVertical="@dimen/_12sdp"/>
+                    android:layout_marginVertical="@dimen/_12sdp"
+                    android:background="@color/border_color" />
 
-                <Button
-                    android:id="@+id/lnlLogout"
-                    android:layout_width="wrap_content"
-                    style="@style/tvBold"
-                    android:backgroundTint="@color/color_dark_blue"
-                    android:background="@drawable/bg_red_button_with_border"
-                    android:gravity="center"
-                    android:textAllCaps="false"
-                    android:layout_marginVertical="@dimen/_25sdp"
-                    android:paddingHorizontal="60dp"
-                    android:drawablePadding="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/white"
-                    android:drawableStart="@drawable/ic_logout12"
-                    android:drawableTint="@color/white"
-                    android:textSize="14dp"
-                    android:text="@string/logout" />
 
             </LinearLayout>
 
@@ -634,4 +629,23 @@
 
     </androidx.core.widget.NestedScrollView>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/lnlLogout"
+        style="@style/tvBold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        android:background="@drawable/bg_red_button_with_border"
+        android:drawableStart="@drawable/ico_logout"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:paddingHorizontal="60dp"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

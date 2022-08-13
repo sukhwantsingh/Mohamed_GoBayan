@@ -137,7 +137,6 @@ public class ProductManagementActivity extends BaseActivity implements View.OnCl
             GlobalValue.currentProduct = product;
             startActivity(intent1);
         });
-
         // delete this product
         productManagementAdapter.setOnItemProductManagement((view, position) -> {
             Dialog mDialog = new Dialog(this);

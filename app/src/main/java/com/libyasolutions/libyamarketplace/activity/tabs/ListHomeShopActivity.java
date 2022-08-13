@@ -1,31 +1,17 @@
 package com.libyasolutions.libyamarketplace.activity.tabs;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.annotation.Nullable;
 import com.google.android.material.appbar.AppBarLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.core.content.ContextCompat;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 
 import android.text.Html;
-import android.util.DisplayMetrics;
+
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.google.firebase.database.DataSnapshot;
@@ -42,9 +28,6 @@ import com.libyasolutions.libyamarketplace.config.Constant;
 import com.libyasolutions.libyamarketplace.config.ConstantApp;
 import com.libyasolutions.libyamarketplace.config.GlobalValue;
 import com.libyasolutions.libyamarketplace.databinding.ActivityListShopHomeBinding;
-import com.libyasolutions.libyamarketplace.dialog.CityIdDialog;
-import com.libyasolutions.libyamarketplace.dialog.DepartmentDialog;
-import com.libyasolutions.libyamarketplace.dialog.DistanceDialog;
 import com.libyasolutions.libyamarketplace.dialog.SortByDialog;
 import com.libyasolutions.libyamarketplace.modelmanager.ErrorNetworkHandler;
 import com.libyasolutions.libyamarketplace.modelmanager.ModelManager;
@@ -65,15 +48,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 
-/**
- * Create by Nguyen Dinh Doan
- */
 public class ListHomeShopActivity extends BaseActivity implements View.OnClickListener, AppBarLayout.OnOffsetChangedListener {
 
     private static final int DELAY_LOAD_MORE_2000 = 2000;
+    private final int REQ_CODE_FILTER = 1127;
 
     private ShopAdapterNew shopAdapterNew;
     private MySharedPreferences mySharedPreferences;
@@ -85,12 +64,14 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     private int page = 1;
     private boolean isLoadingMore = false;
 
-    private String cityId = "";
+    private String cityId = ConstantApp.ALL_CITIES;
     private String distance = "45";
     private String latitude = "";
     private String longitude = "";
     private String sortType = "desc"; //  sort ascending
     private String sortBy = "date";
+
+    private String minPrice ="", maxPrice = "";
 
     private DatabaseReference ref;
     private ArrayList<Conversation> listConversation;
@@ -111,16 +92,17 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     }
     protected void initData() {
         setSupportActionBar(binding.toolbar);
-
-        getLatLong();
         mySharedPreferences = new MySharedPreferences(this);
         ref = FirebaseDatabase.getInstance().getReference();
+
+       checkIntentForValues();
 
         binding.rclViewShop.setHasFixedSize(true);
         binding.rclViewShop.setLayoutManager(new LinearLayoutManager(this));
         shopAdapterNew = new ShopAdapterNew(binding.rclViewShop, shopList, this);
         binding.rclViewShop.setAdapter(shopAdapterNew);
-        searchListShopHome(1, true);
+
+       searchListShopHome(1, true);
 
         // refresh data
         binding.refreshLayout.setOnRefreshListener(() -> {
@@ -150,39 +132,41 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-    private void initControls() {
-        binding.ivExpandAppBar.setOnClickListener(v->{
-           binding.appBar.setExpanded(true, true);
-            binding.ivExpandAppBar.setVisibility(View.GONE);
-        });
+    private void checkIntentForValues() {
+        String chkCity = getIntent().getStringExtra("cityId");
+        if(null != chkCity){
+            cityId = chkCity;
+            distance = getIntent().getStringExtra("distance");
+            minPrice = getIntent().getStringExtra("minPrice");
+            maxPrice = getIntent().getStringExtra("maxPrice");
+            latitude = getIntent().getStringExtra("latitude");
+            longitude = getIntent().getStringExtra("longitude");
+            categorySearchList = FilterScreenActivity.Companion.getCategorySearchList();
 
+        }
+        // else getLatLong();
+    }
+
+    private void initControls() {
         binding.btnBack.setOnClickListener(v->{  chooseBack();   });
         binding.imgHome.setOnClickListener(v->{  chooseBack();  });
         binding.ivShowMore.setOnClickListener(v->{   chooseShowMore();  });
         binding.containerSearch.setOnClickListener(v->{   chooseSearch();  });
-        binding.btnSearch.setOnClickListener(v-> {   binding.containerSearch.performClick();  });
+
         binding.ivSearchByDateNameRating.setOnClickListener(v-> {
-            chooseSearchByAllCities();
             chooseSearchByDateNameRating();  });
 
-        binding.btnSearchByMyLocation.setOnClickListener(v-> { chooseSearchByMyLocation(); });
+
         binding.containerSort.setOnClickListener(v-> {
-          //  chooseSearchByAllCities();
               chooseSearchBySort();
         });
         binding.ivSearchByDistance.setOnClickListener(v->{
-         //   chooseSearchByAllCities();  //   chooseSearchByDistance();
           chooseBack();
         });
 
-        binding.containerChooseCities.setOnClickListener(v->{   chooseSearchByCities();   });
-        binding.btnSearchByAllCities.setOnClickListener(v->{  chooseSearchByAllCities();    });
-        binding.btnSearchByChooseDepartment.setOnClickListener(v->{ chooseSearchByDepartment();  });
-        binding.btnSearchByAllDepartment.setOnClickListener(v->{  chooseSearchByAllDepartment();   });
-
         binding.imageFilter.setOnClickListener(v->{
-          //  chooseSearchByDepartment();
-             gotoActivity(FilterScreenActivity.class);
+            FilterScreenActivity.Companion.setComingFrom("SHOP");
+            gotoActivityForResult(this, FilterScreenActivity.class, REQ_CODE_FILTER);
         });
 
         binding.imgTopCart.setOnClickListener(v->{
@@ -229,43 +213,11 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
                 binding.containerSearch.performClick();
             }
         });
-    }
-    void chooseSearchByCities() {
-        refreshLocationData();
 
-        CityIdDialog dialog = CityIdDialog.newInstance();
-        dialog.show(getSupportFragmentManager(), dialog.getTag());
-        dialog.setOnSearchByCityIdListener((idCity, cityName) -> {
-            if (idCity != null && cityName != null) {
-                cityId = idCity;
-                binding.tvCityName.setText(cityName);
-            }
 
-            setupCityIdSelected();
-            setupDistanceUnSelected();
-            setupCityAllUnSelected();
-            setupMyLocationUnSelected();
-        });
     }
-    void chooseSearchByAllCities() {
-        refreshLocationData();
-        refreshCityData();
 
-        setupCityAllSelected();
-        setupCityIdUnSelected();
-        setupDistanceUnSelected();
-        setupMyLocationUnSelected();
-    }
-    void chooseSearchByMyLocation() {
-        getLatLong();
-        distance = "45";
-        binding.tvCityName.setText(getString(R.string.list_shop_home_text_choose_cities));
 
-        setupMyLocationSelected();
-        setupDistanceSelected();
-        setupCityIdUnSelected();
-        setupCityAllUnSelected();
-    }
     void chooseSearchBySort() {
         if (sortType.equals(ConstantApp.SORT_TYPE_ASC)) {
             binding.ivSort.setImageResource(R.drawable.ic_arrows_exchange_alt_v);
@@ -277,54 +229,7 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         }
         binding.containerSearch.performClick();
     }
-    void chooseSearchByDistance() {
-        getLatLong();
 
-        // show
-        DistanceDialog dialog = DistanceDialog.newInstance(distance);
-        dialog.show(getSupportFragmentManager(), dialog.getTag());
-
-        // listener
-        dialog.setOnSearchByDistanceListener(distanceValue -> {
-                    distance = distanceValue;
-                    binding.containerSearch.performClick();
-                });
-    }
-    void chooseSearchByDepartment() {
-        if (!NetworkUtil.checkNetworkAvailable(this)) {
-            showToast(getString(R.string.no_connection));
-            return;
-        }
-
-        ModelManager.getListDepartmentCategory(this, true, new ModelManagerListener() {
-            @Override
-            public void onError(VolleyError error) {
-                Log.e(TAG, "error api" + error.getMessage());
-                showToast(ErrorNetworkHandler.processError(error));
-            }
-
-            @Override
-            public void onSuccess(Object object) {
-                if (ParserUtility.isSuccess(object.toString())) {
-                    departmentCategoryList.clear();
-                    List<DepartmentCategory> list =
-                            ParserUtility.parseDepartmentCategory(object.toString());
-                    if (list != null && list.size() > 0) {
-                        departmentCategoryList.addAll(list);
-                    } else {
-                        Log.e(TAG, "some error in parse json");
-                    }
-                    setupDepartmentDialog();
-                } else {
-                    showToast(ParserUtility.getMessage(object.toString()));
-                }
-            }
-        });
-    }
-    void chooseSearchByAllDepartment() {
-        setupDepartmentAllSelected();
-        setupDepartmentIdUnSelected();
-    }
 
 
     @Override
@@ -357,41 +262,10 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        binding.appBar.addOnOffsetChangedListener(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        binding.appBar.removeOnOffsetChangedListener(this);
-    }
-
-
-
-    private void setupDepartmentDialog() {
-        DepartmentDialog dialog = DepartmentDialog.newInstance(departmentCategoryList);
-        dialog.show(getSupportFragmentManager(), dialog.getTag());
-
-        dialog.setOnSearchByDepartmentListener(list -> {
-            formatList(list);
-            page = 1;
-            isLoadingMore = false;
-            searchListShopHome(page, true);
-        });
-
-
-        setupDepartmentIdSelected();
-        setupDepartmentAllUnSelected();
-    }
-
-
     private void searchListShopHome(int page, boolean isProgress) {
         if (!NetworkUtil.checkNetworkAvailable(this)) {
             showToast(getString(R.string.message_network_is_unavailable));
-           binding.refreshLayout.setRefreshing(false);
+            binding.refreshLayout.setRefreshing(false);
             return;
         }
 
@@ -443,6 +317,29 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
                 });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_CODE_FILTER) {
+            if (resultCode == RESULT_OK) {
+                if(null != data) {
+                    cityId = data.getStringExtra("cityId");
+                    distance = data.getStringExtra("distance");
+                    minPrice = data.getStringExtra("minPrice");
+                    maxPrice = data.getStringExtra("maxPrice");
+                    latitude = data.getStringExtra("latitude");
+                    longitude = data.getStringExtra("longitude");
+                    categorySearchList = FilterScreenActivity.Companion.getCategorySearchList();
+
+                    chooseSearch();
+                }
+            }
+        }
+
+
+
+    }
+
     private void formatList(List<CategorySearch> list) {
         for (CategorySearch categorySearch : list) {
             if (categorySearch.getCategory().length() > 1) {
@@ -467,90 +364,6 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    private void refreshLocationData() {
-        latitude = "";
-        longitude = "";
-        distance = "45";
-    }
-
-    private void refreshCityData() {
-        cityId = ConstantApp.ALL_CITIES;
-        binding.tvCityName.setText(getString(R.string.list_shop_home_text_choose_cities));
-    }
-
-    private void setupCityIdSelected() {
-        binding. containerChooseCities.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_red_button_with_border));
-        binding. tvCityName.setTextColor(getResources().getColor(R.color.white));
-        binding. ivArrowBottom.setImageResource(R.drawable.ic_arrow_down_2);
-    }
-
-    private void setupCityIdUnSelected() {
-        binding.containerChooseCities.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_corner_6));
-        binding.tvCityName.setTextColor(getResources().getColor(R.color.black));
-        binding.ivArrowBottom.setImageResource(R.drawable.ic_arrow_down_1);
-    }
-
-    private void setupDistanceSelected() {
-        binding.ivSearchByDistance.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_red_button_with_border));
-        binding.ivNav.setImageResource(R.drawable.ic_location_search_white);
-        binding.ivSearchByDistance.setEnabled(true);
-    }
-
-    private void setupDistanceUnSelected() {
-        binding.ivSearchByDistance.setBackground( ContextCompat.getDrawable(this, R.drawable.bg_border_grey));
-        binding.ivNav.setImageResource(R.drawable.ic_location_b_new);
-        binding.ivSearchByDistance.setEnabled(true);
-    }
-
-    private void setupCityAllSelected() {
-        binding.btnSearchByAllCities.setBackground(ContextCompat.getDrawable(this,  R.drawable.bg_red_button_with_border));
-        binding.btnSearchByAllCities.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupCityAllUnSelected() {
-        binding.btnSearchByAllCities.setBackground(ContextCompat.getDrawable(this,  R.drawable.bg_white_corner_6));
-        binding.btnSearchByAllCities.setTextColor(getResources().getColor(R.color.black));
-    }
-
-    private void setupMyLocationSelected() {
-
-        binding.btnSearchByMyLocation.setBackground(
-                ContextCompat.getDrawable(
-                        this, R.drawable.bg_red_button_with_border));
-        binding.btnSearchByMyLocation.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupMyLocationUnSelected() {
-        binding.btnSearchByMyLocation.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        binding.btnSearchByMyLocation.setTextColor(getResources().getColor(R.color.black));
-    }
-
-    private void setupDepartmentIdSelected() {
-
-        binding.btnSearchByChooseDepartment.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_red_button_with_border));
-        binding.btnSearchByChooseDepartment.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupDepartmentIdUnSelected() {
-        binding.btnSearchByChooseDepartment.setBackground(
-                ContextCompat.getDrawable(this,
-                        R.drawable.bg_white_corner_6));
-        binding.btnSearchByChooseDepartment.setTextColor(getResources().getColor(R.color.black));
-    }
-
-    private void setupDepartmentAllSelected() {
-        binding.btnSearchByAllDepartment.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_red_button_with_border));
-        binding.btnSearchByAllDepartment.setTextColor(getResources().getColor(R.color.white));
-    }
-
-    private void setupDepartmentAllUnSelected() {
-        binding.btnSearchByAllDepartment.setBackground(ContextCompat.getDrawable(this,  R.drawable.bg_white_corner_6));
-        binding.btnSearchByAllDepartment.setTextColor(getResources().getColor(R.color.black));
-    }
 
     private void getNotificationCount() {
         if (NetworkUtil.checkNetworkAvailable(this)) {
@@ -597,11 +410,7 @@ public class ListHomeShopActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset ) {
-        if (verticalOffset == 0) {
-            binding.ivExpandAppBar.setVisibility(View.GONE);
-        } else {
-            binding.ivExpandAppBar.setVisibility(View.VISIBLE);
-        }
+
     }
 
     private void getChatCount() {

@@ -3,9 +3,9 @@
 
     <stroke
         android:color="@color/blue_dark_button"
-        android:width="@dimen/_1sdp"/>
+        android:width="1.3dp"/>
 
     <corners
-        android:radius="6dp"/>
+        android:radius="10dp"/>
 
 </shape>

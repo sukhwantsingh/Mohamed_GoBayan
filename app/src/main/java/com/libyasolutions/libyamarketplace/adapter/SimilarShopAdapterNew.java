@@ -76,7 +76,7 @@ public class SimilarShopAdapterNew extends RecyclerView.Adapter<RecyclerView.Vie
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_ITEM) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.item_shop_search, parent, false);
+            View view = inflater.inflate(R.layout.row_list_shop_similar, parent, false);
             return new ViewHolder(view);
         } else if (viewType == VIEW_TYPE_LOADING) {
             LayoutInflater inflater = LayoutInflater.from(context);

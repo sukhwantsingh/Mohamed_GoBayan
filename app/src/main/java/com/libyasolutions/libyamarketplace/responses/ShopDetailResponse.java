@@ -3,18 +3,38 @@ package com.libyasolutions.libyamarketplace.responses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopDetailResponse {
     @SerializedName("status")
     @Expose
     public String status;
+
     @SerializedName("data")
     @Expose
     public Data data;
+
     @SerializedName("message")
     @Expose
     public String message;
+
+    public class ShopPostBanner {
+
+        @SerializedName("id")
+        @Expose
+        public String postId;
+
+        @SerializedName("description")
+        @Expose
+        public String description;
+
+        @SerializedName("image")
+        @Expose
+        public String image;
+
+    }
+
     public class ShopBanner {
 
         @SerializedName("banner_id")
@@ -176,7 +196,12 @@ public class ShopDetailResponse {
         public String closePM2;
 
     }
+
     public class Data {
+
+        @SerializedName("posts")
+        @Expose
+        public ArrayList<ShopPostBanner> shopPosts = null;
 
         @SerializedName("shop_id")
         @Expose
@@ -250,6 +275,9 @@ public class ShopDetailResponse {
         @SerializedName("email")
         @Expose
         public String email;
+        @SerializedName("chatStatus")
+        @Expose
+        public String chatStatus;
         @SerializedName("live_chat")
         @Expose
         public String liveChat;
@@ -293,7 +321,7 @@ public class ShopDetailResponse {
         @Expose
         public List<SimilarProduct> similarProducts = null;
 
-
-
     }
+
+
 }

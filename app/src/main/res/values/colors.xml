@@ -89,7 +89,7 @@
     <color name="color_light_grey2">#EAEAEA</color>
     <color name="color_blue_greenish">#0C243E</color>
     <color name="border_color">#EEEEEE</color>
-    <color name="border_gray">#dddddd</color>
+    <color name="border_gray">#EEEEEE</color>
     <color name="border_sky_blue">#f4fef4</color>
     <color name="border_light_blue">#f5f5f5</color>
     <color name="border_light_blue_two">#efefef</color>
@@ -102,6 +102,7 @@
     <color name="active_color">#50B72A</color>
     <color name="filter_blue">#B0D0EF</color>
     <color name="filter_blue_shade">#ECF1FD</color>
+    <color name="nav_icon_bg">#E7ECFE</color>
 
 
 </resources>

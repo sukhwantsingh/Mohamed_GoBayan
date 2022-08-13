@@ -24,11 +24,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/background_border"
             android:backgroundTint="@color/white"
-            android:padding="8dp"
-            android:src="@drawable/save_cart_icon" />
+            android:padding="10dp"
+            android:src="@drawable/ic_saved_b" />
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

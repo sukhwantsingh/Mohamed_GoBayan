@@ -13,8 +13,11 @@ public final class WebServiceConfig {
    // public static final String FULL_PATH = "http://uat.hicominfo.com:8888/libya-marketplace-phase2/backend/api/";
    // public static final String FILES_API = "http://uat.hicominfo.com:8888/libya-marketplace-phase2/backend/api/";
 
-    public static final String FULL_PATH = "http://libyamarketplace.com/backend/api/";
-    public static final String FILES_API = "http://libyamarketplace.com/backend/api/";
+   // public static final String FULL_PATH = "http://libyamarketplace.com/backend/api/";
+  //  public static final String FILES_API = "http://libyamarketplace.com/backend/api/";
+
+    public static final String FULL_PATH = "http://gobayan.com/backend/api/";
+    public static final String FILES_API = "http://gobayan.com/backend/api/";
 
     // action
     // public static final String ACTION_GET_SETTING = "getListShop";
@@ -79,6 +82,12 @@ public final class WebServiceConfig {
     public static final String ACTION_GET_ORDER_STATUS = "getOrderStatusToUpdate";
     public static final String ACTION_UPDATE_ORDER_STATUS = "updateStatusOrderByShop";
     public static final String ACTION_GET_ALL_CATEGORY_BY_SHOP = "getAllCategoryByShop";
+
+    public static final String ACTION_GET_ALL_POSTS = "getListPost";
+    public static final String ACTION_ADD_UPDATE_POST = "shopPost";
+    public static final String ACTION_DELETE_POST = "deletePost";
+
+
     // =============================Param=======================================
 
     // ==============================KEY========================================
@@ -120,6 +129,7 @@ public final class WebServiceConfig {
     public static final String KEY_SHOP_CITY = "shop_city";
     public static final String KEY_SHOP_IMAGE = "shop_thumbnail";
     public static final String KEY_SHOP_PHONE = "shop_tel";
+    public static final String KEY_SHOP_PHONE_ALTERNATE = "shop_tel2";
     public static final String KEY_SHOP_DESCRIPTION = "shop_description";
     public static final String KEY_SHOP_LATITUDE = "shop_latitude";
     public static final String KEY_SHOP_LONGTITUDE = "shop_longitude";
@@ -154,6 +164,7 @@ public final class WebServiceConfig {
     // food
     public static final String KEY_FOOD_ID = "food_id";
     public static final String KEY_FOOD_CODE = "food_code";
+    public static final String KEY_REMAINING_QUANTITY = "remaining_quantity";
     public static final String KEY_FOOD_NAME = "food_name";
     public static final String KEY_FOOD_PRICE = "food_price";
     public static final String KEY_FOOD_PERCENT_DISCOUNT = "food_percent_discount";

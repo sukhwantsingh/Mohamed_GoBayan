@@ -52,18 +52,14 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
                     listener.onError(null);
                 }
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, volleyError -> listener.onError(volleyError));
     }
 
     public static void getListShopBySearch(final Context context,
@@ -95,6 +91,7 @@ public class ModelManager {
         params.put("now", Utils.getCurrentTimestamp());
 
         new HttpGet(context, url, params, isProgress, respones -> {
+            Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
             if (respones != null) {
                 listener.onSuccess(respones.toString());
             } else {
@@ -132,6 +129,7 @@ public class ModelManager {
         params.put("now", Utils.getCurrentTimestamp());
 
         new HttpGet(context, url, params, isProgress, respones -> {
+            Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
             if (respones != null) {
                 listener.onSuccess(respones.toString());
             } else {
@@ -152,18 +150,14 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
                     listener.onError(null);
                 }
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, volleyError -> listener.onError(volleyError));
     }
 
     public static void getListOrder2(final Context context, String accountId, int page,
@@ -183,18 +177,14 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
                     listener.onError(null);
                 }
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, volleyError -> listener.onError(volleyError));
     }
 
     public static void getListDetailOrder(final Context context, String id,
@@ -206,18 +196,14 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
                     listener.onError(null);
                 }
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, volleyError -> listener.onError(volleyError));
     }
 
     public static void getListCity(final Context context, boolean isProgress,
@@ -228,18 +214,14 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
                     listener.onError(null);
                 }
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, volleyError -> listener.onError(volleyError));
     }
 
     public static void getListCategory(final Context context,
@@ -250,6 +232,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -266,26 +249,21 @@ public class ModelManager {
 
     public static void getShopById(final Context context, int shopId,
                                    boolean isProgress, final ModelManagerListener listener) {
-        final String url = WebServiceConfig.FULL_PATH
-                + WebServiceConfig.ACTION_GET_SHOP_BY_ID;
+        final String url = WebServiceConfig.FULL_PATH + WebServiceConfig.ACTION_GET_SHOP_BY_ID;
         String shop = shopId + "";
         Map<String, String> params = (Map<String, String>) ParameterFactory
                 .createShopIdParams(context, shop, 1);
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
                     listener.onError(null);
                 }
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, volleyError -> listener.onError(volleyError));
     }
 
     public static void getOpenHourByShop(final Context context, int shopId, int page,
@@ -298,6 +276,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -323,6 +302,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -345,6 +325,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -369,6 +350,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -396,6 +378,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -423,6 +406,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -447,6 +431,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -470,6 +455,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -493,6 +479,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -517,6 +504,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -541,6 +529,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -567,6 +556,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -591,6 +581,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -615,6 +606,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -638,6 +630,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -666,21 +659,14 @@ public class ModelManager {
         params.put("cityId", shopCity);
         params.put("shopOwnerName", userName);
         params.put("phone", userPhone);
-        new HttpPost(context, url, params, HttpRequest.REQUEST_STRING_PARAMS, true, new HttpListener() {
-            @Override
-            public void onHttpRespones(Object respones) {
-                if (respones != null) {
-                    listener.onSuccess(respones.toString());
-                } else {
-                    listener.onError(null);
-                }
+        new HttpPost(context, url, params, HttpRequest.REQUEST_STRING_PARAMS, true, respones -> {
+            Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
+            if (respones != null) {
+                listener.onSuccess(respones.toString());
+            } else {
+                listener.onError(null);
             }
-        }, new HttpError() {
-            @Override
-            public void onHttpError(VolleyError volleyError) {
-                listener.onError(volleyError);
-            }
-        });
+        }, listener::onError);
     }
 
 
@@ -693,6 +679,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -716,6 +703,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -740,6 +728,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -767,6 +756,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -793,6 +783,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -839,6 +830,7 @@ public class ModelManager {
         new HttpPost(context, url, params, HttpRequest.REQUEST_STRING_PARAMS, true, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -863,6 +855,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -889,6 +882,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -915,6 +909,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -943,6 +938,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -971,6 +967,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -999,6 +996,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1029,8 +1027,10 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+
                 if (respones != null) {
                     modelManagerListener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     modelManagerListener.onError(null);
                 }
@@ -1053,8 +1053,10 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1078,8 +1080,10 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1091,6 +1095,107 @@ public class ModelManager {
             }
         });
     }
+
+    public static void getListOfPosts(final Context context, String userID, String shop_id, int page, boolean isProgress,
+                                            final ModelManagerListener listener) {
+        final String url = WebServiceConfig.FULL_PATH + WebServiceConfig.ACTION_GET_ALL_POSTS;
+
+        Map<String, String> params = new HashMap<>();
+        params.put("user_id", userID);
+        params.put("s_id", shop_id);
+        params.put("now", Utils.getCurrentTimestamp());
+        params.put("page", page + "");
+        new HttpPost(context, url, params, HttpRequest.REQUEST_STRING_PARAMS, isProgress, respones -> {
+            Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
+            if (respones != null) {
+                listener.onSuccess(respones.toString());
+            } else {
+                listener.onError(null);
+            }
+        }, listener::onError);
+    }
+
+    public static void deletePost(final Context context, String userID, String shop_id, String post_id, boolean isProgress,
+                                            final ModelManagerListener listener) {
+        final String url = WebServiceConfig.FULL_PATH + WebServiceConfig.ACTION_DELETE_POST;
+
+        Map<String, String> params = new HashMap<>();
+        params.put("user_id", userID);
+        params.put("s_id", shop_id);
+        params.put("post_id", post_id);
+
+        new HttpPost(context, url, params, HttpRequest.REQUEST_STRING_PARAMS, isProgress, respones -> {
+            Log.wtf("Res",url+"\n"+params+"\n"+ respones);
+            if (respones != null) {
+                listener.onSuccess(respones.toString());
+            } else {
+                listener.onError(null);
+            }
+        }, listener::onError);
+    }
+
+    public static void addNewPost(String post_id, String shop_id, String user_id, String description,String status, File mainImage, final ModelManagerListener listener) {
+        final String url = WebServiceConfig.FULL_PATH+ WebServiceConfig.ACTION_ADD_UPDATE_POST;
+        final MediaType MEDIA_TYPE_PNG = MediaType.parse("image");
+
+        MultipartBody.Builder builderNew;
+
+        if(null != post_id){
+            builderNew =  new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("post_id", post_id)
+                    .addFormDataPart("shop_id", shop_id)
+                    .addFormDataPart("user_id", user_id)
+                    .addFormDataPart("status", status)
+                    .addFormDataPart("description", description);
+        } else {
+            builderNew = new MultipartBody.Builder()
+                    .setType(MultipartBody.FORM)
+                    .addFormDataPart("shop_id", shop_id)
+                    .addFormDataPart("user_id", user_id)
+                    .addFormDataPart("status", status)
+                    .addFormDataPart("description", description);
+        }
+
+
+        if (mainImage != null) {
+          //  builderNew.addFormDataPart("image", mainImage.getName(), RequestBody.create(MEDIA_TYPE_PNG, mainImage));
+            RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), mainImage);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("image", mainImage.getName(), requestFile);
+            builderNew.addPart(body);
+
+        }
+
+        RequestBody requestBody = builderNew.build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(message -> Log.e("url", message));
+
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .readTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+                .build();
+        okhttp3.Response response = null;
+        try {
+            response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                listener.onSuccess(response.body().string());
+                Log.wtf("Res",url+"\n"+requestBody+"\n" +  response.body());
+            } else
+                listener.onError(null);
+        } catch (IOException e) {
+            e.printStackTrace();
+            listener.onError(null);
+            Log.wtf("error ",e);
+        }
+
+    }
+
+
 
     public static void getMyProducts(final Context context, String shopId, String sortBy, String keyword, int page, boolean isProgress,
                                      final ModelManagerListener listener) {
@@ -1107,8 +1212,10 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1121,7 +1228,7 @@ public class ModelManager {
         });
     }
 
-    public static void addNewShop(Context context, String accountId, Shop shop, String status, String deleteGalleryId, File mainImage, File thumbnailImage, ArrayList<File> listFile, final ModelManagerListener listener) {
+    public static void addNewShop(String accountId, Shop shop, String status, String deleteGalleryId, File mainImage, File thumbnailImage, ArrayList<File> listFile, final ModelManagerListener listener) {
         final String url = WebServiceConfig.FULL_PATH
                 + WebServiceConfig.ACTION_ADD_NEW_SHOP;
 
@@ -1134,6 +1241,7 @@ public class ModelManager {
                 .addFormDataPart("city_id", shop.getCityId() + "")
                 .addFormDataPart("name", shop.getShopName())
                 .addFormDataPart("phone", shop.getPhone())
+                   .addFormDataPart("phone2", shop.getAlternatePhone())
                 .addFormDataPart("address", shop.getAddress())
                 .addFormDataPart("gmt", shop.getGmt())
                 .addFormDataPart("hotline", shop.getPhone())
@@ -1148,6 +1256,7 @@ public class ModelManager {
                 .addFormDataPart("livechat", "")
                 .addFormDataPart("openHours", shop.getShopTime())
                 .addFormDataPart("status", status)
+                .addFormDataPart("chatStatus", shop.getChatStatus())
                 .addFormDataPart("deleted_gallery", deleteGalleryId);
 
 
@@ -1167,12 +1276,7 @@ public class ModelManager {
                 .url(url)
                 .post(requestBody)
                 .build();
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-            @Override
-            public void log(String message) {
-                Log.e("url", message);
-            }
-        });
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(message -> Log.e("url", message));
 
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
@@ -1185,6 +1289,7 @@ public class ModelManager {
             response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 listener.onSuccess(response.body().string());
+                Log.wtf("Res",url+"\n"+requestBody+"\n"+response.body());
             } else
                 listener.onError(null);
         } catch (IOException e) {
@@ -1249,6 +1354,7 @@ public class ModelManager {
             response = client.newCall(request).execute();
             if (response.isSuccessful()) {
                 listener.onSuccess(response.body().string());
+                Log.wtf("Res",url+"\n"+requestBody+"\n" +  response.body());
             } else
                 listener.onError(null);
         } catch (IOException e) {
@@ -1258,8 +1364,7 @@ public class ModelManager {
 
     }
 
-    public static void deleteProduct(final Context context, String userId, String productId, boolean isProgress,
-                                       final ModelManagerListener listener) {
+    public static void deleteProduct(final Context context, String userId, String productId, boolean isProgress,  final ModelManagerListener listener) {
         final String url = WebServiceConfig.FULL_PATH
                 + WebServiceConfig.ACTION_DELETE_PRODUCT;
 
@@ -1269,6 +1374,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, new HttpListener() {
             @Override
             public void onHttpRespones(Object respones) {
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
                 } else {
@@ -1296,6 +1402,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1320,6 +1427,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1345,6 +1453,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1376,6 +1485,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1402,6 +1512,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1429,6 +1540,7 @@ public class ModelManager {
             public void onHttpRespones(Object respones) {
                 if (respones != null) {
                     listener.onSuccess(respones.toString());
+                    Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
                 } else {
                     listener.onError(null);
                 }
@@ -1450,6 +1562,7 @@ public class ModelManager {
         new HttpGet(context, url, params, isProgress, respones -> {
             if (respones != null) {
                 listener.onSuccess(respones.toString());
+                Log.wtf("Res",url+"\n"+params+"\n"+(String)respones);
             } else {
                 listener.onError(null);
             }

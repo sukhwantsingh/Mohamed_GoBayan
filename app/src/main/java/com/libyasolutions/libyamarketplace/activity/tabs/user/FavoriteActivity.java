@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -95,6 +96,7 @@ public class FavoriteActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onSuccess(Object object) {
                 String json = (String) object;
+                Log.wtf("res: ","_  " + json);
                 //add favorite shop list
                 arrFavoriteShops.clear();
                 arrFavoriteShops.addAll(ParserUtility.getListFavouriteShop(json));

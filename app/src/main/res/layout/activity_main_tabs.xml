@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
+    android:layout_marginEnd="-64dp"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
@@ -13,9 +14,9 @@
 
         <FrameLayout
             android:id="@android:id/tabcontent"
+            android:layout_marginEnd="64dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:id="@+id/lnlLayoutnew"
@@ -69,19 +70,11 @@
 
     </TabHost>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/lnlLayoutLeft"
+    <include
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/cl_white">
-
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            layout="@layout/layout_setting_" />
-
-    </androidx.core.widget.NestedScrollView>
+        layout="@layout/layout_setting_" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

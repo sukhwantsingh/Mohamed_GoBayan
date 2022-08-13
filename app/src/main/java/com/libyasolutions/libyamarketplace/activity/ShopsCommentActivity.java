@@ -1,6 +1,7 @@
 package com.libyasolutions.libyamarketplace.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -95,9 +96,8 @@ public class ShopsCommentActivity extends BaseActivity implements
 
                         @Override
                         public void onSuccess(Object object) {
-
                             String json = (String) object;
-                            shop = ParserUtility.parseShop(json);
+                              shop = ParserUtility.parseShop(json);
                             if (shop != null) {
                                 lblShopName.setText(shop.getShopName());
                                 lblReviewNumber.setText(shop.getRateNumber() + " "+getString(R.string.reviews));

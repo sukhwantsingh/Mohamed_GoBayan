@@ -52,7 +52,7 @@
             android:layout_width="@dimen/_140sdp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/bg_red_button_with_border"
+            android:background="@drawable/round_dark_black_"
             android:fontFamily="@font/bold"
             android:gravity="center"
             android:paddingHorizontal="@dimen/_15sdp"
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_red_button_with_border"
+                android:background="@drawable/round_dark_black_"
                 android:fontFamily="@font/bold"
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/_15sdp"
@@ -118,7 +118,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_border_grey"
-                android:hint="@string/lblUserName"
                 android:inputType="text"
                 android:padding="12dp"
                 android:singleLine="true" />
@@ -147,7 +146,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_border_grey"
-                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:padding="12dp"
                 android:singleLine="true" />

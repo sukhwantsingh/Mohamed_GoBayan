@@ -47,4 +47,6 @@ public class Constant {
     public static final String ROLE_SHOP_OWNER = "1";
     public static final String ROLE_CUSTOMER = "0";
 
+    public static final String POST_ID = "POST_ID";
+
 }

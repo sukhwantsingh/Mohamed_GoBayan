@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.libyasolutions.libyamarketplace.R;
@@ -79,7 +80,7 @@ public class CategoryV3Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.cb_category)
-        CheckBox cbCategory;
+        RadioButton cbCategory;
         @BindView(R.id.ll_item_category)
         LinearLayout llItemCategory;
 
@@ -92,7 +93,7 @@ public class CategoryV3Adapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         @Override
         public void onClick(View view) {
             if (view == llItemCategory) {
-                listener.onChooseCategory(getAdapterPosition(), categoryV3List.get(getAdapterPosition()));
+                listener.onChooseCategory(getAbsoluteAdapterPosition(), categoryV3List.get(getAbsoluteAdapterPosition()));
             }
         }
     }

@@ -75,14 +75,6 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
     @BindView(R.id.lsvFood)
     RecyclerView lsvFood;
 
-    @BindView(R.id.tab_search)
-    LinearLayout tabSearch;
-    @BindView(R.id.tab_cart)
-    LinearLayout tabCart;
-    @BindView(R.id.tab_profile)
-    LinearLayout tabProfile;
-    @BindView(R.id.layout_bottom)
-    LinearLayout layoutBottom;
     @BindView(R.id.iv_show_more)
     ImageView ivShowMore;
     @BindView(R.id.toolbar)
@@ -123,15 +115,15 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
         getChatCount();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (GlobalValue.arrMyMenuShop != null && GlobalValue.arrMyMenuShop.size() != 0) {
-            tabCart.setBackgroundColor(Color.BLUE);
-        } else {
-            tabCart.setBackgroundColor(getResources().getColor(R.color.background_new));
-        }
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+////        if (GlobalValue.arrMyMenuShop != null && GlobalValue.arrMyMenuShop.size() != 0) {
+////            tabCart.setBackgroundColor(Color.BLUE);
+////        } else {
+////            tabCart.setBackgroundColor(getResources().getColor(R.color.background_new));
+////        }
+//    }
 
     private void searchFoodList(int page, boolean isProgress) {
         if (!NetworkUtil.checkNetworkAvailable(this)) {
@@ -212,28 +204,28 @@ public class ListFoodActivity extends BaseActivity implements View.OnClickListen
             searchFoodList(page, false);
         });
 
-        tabProfile.setOnClickListener(this);
-        tabCart.setOnClickListener(this);
-        tabSearch.setOnClickListener(this);
+      //  tabProfile.setOnClickListener(this);
+        // tabCart.setOnClickListener(this);
+      //  tabSearch.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.tab_profile:
-                if (GlobalValue.myAccount != null) {
-                    sendAction(Constant.SHOW_TAB_PROFILE);
-                } else {
-                    showDialogLogin();
-                }
-                break;
-            case R.id.tab_cart:
-                sendAction(Constant.SHOW_TAB_CART);
-                break;
-            case R.id.tab_search:
-                sendAction(Constant.SHOW_TAB_SEARCH);
-                break;
+//            case R.id.tab_profile:
+//                if (GlobalValue.myAccount != null) {
+//                    sendAction(Constant.SHOW_TAB_PROFILE);
+//                } else {
+//                    showDialogLogin();
+//                }
+//                break;
+//            case R.id.tab_cart:
+//                sendAction(Constant.SHOW_TAB_CART);
+//                break;
+//            case R.id.tab_search:
+//                sendAction(Constant.SHOW_TAB_SEARCH);
+//                break;
 
         }
     }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Shop implements Parcelable {
     private int shopId;
+    private String chatStatus;
     private String shopName;
     private int cityId;
     private String cityName;
@@ -16,6 +17,7 @@ public class Shop implements Parcelable {
     private String image, thumbnail;
     private String description;
     private String phone;
+    private String alternatePhone;
     private Double longitude;
     private Double latitude;
     private OpenHour openHour;// open hour of today
@@ -59,6 +61,7 @@ public class Shop implements Parcelable {
 
     protected Shop(Parcel in) {
         shopId = in.readInt();
+        chatStatus = in.readString();
         shopName = in.readString();
         cityId = in.readInt();
         address = in.readString();
@@ -67,6 +70,7 @@ public class Shop implements Parcelable {
         thumbnail = in.readString();
         description = in.readString();
         phone = in.readString();
+        alternatePhone = in.readString();
         if (in.readByte() == 0) {
             longitude = null;
         } else {
@@ -116,6 +120,7 @@ public class Shop implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(shopId);
+        dest.writeString(chatStatus);
         dest.writeString(shopName);
         dest.writeInt(cityId);
         dest.writeString(address);
@@ -124,6 +129,7 @@ public class Shop implements Parcelable {
         dest.writeString(thumbnail);
         dest.writeString(description);
         dest.writeString(phone);
+        dest.writeString(alternatePhone);
         dest.writeString(cityName);
         if (longitude == null) {
             dest.writeByte((byte) 0);
@@ -365,6 +371,14 @@ public class Shop implements Parcelable {
         return shopName;
     }
 
+    public String getChatStatus() {
+        return chatStatus;
+    }
+
+    public void setChatStatus(String chatStatus) {
+        this.chatStatus = chatStatus;
+    }
+
     public String getCategory() {
         return category.isEmpty() ? phone : category;
     }
@@ -415,6 +429,14 @@ public class Shop implements Parcelable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAlternatePhone() {
+        return alternatePhone;
+    }
+
+    public void setAlternatePhone(String alternatePhone) {
+        this.alternatePhone = alternatePhone;
     }
 
     public Double getLongitude() {

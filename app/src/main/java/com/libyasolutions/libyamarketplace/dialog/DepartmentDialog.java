@@ -151,7 +151,7 @@ public class DepartmentDialog extends BaseDialog {
         dismiss();
     }
 
-    @OnClick(R.id.container_department_category)
+    @OnClick({R.id.rlscat, R.id.tvhscat})
     void chooseShowCategoryFromDepartment() {
         if (categoryV3List.size() < 1) {
             showToast(R.string.noti_should_choose_department);
@@ -164,8 +164,7 @@ public class DepartmentDialog extends BaseDialog {
             }
             ivArrowBottom.setVisibility(View.VISIBLE);
 
-            categoryV3Adapter = new CategoryV3Adapter(getActivity(), categoryV3List,
-                    (position, categoryV3) -> {
+            categoryV3Adapter = new CategoryV3Adapter(getActivity(), categoryV3List, (position, categoryV3) -> {
 
                         String menuId = categoryV3List.get(position).getMenuId();
                         String departmentId = categoryV3List.get(position).getDepartmentId();
